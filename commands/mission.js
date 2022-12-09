@@ -19,11 +19,17 @@ module.exports = {
 				for(var lt in rundowns['R'+nb]){
 					for(var id in rundowns['R'+nb][lt]){
 						if(value == 'R' + nb + lt + id){
-							response = '**Mission R' + nb + lt + id + '**: *"' + rundowns['R'+nb][lt][id].name + '"*\nMission types:'
+							response = '**Mission R' + nb + lt + id + '**: *"' + rundowns['R'+nb][lt][id].name + '"*\n *Mission types:*\n'
 
 							for(var mt in rundowns['R'+nb][lt][id].missionTypes){
-
-
+								if(rundowns['R'+nb][lt][id].missionTypes[mt] == true){
+									response = response + ' - ' + mt + ': ';
+									if(rundowns['R'+nb][lt][id].completed[mt] == true){
+										response = response + '`✅` Completed\n';
+									} else {
+										response = response + '`❌` Not completed\n';
+									}
+								}
 							}
 						}
 					}
