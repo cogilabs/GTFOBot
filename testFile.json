@@ -1,0 +1,21 @@
+{
+    "rundowns": {
+        "R1": {
+            "A": {
+                "A1": {
+                    "name": "The Admin",
+                    "missionTypes": {
+                        "main": true,
+                        "secondary": true,
+                        "overload": false,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": true,
+                        "secondary": true
+                    }
+                }
+            }
+        }
+    }
+}

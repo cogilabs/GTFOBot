@@ -28,15 +28,15 @@ module.exports = {
 
             response = '**======** ***Rundown ' + RID + '*** **======**';
             for(var lt in rundowns[RID]){
-                response = response + '\n'
+                response = response + '\n';
                 for(var nb in rundowns[RID][lt]){
-                    //expedition.push(RID + lt + nb)
+                    //expedition.push(RID + lt + nb);
                     if(rundowns[RID][lt][nb].completed.main){
                         check = '✅ ';
                     } else {
                         check = '❌ ';
                     }
-                    response = response + '**` ' + check + lt + nb +' `** '
+                    response = response + '**` ' + check + nb +' `** '
                 }
             }
 
