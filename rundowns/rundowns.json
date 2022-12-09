@@ -1,0 +1,332 @@
+{
+    "rundowns": {
+        "R1": {
+            "A": {
+                "1": {
+                    "name": "The Admin",
+                    "missionTypes": {
+                        "secondary": false,
+                        "overload": false,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": true
+                    }
+                }
+            },
+            "B": {
+                "1": {
+                    "name": "PID Search",
+                    "missionTypes": {
+                        "secondary": false,
+                        "overload": false,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": false
+                    }
+                },
+                "2": {
+                    "name": "The Officer",
+                    "missionTypes": {
+                        "secondary": false,
+                        "overload": false,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": false
+                    }
+                }
+            },
+            "C": {
+                "1": {
+                    "name": "Reconnect",
+                    "missionTypes": {
+                        "secondary": false,
+                        "overload": false,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": false
+                    }
+                },
+                "2": {
+                    "name": "Decode",
+                    "missionTypes": {
+                        "secondary": false,
+                        "overload": false,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": false
+                    }
+                }
+            },
+            "D": {
+                "1": {
+                    "name": "Deeper",
+                    "missionTypes": {
+                        "secondary": false,
+                        "overload": false,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": false
+                    }
+                }
+            }
+        },
+        "R2": {
+            "A": {
+                "1": {
+                    "name": "The Dig",
+                    "missionTypes": {
+                        "secondary": false,
+                        "overload": false,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": false
+                    }
+                }
+            },
+            "B": {
+                "1": {
+                    "name": "Sacrifice",
+                    "missionTypes": {
+                        "secondary": false,
+                        "overload": false,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": false
+                    }
+                },
+                "2": {
+                    "name": "Power Corrupt",
+                    "missionTypes": {
+                        "secondary": false,
+                        "overload": false,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": false
+                    }
+                },
+                "3": {
+                    "name": "Pathfinder",
+                    "missionTypes": {
+                        "secondary": false,
+                        "overload": false,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": false
+                    }
+                },
+                "4": {
+                    "name": "Septic",
+                    "missionTypes": {
+                        "secondary": false,
+                        "overload": false,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": false
+                    }
+                }
+            },
+            "C": {
+                "1": {
+                    "name": "Triangulation",
+                    "missionTypes": {
+                        "secondary": false,
+                        "overload": false,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": false
+                    }
+                },
+                "2": {
+                    "name": "???",
+                    "missionTypes": {
+                        "secondary": false,
+                        "overload": false,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": false
+                    }
+                }
+            },
+            "D": {
+                "1": {
+                    "name": "Statistics",
+                    "missionTypes": {
+                        "secondary": false,
+                        "overload": false,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": false
+                    }
+                },
+                "2": {
+                    "name": "Powerless",
+                    "missionTypes": {
+                        "secondary": false,
+                        "overload": false,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": false
+                    }
+                }
+            },
+            "E": {
+                "1": {
+                    "name": "Crib",
+                    "missionTypes": {
+                        "secondary": false,
+                        "overload": false,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": false
+                    }
+                }
+            }
+        },
+        "R7": {
+            "A": {
+                "1": {
+                    "name": "Unit 23",
+                    "missionTypes": {
+                        "secondary": false,
+                        "overload": false,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": false
+                    }
+                }
+            },
+            "B": {
+                "1": {
+                    "name": "Cargo",
+                    "missionTypes": {
+                        "secondary": false,
+                        "overload": false,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": false
+                    }
+                },
+                "2": {
+                    "name": "Dense",
+                    "missionTypes": {
+                        "secondary": true,
+                        "overload": false,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": false,
+                        "secondary": false
+                    }
+                },
+                "3": {
+                    "name": "Vault",
+                    "missionTypes": {
+                        "secondary": true,
+                        "overload": true,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": false,
+                        "secondary": false,
+                        "overload": false
+                    }
+                }
+            },
+            "C": {
+                "1": {
+                    "name": "Monster",
+                    "missionTypes": {
+                        "secondary": false,
+                        "overload": false,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": false
+                    }
+                },
+                "2": {
+                    "name": "Sublimation",
+                    "missionTypes": {
+                        "secondary": true,
+                        "overload": true,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": false,
+                        "secondary": false,
+                        "overload": false
+                    }
+                },
+                "3": {
+                    "name": "Reckless",
+                    "missionTypes": {
+                        "secondary": true,
+                        "overload": true,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": false,
+                        "secondary": false,
+                        "overload": false
+                    }
+                }
+            },
+            "D": {
+                "1": {
+                    "name": "Mother",
+                    "missionTypes": {
+                        "secondary": false,
+                        "overload": true,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": false,
+                        "overload": false
+                    }
+                },
+                "2": {
+                    "name": "AWOL",
+                    "missionTypes": {
+                        "secondary": false,
+                        "overload": false,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": false
+                    }
+                }
+            },
+            "E": {
+                "1": {
+                    "name": "Chaos",
+                    "missionTypes": {
+                        "secondary": false,
+                        "overload": false,
+                        "efficiency": false
+                    },
+                    "completed": {
+                        "main": false
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "gtfobot",
+  "version": "1.0.0",
+  "description": "A GTFO Discord companion bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "0Davgi0",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.7.1"
+  }
+}
