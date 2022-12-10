@@ -15,7 +15,6 @@ module.exports = {
         var RID = '';
         var response = ''
         var check = '❔ '
-        //var expedition = new Array;
 		if (value) { 
             for(var nb in Rlist){
                 if(value == nb) {
@@ -30,7 +29,6 @@ module.exports = {
             for(var lt in rundowns[RID]){
                 response = response + '\n';
                 for(var nb in rundowns[RID][lt]){
-                    //expedition.push(RID + lt + nb);
                     if(rundowns[RID][lt][nb].completed.main){
                         check = '✅ ';
                     } else {
