@@ -16,7 +16,7 @@ for (const file of commandFiles) {
 }
 
 client.once(Events.ClientReady, () => {
-	console.log('Ready!');
+	console.log('App started, Dauda is now playing GTFO!');
 	client.user.setPresence({ activities: [{ name: 'GTFO' }], status: 'online' });
 });
 

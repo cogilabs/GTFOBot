@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const { Rlist } = require('../rundowns/Rlist.json');
 const { rundowns } = require('../rundowns/rundowns.json');
 
@@ -13,8 +13,9 @@ module.exports = {
 	async execute(interaction) {
 		const value = interaction.options.getString('number');
         var RID = '';
-        var response = ''
-        var check = '❔ '
+        var check = '❔ ';
+        var title = '';
+        var content = '';
 		if (value) { 
             for(var nb in Rlist){
                 if(value == nb) {
@@ -24,23 +25,27 @@ module.exports = {
             if(RID == ''){
                 return interaction.reply('Rundown *"R' + value + '"* does not exist');
             }
-
-            response = '**======** ***Rundown ' + RID + '*** **======**';
+            title = '***Rundown ' + RID + '***';
             for(var lt in rundowns[RID]){
-                response = response + '\n';
+                content = content + '\n';
                 for(var nb in rundowns[RID][lt]){
                     if(rundowns[RID][lt][nb].completed.main){
                         check = '✅ ';
                     } else {
                         check = '❌ ';
                     }
-                    response = response + '**` ' + check + nb +' `** '
+                    content = content + '**` ' + check + nb +' `** ';
                 }
             }
+            const embed = new EmbedBuilder()
+            .setColor(0x110022)
+            .setTitle(title)
+            .setDescription(content);
 
-            return interaction.reply(response)
-            return interaction.reply(RID + 'A1 = ' + rundowns[RID].A[1].name);
+            console.log(`${interaction.user.username} used /rundown ${value}`)
+            return interaction.reply({embeds: [embed]});
         } else {
+            console.log(`${interaction.user.username} used /rundown with no option`)
 		    return interaction.reply('No option was provided!');
         }
 	},

@@ -266,7 +266,7 @@
       "A": {
         "A1": {
           "name": "Unit 23",
-          "intel": "Noenate HSU contents require resuscitation.\nCollateral resource loss acceptable.",
+          "intel": "Neonate HSU contents require resuscitation.\nCollateral resource loss acceptable.",
           "description": ">… I feel like we're being watched.\n >… The Warden is always watching us.\n >… No, **something else...**",
           "depth": "798",
           "missionTypes": {
@@ -298,7 +298,7 @@
         },
         "B2": {
           "name": "Dense",
-          "intel": "Establish uplinks from selected terminals to locate Noenate HSU Preparation site.",
+          "intel": "Establish uplinks from selected terminals to locate Neonate HSU Preparation site.",
           "description": ">… What's behind **these?**\n >… I don't even want to know.\n >… Let's prepare for the worst.",
           "depth": "855",
           "missionTypes": {
