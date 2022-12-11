@@ -14,7 +14,7 @@
             "efficiency": false
           },
           "completed": {
-            "main": false
+            "main": true
           }
         }
       },
@@ -31,7 +31,7 @@
             "efficiency": false
           },
           "completed": {
-            "main": false
+            "main": true
           }
         },
         "B2": {
@@ -46,7 +46,7 @@
             "efficiency": false
           },
           "completed": {
-            "main": false
+            "main": true
           }
         }
       },
@@ -63,7 +63,7 @@
             "efficiency": false
           },
           "completed": {
-            "main": false
+            "main": true
           }
         },
         "C2": {
