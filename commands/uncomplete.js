@@ -5,8 +5,8 @@ let file = editJsonFile('./rundowns/rundowns.json');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('complete')
-		.setDescription('[WORK IN PROGRESS]Mark a mission complete')
+		.setName('uncomplete')
+		.setDescription('[WORK IN PROGRESS]Mark a mission uncomplete')
 		.addStringOption(option => 
 			option.setName('mission')
 			.setDescription('The mission identifier (Ex: R1A1)')
@@ -22,20 +22,20 @@ module.exports = {
 						if(value == 'R' + nb + id){
 							for(var mt in rundowns['R'+nb][lt][id].missionTypes){
 								if(mt == "main"){
-									file.set('rundowns.' + 'R' + nb + '.' + lt + '.' + id + '.completed.' + mt, true);
+									file.set('rundowns.' + 'R' + nb + '.' + lt + '.' + id + '.completed.' + mt, false);
 									file.save();
 									file = editJsonFile('./rundowns/rundowns.json', {
 										autosave: true
 									});
-									rundowns['R'+nb][lt][id].completed[mt] = true;
-									response = 'Mission *' + value + ':' + mt + '* `✅ Completed`';
+									rundowns['R'+nb][lt][id].completed[mt] = false;
+									response = 'Mission *' + value + ':' + mt + '* `❌ Not completed`';
 								}
 							}
 						}
 					}
 				}
 			}
-			
+
 			console.log(`${interaction.user.username} used /complete ${value}`)
 			return interaction.reply(response);
 		

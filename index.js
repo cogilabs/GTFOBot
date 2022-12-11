@@ -3,6 +3,9 @@ const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits, Message } = require('discord.js');
 const { token } = require('./config.json');
 
+const { rundowns } = require('./rundowns/rundowns.json');
+global.rundowns = rundowns;
+
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.commands = new Collection();
