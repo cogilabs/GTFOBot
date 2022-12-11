@@ -6,7 +6,7 @@ let file = editJsonFile('./rundowns/rundowns.json');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('complete')
-		.setDescription('[WORK IN PROGRESS]Mark a mission complete')
+		.setDescription('Mark a mission complete')
 		.addStringOption(option => 
 			option.setName('mission')
 			.setDescription('The mission identifier (Ex: R1A1)')
@@ -35,7 +35,7 @@ module.exports = {
 					}
 				}
 			}
-			
+
 			console.log(`${interaction.user.username} used /complete ${value}`)
 			return interaction.reply(response);
 		

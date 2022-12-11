@@ -6,7 +6,7 @@ let file = editJsonFile('./rundowns/rundowns.json');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('uncomplete')
-		.setDescription('[WORK IN PROGRESS]Mark a mission uncomplete')
+		.setDescription('Mark a mission uncomplete')
 		.addStringOption(option => 
 			option.setName('mission')
 			.setDescription('The mission identifier (Ex: R1A1)')
