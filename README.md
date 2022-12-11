@@ -7,6 +7,8 @@ We use it to follow our progress through the complex and to familiarise with the
 ## The application
 The application itself is just a bot named Dauda (like one of the bots in the game).
 
+![The bot](Images/dauda.png?raw=true)
+
 It allows several commands:  
 
 ![Command list](Images/commands.png?raw=true)
