@@ -1,12 +1,14 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits, Message } = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
+
 const { token } = require('./config.json');
 
 const { rundowns } = require('./rundowns/rundowns.json');
 global.rundowns = rundowns;
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+global.client = client;
 
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
@@ -23,7 +25,7 @@ client.once(Events.ClientReady, () => {
 	client.user.setPresence({ activities: [{ name: 'GTFO' }], status: 'online' });
 });
 
-
+//Chat commands interactions
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
 
@@ -36,6 +38,24 @@ client.on(Events.InteractionCreate, async interaction => {
 	} catch (error) {
 		console.error(error);
 		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+	}
+});
+
+//Button interactions
+client.on(Events.InteractionCreate, async interaction => {
+	if (!interaction.isButton()) return;
+
+	const commandArray = (interaction.customId).split("-");
+
+	const command = client.commands.get(commandArray[0]);
+
+	if (!command) return;
+
+	try {
+		await command.replyButton(interaction);
+	} catch (error) {
+		console.error(error);
+		await interaction.reply({ content: 'There was an error while treating the button!', ephemeral: true });
 	}
 });
 

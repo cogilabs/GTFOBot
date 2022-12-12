@@ -6,7 +6,8 @@ module.exports = {
 		.setName('mission')
 		.setDescription('Info about a mission')
 		.addStringOption(option => 
-			option.setName('mission')
+			option
+			.setName('mission')
 			.setDescription('The mission identifier (Ex: R1A1)')
 			.setRequired(true)),
 	async execute(interaction) {

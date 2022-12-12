@@ -176,7 +176,7 @@
             "efficiency": false
           },
           "completed": {
-            "main": true
+            "main": false
           }
         }
       },
