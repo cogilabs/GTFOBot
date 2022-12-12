@@ -8,9 +8,12 @@ module.exports = {
 		.setName('complete')
 		.setDescription('Mark a mission complete')
 		.addStringOption(option => 
-			option.setName('mission')
+			option
+			.setName('mission')
 			.setDescription('The mission identifier (Ex: R1A1)')
-			.setRequired(true)),
+			.setRequired(true))
+		.setDefaultMemberPermissions(0)
+		.setDMPermission(false),
 	async execute(interaction) {
 		const value = interaction.options.getString('mission');
         var response = 'Mission *' + value + '* not found';
