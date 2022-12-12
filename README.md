@@ -27,6 +27,7 @@ It allows several commands:
 You can see that the missions that have been successfully finished have a green checkmark next to their ID.
 
 #### Here is the result of `/mission R7B3`:
+*(You can also obtain this reslut by clicking on the B3 button on the* **`/rundown`** *command result)*
 
 ![/mission command result](Images/mission.png?raw=true)
 
