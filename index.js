@@ -8,7 +8,6 @@ const { rundowns } = require('./rundowns/rundowns.json');
 global.rundowns = rundowns;
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-global.client = client;
 
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');

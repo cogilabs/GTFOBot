@@ -78,14 +78,14 @@
             "efficiency": false
           },
           "completed": {
-            "main": false
+            "main": true
           }
         }
       },
       "D": {
         "D1": {
           "name": "Deeper",
-          "intel": "Egress path from Sec_D:842m acquired. Access locked pending grid shutdown. High prisoner mortality rate expected. Additional ressuorces on standby.",
+          "intel": "Egress path from Sec_D:842m acquired. Access locked pending grid shutdown. High prisoner mortality rate expected. Additional resources on standby.",
           "description": ">[Radio static]\n >[unintelligible]\n >...\n **>...everyone is dead**\n >..I can't....I won't make it\n >[gunfire]",
           "depth": "842",
           "missionTypes": {
