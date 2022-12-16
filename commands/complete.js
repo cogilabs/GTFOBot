@@ -13,10 +13,22 @@ module.exports = {
 			.setName('mission')
 			.setDescription('The mission identifier (Ex: R1A1)')
 			.setRequired(true))
+		.addStringOption(option => 
+			option
+			.setName('type')
+			.setDescription('The mission type')
+			.setRequired(false)
+			.addChoices(
+				{ name: 'main', value: 'main' },
+				{ name: 'secondary', value: 'secondary' },
+				{ name: 'overload', value: 'overload' },
+				{ name: 'efficiency', value: 'efficiency' },
+			))
 		.setDefaultMemberPermissions(0)
 		.setDMPermission(false),
 	async execute(interaction) {
 		const value = interaction.options.getString('mission');
+		const type = interaction.options.getString('type');
         var response = 'Mission *' + value + '* not found';
 
 		if (value) {
@@ -25,7 +37,8 @@ module.exports = {
 					for(var id in rundowns['R'+nb][lt]){
 						if(value == 'R' + nb + id){
 							for(var mt in rundowns['R'+nb][lt][id].missionTypes){
-								if(mt == "main"){
+								if (!type) type = 'main';
+								if(mt == type){
 									file.set('rundowns.' + 'R' + nb + '.' + lt + '.' + id + '.completed.' + mt, true);
 									file.save();
 									file = editJsonFile('./rundowns/rundowns.json', {
