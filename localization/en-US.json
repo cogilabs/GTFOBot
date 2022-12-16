@@ -167,9 +167,6 @@
       "commands": {
         "rundowns": {
             "description": "State of the expeditions, mission descriptions and completion"
-        },
-        "rdloc": {
-            "description": "State of the expeditions, mission descriptions and completion"
         }
       },
       "missions": {

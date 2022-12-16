@@ -108,8 +108,8 @@ module.exports = {
                 for(var lt in rundowns[run]){
                     for(var id in rundowns[run][lt]){
                         if(RID == run + id){
-                            title = '**' + (locFile[locale][locale].missions.missionTitle).replace("X", run + id) + '** *"' + rundowns[run][lt][id].name[locale] + '"*';
-                            content = '\n \n`' + locFile[locale][locale].missions.intel + '`\n```' + rundowns[run][lt][id].intel[locale] + '```'
+                            title = '**' + (locFile[locale][locale].missions.missionTitle).replace("X", run + id) + '** *"' + locFile[locale][locale][run][lt][id].name + '"*';
+                            content = '\n \n`' + locFile[locale][locale].missions.intel + '`\n```' + locFile[locale][locale][run][lt][id].intel + '```'
                                 + '\n`' + locFile[locale][locale].missions.sectors + '`\n';
                             var i = 0;
                             for(var mt in rundowns[run][lt][id].missionTypes){
@@ -145,7 +145,7 @@ module.exports = {
                                 }
                             }
                             content = content 
-                                + '\n`' + locFile[locale][locale].missions.comms + '`\n *' + rundowns[run][lt][id].description[locale]
+                                + '\n`' + locFile[locale][locale].missions.comms + '`\n *' + locFile[locale][locale][run][lt][id].comms
                                 + '*\n \n`' + locFile[locale][locale].missions.metrics + '`\n'
                                 + ' ' + locFile[locale][locale].missions.depth + ' `' + rundowns[run][lt][id].depth +'`m';
                         }
