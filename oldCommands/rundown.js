@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } = require('discord.js');
-const { Rlist } = require('../rundowns/Rlist.json');
+const { supportedLocales } = require('../supportedLocales.json');
 const cmdName = 'rundown';
 
 module.exports = {
@@ -18,9 +18,10 @@ module.exports = {
         var rows = new Array();
         const row = new ActionRowBuilder();
 		if (value) { 
-                for(var nb in Rlist){
+                for(var run in rundowns){
+                    nb = (run.split("R"))[1]
                     if(value == nb) {
-                        RID = 'R' + nb;
+                        RID = run;
                     }
                 }
                 if(RID == ''){
@@ -60,22 +61,27 @@ module.exports = {
         }
 	},
 	async replyButton(interaction) {
+		var locale = '';
+        for(var loc in supportedLocales){
+            if (interaction.locale == loc) locale = interaction.locale;
+        }
+        if(locale == '') locale = 'en-US';
 	    const commandArray = (interaction.customId).split("-");
         const value = commandArray[1];
         var title = 'Mission *' + value + '* not found';
 		var content = 'Try to check if the mission identifier is correct and in the right format (Ex: R1A1). You can use **/rundown** to verify if the mission exists';
-		for(var nb in Rlist){
-			for(var lt in rundowns['R'+nb]){
-				for(var id in rundowns['R'+nb][lt]){
-					if(value == 'R' + nb + id){
-						title = '**Mission R' + nb + id + '**: *"' + rundowns['R'+nb][lt][id].name + '"*';
-						content = '\n \n`:://Intel_`\n```' + rundowns['R'+nb][lt][id].intel + '```'
+		for(var run in rundowns){
+			for(var lt in rundowns[run]){
+				for(var id in rundowns[run][lt]){
+					if(value == run + id){
+						title = '**Mission' + run + id + '**: *"' + rundowns[run][lt][id].name[locale] + '"*';
+						content = '\n \n`:://Intel_`\n```' + rundowns[run][lt][id].intel[locale] + '```'
 							+ '\n`:://Sectors_&&_progression_permits_`\n';
 
-						for(var mt in rundowns['R'+nb][lt][id].missionTypes){
-							if(rundowns['R'+nb][lt][id].missionTypes[mt] == true){
+						for(var mt in rundowns[run][lt][id].missionTypes){
+							if(rundowns[run][lt][id].missionTypes[mt] == true){
 								content = content + ' - ' + mt + ': ';
-								if(rundowns['R'+nb][lt][id].completed[mt] == true){
+								if(rundowns[run][lt][id].completed[mt] == true){
 									content = content + '`✅ Completed`\n';
 								} else {
 									content = content + '`❌ Not completed`\n';
@@ -83,9 +89,9 @@ module.exports = {
 							}
 						}
 						content = content 
-							+ '\n`:://Interupted_Communications_`\n *' + rundowns['R'+nb][lt][id].description
+							+ '\n`:://Interupted_Communications_`\n *' + rundowns[run][lt][id].description[locale]
 							+ '*\n \n`:://Expedition_metrics_`\n'
-							+ ' Drop cage target depth: `' + rundowns['R'+nb][lt][id].depth +'`m';
+							+ ' Drop cage target depth: `' + rundowns[run][lt][id].depth +'`m';
 					}
 				}
 			}

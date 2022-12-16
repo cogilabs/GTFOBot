@@ -1,5 +1,4 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { Rlist } = require('../rundowns/Rlist.json');
 const editJsonFile = require("edit-json-file");
 let file = editJsonFile('./rundowns/rundowns.json');
 const cmdName = 'uncomplete';
@@ -28,23 +27,23 @@ module.exports = {
 		.setDMPermission(false),
 	async execute(interaction) {
 		const value = interaction.options.getString('mission');
-		const type = interaction.options.getString('type');
+		var type = interaction.options.getString('type');
         var response = 'Mission *' + value + '* not found';
 
 		if (value) {
-			for(var nb in Rlist){
-				for(var lt in rundowns['R'+nb]){
-					for(var id in rundowns['R'+nb][lt]){
-						if(value == 'R' + nb + id){
-							for(var mt in rundowns['R'+nb][lt][id].missionTypes){
+			for(var run in rundowns){
+				for(var lt in rundowns[run]){
+					for(var id in rundowns[run][lt]){
+						if(value == run + id){
+							for(var mt in rundowns[run][lt][id].missionTypes){
 								if (!type) type = 'main';
 								if(mt == type){
-									file.set('rundowns.' + 'R' + nb + '.' + lt + '.' + id + '.completed.' + mt, false);
+									file.set('rundowns.' + run + '.' + lt + '.' + id + '.completed.' + mt, false);
 									file.save();
 									file = editJsonFile('./rundowns/rundowns.json', {
 										autosave: true
 									});
-									rundowns['R'+nb][lt][id].completed[mt] = false;
+									rundowns[run][lt][id].completed[mt] = false;
 									response = 'Mission *' + value + ':' + mt + '* `❌ Not completed`';
 								}
 							}

@@ -3,99 +3,134 @@
     "R1": {
       "A": {
         "A1": {
-          "name": "The Admin",
-          "intel": "Clearance for section B necessary. DNA sample required. Prisoners sent to locate Administrator's HSU.",
-          "description": ">...\n **>..they react to light and sounds!**\n >..stand still! [unintelligible scream]",
+          "name": {
+            "en-US": "The Admin",
+            "fr": "The Admin"
+          },
+          "intel": {
+            "en-US": "Clearance for section B necessary. DNA sample required. Prisoners sent to locate Administrator's HSU.",
+            "fr": "Clearance for section B necessary. DNA sample required. Prisoners sent to locate Administrator's HSU."
+          },
+          "description": {
+            "en-US": ">...\n **>..they react to light and sounds!**\n >..stand still! [unintelligible scream]",
+            "fr": ">...\n **>..they react to light and sounds!**\n >..stand still! [unintelligible scream]"
+          },
           "depth": "421",
           "missionTypes": {
             "main": true,
             "secondary": false,
             "overload": false,
             "efficiency": false
-          },
-          "completed": {
-            "main": true
           }
         }
       },
       "B": {
         "B1": {
-          "name": "PID Search",
-          "intel": "Tier 4 security PID required to reboot power grid. Prisoners sent to gather all PIDs from designated area.",
-          "description": ">..What way should we go?\n >..Ssssh [unintelligible]\n **>Don't move when their hearts beat!**\n >..Careful, quiet! [scream, gunfire, unintelligible].",
+          "name": {
+            "en-US": "PID Search"
+          },
+          "intel": {
+            "en-US": "Tier 4 security PID required to reboot power grid. Prisoners sent to gather all PIDs from designated area.",
+            "fr": "Tier 4 security PID required to reboot power grid. Prisoners sent to gather all PIDs from designated area."
+          },
+          "description": {
+            "en-US": ">..What way should we go?\n >..Ssssh [unintelligible]\n **>Don't move when their hearts beat!**\n >..Careful, quiet! [scream, gunfire, unintelligible].",
+            "fr": ">..What way should we go?\n >..Ssssh [unintelligible]\n **>Don't move when their hearts beat!**\n >..Careful, quiet! [scream, gunfire, unintelligible]."
+          },
           "depth": "562",
           "missionTypes": {
             "main": true,
             "secondary": false,
             "overload": false,
             "efficiency": false
-          },
-          "completed": {
-            "main": true
           }
         },
         "B2": {
-          "name": "The Officer",
-          "intel": "Security Officer DNA required to override power grid security system. Prisoners sent to extract DNA sample from HSU.",
-          "description": ">..alarms!! [unintelligible, scream]\n **>..everyone, follow the plan!**\n >[unintelligible, gunfire]",
+          "name": {
+            "en-US": "The Officer",
+            "fr": "The Officer"
+          },
+          "intel": {
+            "en-US": "Security Officer DNA required to override power grid security system. Prisoners sent to extract DNA sample from HSU.",
+            "fr": "Security Officer DNA required to override power grid security system. Prisoners sent to extract DNA sample from HSU."
+          },
+          "description": {
+            "en-US": ">..alarms!! [unintelligible, scream]\n **>..everyone, follow the plan!**\n >[unintelligible, gunfire]",
+            "fr": ">..alarms!! [unintelligible, scream]\n **>..everyone, follow the plan!**\n >[unintelligible, gunfire]"
+          },
           "depth": "565",
           "missionTypes": {
             "main": true,
             "secondary": false,
             "overload": false,
             "efficiency": false
-          },
-          "completed": {
-            "main": true
           }
         }
       },
       "C": {
         "C1": {
-          "name": "Reconnect",
-          "intel": "Bypass required in Sec_D:842m. Prisoners sent to overload grid.",
-          "description": ">[Alarm siren]\n >..They are coming!\n >[gunfire, unintelligible]\n **>We need to move up!**",
+          "name": {
+            "en-US": "Reconnect",
+            "fr": "Reconnect"
+          },
+          "intel": {
+            "en-US": "Bypass required in Sec_D:842m. Prisoners sent to overload grid.",
+            "fr": "Bypass required in Sec_D:842m. Prisoners sent to overload grid."
+          },
+          "description": {
+            "en-US": ">[Alarm siren]\n >..They are coming!\n >[gunfire, unintelligible]\n **>We need to move up!**",
+            "fr": ">[Alarm siren]\n >..They are coming!\n >[gunfire, unintelligible]\n **>We need to move up!**"
+          },
           "depth": "678",
           "missionTypes": {
             "main": true,
             "secondary": false,
             "overload": false,
             "efficiency": false
-          },
-          "completed": {
-            "main": true
           }
         },
         "C2": {
-          "name": "Decode",
-          "intel": "Dispersed encryption matrix found in Sec_D:842m. Prisoners sent to collect partial decoders.",
-          "description": ">...don't look up don't look up don't look up\n >[unintelligible]\n >[distant scream]\n..are you ok?",
+          "name": {
+            "en-US": "Decode",
+            "fr": "Decode"
+          },
+          "intel": {
+            "en-US": "Dispersed encryption matrix found in Sec_D:842m. Prisoners sent to collect partial decoders.",
+            "fr": "Dispersed encryption matrix found in Sec_D:842m. Prisoners sent to collect partial decoders."
+          },
+          "description": {
+            "en-US": ">...don't look up don't look up don't look up\n >[unintelligible]\n >[distant scream]\n..are you ok?",
+            "fr": ">...don't look up don't look up don't look up\n >[unintelligible]\n >[distant scream]\n..are you ok?"
+          },
           "depth": "624",
           "missionTypes": {
             "main": true,
             "secondary": false,
             "overload": false,
             "efficiency": false
-          },
-          "completed": {
-            "main": true
           }
         }
       },
       "D": {
         "D1": {
-          "name": "Deeper",
-          "intel": "Egress path from Sec_D:842m acquired. Access locked pending grid shutdown. High prisoner mortality rate expected. Additional resources on standby.",
-          "description": ">[Radio static]\n >[unintelligible]\n >...\n **>...everyone is dead**\n >..I can't....I won't make it\n >[gunfire]",
+          "name": {
+            "en-US": "Deeper",
+            "fr": "Deeper"
+          },
+          "intel": {
+            "en-US": "Egress path from Sec_D:842m acquired. Access locked pending grid shutdown. High prisoner mortality rate expected. Additional resources on standby.",
+            "fr": "Egress path from Sec_D:842m acquired. Access locked pending grid shutdown. High prisoner mortality rate expected. Additional resources on standby."
+          },
+          "description": {
+            "en-US": ">[Radio static]\n >[unintelligible]\n >...\n **>...everyone is dead**\n >..I can't....I won't make it\n >[gunfire]",
+            "fr": ">[Radio static]\n >[unintelligible]\n >...\n **>...everyone is dead**\n >..I can't....I won't make it\n >[gunfire]"
+          },
           "depth": "842",
           "missionTypes": {
             "main": true,
             "secondary": false,
             "overload": false,
             "efficiency": false
-          },
-          "completed": {
-            "main": false
           }
         }
       }
@@ -103,161 +138,221 @@
     "R2": {
       "A": {
         "A1": {
-          "name": "The Dig",
-          "intel": "Genotype resisitance database update required. Prisoners dispatched to secure pMOTHER DNA trial samples.",
-          "description": ">...\n **>..[whispering] Schh! You'll wake them up!**\n >...the flashlight! Turn it off!\n >...[sudden shriek, unintelligible]",
+          "name": {
+            "en-US": "The Dig",
+            "fr": "The Dig"
+          },
+          "intel": {
+            "en-US": "Genotype resisitance database update required. Prisoners dispatched to secure pMOTHER DNA trial samples.",
+            "fr": "Genotype resisitance database update required. Prisoners dispatched to secure pMOTHER DNA trial samples."
+          },
+          "description": {
+            "en-US": ">...\n **>..[whispering] Schh! You'll wake them up!**\n >...the flashlight! Turn it off!\n >...[sudden shriek, unintelligible]",
+            "fr": ">...\n **>..[whispering] Schh! You'll wake them up!**\n >...the flashlight! Turn it off!\n >...[sudden shriek, unintelligible]"
+          },
           "depth": "543",
           "missionTypes": {
             "main": true,
             "secondary": false,
             "overload": false,
             "efficiency": false
-          },
-          "completed": {
-            "main": false
           }
         }
       },
       "B": {
         "B1": {
-          "name": "Sacrifice",
-          "intel": "Preferred route through R2B2 compromised by aggressive biomass. Nonessential resources assigned to execute diversionary tactic.",
-          "description": ">...\n **>...Don't open that door!**\n >...there's something on the other- NO!!\n...[commation, screams]",
+          "name": {
+            "en-US": "Sacrifice",
+            "fr": "Sacrifice"
+          },
+          "intel": {
+            "en-US": "Preferred route through R2B2 compromised by aggressive biomass. Nonessential resources assigned to execute diversionary tactic.",
+            "fr": "Preferred route through R2B2 compromised by aggressive biomass. Nonessential resources assigned to execute diversionary tactic."
+          },
+          "description": {
+            "en-US": ">...\n **>...Don't open that door!**\n >...there's something on the other- NO!!\n...[commation, screams]",
+            "fr": ">...\n **>...Don't open that door!**\n >...there's something on the other- NO!!\n...[commation, screams]"
+          },
           "depth": "580",
           "missionTypes": {
             "main": true,
             "secondary": false,
             "overload": false,
             "efficiency": false
-          },
-          "completed": {
-            "main": false
           }
         },
         "B2": {
-          "name": "Power Corrupt",
-          "intel": "Insufficient power in [R2C] for RISE equipment triangulation. Resources sent to divert pow@65error-",
-          "description": ">...\n **>...what's that... on the wall?**\n >...[loud crack, unintelligible]\n >...Shit! SHIT! [coughing, commation]",
+          "name": {
+            "en-US": "Power Corrupt",
+            "fr": "Power Corrupt"
+          },
+          "intel": {
+            "en-US": "Insufficient power in [R2C] for RISE equipment triangulation. Resources sent to divert pow@65error-",
+            "fr": "Insufficient power in [R2C] for RISE equipment triangulation. Resources sent to divert pow@65error-"
+          },
+          "description": {
+            "en-US": ">...\n **>...what's that... on the wall?**\n >...[loud crack, unintelligible]\n >...Shit! SHIT! [coughing, commation]",
+            "fr": ">...\n **>...what's that... on the wall?**\n >...[loud crack, unintelligible]\n >...Shit! SHIT! [coughing, commation]"
+          },
           "depth": "612",
           "missionTypes": {
             "main": true,
             "secondary": false,
             "overload": false,
             "efficiency": false
-          },
-          "completed": {
-            "main": false
           }
         },
         "B3": {
-          "name": "Pathfinder",
-          "intel": "BIOCOM controlled security systems not responding/ External uplink required.",
-          "description": ">...\n **>...what's the password?!**\n >...[unintelligible, gunfire, commotion]\n >...WHAT'S THE PASSWORD?!\n >...[commotion, screams]",
+          "name": {
+            "en-US": "Pathfinder",
+            "fr": "Pathfinder"
+          },
+          "intel": {
+            "en-US": "BIOCOM controlled security systems not responding/ External uplink required.",
+            "fr": "BIOCOM controlled security systems not responding/ External uplink required."
+          },
+          "description": {
+            "en-US": ">...\n **>...what's the password?!**\n >...[unintelligible, gunfire, commotion]\n >...WHAT'S THE PASSWORD?!\n >...[commotion, screams]",
+            "fr": ">...\n **>...what's the password?!**\n >...[unintelligible, gunfire, commotion]\n >...WHAT'S THE PASSWORD?!\n >...[commotion, screams]"
+          },
           "depth": "633",
           "missionTypes": {
             "main": true,
             "secondary": false,
             "overload": false,
             "efficiency": false
-          },
-          "completed": {
-            "main": false
           }
         },
         "B4": {
-          "name": "Septic",
-          "intel": "Virulent contagion barrier between section [R2B] and [R2C]. Decontamination required.",
-          "description": ">...\n **>...I need to get rid of this - NOW!**\n >...I found a disinfection station!\n >...[coughing, commotion, unintelligible]",
+          "name": {
+            "en-US": "Septic",
+            "fr": "Septic"
+          },
+          "intel": {
+            "en-US": "Virulent contagion barrier between section [R2B] and [R2C]. Decontamination required.",
+            "fr": "Virulent contagion barrier between section [R2B] and [R2C]. Decontamination required."
+          },
+          "description": {
+            "en-US": ">...\n **>...I need to get rid of this - NOW!**\n >...I found a disinfection station!\n >...[coughing, commotion, unintelligible]",
+            "fr": ">...\n **>...I need to get rid of this - NOW!**\n >...I found a disinfection station!\n >...[coughing, commotion, unintelligible]"
+          },
           "depth": "658",
           "missionTypes": {
             "main": true,
             "secondary": false,
             "overload": false,
             "efficiency": false
-          },
-          "completed": {
-            "main": false
           }
         }
       },
       "C": {
         "C1": {
-          "name": "Triangulation",
-          "intel": "WARNING: Navigation database corrupted. Vertical triangulation required to confirm cold storage bulkhead location.",
-          "description": ">...\n >...This is not the right way...\n >...Well, no way is the right way!\n **>...Are we lost? Are we fucking lost?**",
+          "name": {
+            "en-US": "Triangulation",
+            "fr": "Triangulation"
+          },
+          "intel": {
+            "en-US": "WARNING: Navigation database corrupted. Vertical triangulation required to confirm cold storage bulkhead location.",
+            "fr": "WARNING: Navigation database corrupted. Vertical triangulation required to confirm cold storage bulkhead location."
+          },
+          "description": {
+            "en-US": ">...\n >...This is not the right way...\n >...Well, no way is the right way!\n **>...Are we lost? Are we fucking lost?**",
+            "fr": ">...\n >...This is not the right way...\n >...Well, no way is the right way!\n **>...Are we lost? Are we fucking lost?**"
+          },
           "depth": "729",
           "missionTypes": {
             "main": true,
             "secondary": false,
             "overload": false,
             "efficiency": false
-          },
-          "completed": {
-            "main": false
           }
         },
         "C2": {
-          "name": "???",
-          "intel": "Navigation database rebuild required. Prisoners sent to gather all PIDs from designated area.\n \n##WARNING: High fatality rate presumed##",
-          "description": ">...\n >...I can't take this any longer… **I'm not taking another step. NOT ONE-**\n >...[sudden noise, screams, unintelligible]\n >...[connection lost]",
+          "name": {
+            "en-US": "???",
+            "fr": "???"
+          },
+          "intel": {
+            "en-US": "Navigation database rebuild required. Prisoners sent to gather all PIDs from designated area.\n \n##WARNING: High fatality rate presumed##",
+            "fr": "Navigation database rebuild required. Prisoners sent to gather all PIDs from designated area.\n \n##WARNING: High fatality rate presumed##"
+          },
+          "description": {
+            "en-US": ">...\n >...I can't take this any longer… **I'm not taking another step. NOT ONE-**\n >...[sudden noise, screams, unintelligible]\n >...[connection lost]",
+            "fr": ">...\n >...I can't take this any longer… **I'm not taking another step. NOT ONE-**\n >...[sudden noise, screams, unintelligible]\n >...[connection lost]"
+          },
           "depth": "790",
           "missionTypes": {
             "main": true,
             "secondary": false,
             "overload": false,
             "efficiency": false
-          },
-          "completed": {
-            "main": false
           }
         }
       },
       "D": {
         "D1": {
-          "name": "Statistics",
-          "intel": "WARNING: Cold storage bulkhead filtration system offline. Prisoners dispatched to reactivate central power cluster.",
-          "description": ">...\n >.....whats this....whu\n >[unintelligible, loud hum]",
+          "name": {
+            "en-US": "Statistics",
+            "fr": "Statistics"
+          },
+          "intel": {
+            "en-US": "WARNING: Cold storage bulkhead filtration system offline. Prisoners dispatched to reactivate central power cluster.",
+            "fr": "WARNING: Cold storage bulkhead filtration system offline. Prisoners dispatched to reactivate central power cluster."
+          },
+          "description": {
+            "en-US": ">...\n >.....whats this....whu\n >[unintelligible, loud hum]",
+            "fr": ">...\n >.....whats this....whu\n >[unintelligible, loud hum]"
+          },
           "depth": "811",
           "missionTypes": {
             "main": true,
             "secondary": false,
             "overload": false,
             "efficiency": false
-          },
-          "completed": {
-            "main": false
           }
         },
         "D2": {
-          "name": "Powerless",
-          "intel": "WARNING: Cold storage bulkhead filtration system offline. Grid reboot required.",
-          "description": ">...\n >...what's the password?\n **>...what's the damn password?**\n >...[blaring siren]\n >...Shit! SHIT! [gunfire, commotion]",
+          "name": {
+            "en-US": "Powerless",
+            "fr": "Powerless"
+          },
+          "intel": {
+            "en-US": "WARNING: Cold storage bulkhead filtration system offline. Grid reboot required.",
+            "fr": "WARNING: Cold storage bulkhead filtration system offline. Grid reboot required."
+          },
+          "description": {
+            "en-US": ">...\n >...what's the password?\n **>...what's the damn password?**\n >...[blaring siren]\n >...Shit! SHIT! [gunfire, commotion]",
+            "fr": ">...\n >...what's the password?\n **>...what's the damn password?**\n >...[blaring siren]\n >...Shit! SHIT! [gunfire, commotion]"
+          },
           "depth": "883",
           "missionTypes": {
             "main": true,
             "secondary": false,
             "overload": false,
             "efficiency": false
-          },
-          "completed": {
-            "main": false
           }
         }
       },
       "E": {
         "E1": {
-          "name": "Crib",
-          "intel": "RISE equipment triangulation completed. Prisoners dispatched to retrieve Neonate.",
-          "description": ">...what is this thing..?\n >**.....don't ..touch.. DAMNIT!**\n[screams in the distance]",
+          "name": {
+            "en-US": "Crib",
+            "fr": "Crib"
+          },
+          "intel": {
+            "en-US": "RISE equipment triangulation completed. Prisoners dispatched to retrieve Neonate.",
+            "fr": "RISE equipment triangulation completed. Prisoners dispatched to retrieve Neonate."
+          },
+          "description": {
+            "en-US": ">...what is this thing..?\n >**.....don't ..touch.. DAMNIT!**\n[screams in the distance]",
+            "fr": ">...what is this thing..?\n >**.....don't ..touch.. DAMNIT!**\n[screams in the distance]"
+          },
           "depth": "924",
           "missionTypes": {
             "main": true,
             "secondary": false,
             "overload": false,
             "efficiency": false
-          },
-          "completed": {
-            "main": false
           }
         }
       }
@@ -265,169 +360,221 @@
     "R7": {
       "A": {
         "A1": {
-          "name": "Unit 23",
-          "intel": "Neonate HSU contents require resuscitation.\nCollateral resource loss acceptable.",
-          "description": ">… I feel like we're being watched.\n >… The Warden is always watching us.\n >… No, **something else...**",
+          "name": {
+            "en-US": "Unit 23",
+            "fr": "Unit 23"
+          },
+          "intel": {
+            "en-US": "Neonate HSU contents require resuscitation.\nCollateral resource loss acceptable.",
+            "fr": "Neonate HSU contents require resuscitation.\nCollateral resource loss acceptable."
+          },
+          "description": {
+            "en-US": ">… I feel like we're being watched.\n >… The Warden is always watching us.\n >… No, **something else...**",
+            "fr": ">… I feel like we're being watched.\n >… The Warden is always watching us.\n >… No, **something else...**"
+          },
           "depth": "798",
           "missionTypes": {
             "main": true,
             "secondary": false,
             "overload": false,
             "efficiency": false
-          },
-          "completed": {
-            "main": false
           }
         }
       },
       "B": {
         "B1": {
-          "name": "Cargo",
-          "intel": "Neonate phase two initiated.\nPrisoners dispatched to deliver the Neonate to the depressurazation chamber.",
-          "description": ">… Shouldn't this all be dead? Everything else is\n >… That **thing** tou're carrying isn't.",
+          "name": {
+            "en-US": "Cargo",
+            "fr": "Cargo"
+          },
+          "intel": {
+            "en-US": "Neonate phase two initiated.\nPrisoners dispatched to deliver the Neonate to the depressurazation chamber.",
+            "fr": "Neonate phase two initiated.\nPrisoners dispatched to deliver the Neonate to the depressurazation chamber."
+          },
+          "description": {
+            "en-US": ">… Shouldn't this all be dead? Everything else is\n >… That **thing** tou're carrying isn't.",
+            "fr": ">… Shouldn't this all be dead? Everything else is\n >… That **thing** tou're carrying isn't."
+          },
           "depth": "985",
           "missionTypes": {
             "main": true,
             "secondary": false,
             "overload": false,
             "efficiency": false
-          },
-          "completed": {
-            "main": false
           }
         },
         "B2": {
-          "name": "Dense",
-          "intel": "Establish uplinks from selected terminals to locate Neonate HSU Preparation site.",
-          "description": ">… What's behind **these?**\n >… I don't even want to know.\n >… Let's prepare for the worst.",
+          "name": {
+            "en-US": "Dense",
+            "fr": "Dense"
+          },
+          "intel": {
+            "en-US": "Establish uplinks from selected terminals to locate Neonate HSU Preparation site.",
+            "fr": "Establish uplinks from selected terminals to locate Neonate HSU Preparation site."
+          },
+          "description": {
+            "en-US": ">… What's behind **these?**\n >… I don't even want to know.\n >… Let's prepare for the worst.",
+            "fr": ">… What's behind **these?**\n >… I don't even want to know.\n >… Let's prepare for the worst."
+          },
           "depth": "855",
           "missionTypes": {
             "main": true,
             "secondary": true,
             "overload": false,
             "efficiency": false
-          },
-          "completed": {
-            "main": false,
-            "secondary": false
           }
         },
         "B3": {
-          "name": "Vault",
-          "intel": "Prisoners to retrieve DNA samples from HSU storage annex. Environmental protection equipment will increase survival chances.",
-          "description": ">… Don't breath it in!\n >… Let's just **get through** it.\n >… Whatever's in these HSUs must be dead, right?",
+          "name": {
+            "en-US": "Vault",
+            "fr": "Vault"
+          },
+          "intel": {
+            "en-US": "Prisoners to retrieve DNA samples from HSU storage annex. Environmental protection equipment will increase survival chances.",
+            "fr": "Prisoners to retrieve DNA samples from HSU storage annex. Environmental protection equipment will increase survival chances."
+          },
+          "description": {
+            "en-US": ">… Don't breath it in!\n >… Let's just **get through** it.\n >… Whatever's in these HSUs must be dead, right?",
+            "fr": ">… Don't breath it in!\n >… Let's just **get through** it.\n >… Whatever's in these HSUs must be dead, right?"
+          },
           "depth": "1248",
           "missionTypes": {
             "main": true,
             "secondary": true,
             "overload": true,
             "efficiency": false
-          },
-          "completed": {
-            "main": false,
-            "secondary": true,
-            "overload": false
           }
         }
       },
       "C": {
         "C1": {
-          "name": "Monster",
-          "intel": "Prisoners dispatched to locate Glucagon peptide hormone vials. Limited vision due to unknown gas.\nExit route blocked.",
-          "description": ">... “Let's just go. This isn't right”\n >… “It's been eaten. What did that?”\n >… “You want to be next? **Move!**”",
+          "name": {
+            "en-US": "Monster",
+            "fr": "Monster"
+          },
+          "intel": {
+            "en-US": "Prisoners dispatched to locate Glucagon peptide hormone vials. Limited vision due to unknown gas.\nExit route blocked.",
+            "fr": "Prisoners dispatched to locate Glucagon peptide hormone vials. Limited vision due to unknown gas.\nExit route blocked."
+          },
+          "description": {
+            "en-US": ">... “Let's just go. This isn't right”\n >… “It's been eaten. What did that?”\n >… “You want to be next? **Move!**”",
+            "fr": ">... “Let's just go. This isn't right”\n >… “It's been eaten. What did that?”\n >… “You want to be next? **Move!**”"
+          },
           "depth": "1071",
           "missionTypes": {
             "main": true,
             "secondary": false,
             "overload": false,
             "efficiency": false
-          },
-          "completed": {
-            "main": false
           }
         },
         "C2": {
-          "name": "Sublimation",
-          "intel": "Quadrant Warp gate access required. Prisoners sent to power up local Generator cluster. Abnormal atmospheric conditions will increase prisoner casualties.",
-          "description": ">… My lungs… get me out of here!\n >… We can't clear this fog without power!\n >… **Everyone ready?** Okay, grab the power ce-",
+          "name": {
+            "en-US": "Sublimation",
+            "fr": "Sublimation"
+          },
+          "intel": {
+            "en-US": "Quadrant Warp gate access required. Prisoners sent to power up local Generator cluster. Abnormal atmospheric conditions will increase prisoner casualties.",
+            "fr": "Quadrant Warp gate access required. Prisoners sent to power up local Generator cluster. Abnormal atmospheric conditions will increase prisoner casualties."
+          },
+          "description": {
+            "en-US": ">… My lungs… get me out of here!\n >… We can't clear this fog without power!\n >… **Everyone ready?** Okay, grab the power ce-",
+            "fr": ">… My lungs… get me out of here!\n >… We can't clear this fog without power!\n >… **Everyone ready?** Okay, grab the power ce-"
+          },
           "depth": "920",
           "missionTypes": {
             "main": true,
             "secondary": true,
             "overload": true,
             "efficiency": false
-          },
-          "completed": {
-            "main": false,
-            "secondary": false,
-            "overload": false
           }
         },
         "C3": {
-          "name": "Reckless",
-          "intel": "Further uplinks needed for stock-taking in biomechanical storage facilities.\nRudimentary objective, reduced resource distribution.",
-          "description": ">.. I got nothing wh.. What do we do!?\n >.. **Check every box**, use whatever you find\n >.. This can't get worse right?",
+          "name": {
+            "en-US": "Reckless",
+            "fr": "Reckless"
+          },
+          "intel": {
+            "en-US": "Further uplinks needed for stock-taking in biomechanical storage facilities.\nRudimentary objective, reduced resource distribution.",
+            "fr": "Further uplinks needed for stock-taking in biomechanical storage facilities.\nRudimentary objective, reduced resource distribution."
+          },
+          "description": {
+            "en-US": ">.. I got nothing wh.. What do we do!?\n >.. **Check every box**, use whatever you find\n >.. This can't get worse right?",
+            "fr": ">.. I got nothing wh.. What do we do!?\n >.. **Check every box**, use whatever you find\n >.. This can't get worse right?"
+          },
           "depth": "1193",
           "missionTypes": {
             "main": true,
             "secondary": true,
             "overload": true,
             "efficiency": false
-          },
-          "completed": {
-            "main": false,
-            "secondary": false,
-            "overload": false
           }
         }
       },
       "D": {
         "D1": {
-          "name": "Mother",
-          "intel": "Neonate qualified for final phase initialization.\nExpendable prisoners sent to transport vessel to Preparation site.",
-          "description": ">.. What the hell are these machines?\n >.. Shut up and focus, Confirm **on my mark!**\n >.. Fuck! Here they come!",
+          "name": {
+            "en-US": "Mother",
+            "fr": "Mother"
+          },
+          "intel": {
+            "en-US": "Neonate qualified for final phase initialization.\nExpendable prisoners sent to transport vessel to Preparation site.",
+            "fr": "Neonate qualified for final phase initialization.\nExpendable prisoners sent to transport vessel to Preparation site."
+          },
+          "description": {
+            "en-US": ">.. What the hell are these machines?\n >.. Shut up and focus, Confirm **on my mark!**\n >.. Fuck! Here they come!",
+            "fr": ">.. What the hell are these machines?\n >.. Shut up and focus, Confirm **on my mark!**\n >.. Fuck! Here they come!"
+          },
           "depth": "1303",
           "missionTypes": {
             "main": true,
             "secondary": false,
             "overload": true,
             "efficiency": false
-          },
-          "completed": {
-            "main": false,
-            "overload": false
           }
         },
         "D2": {
-          "name": "AWOL",
-          "intel": "Prisoners sent down to collect new seeds for the HSU neonatal process. Exp::ERR ###",
-          "description": ">... Ugh, these things are **fucking heavy!**\n >.. Yeah, how many are we expected to take?\n >... Let's just carry two and see it Warden picks us up...",
+          "name": {
+            "en-US": "AWOL",
+            "fr": "AWOL"
+          },
+          "intel": {
+            "en-US": "Prisoners sent down to collect new seeds for the HSU neonatal process. Exp::ERR ###",
+            "fr": "Prisoners sent down to collect new seeds for the HSU neonatal process. Exp::ERR ###"
+          },
+          "description": {
+            "en-US": ">... Ugh, these things are **fucking heavy!**\n >.. Yeah, how many are we expected to take?\n >... Let's just carry two and see it Warden picks us up...",
+            "fr": ">... Ugh, these things are **fucking heavy!**\n >.. Yeah, how many are we expected to take?\n >... Let's just carry two and see it Warden picks us up..."
+          },
           "depth": "1366",
           "missionTypes": {
             "main": true,
             "secondary": false,
             "overload": false,
             "efficiency": false
-          },
-          "completed": {
-            "main": false
           }
         }
       },
       "E": {
         "E1": {
-          "name": "Chaos",
-          "intel": "Critical process died.\nEmergency shutdown initiated.\nPrisoners dispatched to reboot reactor.",
-          "description": ">.. We're being followed\n >.. Why won't it fucking die?!\n >.. This is chaos. **CHAOS!**",
+          "name": {
+            "en-US": "Chaos",
+            "fr": "Chaos"
+          },
+          "intel": {
+            "en-US": "Critical process died.\nEmergency shutdown initiated.\nPrisoners dispatched to reboot reactor.",
+            "fr": "Critical process died.\nEmergency shutdown initiated.\nPrisoners dispatched to reboot reactor."
+          },
+          "description": {
+            "en-US": ">.. We're being followed\n >.. Why won't it fucking die?!\n >.. This is chaos. **CHAOS!**",
+            "fr": ">.. We're being followed\n >.. Why won't it fucking die?!\n >.. This is chaos. **CHAOS!**"
+          },
           "depth": "1411",
           "missionTypes": {
             "main": true,
             "secondary": false,
             "overload": false,
             "efficiency": false
-          },
-          "completed": {
-            "main": false
           }
         }
       }

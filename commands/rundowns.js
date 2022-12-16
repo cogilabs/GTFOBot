@@ -1,19 +1,27 @@
 const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } = require('discord.js');
-const { Rlist } = require('../rundowns/Rlist.json');
+const { supportedLocales } = require('../supportedLocales.json');
 const editJsonFile = require("edit-json-file");
-let file = editJsonFile('./rundowns/rundowns.json');
-const cmdName = 'rdown';
+let file = editJsonFile('./rundowns/completion.json');
+const cmdName = 'rundowns';
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName(cmdName)
-		.setDescription('[WIP]State of the expeditions (No argument version)'),
+		.setDescription('State of the expeditions, mission descriptions and completion'),
 	async execute(interaction) {
+        var locale = '';
+        for(var loc in supportedLocales){
+            if (interaction.locale == loc) locale = interaction.locale;
+        }
+        if(locale == '') locale = 'en-US';
+
         var higher = 0;
         var RID = '';
         var rows = new Array();
+
         var enabled = new Array();
-        for(var nb in Rlist){
+        for(var run in rundowns){
+            nb = (run.split("R"))[1]
             if (nb > higher) higher = nb;
             enabled[nb] = true;
         }
@@ -36,11 +44,15 @@ module.exports = {
             );
 
         }
-
         console.log(`${interaction.user.username} used /${cmdName}`)
         await interaction.reply({ components: rows, ephemeral: true });
 	},
 	async replyButton(interaction) {
+        var locale = '';
+        for(var loc in supportedLocales){
+            if (interaction.locale == loc) locale = interaction.locale;
+        }
+        if(locale == '') locale = 'en-US';
         const commandArray = (interaction.customId).split("-");
         if (commandArray[1] == 'select') {
             const RID = commandArray[2];
@@ -52,7 +64,7 @@ module.exports = {
             for(var lt in rundowns[RID]){
                 rows[i] = new ActionRowBuilder();
                 for(var nb in rundowns[RID][lt]){
-                    if(rundowns[RID][lt][nb].completed.main){
+                    if(completion[RID][lt][nb].completed.main){
                         rows[i].addComponents(
                             new ButtonBuilder()
                                 .setCustomId(cmdName + '-mission-' + RID + nb)
@@ -81,17 +93,17 @@ module.exports = {
             var cpltd = new Array();
             const rows  = new Array();
             var content = 'Try to check if the mission identifier is correct and in the right format (Ex: R1A1). You can use **/rundown** to verify if the mission exists';
-            for(var nb in Rlist){
-                for(var lt in rundowns['R'+nb]){
-                    for(var id in rundowns['R'+nb][lt]){
-                        if(RID == 'R' + nb + id){
-                            title = '**Mission R' + nb + id + '**: *"' + rundowns['R'+nb][lt][id].name + '"*';
-                            content = '\n \n`:://Intel_`\n```' + rundowns['R'+nb][lt][id].intel + '```'
+            for(var run in rundowns){
+                for(var lt in rundowns[run]){
+                    for(var id in rundowns[run][lt]){
+                        if(RID == run + id){
+                            title = '**Mission ' + run + id + '**: *"' + rundowns[run][lt][id].name[locale] + '"*';
+                            content = '\n \n`:://Intel_`\n```' + rundowns[run][lt][id].intel[locale] + '```'
                                 + '\n`:://Sectors_&&_progression_permits_`\n';
                             var i = 0;
-                            for(var mt in rundowns['R'+nb][lt][id].missionTypes){
-                                if(rundowns['R'+nb][lt][id].missionTypes[mt] == true){
-                                    cpltd[mt] = rundowns['R'+nb][lt][id].completed[mt]
+                            for(var mt in rundowns[run][lt][id].missionTypes){
+                                if(rundowns[run][lt][id].missionTypes[mt] == true){
+                                    cpltd[mt] = completion[run][lt][id].completed[mt]
                                     rows[i]  = new ActionRowBuilder();
                                     if (!(String(cpltd[mt]).toLowerCase() == "true")) {
                                         rows[i].addComponents(
@@ -112,7 +124,7 @@ module.exports = {
                                     }
                                         
                                     content = content + ' - ' + mt + ': ';
-                                    if(rundowns['R'+nb][lt][id].completed[mt] == true){
+                                    if(completion[run][lt][id].completed[mt] == true){
                                         content = content + '`✅ Completed`\n';
                                     } else {
                                         content = content + '`❌ Not completed`\n';
@@ -121,9 +133,9 @@ module.exports = {
                                 i++;
                             }
                             content = content 
-                                + '\n`:://Interupted_Communications_`\n *' + rundowns['R'+nb][lt][id].description
+                                + '\n`:://Interupted_Communications_`\n *' + rundowns[run][lt][id].description[locale]
                                 + '*\n \n`:://Expedition_metrics_`\n'
-                                + ' Drop cage target depth: `' + rundowns['R'+nb][lt][id].depth +'`m';
+                                + ' Drop cage target depth: `' + rundowns[run][lt][id].depth +'`m';
                         }
                     }
                 }
@@ -140,18 +152,18 @@ module.exports = {
             const value = commandArray[2];
             const type = commandArray[3];
             const comp = commandArray[4];
-            for(var nb in Rlist){
-				for(var lt in rundowns['R'+nb]){
-					for(var id in rundowns['R'+nb][lt]){
-						if(value == 'R' + nb + id){
-							for(var mt in rundowns['R'+nb][lt][id].missionTypes){
+            for(var run in rundowns){
+				for(var lt in rundowns[run]){
+					for(var id in rundowns[run][lt]){
+						if(value == run + id){
+							for(var mt in rundowns[run][lt][id].missionTypes){
 								if(mt == type){
-									file.set('rundowns.' + 'R' + nb + '.' + lt + '.' + id + '.completed.' + mt, (String(comp).toLowerCase() == "true"));
+									file.set('completion.' + run + '.' + lt + '.' + id + '.completed.' + mt, (String(comp).toLowerCase() == "true"));
 									file.save();
-									file = editJsonFile('./rundowns/rundowns.json', {
+									file = editJsonFile('./rundowns/completion.json', {
 										autosave: true
 									});
-									rundowns['R'+nb][lt][id].completed[mt] = (String(comp).toLowerCase() == "true");
+									completion[run][lt][id].completed[mt] = (String(comp).toLowerCase() == "true");
                                     if (comp == 'true') {
 									    response = 'Mission *' + value + ':' + mt + '* `✅ Completed`';
                                     } else {
