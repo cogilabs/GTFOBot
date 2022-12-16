@@ -4,7 +4,6 @@
   "description": "A GTFO Discord companion bot",
   "main": "index.js",
   "scripts": {
-    "test": "test"
   },
   "author": "0Davgi0",
   "license": "ISC",
