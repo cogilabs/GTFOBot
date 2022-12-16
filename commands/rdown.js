@@ -78,7 +78,9 @@ module.exports = {
             const commandArray = (interaction.customId).split("-");
             const RID = commandArray[2];
             var title = 'Mission *' + RID + '* not found';
-            var cpltd = '';
+            //var cpltd = '';
+            var cpltd = new Array();
+            const rows  = new Array();
             var content = 'Try to check if the mission identifier is correct and in the right format (Ex: R1A1). You can use **/rundown** to verify if the mission exists';
             for(var nb in Rlist){
                 for(var lt in rundowns['R'+nb]){
@@ -87,20 +89,37 @@ module.exports = {
                             title = '**Mission R' + nb + id + '**: *"' + rundowns['R'+nb][lt][id].name + '"*';
                             content = '\n \n`:://Intel_`\n```' + rundowns['R'+nb][lt][id].intel + '```'
                                 + '\n`:://Sectors_&&_progression_permits_`\n';
-
+                            var i = 0;
                             for(var mt in rundowns['R'+nb][lt][id].missionTypes){
                                 if(rundowns['R'+nb][lt][id].missionTypes[mt] == true){
+                                    cpltd[mt] = rundowns['R'+nb][lt][id].completed[mt]
+                                    rows[i]  = new ActionRowBuilder();
+                                    if (!(String(cpltd[mt]).toLowerCase() == "true")) {
+                                        rows[i].addComponents(
+                                            new ButtonBuilder()
+                                                .setCustomId(cmdName + '-complete-' + RID + '-' + mt + '-true-' + cpltd[mt].toString())
+                                                .setLabel('Complete ' + mt + ' sector')
+                                                .setStyle(ButtonStyle.Success)
+                                                .setDisabled((String(cpltd[mt]).toLowerCase() == "true")),
+                                            );
+                                    } else {
+                                        rows[i].addComponents(
+                                            new ButtonBuilder()
+                                                .setCustomId(cmdName + '-complete-' + RID + '-' + mt + '-false-' + cpltd[mt].toString())
+                                                .setLabel('Uncomplete ' + mt + ' sector')
+                                                .setStyle(ButtonStyle.Danger)
+                                                .setDisabled(!(String(cpltd[mt]).toLowerCase() == "true")),
+                                        );
+                                    }
+                                        
                                     content = content + ' - ' + mt + ': ';
-                                    cpltdMain = rundowns['R'+nb][lt][id].completed.main;
-                                    cpltdSec = rundowns['R'+nb][lt][id].completed.secondary;
-                                    cpltdOver = rundowns['R'+nb][lt][id].completed.overload;
-                                    cpltdEff = rundowns['R'+nb][lt][id].completed.efficiency;
                                     if(rundowns['R'+nb][lt][id].completed[mt] == true){
                                         content = content + '`✅ Completed`\n';
                                     } else {
                                         content = content + '`❌ Not completed`\n';
                                     }
                                 }
+                                i++;
                             }
                             content = content 
                                 + '\n`:://Interupted_Communications_`\n *' + rundowns['R'+nb][lt][id].description
@@ -115,7 +134,7 @@ module.exports = {
             .setTitle(title)
             .setDescription(content);
 
-            const row  = new ActionRowBuilder();
+            /*const row  = new ActionRowBuilder();
             row.addComponents(
                 new ButtonBuilder()
                     .setCustomId(cmdName + '-complete-' + RID + '-true-' + cpltd.toString())
@@ -127,20 +146,21 @@ module.exports = {
                     .setLabel('Uncomplete')
                     .setStyle(ButtonStyle.Danger)
                     .setDisabled(!(String(cpltdMain).toLowerCase() == "true")),
-            );
+            );*/
 
             console.log(`${interaction.user.username} used the button ${RID} of the /${commandArray[0]} command`)
-            await interaction.reply({ embeds: [embed], components: [row] });
+            await interaction.reply({ embeds: [embed], components: rows });
 
         } else if (commandArray[1] == 'complete') {
             const value = commandArray[2];
-            const comp = commandArray[3];
+            const type = commandArray[3];
+            const comp = commandArray[4];
             for(var nb in Rlist){
 				for(var lt in rundowns['R'+nb]){
 					for(var id in rundowns['R'+nb][lt]){
 						if(value == 'R' + nb + id){
 							for(var mt in rundowns['R'+nb][lt][id].missionTypes){
-								if(mt == "main"){
+								if(mt == type){
 									file.set('rundowns.' + 'R' + nb + '.' + lt + '.' + id + '.completed.' + mt, (String(comp).toLowerCase() == "true"));
 									file.save();
 									file = editJsonFile('./rundowns/rundowns.json', {
