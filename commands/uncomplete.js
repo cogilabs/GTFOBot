@@ -2,10 +2,11 @@ const { SlashCommandBuilder } = require('discord.js');
 const { Rlist } = require('../rundowns/Rlist.json');
 const editJsonFile = require("edit-json-file");
 let file = editJsonFile('./rundowns/rundowns.json');
+const cmdName = 'uncomplete';
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('uncomplete')
+		.setName(cmdName)
 		.setDescription('Mark a mission uncomplete')
 		.addStringOption(option => 
 			option
@@ -39,11 +40,11 @@ module.exports = {
 				}
 			}
 
-			console.log(`${interaction.user.username} used /complete ${value}`)
+			console.log(`${interaction.user.username} used /${cmdName} ${value}`)
 			return interaction.reply(response);
 		
 		} else {		
-			console.log(`${interaction.user.username} used /complete with no option`)
+			console.log(`${interaction.user.username} used /${cmdName} with no option`)
 			return interaction.reply('No option was provided!');
 		}
 	},

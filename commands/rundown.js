@@ -1,9 +1,10 @@
 const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } = require('discord.js');
 const { Rlist } = require('../rundowns/Rlist.json');
+const cmdName = 'rundown';
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('rundown')
+		.setName(cmdName)
 		.setDescription('State of the expeditions')
 		.addStringOption(option => 
             option
@@ -34,14 +35,14 @@ module.exports = {
                         if(rundowns[RID][lt][nb].completed.main){
                             rows[i].addComponents(
                                 new ButtonBuilder()
-                                    .setCustomId('rundown-' + RID + nb)
+                                    .setCustomId(cmdName + '-' + RID + nb)
                                     .setLabel(nb)
                                     .setStyle(ButtonStyle.Success),
                             );
                         } else {
                             rows[i].addComponents(
                                 new ButtonBuilder()
-                                    .setCustomId('rundown-' + RID + nb)
+                                    .setCustomId(cmdName + '-' + RID + nb)
                                     .setLabel(nb)
                                     .setStyle(ButtonStyle.Secondary),
                             );
@@ -50,11 +51,11 @@ module.exports = {
                     i = i+1;
                 }
 
-            console.log(`${interaction.user.username} used /rundown ${value}`)
+            console.log(`${interaction.user.username} used /${cmdName} ${value}`)
             await interaction.reply({ content: title, components: rows });
 
         } else {
-            console.log(`${interaction.user.username} used /rundown with no option`)
+            console.log(`${interaction.user.username} used /${cmdName} with no option`)
 		    return interaction.reply('No option was provided!');
         }
 	},

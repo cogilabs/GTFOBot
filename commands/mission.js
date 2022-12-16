@@ -1,9 +1,10 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const { Rlist } = require('../rundowns/Rlist.json');
+const cmdName = 'mission';
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('mission')
+		.setName(cmdName)
 		.setDescription('Info about a mission')
 		.addStringOption(option => 
 			option
@@ -48,10 +49,10 @@ module.exports = {
 				.setTitle(title)
 				.setDescription(content);
 
-				console.log(`${interaction.user.username} used /mission ${value}`)
+				console.log(`${interaction.user.username} used /${cmdName} ${value}`)
 				return interaction.reply({embeds: [embed]});
 			} else {		
-				console.log(`${interaction.user.username} used /mission with no option`)
+				console.log(`${interaction.user.username} used /${cmdName} with no option`)
 				return interaction.reply('No option was provided!');
 			}
 		})();
