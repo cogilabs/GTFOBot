@@ -124,8 +124,8 @@
         },
         "B3": {
           "completed": {
-            "main": false,
-            "secondary": true,
+            "main": true,
+            "secondary": false,
             "overload": false
           }
         }

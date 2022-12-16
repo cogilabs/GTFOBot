@@ -9,31 +9,33 @@ The application itself is just a bot named Dauda (like one of the bots in the ga
 
 ![The bot](Images/dauda.png?raw=true)
 
-It allows several commands:  
+It allows only one command:  
 
 ![Command list](Images/commands.png?raw=true)
 
-`/complete` marks a mission complete  
-`/uncomplete` does the opposite (in case of a mistake for instance)  
-`/rundown` shows a rundown's state  
-`/mission` shows a mission's informations and state  
-  
+`/rundowns` displays the list of available rundowns:
+
+![rundowns list](Images/rundownsList.png?raw=true)
+
+From there, you'll be able to check any rundowns state and mission intel, but also to mark missions and subsectors as completed or not.
+
 ## Examples
 
-#### Here is the result of an user inputing the command `/rundown 7`:
+#### Here is the result of an user clicking the `R7` button:
 
 ![/rundown command result](Images/rundown.png?raw=true)
 
-You can see that the missions that have been successfully finished have a green checkmark next to their ID.
+You can see that the missions that have been successfully finished are represented in green.
 
-#### Here is the result of `/mission R7B3`:
-*(You can also obtain this reslut by clicking on the B3 button on the* **`/rundown`** *command result)*
+#### Here is the result of an user clicking the `B3` button:
 
 ![/mission command result](Images/mission.png?raw=true)
 
-Here the mission types can have a checkmark when finished.
+Here the subsectors can have a checkmark if completed.
+
+At the bottom, you can click on a button to mark a sector as complete (or as not complete).
 
 ## More
 
-For now all the infos about the rundowns, missions, and completion are stored in a single JSON file. 
-In the future I intend to transfer it to a database with the completion being linked to the discord server the bot is in.
+For now all the infos about the rundowns, missions, and completion are stored in a several JSON files. 
+In the future I intend to transfer all of it into a database with the completion being linked to the discord server the bot is in.
