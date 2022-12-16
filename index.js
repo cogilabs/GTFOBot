@@ -2,6 +2,12 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 const { token } = require('./config.json');
+const { supportedLocales } = require('./localization/supportedLocales.json');
+
+var loc = new Array();
+for (var lang in supportedLocales) {
+    loc[lang] = require('./localization/' + lang + '.json');
+}
 
 const { rundowns } = require('./rundowns/rundowns.json');
 global.rundowns = rundowns;

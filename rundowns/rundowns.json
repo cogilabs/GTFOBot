@@ -9,11 +9,11 @@
           },
           "intel": {
             "en-US": "Clearance for section B necessary. DNA sample required. Prisoners sent to locate Administrator's HSU.",
-            "fr": "Clearance for section B necessary. DNA sample required. Prisoners sent to locate Administrator's HSU."
+            "fr": "Habilitation requise pour la section B. Échantillon d'ADN nécessaire. Les prisonniers ont été envoyés récupérer la HSU de l'administrateur."
           },
           "description": {
             "en-US": ">...\n **>..they react to light and sounds!**\n >..stand still! [unintelligible scream]",
-            "fr": ">...\n **>..they react to light and sounds!**\n >..stand still! [unintelligible scream]"
+            "fr": ">...\n **>... ils réagissent aux sons et à la lumière !**\n >... Ne bougez plus ! [cri inintelligible]"
           },
           "depth": "421",
           "missionTypes": {
@@ -27,15 +27,16 @@
       "B": {
         "B1": {
           "name": {
-            "en-US": "PID Search"
+            "en-US": "PID Search",
+            "fr": "PID Search"
           },
           "intel": {
             "en-US": "Tier 4 security PID required to reboot power grid. Prisoners sent to gather all PIDs from designated area.",
-            "fr": "Tier 4 security PID required to reboot power grid. Prisoners sent to gather all PIDs from designated area."
+            "fr": "Pièce d'identité de niveau 4 nécessaire pour redémarrer le circuit d'alimentation. Les prisonniers ont été envoyés pour récupérer toutes les pièces d'identité de la zonne appropriée."
           },
           "description": {
             "en-US": ">..What way should we go?\n >..Ssssh [unintelligible]\n **>Don't move when their hearts beat!**\n >..Careful, quiet! [scream, gunfire, unintelligible].",
-            "fr": ">..What way should we go?\n >..Ssssh [unintelligible]\n **>Don't move when their hearts beat!**\n >..Careful, quiet! [scream, gunfire, unintelligible]."
+            "fr": ">... Par où est-ce qu'on va ?\n >... Chuuut. [intelligible]\n **>**\n >... Ne bougez pas si vous entendez leurs cœurs battre ! [cri, coup de feu, inintelligible]."
           },
           "depth": "562",
           "missionTypes": {
@@ -52,11 +53,11 @@
           },
           "intel": {
             "en-US": "Security Officer DNA required to override power grid security system. Prisoners sent to extract DNA sample from HSU.",
-            "fr": "Security Officer DNA required to override power grid security system. Prisoners sent to extract DNA sample from HSU."
+            "fr": "L'ADN de l'agent de sécurité est nécessaire pour court-circuiter l'alimentation du système de sécurité. Les prisonniers ont été envoyés pour extraire un échatillon d'ADN de la HSU."
           },
           "description": {
             "en-US": ">..alarms!! [unintelligible, scream]\n **>..everyone, follow the plan!**\n >[unintelligible, gunfire]",
-            "fr": ">..alarms!! [unintelligible, scream]\n **>..everyone, follow the plan!**\n >[unintelligible, gunfire]"
+            "fr": ">… une alarme ! [inintelligible, cri]\n **>… il faut qu'on s'en tienne au plan !**\n >[inintelligible, coup de feu]"
           },
           "depth": "565",
           "missionTypes": {
@@ -75,11 +76,11 @@
           },
           "intel": {
             "en-US": "Bypass required in Sec_D:842m. Prisoners sent to overload grid.",
-            "fr": "Bypass required in Sec_D:842m. Prisoners sent to overload grid."
+            "fr": "Court-circuitage nécessaire dans le Sec_D : 842 m. Des prisonniers ont été envoyés pour court-circuiter l'alimentation."
           },
           "description": {
             "en-US": ">[Alarm siren]\n >..They are coming!\n >[gunfire, unintelligible]\n **>We need to move up!**",
-            "fr": ">[Alarm siren]\n >..They are coming!\n >[gunfire, unintelligible]\n **>We need to move up!**"
+            "fr": ">[Sirène d'alarme]\n >... Ils arrivent !\n >[coup de feu, inintelligible]\n **>Il faut qu'on dégage d'ici !**"
           },
           "depth": "678",
           "missionTypes": {
@@ -96,11 +97,11 @@
           },
           "intel": {
             "en-US": "Dispersed encryption matrix found in Sec_D:842m. Prisoners sent to collect partial decoders.",
-            "fr": "Dispersed encryption matrix found in Sec_D:842m. Prisoners sent to collect partial decoders."
+            "fr": "Matrice de chiffrage éclatée trouvée dans le Sec_D : 842 m. Les prisonniers ont été envoyés récupérer les décodeurs partiels."
           },
           "description": {
-            "en-US": ">...don't look up don't look up don't look up\n >[unintelligible]\n >[distant scream]\n..are you ok?",
-            "fr": ">...don't look up don't look up don't look up\n >[unintelligible]\n >[distant scream]\n..are you ok?"
+            "en-US": ">...don't look up don't look up don't look up\n >[unintelligible]\n >[distant scream]\n >..are you ok?",
+            "fr": ">... Ne pas regarder vers le haut... Ne pas regarder vers le haut...\n >[inintelligible]\n >[cri lointain]\n >..est-ce que ça va ?"
           },
           "depth": "624",
           "missionTypes": {
@@ -119,11 +120,11 @@
           },
           "intel": {
             "en-US": "Egress path from Sec_D:842m acquired. Access locked pending grid shutdown. High prisoner mortality rate expected. Additional resources on standby.",
-            "fr": "Egress path from Sec_D:842m acquired. Access locked pending grid shutdown. High prisoner mortality rate expected. Additional resources on standby."
+            "fr": "Voie de sortie sécurisée dans le Sec_D : 842 m. L'accès a été verrouillé jusqu'à extinction du système d'alimentation. Un important taux de mortalité est attendu chez les prisonniers. Ressources supplémentaires en attente."
           },
           "description": {
             "en-US": ">[Radio static]\n >[unintelligible]\n >...\n **>...everyone is dead**\n >..I can't....I won't make it\n >[gunfire]",
-            "fr": ">[Radio static]\n >[unintelligible]\n >...\n **>...everyone is dead**\n >..I can't....I won't make it\n >[gunfire]"
+            "fr": ">[Parasites radio]\n >[inintelligible]\n >...\n **>... tout le monde est mort.**\n >... Je peux pas... Je vais pas y arriver.\n >[coups de feu]"
           },
           "depth": "842",
           "missionTypes": {
@@ -144,11 +145,11 @@
           },
           "intel": {
             "en-US": "Genotype resisitance database update required. Prisoners dispatched to secure pMOTHER DNA trial samples.",
-            "fr": "Genotype resisitance database update required. Prisoners dispatched to secure pMOTHER DNA trial samples."
+            "fr": "Mise à jour de la base de données sur la résistance des génotypes requise. Envoi de prisonniers pour sécuriser les échantillons de l'essai ADN pMOTHER."
           },
           "description": {
             "en-US": ">...\n **>..[whispering] Schh! You'll wake them up!**\n >...the flashlight! Turn it off!\n >...[sudden shriek, unintelligible]",
-            "fr": ">...\n **>..[whispering] Schh! You'll wake them up!**\n >...the flashlight! Turn it off!\n >...[sudden shriek, unintelligible]"
+            "fr": ">...\n **>... [chuchotement] Chut ! Vous allez les réveiller**\n >... Éteignez la torche !\n >... [cri soudain, inintelligible]"
           },
           "depth": "543",
           "missionTypes": {
@@ -167,11 +168,11 @@
           },
           "intel": {
             "en-US": "Preferred route through R2B2 compromised by aggressive biomass. Nonessential resources assigned to execute diversionary tactic.",
-            "fr": "Preferred route through R2B2 compromised by aggressive biomass. Nonessential resources assigned to execute diversionary tactic."
+            "fr": "Itinéraire recommandé à travers R2B2 compromis par une biomasse agressive. Les ressources non essentielles ont été affectées à lexécution de la tactique de diversion."
           },
           "description": {
             "en-US": ">...\n **>...Don't open that door!**\n >...there's something on the other- NO!!\n...[commation, screams]",
-            "fr": ">...\n **>...Don't open that door!**\n >...there's something on the other- NO!!\n...[commation, screams]"
+            "fr": ">...\n **>... N'ouvrez pas cette porte !**\n >... il y a quelque chose de l'autre... NON !\n...[vacarme, cris]"
           },
           "depth": "580",
           "missionTypes": {
@@ -188,11 +189,11 @@
           },
           "intel": {
             "en-US": "Insufficient power in [R2C] for RISE equipment triangulation. Resources sent to divert pow@65error-",
-            "fr": "Insufficient power in [R2C] for RISE equipment triangulation. Resources sent to divert pow@65error-"
+            "fr": "Alimentation insuffisante dans [R2C] pour la triangulation de l'équipement RISE. Des ressources ont été envoyées pour détourner l'al@65erreur-"
           },
           "description": {
             "en-US": ">...\n **>...what's that... on the wall?**\n >...[loud crack, unintelligible]\n >...Shit! SHIT! [coughing, commation]",
-            "fr": ">...\n **>...what's that... on the wall?**\n >...[loud crack, unintelligible]\n >...Shit! SHIT! [coughing, commation]"
+            "fr": ">...\n **>... c'est quoi ça... sur le mur ?**\n >... [craquement bruyant, inintelligible]\n >... Merde ! MERDE ! [toux, vacarme]"
           },
           "depth": "612",
           "missionTypes": {
@@ -209,11 +210,11 @@
           },
           "intel": {
             "en-US": "BIOCOM controlled security systems not responding/ External uplink required.",
-            "fr": "BIOCOM controlled security systems not responding/ External uplink required."
+            "fr": "Le système de sécurité contrôlé par BIOCOM ne répond pas. Liaison montante externe requise."
           },
           "description": {
             "en-US": ">...\n **>...what's the password?!**\n >...[unintelligible, gunfire, commotion]\n >...WHAT'S THE PASSWORD?!\n >...[commotion, screams]",
-            "fr": ">...\n **>...what's the password?!**\n >...[unintelligible, gunfire, commotion]\n >...WHAT'S THE PASSWORD?!\n >...[commotion, screams]"
+            "fr": ">...\n **>... c'est quoi le mot de passe ?!**\n >...[inintelligible, coups de feu, vacarme]\n >... C'EST QUOI CE FOUTU MOT DE PASSE ?!\n >...[vacarme, cris]"
           },
           "depth": "633",
           "missionTypes": {
@@ -230,11 +231,11 @@
           },
           "intel": {
             "en-US": "Virulent contagion barrier between section [R2B] and [R2C]. Decontamination required.",
-            "fr": "Virulent contagion barrier between section [R2B] and [R2C]. Decontamination required."
+            "fr": "Barrière de contagion virulente détectée entre la section [R2B] et [R2C]. Décontamination requise."
           },
           "description": {
             "en-US": ">...\n **>...I need to get rid of this - NOW!**\n >...I found a disinfection station!\n >...[coughing, commotion, unintelligible]",
-            "fr": ">...\n **>...I need to get rid of this - NOW!**\n >...I found a disinfection station!\n >...[coughing, commotion, unintelligible]"
+            "fr": ">...\n **>... je dois me débarrasser de ça immédiatement !**\n >... j'ai trouvé une station de désinfection !\n >...[toux, vacarme, inintelligible]"
           },
           "depth": "658",
           "missionTypes": {
@@ -253,11 +254,11 @@
           },
           "intel": {
             "en-US": "WARNING: Navigation database corrupted. Vertical triangulation required to confirm cold storage bulkhead location.",
-            "fr": "WARNING: Navigation database corrupted. Vertical triangulation required to confirm cold storage bulkhead location."
+            "fr": "AVERTISSEMENT : base de données de navigation corrompue. Triangulation verticale requise pour confirmer l'emplacement de la cloison de l'entrepôt frigorifique."
           },
           "description": {
             "en-US": ">...\n >...This is not the right way...\n >...Well, no way is the right way!\n **>...Are we lost? Are we fucking lost?**",
-            "fr": ">...\n >...This is not the right way...\n >...Well, no way is the right way!\n **>...Are we lost? Are we fucking lost?**"
+            "fr": ">...\n >... C'est pas par là...\n >... On trouvera jamais cette foutue sortie !\n **>... On est perdus ? Bordel, on est vraiment perdus !**"
           },
           "depth": "729",
           "missionTypes": {
@@ -274,11 +275,11 @@
           },
           "intel": {
             "en-US": "Navigation database rebuild required. Prisoners sent to gather all PIDs from designated area.\n \n##WARNING: High fatality rate presumed##",
-            "fr": "Navigation database rebuild required. Prisoners sent to gather all PIDs from designated area.\n \n##WARNING: High fatality rate presumed##"
+            "fr": "Reconstruction de la base de données de navigation requise. Les prisonniers ont été envoyés pour récupérer toutes les pièces d'identité de la zone appropriée.\n \n##AVERTISSEMENT : Taux de mortalité élevé présumé##"
           },
           "description": {
             "en-US": ">...\n >...I can't take this any longer… **I'm not taking another step. NOT ONE-**\n >...[sudden noise, screams, unintelligible]\n >...[connection lost]",
-            "fr": ">...\n >...I can't take this any longer… **I'm not taking another step. NOT ONE-**\n >...[sudden noise, screams, unintelligible]\n >...[connection lost]"
+            "fr": ">...\n >... J'en peux plus... **Je vais marrêter là. PAS UN SEUL...**\n >...[bruit soudain, cris, inintelligible]\n >...[connection interrompue]"
           },
           "depth": "790",
           "missionTypes": {
@@ -297,11 +298,11 @@
           },
           "intel": {
             "en-US": "WARNING: Cold storage bulkhead filtration system offline. Prisoners dispatched to reactivate central power cluster.",
-            "fr": "WARNING: Cold storage bulkhead filtration system offline. Prisoners dispatched to reactivate central power cluster."
+            "fr": "AVERTISSEMENT : systèmes de filtration de la cloison de l'entrepôt frigorifique hors ligne. Les prisonniers ont été envoyés pour réactiver le générateur central."
           },
           "description": {
             "en-US": ">...\n >.....whats this....whu\n >[unintelligible, loud hum]",
-            "fr": ">...\n >.....whats this....whu\n >[unintelligible, loud hum]"
+            "fr": ">...\n >... Qu'est-ce que...\n >[inintelligible, bourdonnement bruyant]"
           },
           "depth": "811",
           "missionTypes": {
@@ -318,11 +319,11 @@
           },
           "intel": {
             "en-US": "WARNING: Cold storage bulkhead filtration system offline. Grid reboot required.",
-            "fr": "WARNING: Cold storage bulkhead filtration system offline. Grid reboot required."
+            "fr": "AVERTISSEMENT : systèmes de filtration de la cloison de l'entrepôt frigorifique hors ligne. Redémarrage du réseau requis."
           },
           "description": {
             "en-US": ">...\n >...what's the password?\n **>...what's the damn password?**\n >...[blaring siren]\n >...Shit! SHIT! [gunfire, commotion]",
-            "fr": ">...\n >...what's the password?\n **>...what's the damn password?**\n >...[blaring siren]\n >...Shit! SHIT! [gunfire, commotion]"
+            "fr": ">...\n >... c'est quoi le mot de passe ?\n **>... c'est quoi ce foutu mot de passe ?**\n >... [sirène stridente]\n >... Merde ! MERDE ! [coups de feu, vacarme]"
           },
           "depth": "883",
           "missionTypes": {
@@ -341,11 +342,11 @@
           },
           "intel": {
             "en-US": "RISE equipment triangulation completed. Prisoners dispatched to retrieve Neonate.",
-            "fr": "RISE equipment triangulation completed. Prisoners dispatched to retrieve Neonate."
+            "fr": "Triangulation de l'équipement RISE terminée. Les prisonniers ont été envoyés pour récupérer le nouveau-né."
           },
           "description": {
-            "en-US": ">...what is this thing..?\n >**.....don't ..touch.. DAMNIT!**\n[screams in the distance]",
-            "fr": ">...what is this thing..?\n >**.....don't ..touch.. DAMNIT!**\n[screams in the distance]"
+            "en-US": ">...what is this thing..?\n >**.....don't ..touch.. DAMNIT!**\n>[screams in the distance]",
+            "fr": ">... c'est quoi ce truc ?\n >**... ne touche pas à... BORDEL !**\n>[cris au loin]"
           },
           "depth": "924",
           "missionTypes": {
@@ -366,11 +367,11 @@
           },
           "intel": {
             "en-US": "Neonate HSU contents require resuscitation.\nCollateral resource loss acceptable.",
-            "fr": "Neonate HSU contents require resuscitation.\nCollateral resource loss acceptable."
+            "fr": "Réanimation du contenu de la HSU infantile nécessaire. Perte de ressources collatérales acceptable."
           },
           "description": {
             "en-US": ">… I feel like we're being watched.\n >… The Warden is always watching us.\n >… No, **something else...**",
-            "fr": ">… I feel like we're being watched.\n >… The Warden is always watching us.\n >… No, **something else...**"
+            "fr": ">… J'ai l'impression qu'on nous observe.\n >… C'est le gardien. Il nous observe tout le temps.\n >… Non, c'est **quelque chose d'autre…**"
           },
           "depth": "798",
           "missionTypes": {
@@ -389,11 +390,11 @@
           },
           "intel": {
             "en-US": "Neonate phase two initiated.\nPrisoners dispatched to deliver the Neonate to the depressurazation chamber.",
-            "fr": "Neonate phase two initiated.\nPrisoners dispatched to deliver the Neonate to the depressurazation chamber."
+            "fr": "Début de la phase deux du nouveau-né.\nPrisonniers déployés pour transporter le nouveau-né jusqu'à la chambre de dépressurisation."
           },
           "description": {
-            "en-US": ">… Shouldn't this all be dead? Everything else is\n >… That **thing** tou're carrying isn't.",
-            "fr": ">… Shouldn't this all be dead? Everything else is\n >… That **thing** tou're carrying isn't."
+            "en-US": ">… Shouldn't this all be dead? Everything else is\n >… That **thing** you're carrying isn't.",
+            "fr": ">… Ça devrait être mort, tout ça, non ? Comme tout le reste\n >… Le **truc** que tu portes, in est pas mort."
           },
           "depth": "985",
           "missionTypes": {
@@ -410,11 +411,11 @@
           },
           "intel": {
             "en-US": "Establish uplinks from selected terminals to locate Neonate HSU Preparation site.",
-            "fr": "Establish uplinks from selected terminals to locate Neonate HSU Preparation site."
+            "fr": "Établissez une liaison montante sur les terminaux désignés pour localiser le site de préparation des HSU infantiles."
           },
           "description": {
             "en-US": ">… What's behind **these?**\n >… I don't even want to know.\n >… Let's prepare for the worst.",
-            "fr": ">… What's behind **these?**\n >… I don't even want to know.\n >… Let's prepare for the worst."
+            "fr": ">… Que'est-ce qu'il y a derrière ces... **choses ?**\n >… Je ne veux même pas savoir.\n >… Préparons-nous au pire."
           },
           "depth": "855",
           "missionTypes": {
@@ -431,11 +432,11 @@
           },
           "intel": {
             "en-US": "Prisoners to retrieve DNA samples from HSU storage annex. Environmental protection equipment will increase survival chances.",
-            "fr": "Prisoners to retrieve DNA samples from HSU storage annex. Environmental protection equipment will increase survival chances."
+            "fr": "Les prisonniers doivent récupérer des échantillons d'ADN dans l'annexe de dépot des HSU. Un équipement de protection environnemental permettra d'augmenter les chances de survie."
           },
           "description": {
             "en-US": ">… Don't breath it in!\n >… Let's just **get through** it.\n >… Whatever's in these HSUs must be dead, right?",
-            "fr": ">… Don't breath it in!\n >… Let's just **get through** it.\n >… Whatever's in these HSUs must be dead, right?"
+            "fr": ">… Ne respirez pas !\n >… Il faut qu'on **traverse** ce truc.\n >… Je sais pas ce qu'il y a dans ces HSU, mais c'est forcément mort, non ?"
           },
           "depth": "1248",
           "missionTypes": {
@@ -453,12 +454,12 @@
             "fr": "Monster"
           },
           "intel": {
-            "en-US": "Prisoners dispatched to locate Glucagon peptide hormone vials. Limited vision due to unknown gas.\nExit route blocked.",
-            "fr": "Prisoners dispatched to locate Glucagon peptide hormone vials. Limited vision due to unknown gas.\nExit route blocked."
+            "en-US": "Prisoners dispatched to locate Glucagon peptide hormone vials. Limited vision due to unknown gas. Exit route blocked.",
+            "fr": "Prisonniers déployés pour localiser les fioles d'homone peptidique Glucagon. Visibilité limitée en raison de la présence d'un gaz inconnu. Voie de sortie bloquée."
           },
           "description": {
             "en-US": ">... “Let's just go. This isn't right”\n >… “It's been eaten. What did that?”\n >… “You want to be next? **Move!**”",
-            "fr": ">... “Let's just go. This isn't right”\n >… “It's been eaten. What did that?”\n >… “You want to be next? **Move!**”"
+            "fr": ">... “Tirons-nous d'ici. J'ai un mauvais pressentiment.”\n >... “Il a été mangé. Qu'est-ce qui a pu faire ça ?”\n >... “Tu veux être le prochain ? **Allez, on se bouge !**”"
           },
           "depth": "1071",
           "missionTypes": {
@@ -475,11 +476,11 @@
           },
           "intel": {
             "en-US": "Quadrant Warp gate access required. Prisoners sent to power up local Generator cluster. Abnormal atmospheric conditions will increase prisoner casualties.",
-            "fr": "Quadrant Warp gate access required. Prisoners sent to power up local Generator cluster. Abnormal atmospheric conditions will increase prisoner casualties."
+            "fr": "Accès au portail de téléportation du quadrant nécessaire. Prisonniers envoyés pour activer la grappe de générateurs locale. Prévision de pertes élevées en raison des conditions atmosphériques anormales."
           },
           "description": {
             "en-US": ">… My lungs… get me out of here!\n >… We can't clear this fog without power!\n >… **Everyone ready?** Okay, grab the power ce-",
-            "fr": ">… My lungs… get me out of here!\n >… We can't clear this fog without power!\n >… **Everyone ready?** Okay, grab the power ce-"
+            "fr": ">… Mes poumons... Sortez-moi de là !\n >… On ne peux pas disperser le brouillard sans électricité !\n >… **Tout le monde est prêt ?** Bon prenez la cellu..."
           },
           "depth": "920",
           "missionTypes": {
@@ -496,11 +497,11 @@
           },
           "intel": {
             "en-US": "Further uplinks needed for stock-taking in biomechanical storage facilities.\nRudimentary objective, reduced resource distribution.",
-            "fr": "Further uplinks needed for stock-taking in biomechanical storage facilities.\nRudimentary objective, reduced resource distribution."
+            "fr": "Liaisons montantes supplémentaires nécessaires pour effectuer des retraits dans les dépôts biochimiques.\nObjectif rudimentaire, octroi de ressources réduit."
           },
           "description": {
             "en-US": ">.. I got nothing wh.. What do we do!?\n >.. **Check every box**, use whatever you find\n >.. This can't get worse right?",
-            "fr": ">.. I got nothing wh.. What do we do!?\n >.. **Check every box**, use whatever you find\n >.. This can't get worse right?"
+            "fr": ">... Y a rien, rien du tout. Qu'est-ce qu'on fait ?\n >... **Regarde dans toutes les boîtes.** Utilise tout ce que tu trouves.\n >... Ça peut pas être pire, j'imagine."
           },
           "depth": "1193",
           "missionTypes": {
@@ -519,11 +520,11 @@
           },
           "intel": {
             "en-US": "Neonate qualified for final phase initialization.\nExpendable prisoners sent to transport vessel to Preparation site.",
-            "fr": "Neonate qualified for final phase initialization.\nExpendable prisoners sent to transport vessel to Preparation site."
+            "fr": "Nouveau-né qualifié pour initialisation de phase finale. Prisonniers sans importance envoyés pour transporter le réceptacle jusqu'au site de préparation."
           },
           "description": {
             "en-US": ">.. What the hell are these machines?\n >.. Shut up and focus, Confirm **on my mark!**\n >.. Fuck! Here they come!",
-            "fr": ">.. What the hell are these machines?\n >.. Shut up and focus, Confirm **on my mark!**\n >.. Fuck! Here they come!"
+            "fr": ">... Qu'est-ce que c'est que toutes ces machines ?\n >... Ferme-la et concentre-toi. Confirmez **à mon signal**\n >... Bordel ! Les voilà !"
           },
           "depth": "1303",
           "missionTypes": {
@@ -540,11 +541,11 @@
           },
           "intel": {
             "en-US": "Prisoners sent down to collect new seeds for the HSU neonatal process. Exp::ERR ###",
-            "fr": "Prisoners sent down to collect new seeds for the HSU neonatal process. Exp::ERR ###"
+            "fr": "Prisonniers envoyés pour récupérer de nouvelles graines pour les HSU infantiles. Exp::ERR###"
           },
           "description": {
             "en-US": ">... Ugh, these things are **fucking heavy!**\n >.. Yeah, how many are we expected to take?\n >... Let's just carry two and see it Warden picks us up...",
-            "fr": ">... Ugh, these things are **fucking heavy!**\n >.. Yeah, how many are we expected to take?\n >... Let's just carry two and see it Warden picks us up..."
+            "fr": ">... Argh, qu'est-ce qu'ils sont **lourdsn ces machins !**\n >... C'est clair. On doit en prendre combien ?\n >... Prenons-en deux et voyons si le gardien vient nous chercher quand même..."
           },
           "depth": "1366",
           "missionTypes": {
@@ -563,11 +564,11 @@
           },
           "intel": {
             "en-US": "Critical process died.\nEmergency shutdown initiated.\nPrisoners dispatched to reboot reactor.",
-            "fr": "Critical process died.\nEmergency shutdown initiated.\nPrisoners dispatched to reboot reactor."
+            "fr": "Arrêt d'un proccessus critique.\nDébut du verrouillage d'urgence.\nPrisonniers déployés pour relancer le réacteur."
           },
           "description": {
             "en-US": ">.. We're being followed\n >.. Why won't it fucking die?!\n >.. This is chaos. **CHAOS!**",
-            "fr": ">.. We're being followed\n >.. Why won't it fucking die?!\n >.. This is chaos. **CHAOS!**"
+            "fr": ">... On est suivis\n >... Pourquoi il veut pas mourir, celui-là ?\n >... C'est de la folie. **De la FOLIE !**"
           },
           "depth": "1411",
           "missionTypes": {

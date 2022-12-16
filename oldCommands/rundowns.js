@@ -1,24 +1,13 @@
 const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } = require('discord.js');
 const { supportedLocales } = require('../localization/supportedLocales.json');
-
-var locFile = new Array();
-for (var lang in supportedLocales) {
-    locFile[lang] = require('../localization/' + lang + '.json');
-}
-
 const editJsonFile = require("edit-json-file");
 let file = editJsonFile('./rundowns/completion.json');
 const cmdName = 'rundowns';
 
-localeEn = 'en-US';
-
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName(cmdName)
-		.setDescription(locFile["en-US"]["en-US"].commands[cmdName].description)
-        .setDescriptionLocalizations({
-            fr: locFile["fr"]["fr"].commands[cmdName].description,
-        }),
+		.setDescription('State of the expeditions, mission descriptions and completion'),
 	async execute(interaction) {
         var locale = '';
         for(var loc in supportedLocales){
@@ -55,7 +44,7 @@ module.exports = {
             );
 
         }
-        console.log(`${interaction.user.username} used /${cmdName} in ${locale}`)
+        console.log(`${interaction.user.username} used /${cmdName}`)
         await interaction.reply({ components: rows, ephemeral: true });
 	},
 	async replyButton(interaction) {
@@ -69,7 +58,7 @@ module.exports = {
             const RID = commandArray[2];
             var title = '';
             var rows = new Array();
-            title = '***' + locFile[locale][locale].missions.rundownTitle + ' ' + RID + '***';
+            title = '***Rundown ' + RID + '***';
 
             i = 0;
             for(var lt in rundowns[RID]){
@@ -94,23 +83,23 @@ module.exports = {
                 i = i+1;
             }
 
-            console.log(`${interaction.user.username} opened rundown ${RID} via /${commandArray[0]} in ${locale}`)
+            console.log(`${interaction.user.username} used the button ${RID} of the /${commandArray[0]} command`)
             await interaction.reply({ content: title, components: rows });
 
         } else if (commandArray[1] == 'mission') {
             const commandArray = (interaction.customId).split("-");
             const RID = commandArray[2];
-            var title = '';
+            var title = 'Mission *' + RID + '* not found';
             var cpltd = new Array();
             const rows  = new Array();
-            var content = '';
+            var content = 'Try to check if the mission identifier is correct and in the right format (Ex: R1A1). You can use **/rundown** to verify if the mission exists';
             for(var run in rundowns){
                 for(var lt in rundowns[run]){
                     for(var id in rundowns[run][lt]){
                         if(RID == run + id){
-                            title = '**' + (locFile[locale][locale].missions.missionTitle).replace("X", run + id) + '** *"' + rundowns[run][lt][id].name[locale] + '"*';
-                            content = '\n \n`' + locFile[locale][locale].missions.intel + '`\n```' + rundowns[run][lt][id].intel[locale] + '```'
-                                + '\n`' + locFile[locale][locale].missions.sectors + '`\n';
+                            title = '**Mission ' + run + id + '**: *"' + rundowns[run][lt][id].name[locale] + '"*';
+                            content = '\n \n`:://Intel_`\n```' + rundowns[run][lt][id].intel[locale] + '```'
+                                + '\n`:://Sectors_&&_progression_permits_`\n';
                             var i = 0;
                             for(var mt in rundowns[run][lt][id].missionTypes){
                                 if(rundowns[run][lt][id].missionTypes[mt] == true){
@@ -120,7 +109,7 @@ module.exports = {
                                         rows[i].addComponents(
                                             new ButtonBuilder()
                                                 .setCustomId(cmdName + '-complete-' + RID + '-' + mt + '-true-' + cpltd[mt].toString())
-                                                .setLabel((locFile[locale][locale].missions.completeSector).replace("X", locFile[locale][locale].sectors[mt]))
+                                                .setLabel('Complete ' + mt + ' sector')
                                                 .setStyle(ButtonStyle.Success)
                                                 .setDisabled((String(cpltd[mt]).toLowerCase() == "true")),
                                             );
@@ -129,25 +118,25 @@ module.exports = {
                                         rows[i].addComponents(
                                             new ButtonBuilder()
                                                 .setCustomId(cmdName + '-complete-' + RID + '-' + mt + '-false-' + cpltd[mt].toString())
-                                                .setLabel((locFile[locale][locale].missions.uncompleteSector).replace("X", locFile[locale][locale].sectors[mt]))
+                                                .setLabel('Uncomplete ' + mt + ' sector')
                                                 .setStyle(ButtonStyle.Danger)
                                                 .setDisabled(!(String(cpltd[mt]).toLowerCase() == "true")),
                                         );
                                         i++;
                                     }
                                         
-                                    content = content + ' - ' + locFile[locale][locale].sectors[mt] + ': ';
+                                    content = content + ' - ' + mt + ': ';
                                     if(completion[run][lt][id].completed[mt] == true){
-                                        content = content + '`✅ ' + locFile[locale][locale].missions.completed + '`\n';
+                                        content = content + '`✅ Completed`\n';
                                     } else {
-                                        content = content + '`❌ ' + locFile[locale][locale].missions.notCompleted + '`\n';
+                                        content = content + '`❌ Not completed`\n';
                                     }
                                 }
                             }
                             content = content 
-                                + '\n`' + locFile[locale][locale].missions.comms + '`\n *' + rundowns[run][lt][id].description[locale]
-                                + '*\n \n`' + locFile[locale][locale].missions.metrics + '`\n'
-                                + ' ' + locFile[locale][locale].missions.depth + ' `' + rundowns[run][lt][id].depth +'`m';
+                                + '\n`:://Interupted_Communications_`\n *' + rundowns[run][lt][id].description[locale]
+                                + '*\n \n`:://Expedition_metrics_`\n'
+                                + ' Drop cage target depth: `' + rundowns[run][lt][id].depth +'`m';
                         }
                     }
                 }
@@ -158,7 +147,7 @@ module.exports = {
             .setTitle(title)
             .setDescription(content);
 
-            console.log(`${interaction.user.username} opened mission ${RID} via /${commandArray[0]} in ${locale}`)
+            console.log(`${interaction.user.username} used the button ${RID} of the /${commandArray[0]} command`)
             await interaction.reply({ embeds: [embed], components: rows });
 
         } else if (commandArray[1] == 'complete') {
@@ -178,9 +167,9 @@ module.exports = {
 									});
 									completion[run][lt][id].completed[mt] = (String(comp).toLowerCase() == "true");
                                     if (comp == 'true') {
-									    response = locFile[locale][locale].missions.sector + ' *' + value + ':' + locFile[locale][locale].sectors[mt] + '* `✅ ' + locFile[locale][locale].missions.completed + '`';
+									    response = 'Mission *' + value + ':' + mt + '* `✅ Completed`';
                                     } else {
-									    response = locFile[locale][locale].missions.sector + ' *' + value + ':' + locFile[locale][locale].sectors[mt] + '* `❌ ' + locFile[locale][locale].missions.notCompleted + '`';
+									    response = 'Mission *' + value + ':' + mt + '* `❌ Not completed`';
                                     }
 								}
 							}
@@ -189,7 +178,7 @@ module.exports = {
 				}
 			}
 
-            console.log(`${interaction.user.username} used “${commandArray[1]} ${value} ${comp}” via /${commandArray[0]} in ${locale}`)
+            console.log(`${interaction.user.username} used the button “${commandArray[1]} ${value} ${comp}” of the /${commandArray[0]} command`)
 			return interaction.reply(response);
         }
 
