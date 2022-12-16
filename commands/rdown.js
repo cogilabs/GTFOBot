@@ -78,7 +78,6 @@ module.exports = {
             const commandArray = (interaction.customId).split("-");
             const RID = commandArray[2];
             var title = 'Mission *' + RID + '* not found';
-            //var cpltd = '';
             var cpltd = new Array();
             const rows  = new Array();
             var content = 'Try to check if the mission identifier is correct and in the right format (Ex: R1A1). You can use **/rundown** to verify if the mission exists';
@@ -133,20 +132,6 @@ module.exports = {
             .setColor(0x110022)
             .setTitle(title)
             .setDescription(content);
-
-            /*const row  = new ActionRowBuilder();
-            row.addComponents(
-                new ButtonBuilder()
-                    .setCustomId(cmdName + '-complete-' + RID + '-true-' + cpltd.toString())
-                    .setLabel('Complete')
-                    .setStyle(ButtonStyle.Success)
-                    .setDisabled((String(cpltdMain).toLowerCase() == "true")),
-                new ButtonBuilder()
-                    .setCustomId(cmdName + '-complete-' + RID + '-false-' + cpltd.toString())
-                    .setLabel('Uncomplete')
-                    .setStyle(ButtonStyle.Danger)
-                    .setDisabled(!(String(cpltdMain).toLowerCase() == "true")),
-            );*/
 
             console.log(`${interaction.user.username} used the button ${RID} of the /${commandArray[0]} command`)
             await interaction.reply({ embeds: [embed], components: rows });
