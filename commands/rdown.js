@@ -159,7 +159,7 @@ module.exports = {
 				}
 			}
 
-            console.log(`${interaction.user.username} used the button “${commandArray[1]} ${value}” of the /${commandArray[0]} command`)
+            console.log(`${interaction.user.username} used the button “${commandArray[1]} ${value} ${comp}” of the /${commandArray[0]} command`)
 			return interaction.reply(response);
         }
 
