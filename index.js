@@ -24,8 +24,6 @@ try {//*/
 	file.set('completion.R1.A.A1.completed.main', false);
 	file.save();
 	fileEmpty = true;
-	var { completion } = require('./rundowns/completion.json');
-	global.completion = completion;
 }
 //*/
 
@@ -55,11 +53,12 @@ client.once(Events.ClientReady, () => {
 						}
 					}
 					file.save();
-					completion = require('./rundowns/completion.json');
 				}
 			}
 		}
 	}
+	var { completion } = require('./rundowns/completion.json');
+	global.completion = completion;
 	//*/
 	
 	console.log('App started, Dauda is now playing GTFO!');
