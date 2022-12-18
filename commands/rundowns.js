@@ -171,8 +171,8 @@ module.exports = {
 						if(value == run + id){
 							for(var mt in rundowns[run][lt][id].missionTypes){
 								if(mt == type){
-									file.set('completion.' + run + '.' + lt + '.' + id + '.completed.' + mt, (String(comp).toLowerCase() == "true"));
-									file.save();
+                                    file.set(`completion.${run}.${lt}.${id}.completed.${mt}`, (String(comp).toLowerCase() == "true"));
+                                    file.save();
 									file = editJsonFile('./rundowns/completion.json', {
 										autosave: true
 									});

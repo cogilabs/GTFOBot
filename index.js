@@ -28,7 +28,6 @@ for (const file of commandFiles) {
 }
 
 client.once(Events.ClientReady, () => {
-	//*
 	client.user.setPresence({ activities: [{ name: 'Starting...' }], status: 'away' });
 	console.log('Checking completion file...');
 	for(var run in rundowns){
@@ -36,8 +35,9 @@ client.once(Events.ClientReady, () => {
 			for(var mission in rundowns[run][lt]){
 				for(var mt in rundowns[run][lt][mission].missionTypes){
 					if(rundowns[run][lt][mission].missionTypes[mt]) {
-						if (file.get('completion.' + run + '.' + lt + '.' + mission + '.completed.' + mt) == undefined) {
-							file.set('completion.' + run + '.' + lt + '.' + mission + '.completed.' + mt, false);
+						if (file.get(`completion.${run}.${lt}.${mission}.completed.${mt}`) == undefined) {
+							file.set(`completion.${run}.${lt}.${mission}.completed.${mt}`, false);
+							console.log(`Adding ${run}${mission}:${mt}...`)
 						}
 					}
 					file.save();
