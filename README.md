@@ -33,7 +33,8 @@ You can see that the missions that have been successfully finished are represent
 
 Here the subsectors can have a checkmark if completed.
 
-At the bottom, you can click on a button to mark a sector as complete (or as not complete).
+At the bottom, you can click on a button to mark a sector as complete (or as not complete).  
+*Note: To use those buttons, the user needs the permission to manage events.*
 
 ## More
 

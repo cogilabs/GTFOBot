@@ -161,7 +161,8 @@ module.exports = {
             const value = commandArray[2];
             const type = commandArray[3];
             const comp = commandArray[4];
-            
+
+            // Check if the user has the MANAGE_EVENTS permission
             if ((interaction.member.permissions.bitfield & 8589934592n) == 8589934592n) {
                 for (var run in rundowns) {
                     for (var lt in rundowns[run]) {
