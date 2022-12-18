@@ -12,7 +12,7 @@ for (var lang in supportedLocales) {
 const { rundowns } = require('./rundowns/rundowns.json');
 global.rundowns = rundowns;
 
-const editJsonFile = require("edit-json-file");
+const editJsonFile = require('edit-json-file');
 let file = editJsonFile('./rundowns/completion.json');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -30,11 +30,11 @@ for (const file of commandFiles) {
 client.once(Events.ClientReady, () => {
 	client.user.setPresence({ activities: [{ name: 'Starting...' }], status: 'away' });
 	console.log('Checking completion file...');
-	for(var run in rundowns){
-		for(var lt in rundowns[run]){
-			for(var mission in rundowns[run][lt]){
-				for(var mt in rundowns[run][lt][mission].missionTypes){
-					if(rundowns[run][lt][mission].missionTypes[mt]) {
+	for (var run in rundowns) {
+		for (var lt in rundowns[run]) {
+			for (var mission in rundowns[run][lt]) {
+				for (var mt in rundowns[run][lt][mission].missionTypes) {
+					if (rundowns[run][lt][mission].missionTypes[mt]) {
 						if (file.get(`completion.${run}.${lt}.${mission}.completed.${mt}`) == undefined) {
 							file.set(`completion.${run}.${lt}.${mission}.completed.${mt}`, false);
 							console.log(`Adding ${run}${mission}:${mt}...`)
@@ -72,7 +72,7 @@ client.on(Events.InteractionCreate, async interaction => {
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isButton()) return;
 
-	const commandArray = (interaction.customId).split("-");
+	const commandArray = (interaction.customId).split('-');
 
 	const command = client.commands.get(commandArray[0]);
 
