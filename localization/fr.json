@@ -153,13 +153,13 @@
           "D2": {
             "name": "AWOL",
             "intel": "Prisonniers envoyés pour récupérer de nouvelles graines pour les HSU infantiles. Exp::ERR###",
-            "comms": ">... Argh, qu'est-ce qu'ils sont **lourdsn ces machins !**\n >... C'est clair. On doit en prendre combien ?\n >... Prenons-en deux et voyons si le gardien vient nous chercher quand même..."
+            "comms": ">... Argh, qu'est-ce qu'ils sont **lourds ces machins !**\n >... C'est clair. On doit en prendre combien ?\n >... Prenons-en deux et voyons si le gardien vient nous chercher quand même..."
           }
         },
         "E": {
           "E1": {
             "name": "Chaos",
-            "intel": "Arrêt d'un proccessus critique.\nDébut du verrouillage d'urgence.\nPrisonniers déployés pour relancer le réacteur.",
+            "intel": "Arrêt d'un processus critique.\nDébut du verrouillage d'urgence.\nPrisonniers déployés pour relancer le réacteur.",
             "comms": ">... On est suivis\n >... Pourquoi il veut pas mourir, celui-là ?\n >... C'est de la folie. **De la FOLIE !**"
           }
         }
