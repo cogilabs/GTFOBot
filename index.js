@@ -12,19 +12,22 @@ for (var lang in supportedLocales) {
 const { rundowns } = require('./rundowns/rundowns.json');
 global.rundowns = rundowns;
 
-/*const editJsonFile = require("edit-json-file");
+//*
+const editJsonFile = require("edit-json-file");
 let file = editJsonFile('./rundowns/completion.json');
 var fileEmpty = false;
-try {*/
-	const { completion } = require('./rundowns/completion.json');
+try {//*/
+	var { completion } = require('./rundowns/completion.json');
 	global.completion = completion;
-/*} catch (error) {
+//*
+} catch (error) {
 	file.set('completion.R1.A.A1.completed.main', false);
 	file.save();
 	fileEmpty = true;
-	const { completion } = require('./rundowns/completion.json');
+	var { completion } = require('./rundowns/completion.json');
 	global.completion = completion;
-}*/
+}
+//*/
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
@@ -39,23 +42,25 @@ for (const file of commandFiles) {
 }
 
 client.once(Events.ClientReady, () => {
-	/*client.user.setPresence({ activities: [{ name: 'Starting...' }], status: 'away' });
+	//*
+	client.user.setPresence({ activities: [{ name: 'Starting...' }], status: 'away' });
 	console.log('Checking completion file...');
 	for(var run in rundowns){
 		for(var lt in rundowns[run]){
 			for(var mission in rundowns[run][lt]){
 				for(var mt in rundowns[run][lt][mission].missionTypes){
-					if (fileEmpty) {
-						file.set('completion.' + run + '.' + lt + '.' + mission + '.completed.' + mt, false);
-						completion[run][lt][mission].completed[mt] = false;
-					}else if(completion[run][lt][mission].completed[mt] == undefined){
-						console.log('Undefined (Ok)')
-					} else console.log('Not Ok: ' + completion[run][lt][mission].completed[mt])
+					if(rundowns[run][lt][mission].missionTypes[mt]) {
+						if (fileEmpty) {
+							file.set('completion.' + run + '.' + lt + '.' + mission + '.completed.' + mt, false);
+						}
+					}
 					file.save();
+					completion = require('./rundowns/completion.json');
 				}
 			}
 		}
-	}*/
+	}
+	//*/
 	
 	console.log('App started, Dauda is now playing GTFO!');
 	client.user.setPresence({ activities: [{ name: 'GTFO' }], status: 'online' });
