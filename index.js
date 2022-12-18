@@ -12,20 +12,8 @@ for (var lang in supportedLocales) {
 const { rundowns } = require('./rundowns/rundowns.json');
 global.rundowns = rundowns;
 
-//*
 const editJsonFile = require("edit-json-file");
 let file = editJsonFile('./rundowns/completion.json');
-var fileEmpty = false;
-try {//*/
-	var { completion } = require('./rundowns/completion.json');
-	global.completion = completion;
-//*
-} catch (error) {
-	file.set('completion.R1.A.A1.completed.main', false);
-	file.save();
-	fileEmpty = true;
-}
-//*/
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
@@ -48,7 +36,7 @@ client.once(Events.ClientReady, () => {
 			for(var mission in rundowns[run][lt]){
 				for(var mt in rundowns[run][lt][mission].missionTypes){
 					if(rundowns[run][lt][mission].missionTypes[mt]) {
-						if (fileEmpty) {
+						if (file.get('completion.' + run + '.' + lt + '.' + mission + '.completed.' + mt) == undefined) {
 							file.set('completion.' + run + '.' + lt + '.' + mission + '.completed.' + mt, false);
 						}
 					}
@@ -59,7 +47,6 @@ client.once(Events.ClientReady, () => {
 	}
 	var { completion } = require('./rundowns/completion.json');
 	global.completion = completion;
-	//*/
 	
 	console.log('App started, Dauda is now playing GTFO!');
 	client.user.setPresence({ activities: [{ name: 'GTFO' }], status: 'online' });
