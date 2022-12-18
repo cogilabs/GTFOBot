@@ -164,6 +164,10 @@
           }
         }
       },
+      "system": {
+        "noCommandPermission": "You don't have the permission to use this command!",
+        "noButtonPermission": "You don't have the permission to use this button!"
+      },
       "commands": {
         "rundowns": {
             "description": "State of the expeditions, mission descriptions and completion"

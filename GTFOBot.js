@@ -48,7 +48,7 @@ client.once(Events.ClientReady, () => {
 	var { completion } = require('./rundowns/completion.json');
 	global.completion = completion;
 	
-	console.log('App started, Dauda is now playing GTFO!');
+	console.log(`App started, ${client.user.tag} is now playing GTFO!`);
 	client.user.setPresence({ activities: [{ name: 'GTFO' }], status: 'online' });
 });
 

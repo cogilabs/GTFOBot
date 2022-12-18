@@ -53,9 +53,9 @@ module.exports = {
             );
 
         }
-        console.log(`${interaction.user.username} used /${cmdName} in ${locale}`)
+        console.log(`@${interaction.user.tag} <@${interaction.user.id}> used /${cmdName} in ${locale}`)
         await interaction.reply({ components: rows, ephemeral: true });
-	},
+    },
 	async replyButton(interaction) {
         var locale = '';
         for (var loc in supportedLocales) {
@@ -92,7 +92,7 @@ module.exports = {
                 i = i+1;
             }
 
-            console.log(`${interaction.user.username} opened rundown ${RID} via /${commandArray[0]} in ${locale}`)
+            console.log(`@${interaction.user.tag} <@${interaction.user.id}> opened rundown ${RID} via /${commandArray[0]} in ${locale}`)
             await interaction.reply({ content: title, components: rows });
 
         } else if (commandArray[1] == 'mission') {
@@ -154,41 +154,44 @@ module.exports = {
             .setTitle(title)
             .setDescription(content);
 
-            console.log(`${interaction.user.username} opened mission ${RID} via /${commandArray[0]} in ${locale}`)
+            console.log(`@${interaction.user.tag} <@${interaction.user.id}> opened mission ${RID} via /${commandArray[0]} in ${locale}`)
             await interaction.reply({ embeds: [embed], components: rows });
 
         } else if (commandArray[1] == 'complete') {
             const value = commandArray[2];
             const type = commandArray[3];
             const comp = commandArray[4];
-            for (var run in rundowns) {
-				for (var lt in rundowns[run]) {
-					for (var id in rundowns[run][lt]) {
-						if (value == run + id) {
-							for (var mt in rundowns[run][lt][id].missionTypes) {
-								if (mt == type) {
-                                    file.set(`completion.${run}.${lt}.${id}.completed.${mt}`, (String(comp).toLowerCase() == 'true'));
-                                    file.save();
-									file = editJsonFile('./rundowns/completion.json', {
-										autosave: true
-									});
-									completion[run][lt][id].completed[mt] = (String(comp).toLowerCase() == 'true');
-                                    if (comp == 'true') {
-									    response = locFile[locale][locale].missions.sector + ' *' + value + ':' + locFile[locale][locale].sectors[mt] + '* `✅ ' + locFile[locale][locale].missions.completed + '`';
-                                    } else {
-									    response = locFile[locale][locale].missions.sector + ' *' + value + ':' + locFile[locale][locale].sectors[mt] + '* `❌ ' + locFile[locale][locale].missions.notCompleted + '`';
+            
+            if ((interaction.member.permissions.bitfield & 8589934592n) == 8589934592n) {
+                for (var run in rundowns) {
+                    for (var lt in rundowns[run]) {
+                        for (var id in rundowns[run][lt]) {
+                            if (value == run + id) {
+                                for (var mt in rundowns[run][lt][id].missionTypes) {
+                                    if (mt == type) {
+                                        file.set(`completion.${run}.${lt}.${id}.completed.${mt}`, (String(comp).toLowerCase() == 'true'));
+                                        file.save();
+                                        file = editJsonFile('./rundowns/completion.json', {
+                                            autosave: true
+                                        });
+                                        completion[run][lt][id].completed[mt] = (String(comp).toLowerCase() == 'true');
+                                        if (comp == 'true') {
+                                            response = locFile[locale][locale].missions.sector + ' *' + value + ':' + locFile[locale][locale].sectors[mt] + '* `✅ ' + locFile[locale][locale].missions.completed + '`';
+                                        } else {
+                                            response = locFile[locale][locale].missions.sector + ' *' + value + ':' + locFile[locale][locale].sectors[mt] + '* `❌ ' + locFile[locale][locale].missions.notCompleted + '`';
+                                        }
                                     }
-								}
-							}
-						}
-					}
-				}
-			}
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                response = ({ content: locFile[locale][locale].system.noButtonPermission, ephemeral: true });
+            }
 
-            console.log(`${interaction.user.username} used “${commandArray[1]} ${value} ${comp}” via /${commandArray[0]} in ${locale}`)
+            console.log(`@${interaction.user.tag} <@${interaction.user.id}> used “${commandArray[1]} ${value} ${comp}” via /${commandArray[0]} in ${locale}`)
 			return interaction.reply(response);
         }
-
-
 	}
 };
