@@ -171,7 +171,7 @@
       },
       "missions": {
         "rundownTitle": "Rundown",
-        "missionTitle": "Mission X:",
+        "missionTitle": "Mission #:",
         "sector": "Sector",
         "intel": ":://Intel_",
         "sectors": ":://Sectors_&&_progression_permits_",
@@ -180,8 +180,8 @@
         "depth": "Drop cage target depth:",
         "completed": "Completed",
         "notCompleted": "Not completed",
-        "completeSector": "Complete X sector",
-        "uncompleteSector": "Uncomplete X sector"
+        "completeSector": "Complete # sector",
+        "uncompleteSector": "Uncomplete # sector"
       },
       "sectors": {
         "main": "main",

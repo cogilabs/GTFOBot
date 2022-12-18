@@ -108,7 +108,7 @@ module.exports = {
                 for(var lt in rundowns[run]){
                     for(var id in rundowns[run][lt]){
                         if(RID == run + id){
-                            title = '**' + (locFile[locale][locale].missions.missionTitle).replace("X", run + id) + '** *"' + locFile[locale][locale][run][lt][id].name + '"*';
+                            title = '**' + (locFile[locale][locale].missions.missionTitle).replace("#", run + id) + '** *"' + locFile[locale][locale][run][lt][id].name + '"*';
                             content = '\n \n`' + locFile[locale][locale].missions.intel + '`\n```' + locFile[locale][locale][run][lt][id].intel + '```'
                                 + '\n`' + locFile[locale][locale].missions.sectors + '`\n';
                             var i = 0;
@@ -120,7 +120,7 @@ module.exports = {
                                         rows[i].addComponents(
                                             new ButtonBuilder()
                                                 .setCustomId(cmdName + '-complete-' + RID + '-' + mt + '-true-' + cpltd[mt].toString())
-                                                .setLabel((locFile[locale][locale].missions.completeSector).replace("X", locFile[locale][locale].sectors[mt]))
+                                                .setLabel((locFile[locale][locale].missions.completeSector).replace("#", locFile[locale][locale].sectors[mt]))
                                                 .setStyle(ButtonStyle.Success)
                                                 .setDisabled((String(cpltd[mt]).toLowerCase() == "true")),
                                             );
@@ -129,7 +129,7 @@ module.exports = {
                                         rows[i].addComponents(
                                             new ButtonBuilder()
                                                 .setCustomId(cmdName + '-complete-' + RID + '-' + mt + '-false-' + cpltd[mt].toString())
-                                                .setLabel((locFile[locale][locale].missions.uncompleteSector).replace("X", locFile[locale][locale].sectors[mt]))
+                                                .setLabel((locFile[locale][locale].missions.uncompleteSector).replace("#", locFile[locale][locale].sectors[mt]))
                                                 .setStyle(ButtonStyle.Danger)
                                                 .setDisabled(!(String(cpltd[mt]).toLowerCase() == "true")),
                                         );

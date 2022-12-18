@@ -171,7 +171,7 @@
       },
       "missions": {
         "rundownTitle": "Campagne",
-        "missionTitle": "Mission X :",
+        "missionTitle": "Mission # :",
         "sector": "Secteur",
         "intel": ":://Intel_",
         "sectors": ":://Secteurs_&&_badges_de_progression_",
@@ -180,8 +180,8 @@
         "depth": "Profondeur cible de la cage de largage :",
         "completed": "Terminé",
         "notCompleted": "Non terminé",
-        "completeSector": "Marquer le secteur X comme terminé",
-        "uncompleteSector": "Marquer le secteur X comme non terminé"
+        "completeSector": "Marquer le secteur # comme terminé",
+        "uncompleteSector": "Marquer le secteur # comme non terminé"
       },
       "sectors": {
         "main": "principal",
