@@ -10,6 +10,10 @@ const editJsonFile = require('edit-json-file');
 let file = editJsonFile('./rundowns/completion.json');
 const cmdName = 'rundowns';
 
+var initialInteraction;
+var lastMissionInteraction;
+var rundownsInteraction;
+
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName(cmdName)
@@ -18,6 +22,7 @@ module.exports = {
             fr: locFile['fr']['fr'].commands[cmdName].description,
         }),
 	async execute(interaction) {
+        initialInteraction = interaction;
         var locale = '';
         for (var loc in supportedLocales) {
             if (interaction.locale == loc) locale = interaction.locale;
@@ -54,6 +59,10 @@ module.exports = {
 
         }
         console.log(`@${interaction.user.tag} <@${interaction.user.id}> used /${cmdName} in ${locale}`)
+
+        if (lastMissionInteraction != undefined && lastMissionInteraction.channelId == interaction.channelId) await lastMissionInteraction.deleteReply();
+        if (rundownsInteraction != undefined && rundownsInteraction.channelId == interaction.channelId) await rundownsInteraction.deleteReply();
+
         await interaction.reply({ components: rows, ephemeral: true });
     },
 	async replyButton(interaction) {
@@ -64,6 +73,7 @@ module.exports = {
         if (locale == '') locale = 'en-US';
         const commandArray = (interaction.customId).split('-');
         if (commandArray[1] == 'select') {
+            rundownsInteraction = interaction;
             const RID = commandArray[2];
             var title = '';
             var rows = new Array();
@@ -92,16 +102,79 @@ module.exports = {
                 i = i+1;
             }
 
-            console.log(`@${interaction.user.tag} <@${interaction.user.id}> opened rundown ${RID} via /${commandArray[0]} in ${locale}`)
+            console.log(`@${interaction.user.tag} <@${interaction.user.id}> opened rundown ${RID} via /${commandArray[0]} in ${locale}`);
             await interaction.reply({ content: title, components: rows });
+            await initialInteraction.deleteReply();
 
-        } else if (commandArray[1] == 'mission') {
-            const commandArray = (interaction.customId).split('-');
+        } else if (commandArray[1] == 'mission' || commandArray[1] == 'complete') {
+
+            if (commandArray[1] == 'complete') {
+                const value = commandArray[2];
+                const type = commandArray[3];
+                const comp = commandArray[4];
+                
+                // Check if the user has the MANAGE_EVENTS permission
+                if ((interaction.member.permissions.bitfield & 8589934592n) == 8589934592n) {
+                    for (var run in rundowns) {
+                        for (var lt in rundowns[run]) {
+                            for (var id in rundowns[run][lt]) {
+                                if (value == run + id) {
+                                    for (var mt in rundowns[run][lt][id].missionTypes) {
+                                        if (mt == type) {
+                                            file.set(`completion.${run}.${lt}.${id}.completed.${mt}`, (String(comp).toLowerCase() == 'true'));
+                                            file.save();
+                                            file = editJsonFile('./rundowns/completion.json', {
+                                                autosave: true
+                                            });
+                                            completion[run][lt][id].completed[mt] = (String(comp).toLowerCase() == 'true');
+                                            if (comp == 'true') {
+                                                response = locFile[locale][locale].missions.sector + ' *' + value + ':' + locFile[locale][locale].sectors[mt] + '* `✅ ' + locFile[locale][locale].missions.completed + '`';
+                                            } else {
+                                                response = locFile[locale][locale].missions.sector + ' *' + value + ':' + locFile[locale][locale].sectors[mt] + '* `❌ ' + locFile[locale][locale].missions.notCompleted + '`';
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                const MID = commandArray[2].slice(0,2);
+                var title = '';
+                var runRows = new Array();
+                title = '***' + locFile[locale][locale].missions.rundownTitle + ' ' + MID + '***';
+        
+                i = 0;
+                for (var lt in rundowns[MID]) {
+                    runRows[i] = new ActionRowBuilder();
+                    for (var nb in rundowns[MID][lt]) {
+                        if (completion[MID][lt][nb].completed.main) {
+                            runRows[i].addComponents(
+                                new ButtonBuilder()
+                                    .setCustomId(cmdName + '-mission-' + MID + nb)
+                                    .setLabel(nb)
+                                    .setStyle(ButtonStyle.Success),
+                            );
+                        } else {
+                            runRows[i].addComponents(
+                                new ButtonBuilder()
+                                    .setCustomId(cmdName + '-mission-' + MID + nb)
+                                    .setLabel(nb)
+                                    .setStyle(ButtonStyle.Secondary),
+                            );
+                        }
+                    }
+                    i = i+1;
+                }
+                await rundownsInteraction.editReply({ content: title, components: runRows });
+            }
+
             const RID = commandArray[2];
             var title = '';
             var cpltd = new Array();
             const rows  = new Array();
             var content = '';
+            var rights = '';
             for (var run in rundowns) {
                 for (var lt in rundowns[run]) {
                     for (var id in rundowns[run][lt]) {
@@ -149,50 +222,45 @@ module.exports = {
                 }
             }
 
-            const embed = new EmbedBuilder()
-            .setColor(0x110022)
-            .setTitle(title)
-            .setDescription(content);
+            if (commandArray[1] == 'mission') {
 
-            console.log(`@${interaction.user.tag} <@${interaction.user.id}> opened mission ${RID} via /${commandArray[0]} in ${locale}`)
-            await interaction.reply({ embeds: [embed], components: rows });
+                const embed = new EmbedBuilder()
+                .setColor(0x110022)
+                .setTitle(title)
+                .setDescription(content);
+                
+                console.log(`@${interaction.user.tag} <@${interaction.user.id}> opened mission ${RID} via /${commandArray[0]} in ${locale}`)
 
-        } else if (commandArray[1] == 'complete') {
-            const value = commandArray[2];
-            const type = commandArray[3];
-            const comp = commandArray[4];
-
-            // Check if the user has the MANAGE_EVENTS permission
-            if ((interaction.member.permissions.bitfield & 8589934592n) == 8589934592n) {
-                for (var run in rundowns) {
-                    for (var lt in rundowns[run]) {
-                        for (var id in rundowns[run][lt]) {
-                            if (value == run + id) {
-                                for (var mt in rundowns[run][lt][id].missionTypes) {
-                                    if (mt == type) {
-                                        file.set(`completion.${run}.${lt}.${id}.completed.${mt}`, (String(comp).toLowerCase() == 'true'));
-                                        file.save();
-                                        file = editJsonFile('./rundowns/completion.json', {
-                                            autosave: true
-                                        });
-                                        completion[run][lt][id].completed[mt] = (String(comp).toLowerCase() == 'true');
-                                        if (comp == 'true') {
-                                            response = locFile[locale][locale].missions.sector + ' *' + value + ':' + locFile[locale][locale].sectors[mt] + '* `✅ ' + locFile[locale][locale].missions.completed + '`';
-                                        } else {
-                                            response = locFile[locale][locale].missions.sector + ' *' + value + ':' + locFile[locale][locale].sectors[mt] + '* `❌ ' + locFile[locale][locale].missions.notCompleted + '`';
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                if (lastMissionInteraction != undefined && lastMissionInteraction.channelId == interaction.channelId) {
+                    await lastMissionInteraction.deleteReply();
                 }
-            } else {
-                response = ({ content: locFile[locale][locale].system.noButtonPermission, ephemeral: true });
-            }
 
-            console.log(`@${interaction.user.tag} <@${interaction.user.id}> used “${commandArray[1]} ${value} ${comp}” via /${commandArray[0]} in ${locale}`)
-			return interaction.reply(response);
+                lastMissionInteraction = interaction;
+                await interaction.reply({ embeds: [embed], components: rows });
+
+            } else if (commandArray[1] == 'complete') {
+                const value = commandArray[2];
+                const comp = commandArray[4];
+
+                // Check if the user has the MANAGE_EVENTS permission
+                if ((interaction.member.permissions.bitfield & 8589934592n) == 8589934592n) {
+
+                    const embed = new EmbedBuilder()
+                    .setColor(0x110022)
+                    .setTitle(title)
+                    .setDescription(content);
+
+                    await lastMissionInteraction.editReply({ embeds: [embed], components: rows });
+
+                } else {
+                    response = ({ content: locFile[locale][locale].system.noButtonPermission, ephemeral: true });
+                    rights = ' but didn\'t have the rights';
+                }
+
+                console.log(`@${interaction.user.tag} <@${interaction.user.id}> used “${commandArray[1]} ${value} ${comp}” via /${commandArray[0]} in ${locale}${rights}`)
+                await interaction.reply( {content: response, ephemeral: true} );
+                return interaction.deleteReply();
+            }
         }
 	}
 };
