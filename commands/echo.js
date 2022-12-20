@@ -1,6 +1,8 @@
 const { SlashCommandBuilder } = require('discord.js');
 const cmdName = 'echo';
 
+// TODO: Locale
+
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName(cmdName)
@@ -18,5 +20,6 @@ module.exports = {
 		await client.channels.fetch(interaction.channel.id)
             .then(channel=>channel.send({ content: message }));
 			await interaction.deleteReply();
+		console.log(`@${interaction.user.tag} <@${interaction.user.id}> used “/${cmdName} ${message}”`)
 	},
 };
