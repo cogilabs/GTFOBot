@@ -1,5 +1,4 @@
 const { SlashCommandBuilder } = require('discord.js');
-const wait = require('node:timers/promises').setTimeout;
 const cmdName = 'echo';
 
 module.exports = {
@@ -15,7 +14,6 @@ module.exports = {
 		.setDMPermission(false),
 	async execute(interaction) {
 		const message = interaction.options.getString('message');
-        console.log(interaction.channel)
         await interaction.reply({ content: 'Sending...', ephemeral: true });
 		await client.channels.fetch(interaction.channel.id)
             .then(channel=>channel.send({ content: message }));
