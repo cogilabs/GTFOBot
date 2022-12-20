@@ -16,6 +16,7 @@ const editJsonFile = require('edit-json-file');
 let file = editJsonFile('./rundowns/completion.json');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+global.client = client;
 
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
