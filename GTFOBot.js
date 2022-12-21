@@ -55,14 +55,61 @@ client.once(Events.ClientReady, () => {
 
 client.on(Events.MessageCreate, async message => {
 	if (message.author == client.user) return;
+	var locale = '';
+	for (var loc in supportedLocales) {
+		if (message.guild.preferredLocale == loc) locale = message.guild.preferredLocale;
+	}
+	if (locale == '') locale = 'en-US';
 
 	if (message.content.includes('@everyone')) {
 		var emojiName = 'DaudaPing'
 		const reactionEmoji = message.guild.emojis.cache.find(emoji => emoji.name === emojiName);
 		if (reactionEmoji != undefined) {
 			message.react(reactionEmoji);
-			console.log(`Reacted to “${message.content}” by ${message.author.tag}`)
-		} else console.log(`Tried tu react to “${message.content}” by ${message.author.tag} but no '${emojiName}' emoji was found`);
+			console.log(`Reacted “${emojiName}” to “${message.content}” by ${message.author.tag}`)
+		} else console.log(`Tried to react to “${message.content}” by ${message.author.tag} but no '${emojiName}' emoji was found`);
+	}
+
+	if ((message.content.includes('demande') || message.content.includes('Demande')) && message.content.includes('à Dauda')) {
+		message.react('❓');
+		console.log(`Reacted “❓” to “${message.content}” by ${message.author.tag}`)
+	}
+
+	// ====================== NEEDS TO BE LOCALIZED !!! ============================
+	if (message.content.includes('l\'état de la mission R') || message.content.includes('l\'état du secteur R')
+		|| ((message.content.includes('mission R') || (message.content.includes('secteur R'))) 
+			&& (message.content.includes('terminé') || message.content.includes('fini')))
+		|| (message.content.includes('terminé R')) || (message.content.includes('fini R'))) {
+		var start = message.content.search("mission R") + 8;
+		if (start == 7) start = message.content.search("terminé R") + 8;
+		if (start == 7) start = message.content.search("fini R") + 5;
+		var MID = message.content.slice(start, start + 4);
+		console.log(start, MID, MID.length);
+		var reaction = '';
+		if (MID.length == 4 && !MID.includes('!') && !MID.includes('?') && !MID.includes('.')) {
+			var run = MID.slice(0,2);
+			var lt = MID.slice(2,3);
+			var id = MID.slice(2,4);
+			var mt = 'main';
+			if (completion[run] != undefined) {
+				if (completion[run][lt] != undefined) {
+					if (completion[run][lt][id] != undefined) {
+						if (completion[run][lt][id].completed != undefined) {
+							console.log(completion[run][lt][id].completed[mt]);
+							if (completion[run][lt][id].completed[mt] == true) reaction = '✅';
+							if (completion[run][lt][id].completed[mt] == false) reaction = '❌';
+						} else reaction = '❔';
+					} else reaction = '❔';
+				}
+			}
+		}
+		if (reaction != '') {
+			message.react(reaction);
+			console.log(`Reacted “${reaction}” to “${message.content}” by ${message.author.tag}`)
+		}
+		if (reaction == '❔') {
+			message.reply({ content: locFile[locale][locale].system.missionNotFound.replace('#', MID), ephemeral: true })
+		}
 	}
 
 });

@@ -168,7 +168,8 @@
         "noCommandPermission": "You don't have the permission to use this command!",
         "noButtonPermission": "You don't have the permission to use this button!",
         "commandError": "There was an error while executing this command!",
-        "buttonError": "There was an error while treating the button!"
+        "buttonError": "There was an error while treating the button!",
+        "missionNotFound": "I can't find the mission #, could you check if it really exists?"
       },
       "commands": {
         "rundowns": {
