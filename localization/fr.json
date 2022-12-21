@@ -169,7 +169,7 @@
         "noButtonPermission": "Vous n'avez pas la permission d'utiliser ce bouton !",
         "commandError": "Il y a eu une erreur lors de l'exécution de cette commande !",
         "buttonError": "Il y a eu une erreur lors du traitement de ce bouton !",
-        "missionNotFound": "Je ne trouve pas la mission #, peut tu vérifier si elle existe vraiment ?"
+        "missionNotFound": "Je ne trouve pas la mission #, peut tu vérifier si elle existe vraiment ? (N'hésites pas à faire **`/rundowns`** pour le savoir :wink:)"
       },
       "commands": {
         "rundowns": {
