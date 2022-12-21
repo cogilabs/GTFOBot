@@ -60,8 +60,14 @@ module.exports = {
         }
         console.log(`@${interaction.user.tag} <@${interaction.user.id}> used /${cmdName} in ${locale}`)
 
-        if (lastMissionInteraction != undefined && lastMissionInteraction.channelId == interaction.channelId) await lastMissionInteraction.deleteReply();
-        if (rundownsInteraction != undefined && rundownsInteraction.channelId == interaction.channelId) await rundownsInteraction.deleteReply();
+        if (lastMissionInteraction != undefined && lastMissionInteraction.channelId == interaction.channelId) {
+            await lastMissionInteraction.deleteReply();
+            lastMissionInteraction = undefined;
+        }
+        if (rundownsInteraction != undefined && rundownsInteraction.channelId == interaction.channelId) {
+            await rundownsInteraction.deleteReply();
+            rundownsInteraction = undefined;
+        }
 
         await interaction.reply({ components: rows, ephemeral: true });
     },
@@ -105,6 +111,7 @@ module.exports = {
             console.log(`@${interaction.user.tag} <@${interaction.user.id}> opened rundown ${RID} via /${commandArray[0]} in ${locale}`);
             await interaction.reply({ content: title, components: rows });
             await initialInteraction.deleteReply();
+            initialInteraction = undefined;
 
         } else if (commandArray[1] == 'mission' || commandArray[1] == 'complete') {
 
@@ -166,7 +173,8 @@ module.exports = {
                     }
                     i = i+1;
                 }
-                await rundownsInteraction.editReply({ content: title, components: runRows });
+                if (rundownsInteraction != undefined && rundownsInteraction.channelId == interaction.channelId)
+                    await rundownsInteraction.editReply({ content: title, components: runRows });
             }
 
             const RID = commandArray[2];
@@ -233,6 +241,7 @@ module.exports = {
 
                 if (lastMissionInteraction != undefined && lastMissionInteraction.channelId == interaction.channelId) {
                     await lastMissionInteraction.deleteReply();
+                    lastMissionInteraction = undefined;
                 }
 
                 lastMissionInteraction = interaction;
@@ -250,7 +259,12 @@ module.exports = {
                     .setTitle(title)
                     .setDescription(content);
 
-                    await lastMissionInteraction.editReply({ embeds: [embed], components: rows });
+                    if (lastMissionInteraction != undefined && lastMissionInteraction.channelId == interaction.channelId) {
+                        await lastMissionInteraction.editReply({ embeds: [embed], components: rows });
+                    } else {
+                        await interaction.reply({ embeds: [embed], components: rows });
+                    }
+                    
 
                 } else {
                     response = ({ content: locFile[locale][locale].system.noButtonPermission, ephemeral: true });
@@ -258,8 +272,13 @@ module.exports = {
                 }
 
                 console.log(`@${interaction.user.tag} <@${interaction.user.id}> used “${commandArray[1]} ${value} ${comp}” via /${commandArray[0]} in ${locale}${rights}`)
-                await interaction.reply( {content: response, ephemeral: true} );
-                return interaction.deleteReply();
+                
+                if (lastMissionInteraction != undefined && lastMissionInteraction.channelId == interaction.channelId) {
+                    await interaction.reply( {content: response, ephemeral: true} );
+                    return interaction.deleteReply();
+                } else {
+                    lastMissionInteraction = interaction;
+                }
             }
         }
 	}
