@@ -112,6 +112,19 @@ client.on(Events.MessageCreate, async message => {
 		}
 	}
 
+	if (message.content.includes('erci Dauda') || message.content.includes('erci beaucoup Dauda') || message.content.includes('erci à toi Dauda')) {
+		var response = [
+			"Mais de rien !",
+			"Avec plaisir !",
+			"Il n'y a pas de quoi !",
+			"Tout le plaisir est pour moi :wink:",
+			"De rien :wink:",
+			"Mais c'est avec plaisir !"
+		]
+		var answer = response[Math.floor(Math.random() * response.length)];
+		message.reply(answer);
+		console.log(`Answered “${answer}” to “${message.content}” by ${message.author.tag}`)
+	}
 });
 
 //Chat commands interactions
