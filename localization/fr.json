@@ -166,7 +166,9 @@
       },
       "system": {
         "noCommandPermission": "Vous n'avez pas la permission d'utiliser cette commande !",
-        "noButtonPermission": "Vous n'avez pas la permission d'utiliser ce bouton !"
+        "noButtonPermission": "Vous n'avez pas la permission d'utiliser ce bouton !",
+        "commandError": "Il y a eu une erreur lors de l'exécution de cette commande !",
+        "buttonError": "Il y a eu une erreur lors du traitement de ce bouton !"
       },
       "commands": {
         "rundowns": {
