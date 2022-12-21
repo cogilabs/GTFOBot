@@ -110,8 +110,10 @@ module.exports = {
 
             console.log(`@${interaction.user.tag} <@${interaction.user.id}> opened rundown ${RID} via /${commandArray[0]} in ${locale}`);
             await interaction.reply({ content: title, components: rows });
-            await initialInteraction.deleteReply();
-            initialInteraction = undefined;
+            if (initialInteraction != undefined && initialInteraction.channelId == interaction.channelId) {
+                await initialInteraction.deleteReply();
+                initialInteraction = undefined;
+            }
 
         } else if (commandArray[1] == 'mission' || commandArray[1] == 'complete') {
 
