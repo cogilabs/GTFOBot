@@ -16,10 +16,9 @@ module.exports = {
 		.setDMPermission(false),
 	async execute(interaction) {
 		const message = interaction.options.getString('message');
-        await interaction.reply({ content: 'Sending...', ephemeral: true });
-		await client.channels.fetch(interaction.channel.id)
-            .then(channel=>channel.send({ content: message }));
-			await interaction.deleteReply();
+		await interaction.reply({ content: 'Sending...', ephemeral: true });
+		await interaction.channel.send({ content: message });
+		await interaction.deleteReply();
 		console.log(`@${interaction.user.tag} <@${interaction.user.id}> used “/${cmdName} ${message}”`)
 	},
 };
