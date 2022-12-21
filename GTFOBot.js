@@ -61,29 +61,32 @@ client.on(Events.MessageCreate, async message => {
 	}
 	if (locale == '') locale = 'en-US';
 
-	if (message.content.includes('@everyone')) {
+	msgContent = message.content;
+	msgContentLowerCase = msgContent.toLowerCase();
+
+	if (msgContent.includes('@everyone')) {
 		var emojiName = 'DaudaPing'
 		const reactionEmoji = message.guild.emojis.cache.find(emoji => emoji.name === emojiName);
 		if (reactionEmoji != undefined) {
 			await message.react(reactionEmoji);
-			console.log(`Reacted “${emojiName}” to “${message.content}” by ${message.author.tag}`)
-		} else console.log(`Tried to react to “${message.content}” by ${message.author.tag} but no '${emojiName}' emoji was found`);
+			console.log(`Reacted “${emojiName}” to “${msgContent}” by ${message.author.tag}`)
+		} else console.log(`Tried to react to “${msgContent}” by ${message.author.tag} but no '${emojiName}' emoji was found`);
 	}
 
 	// ====================== NEEDS TO BE LOCALIZED !!! ============================
-	if ((message.content.includes('demande') || message.content.includes('Demande')) && message.content.includes('Dauda')) {
+	if (msgContentLowerCase.includes('demande') && msgContentLowerCase.includes('dauda')) {
 		await message.react('❓');
-		console.log(`Reacted “❓” to “${message.content}” by ${message.author.tag}`)
+		console.log(`Reacted “❓” to “${msgContent}” by ${message.author.tag}`)
 	}
 
-	if (message.content.includes('l\'état de la mission R') || message.content.includes('l\'état du secteur R')
-		|| ((message.content.includes('mission R') || (message.content.includes('secteur R'))) 
-			&& (message.content.includes('terminé') || message.content.includes('fini')))
-		|| (message.content.includes('terminé R')) || (message.content.includes('fini R'))) {
-		var start = message.content.search("mission R") + 8;
-		if (start == 7) start = message.content.search("terminé R") + 8;
-		if (start == 7) start = message.content.search("fini R") + 5;
-		var MID = message.content.slice(start, start + 4);
+	if (msgContentLowerCase.includes('l\'état de la mission r') || msgContentLowerCase.includes('l\'état du secteur r')
+		|| ((msgContentLowerCase.includes('mission r') || (msgContentLowerCase.includes('secteur r'))) 
+			&& (msgContentLowerCase.includes('terminé') || msgContentLowerCase.includes('fini')))
+		|| (msgContentLowerCase.includes('terminé r')) || (msgContentLowerCase.includes('fini r'))) {
+		var start = msgContentLowerCase.search("mission r") + 8;
+		if (start == 7) start = msgContentLowerCase.search("terminé r") + 8;
+		if (start == 7) start = msgContentLowerCase.search("fini r") + 5;
+		var MID = msgContent.slice(start, start + 4);
 		var reaction = '';
 		if (MID.length == 4 && !MID.includes('!') && !MID.includes('?') && !MID.includes('.')) {
 			var run = MID.slice(0,2);
@@ -103,14 +106,14 @@ client.on(Events.MessageCreate, async message => {
 		}
 		if (reaction != '') {
 			await message.react(reaction);
-			console.log(`Reacted “${reaction}” to “${message.content}” by ${message.author.tag}`)
+			console.log(`Reacted “${reaction}” to “${msgContent}” by ${message.author.tag}`)
 		}
 		if (reaction == '❔') {
 			await message.reply({ content: locFile[locale][locale].system.missionNotFound.replace('#', MID), ephemeral: true })
 		}
 	}
 
-	if (message.content.includes('erci Dauda') || message.content.includes('erci beaucoup Dauda') || message.content.includes('erci à toi Dauda')) {
+	if (msgContentLowerCase.includes('merci dauda') || msgContentLowerCase.includes('merci beaucoup dauda') || msgContentLowerCase.includes('merci à toi dauda')) {
 		var response = [
 			"Mais de rien !",
 			"Avec plaisir !",
@@ -121,7 +124,7 @@ client.on(Events.MessageCreate, async message => {
 		]
 		var answer = response[Math.floor(Math.random() * response.length)];
 		await message.reply(answer);
-		console.log(`Answered “${answer}” to “${message.content}” by ${message.author.tag}`)
+		console.log(`Answered “${answer}” to “${msgContent}” by ${message.author.tag}`)
 	}
 });
 
