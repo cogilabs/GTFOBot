@@ -22,6 +22,7 @@ module.exports = {
             fr: locFile['fr']['fr'].commands[cmdName].description,
         }),
 	async execute(interaction) {
+        var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === 'dauda-logs');
         initialInteraction = interaction;
         var locale = '';
         for (var loc in supportedLocales) {
@@ -58,7 +59,9 @@ module.exports = {
             );
 
         }
-        console.log(`@${interaction.user.tag} <@${interaction.user.id}> used /${cmdName} in ${locale}`)
+        console.log(`@${interaction.user.tag} <@${interaction.user.id}> used /${cmdName} in ${locale}`);
+		if (logsChannel != undefined)
+			logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> used **\`/${cmdName}\`** in ${locale}`);
 
         if (lastMissionInteraction != undefined && lastMissionInteraction.channelId == interaction.channelId) {
             await lastMissionInteraction.deleteReply();
@@ -72,6 +75,7 @@ module.exports = {
         await interaction.reply({ components: rows, ephemeral: true });
     },
 	async replyButton(interaction) {
+        var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === 'dauda-logs');
         var locale = '';
         for (var loc in supportedLocales) {
             if (interaction.locale == loc) locale = interaction.locale;
@@ -109,6 +113,8 @@ module.exports = {
             }
 
             console.log(`@${interaction.user.tag} <@${interaction.user.id}> opened rundown ${RID} via /${commandArray[0]} in ${locale}`);
+            if (logsChannel != undefined)
+			    logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> opened rundown ${RID} via **\`/${commandArray[0]}\`** in ${locale}`);
             await interaction.reply({ content: title, components: rows });
             if (initialInteraction != undefined && initialInteraction.channelId == interaction.channelId) {
                 await initialInteraction.deleteReply();
@@ -239,7 +245,9 @@ module.exports = {
                 .setTitle(title)
                 .setDescription(content);
                 
-                console.log(`@${interaction.user.tag} <@${interaction.user.id}> opened mission ${RID} via /${commandArray[0]} in ${locale}`)
+                console.log(`@${interaction.user.tag} <@${interaction.user.id}> opened mission ${RID} via /${commandArray[0]} in ${locale}`);
+                if (logsChannel != undefined)
+			        logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> opened mission ${RID} via **\`/${commandArray[0]}\`** in ${locale}`);
 
                 if (lastMissionInteraction != undefined && lastMissionInteraction.channelId == interaction.channelId) {
                     await lastMissionInteraction.deleteReply();
@@ -273,7 +281,9 @@ module.exports = {
                     rights = ' but didn\'t have the rights';
                 }
 
-                console.log(`@${interaction.user.tag} <@${interaction.user.id}> used “${commandArray[1]} ${value} ${comp}” via /${commandArray[0]} in ${locale}${rights}`)
+                console.log(`@${interaction.user.tag} <@${interaction.user.id}> used “${commandArray[1]} ${value} ${comp}” via /${commandArray[0]} in ${locale}${rights}`);
+                if (logsChannel != undefined)
+			        logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> used “${commandArray[1]} ${value} ${comp}” via **\`/${commandArray[0]}\`** in ${locale}${rights}`);
                 
                 if (lastMissionInteraction != undefined && lastMissionInteraction.channelId == interaction.channelId) {
                     await interaction.reply( {content: response, ephemeral: true} );

@@ -15,10 +15,13 @@ module.exports = {
 		.setDefaultMemberPermissions(0)
 		.setDMPermission(false),
 	async execute(interaction) {
+        var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === 'dauda-logs');
 		const message = interaction.options.getString('message');
 		await interaction.reply({ content: 'Sending...', ephemeral: true });
 		await interaction.channel.send({ content: message });
 		await interaction.deleteReply();
-		console.log(`@${interaction.user.tag} <@${interaction.user.id}> used “/${cmdName} ${message}”`)
+		console.log(`@${interaction.user.tag} <@${interaction.user.id}> used “/${cmdName} ${message}”`);
+		if (logsChannel != undefined)
+			logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> used **\`“/${cmdName} ${message}”\`**`);
 	},
 };
