@@ -61,7 +61,7 @@ module.exports = {
         }
         console.log(`@${interaction.user.tag} <@${interaction.user.id}> used /${cmdName} in ${locale}`);
 		if (logsChannel != undefined)
-			logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> used **\`/${cmdName}\`** in ${locale}`);
+			await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> used **\`/${cmdName}\`** in ${locale}`);
 
         if (lastMissionInteraction != undefined && lastMissionInteraction.channelId == interaction.channelId) {
             await lastMissionInteraction.deleteReply();
@@ -114,7 +114,7 @@ module.exports = {
 
             console.log(`@${interaction.user.tag} <@${interaction.user.id}> opened rundown ${RID} via /${commandArray[0]} in ${locale}`);
             if (logsChannel != undefined)
-			    logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> opened rundown ${RID} via **\`/${commandArray[0]}\`** in ${locale}`);
+			    await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> opened rundown ${RID} via **\`/${commandArray[0]}\`** in ${locale}`);
             await interaction.reply({ content: title, components: rows });
             if (initialInteraction != undefined && initialInteraction.channelId == interaction.channelId) {
                 await initialInteraction.deleteReply();
@@ -247,7 +247,7 @@ module.exports = {
                 
                 console.log(`@${interaction.user.tag} <@${interaction.user.id}> opened mission ${RID} via /${commandArray[0]} in ${locale}`);
                 if (logsChannel != undefined)
-			        logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> opened mission ${RID} via **\`/${commandArray[0]}\`** in ${locale}`);
+			        await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> opened mission ${RID} via **\`/${commandArray[0]}\`** in ${locale}`);
 
                 if (lastMissionInteraction != undefined && lastMissionInteraction.channelId == interaction.channelId) {
                     await lastMissionInteraction.deleteReply();
@@ -283,7 +283,7 @@ module.exports = {
 
                 console.log(`@${interaction.user.tag} <@${interaction.user.id}> used “${commandArray[1]} ${value} ${comp}” via /${commandArray[0]} in ${locale}${rights}`);
                 if (logsChannel != undefined)
-			        logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> used “${commandArray[1]} ${value} ${comp}” via **\`/${commandArray[0]}\`** in ${locale}${rights}`);
+			        await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> used “${commandArray[1]} ${value} ${comp}” via **\`/${commandArray[0]}\`** in ${locale}${rights}`);
                 
                 if (lastMissionInteraction != undefined && lastMissionInteraction.channelId == interaction.channelId) {
                     await interaction.reply( {content: response, ephemeral: true} );

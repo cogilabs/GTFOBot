@@ -72,7 +72,7 @@ client.on(Events.MessageCreate, async message => {
 			await message.react(reactionEmoji);
 			console.log(`Reacted “${emojiName}” to “${msgContent}” by ${message.author.tag}`);
 			if (logsChannel != undefined)
-				logsChannel.send(`Reacted \`${emojiName}\` to \`${msgContent}\` by \`${message.author.tag}\``);
+				await logsChannel.send(`Reacted \`${emojiName}\` to \`${msgContent}\` by \`${message.author.tag}\``);
 		} else {
 			console.log(`Tried to react to “${msgContent}” by ${message.author.tag} but no '${emojiName}' emoji was found`);
 			if (logsChannel != undefined)
@@ -85,7 +85,7 @@ client.on(Events.MessageCreate, async message => {
 		await message.react('❓');
 		console.log(`Reacted “❓” to “${msgContent}” by ${message.author.tag}`);
 		if (logsChannel != undefined)
-			logsChannel.send(`Reacted \`❓\` to \`${msgContent}\` by \`${message.author.tag}\``);
+			await logsChannel.send(`Reacted \`❓\` to \`${msgContent}\` by \`${message.author.tag}\``);
 	}
 
 	if (msgContentLowerCase.includes('l\'état de la mission r') || msgContentLowerCase.includes('l\'état du secteur r')
@@ -140,13 +140,14 @@ client.on(Events.MessageCreate, async message => {
 		await message.reply(answer);
 		console.log(`Answered “${answer}” to “${msgContent}” by ${message.author.tag}`)
 		if (logsChannel != undefined)
-			logsChannel.send(`Answered “${answer}” to \`${msgContent}\` by \`${message.author.tag}\``);
+			await logsChannel.send(`Answered “${answer}” to \`${msgContent}\` by \`${message.author.tag}\``);
 	}
 });
 
 //Chat commands interactions
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
+	var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === 'dauda-logs');
 
 	const command = client.commands.get(interaction.commandName);
 
@@ -168,6 +169,7 @@ client.on(Events.InteractionCreate, async interaction => {
 //Button interactions
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isButton()) return;
+	var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === 'dauda-logs');
 
 	const commandArray = (interaction.customId).split('-');
 
