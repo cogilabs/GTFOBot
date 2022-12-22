@@ -15,7 +15,12 @@ global.rundowns = rundowns;
 const editJsonFile = require('edit-json-file');
 let file = editJsonFile('./rundowns/completion.json');
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent ] });
+const client = new Client({ intents: [
+	GatewayIntentBits.Guilds, 
+	GatewayIntentBits.GuildMessages, 
+	GatewayIntentBits.MessageContent, 
+	GatewayIntentBits.GuildScheduledEvents 
+] });
 global.client = client;
 
 client.commands = new Collection();
@@ -52,6 +57,46 @@ client.once(Events.ClientReady, () => {
 	console.log(`App started, ${client.user.tag} is now playing GTFO!`);
 	client.user.setPresence({ activities: [{ name: 'GTFO' }], status: 'online' });
 });
+
+//============================= Things to try more before using =====================================
+/*
+client.on('guildUpdate', (oldGuild, newGuild) => {
+  console.log('The server has been updated:');
+
+  // Check for changes to the server name
+  if (oldGuild.name !== newGuild.name) {
+    console.log(`- Server name changed from "${oldGuild.name}" to "${newGuild.name}"`);
+  }
+
+  // Check for changes to the server region
+  if (oldGuild.region !== newGuild.region) {
+    console.log(`- Server region changed from "${oldGuild.region}" to "${newGuild.region}"`);
+  }
+
+  // Check for changes to the server icon
+  if (oldGuild.iconURL() !== newGuild.iconURL()) {
+    console.log(`- Server icon changed`);
+  }
+
+  // Check for changes to the server roles
+  const addedRoles = newGuild.roles.cache.filter(role => !oldGuild.roles.cache.has(role.id));
+  const removedRoles = oldGuild.roles.cache.filter(role => !newGuild.roles.cache.has(role.id));
+  if (addedRoles.size > 0) {
+    console.log(`- Roles added: ${addedRoles.map(role => role.name).join(', ')}`);
+  }
+  if (removedRoles.size > 0) {
+    console.log(`- Roles removed: ${removedRoles.map(role => role.name).join(', ')}`);
+  }
+});
+
+client.on(Events.GuildScheduledEventCreate, async event => {
+	console.log('A new scheduled event has been created:');
+	console.log(`- Title: ${event.name}`);
+	console.log(`- Description: ${event.description}`);
+	console.log(`- Date: ${event.scheduledStartAt}`);
+});
+
+//============================= End of things to try more =====================================*/
 
 client.on(Events.MessageCreate, async message => {
 	if (message.author == client.user) return;
