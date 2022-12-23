@@ -22,7 +22,7 @@ module.exports = {
             fr: locFile['fr']['fr'].commands[cmdName].description,
         }),
 	async execute(interaction) {
-        var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === 'dauda-logs');
+        var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === logsChannelName);
         initialInteraction = interaction;
         var locale = '';
         for (var loc in supportedLocales) {
@@ -75,7 +75,7 @@ module.exports = {
         await interaction.reply({ components: rows, ephemeral: true });
     },
 	async replyButton(interaction) {
-        var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === 'dauda-logs');
+        var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === logsChannelName);
         var locale = '';
         for (var loc in supportedLocales) {
             if (interaction.locale == loc) locale = interaction.locale;

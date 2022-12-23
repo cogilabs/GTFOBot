@@ -15,7 +15,7 @@ module.exports = {
 		.setDefaultMemberPermissions(0)
 		.setDMPermission(false),
 	async execute(interaction) {
-        var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === 'dauda-logs');
+        var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === logsChannelName);
 		const message = interaction.options.getString('message');
 		await interaction.reply({ content: 'Sending...', ephemeral: true });
 		await interaction.channel.send({ content: message });

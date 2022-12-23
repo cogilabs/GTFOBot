@@ -4,6 +4,9 @@ const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 const { token } = require('./config.json');
 const { supportedLocales } = require('./localization/supportedLocales.json');
 
+const logsChannelName = 'dauda-logs';
+global.logsChannelName = logsChannelName;
+
 var locFile = new Array();
 for (var lang in supportedLocales) {
     locFile[lang] = require('./localization/' + lang + '.json');
@@ -59,16 +62,39 @@ client.once(Events.ClientReady, () => {
 });
 
 client.on(Events.GuildScheduledEventCreate, async event => {
-	var logsChannel = event.guild.channels.cache.find(channel => channel.name === 'dauda-logs');
+	var logsChannel = event.guild.channels.cache.find(channel => channel.name === logsChannelName);
 	var ping = '';
 	var roleName = 'Prisonniers';
-	var channel = event.guild.systemChannel;
-	//channel = event.guild.channels.cache.find(channel => channel.name === 'tests'); // DEBUG
+
 	console.log(`A new scheduled event has been created by <${event.creatorId}>:`);
 	console.log(`- Title: ${event.name}`);
 	console.log(`- Description: ${event.description}`);
 	console.log(`- Date: ${event.scheduledStartAt}`);
-	console.log(`Sent it to ${channel.name}`);
+
+	if (logsChannel != undefined)
+		await logsChannel.send(
+			`A new scheduled event has been created by <${event.creatorId}>:`
+			+ `\n - Title: ${event.name}`
+			+ `\n - Description: ${event.description}`
+			+ `\n - Date: ${event.scheduledStartAt}`
+		);
+
+	if (event.guild.channels.cache.find(channel => channel.name === 'general')) {
+		var channel = event.guild.channels.cache.find(channel => channel.name === 'general');
+	} else {
+		console.log('This server does not have a channel named \'general\', defaulting to the system channel...');
+		if (logsChannel != undefined)
+			await logsChannel.send('This server does not have a channel named \'general\', defaulting to the system channel...');
+		if (event.guild.systemChannel) {
+			var channel = event.guild.systemChannel;
+		} else {
+			console.log('This server does not have a system channel, aborting...');
+			if (logsChannel != undefined)
+				await logsChannel.send('This server does not have a system channel, aborting...');
+			return;
+		}
+	}
+	//channel = event.guild.channels.cache.find(channel => channel.name === 'tests'); // DEBUG
 	if (logsChannel != undefined)
 		await logsChannel.send(
 			`A new scheduled event has been created by <${event.creatorId}>:`
@@ -97,11 +123,14 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 		+ '||​||||​||||​|| _ _ _ _ _ _'
 		+ event.url
 	); // That mess allow us to show the link embed without the link, and yes, this is a glitch
+	console.log(`Sent it to ${channel.name}`);
+	if (logsChannel != undefined)
+		await logsChannel.send(`\nSent it to \`${channel.name}\``);
 });
 
 client.on(Events.MessageCreate, async message => {
 	if (message.author == client.user) return;
-	var logsChannel = message.guild.channels.cache.find(channel => channel.name === 'dauda-logs');
+	var logsChannel = message.guild.channels.cache.find(channel => channel.name === logsChannelName);
 	var locale = '';
 	for (var loc in supportedLocales) {
 		if (message.guild.preferredLocale == loc) locale = message.guild.preferredLocale;
@@ -193,7 +222,7 @@ client.on(Events.MessageCreate, async message => {
 //Chat commands interactions
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
-	var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === 'dauda-logs');
+	var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === logsChannelName);
 
 	const command = client.commands.get(interaction.commandName);
 
@@ -215,7 +244,7 @@ client.on(Events.InteractionCreate, async interaction => {
 //Button interactions
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isButton()) return;
-	var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === 'dauda-logs');
+	var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === logsChannelName);
 
 	const commandArray = (interaction.customId).split('-');
 
