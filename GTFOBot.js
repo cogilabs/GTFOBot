@@ -65,6 +65,7 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 	var logsChannel = event.guild.channels.cache.find(channel => channel.name === logsChannelName);
 	var ping = '';
 	var roleName = 'Prisonniers';
+	var missionName = '';
 
 	console.log(`A new scheduled event has been created by <${event.creatorId}>:`);
 	console.log(`- Title: ${event.name}`);
@@ -94,16 +95,21 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 			return;
 		}
 	}
-	// TODO: Take care of that automatically, like `ch:tests` for instance
-	if (event.description.includes('`tests`'))
-		channel = event.guild.channels.cache.find(channel => channel.name === 'tests');
-	if (event.description.includes('`testsshowroom`'))
-		channel = event.guild.channels.cache.find(channel => channel.name === 'testsshowroom');
-	// I wouls like to add a way for the bot to display the mission ID in the message
-	if (event.guild.roles.cache.find(role => role.name === roleName) != undefined) ping = `Hey <@&${event.guild.roles.cache.find(role => role.name === roleName).id}> !\n`;
+	
+	if (event.description.match(/`ch:[aàâbcçdeéèêfghiïjklmnoôpqrstuùûvwxyz-]+`/))
+		channel = event.guild.channels.cache.find(channel => channel.name === event.description.match(/ch:[aàâbcçdeéèêfghiïjklmnoôpqrstuùûvwxyz-]+/)[0].split(':')[1]);
+
+	for (i in (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)) {
+		var j = (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)[i];
+		missionName = ` vers ***${j}***`;
+	}
+
+	if (event.guild.roles.cache.find(role => role.name === roleName) != undefined) 
+		ping = `Hey <@&${event.guild.roles.cache.find(role => role.name === roleName).id}> !\n\n`;
+
 	channel.send(
 		ping 
-		+ 'Une nouvelle expédition est prévue, alors soyez prêts à travailler ensemble, ou à mourir ensemble !\n '
+		+ `Le Gardien a prévu une nouvelle expédition${missionName}, alors soyez prêts à travailler ensemble, ou à mourir ensemble !\n `
 		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
 		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
 		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
