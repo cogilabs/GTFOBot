@@ -60,7 +60,7 @@ client.once(Events.ClientReady, () => {
 	console.log(`App started, ${client.user.tag} is now playing GTFO!`);
 	client.user.setPresence({ activities: [{ name: 'GTFO' }], status: 'online' });
 });
-
+// ====================== NEEDS TO BE LOCALIZED !!! ============================
 client.on(Events.GuildScheduledEventCreate, async event => {
 	var logsChannel = event.guild.channels.cache.find(channel => channel.name === logsChannelName);
 	var ping = '';
@@ -108,7 +108,7 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 		ping = `Hey <@&${event.guild.roles.cache.find(role => role.name === roleName).id}> !\n\n`;
 
 	channel.send(
-		ping 
+		ping
 		+ `Le Gardien a prévu une nouvelle expédition${missionName}, alors soyez prêts à travailler ensemble, ou à mourir ensemble !\n `
 		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
 		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
@@ -204,7 +204,7 @@ client.on(Events.MessageCreate, async message => {
 				(`Answered “${locFile[locale][locale].system.missionNotFound.replace('#', MID)}” to \`${msgContent}\` by \`${message.author.tag}\``);
 		}
 	}
-
+	// ====================== NEEDS TO BE LOCALIZED !!! ============================
 	if (msgContentLowerCase.includes('merci dauda') || msgContentLowerCase.includes('merci beaucoup dauda') || msgContentLowerCase.includes('merci à toi dauda')) {
 		var response = [
 			"Mais de rien !",
