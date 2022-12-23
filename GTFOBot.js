@@ -94,19 +94,16 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 			return;
 		}
 	}
-	//channel = event.guild.channels.cache.find(channel => channel.name === 'tests'); // DEBUG
-	if (logsChannel != undefined)
-		await logsChannel.send(
-			`A new scheduled event has been created by <${event.creatorId}>:`
-			+ `\n - Title: ${event.name}`
-			+ `\n - Description: ${event.description}`
-			+ `\n - Date: ${event.scheduledStartAt}`
-			+ `\nSent it to \`${channel.name}\``
-		);
+	// TODO: Take care of that automatically, like `ch:tests` for instance
+	if (event.description.includes('`tests`'))
+		channel = event.guild.channels.cache.find(channel => channel.name === 'tests');
+	if (event.description.includes('`testsshowroom`'))
+		channel = event.guild.channels.cache.find(channel => channel.name === 'testsshowroom');
+	// I wouls like to add a way for the bot to display the mission ID in the message
 	if (event.guild.roles.cache.find(role => role.name === roleName) != undefined) ping = `Hey <@&${event.guild.roles.cache.find(role => role.name === roleName).id}> !\n`;
 	channel.send(
 		ping 
-		+ 'Une nouvelle expédition est prévue, alors soyez prêts !\n '
+		+ 'Une nouvelle expédition est prévue, alors soyez prêts à travailler ensemble, ou à mourir ensemble !\n '
 		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
 		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
 		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
@@ -122,7 +119,7 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
 		+ '||​||||​||||​|| _ _ _ _ _ _'
 		+ event.url
-	); // That mess allow us to show the link embed without the link, and yes, this is a glitch
+	); // That mess allows us to show the link embed without the link, and yes, this is a glitch
 	console.log(`Sent it to ${channel.name}`);
 	if (logsChannel != undefined)
 		await logsChannel.send(`\nSent it to \`${channel.name}\``);
