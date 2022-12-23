@@ -58,45 +58,46 @@ client.once(Events.ClientReady, () => {
 	client.user.setPresence({ activities: [{ name: 'GTFO' }], status: 'online' });
 });
 
-//============================= Things to try more before using =====================================
-/*
-client.on('guildUpdate', (oldGuild, newGuild) => {
-  console.log('The server has been updated:');
-
-  // Check for changes to the server name
-  if (oldGuild.name !== newGuild.name) {
-    console.log(`- Server name changed from "${oldGuild.name}" to "${newGuild.name}"`);
-  }
-
-  // Check for changes to the server region
-  if (oldGuild.region !== newGuild.region) {
-    console.log(`- Server region changed from "${oldGuild.region}" to "${newGuild.region}"`);
-  }
-
-  // Check for changes to the server icon
-  if (oldGuild.iconURL() !== newGuild.iconURL()) {
-    console.log(`- Server icon changed`);
-  }
-
-  // Check for changes to the server roles
-  const addedRoles = newGuild.roles.cache.filter(role => !oldGuild.roles.cache.has(role.id));
-  const removedRoles = oldGuild.roles.cache.filter(role => !newGuild.roles.cache.has(role.id));
-  if (addedRoles.size > 0) {
-    console.log(`- Roles added: ${addedRoles.map(role => role.name).join(', ')}`);
-  }
-  if (removedRoles.size > 0) {
-    console.log(`- Roles removed: ${removedRoles.map(role => role.name).join(', ')}`);
-  }
-});
-
 client.on(Events.GuildScheduledEventCreate, async event => {
-	console.log('A new scheduled event has been created:');
+	var logsChannel = event.guild.channels.cache.find(channel => channel.name === 'dauda-logs');
+	var ping = '';
+	var roleName = 'Prisonniers';
+	var channel = event.guild.systemChannel;
+	//channel = event.guild.channels.cache.find(channel => channel.name === 'tests'); // DEBUG
+	console.log(`A new scheduled event has been created by <${event.creatorId}>:`);
 	console.log(`- Title: ${event.name}`);
 	console.log(`- Description: ${event.description}`);
 	console.log(`- Date: ${event.scheduledStartAt}`);
+	console.log(`Sent it to ${channel.name}`);
+	if (logsChannel != undefined)
+		await logsChannel.send(
+			`A new scheduled event has been created by <${event.creatorId}>:`
+			+ `\n - Title: ${event.name}`
+			+ `\n - Description: ${event.description}`
+			+ `\n - Date: ${event.scheduledStartAt}`
+			+ `\nSent it to \`${channel.name}\``
+		);
+	if (event.guild.roles.cache.find(role => role.name === roleName) != undefined) ping = `Hey <@&${event.guild.roles.cache.find(role => role.name === roleName).id}> !\n`;
+	channel.send(
+		ping 
+		+ 'Une nouvelle expédition est prévue, alors soyez prêts !\n '
+		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
+		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
+		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
+		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
+		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
+		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
+		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
+		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
+		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
+		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
+		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
+		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
+		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
+		+ '||​||||​||||​|| _ _ _ _ _ _'
+		+ event.url
+	); // That mess allow us to show the link embed without the link, and yes, this is a glitch
 });
-
-//============================= End of things to try more =====================================*/
 
 client.on(Events.MessageCreate, async message => {
 	if (message.author == client.user) return;
