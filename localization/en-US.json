@@ -169,11 +169,16 @@
         "noButtonPermission": "You don't have the permission to use this button!",
         "commandError": "There was an error while executing this command!",
         "buttonError": "There was an error while treating the button!",
-        "missionNotFound": "I can't find the mission #, could you check if it really exists? (Don't hesitate to do **`/rundowns`** to check :wink:)"
+        "missionNotFound": "I can't find the mission #, could you check if it really exists? (Don't hesitate to do **`/rundowns`** to check :wink:)",
+        "sending": "Sending..."
       },
       "commands": {
         "rundowns": {
             "description": "State of the expeditions, mission descriptions and completion"
+        },
+        "echo": {
+            "description": "Send a message in the current channel",
+            "option1": "The content of the message to send"
         }
       },
       "missions": {
