@@ -137,42 +137,45 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 
 client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 	var logsChannel = event.guild.channels.cache.find(channel => channel.name === logsChannelName);
+	var ping = '';
+	var roleName = 'Prisonniers';
+	var missionName = '';
+	var MID = '';
+	var MIDp = '';
+
+	if (event.guild.channels.cache.find(channel => channel.name === 'general')) {
+		var channel = event.guild.channels.cache.find(channel => channel.name === 'general');
+	} else {
+		console.log('This server does not have a channel named \'general\', defaulting to the system channel...');
+		if (logsChannel != undefined)
+			await logsChannel.send('This server does not have a channel named \'general\', defaulting to the system channel...');
+		if (event.guild.systemChannel) {
+			var channel = event.guild.systemChannel;
+		} else {
+			console.log('This server does not have a system channel, aborting...');
+			if (logsChannel != undefined)
+				await logsChannel.send('This server does not have a system channel, aborting...');
+			return;
+		}
+	}
+	
+	oldCh = channel;
+	if (event.description.match(/`ch:[aàâbcçdeéèêfghiïjklmnoôpqrstuùûvwxyz-]+`/))
+		channel = event.guild.channels.cache.find(channel => channel.name === event.description.match(/ch:[aàâbcçdeéèêfghiïjklmnoôpqrstuùûvwxyz-]+/)[0].split(':')[1]);
+	
+	if (channel == undefined)
+		channel = oldCh;
+
+	for (i in (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)) {
+		var j = (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)[i];
+		missionName = ` vers ***${j}***`;
+		MID = j;
+		MIDp = ` (${j})`;
+	}
 
 	// Event started
 	if (oldEvent.status === 1 && event.status === 2) {
-		var ping = '';
-		var roleName = 'Prisonniers';
-		var missionName = '';
-		var MID = '';
 		console.log(`Event “${event.name}” started!`)
-		if (event.guild.channels.cache.find(channel => channel.name === 'general')) {
-			var channel = event.guild.channels.cache.find(channel => channel.name === 'general');
-		} else {
-			console.log('This server does not have a channel named \'general\', defaulting to the system channel...');
-			if (logsChannel != undefined)
-				await logsChannel.send('This server does not have a channel named \'general\', defaulting to the system channel...');
-			if (event.guild.systemChannel) {
-				var channel = event.guild.systemChannel;
-			} else {
-				console.log('This server does not have a system channel, aborting...');
-				if (logsChannel != undefined)
-					await logsChannel.send('This server does not have a system channel, aborting...');
-				return;
-			}
-		}
-		
-		oldCh = channel;
-		if (event.description.match(/`ch:[aàâbcçdeéèêfghiïjklmnoôpqrstuùûvwxyz-]+`/))
-			channel = event.guild.channels.cache.find(channel => channel.name === event.description.match(/ch:[aàâbcçdeéèêfghiïjklmnoôpqrstuùûvwxyz-]+/)[0].split(':')[1]);
-		
-		if (channel == undefined)
-			channel = oldCh;
-	
-		for (i in (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)) {
-			var j = (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)[i];
-			missionName = ` vers ***${j}***`;
-			MID = ` (${j})`;
-		}
 	
 		if (event.guild.roles.cache.find(role => role.name === roleName) != undefined) 
 			ping = `Hey <@&${event.guild.roles.cache.find(role => role.name === roleName).id}> !\n\n`;
@@ -195,12 +198,32 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 			+ '||​||||​||||​|| _ _ _ _ _ _' + event.url
 		); // That mess allows us to show the link embed without the link, and yes, this is a glitch
 
-		client.user.setPresence({ activities: [{ name: `GTFO${MID}` }], status: 'dnd' });
+		client.user.setPresence({ activities: [{ name: `GTFO${MIDp}` }], status: 'dnd' });
 	}
 
 	// Event finished
 	if (oldEvent.status === 2 && event.status === 3) {
 		console.log(`Event “${event.name}” finished!`)
+
+		if (MID != '') {
+			for (var run in rundowns) {
+                for (var lt in rundowns[run]) {
+                    for (var id in rundowns[run][lt]) {
+                        if (MID == run + id) {
+							if (completion[run][lt][id].completed.main) {
+								console.log('Succès !');
+								channel.send(`C'est avec succès que l'expédition${missionName} est maintenant terminée !\nÇa c'est une équipe de choc !`);
+							} else {
+								console.log('Échec !');
+								channel.send(`L'expédition${missionName} s'est soldée par un échec, mais la prochaine sera la bonne !`);
+							}
+						}
+					}
+				}
+			}
+		}
+
+
 		client.user.setPresence({ activities: [{ name: 'Available', type: 4 }], status: 'online' });
 	}
 });
