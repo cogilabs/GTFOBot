@@ -37,7 +37,7 @@ for (const file of commandFiles) {
 }
 
 client.once(Events.ClientReady, () => {
-	client.user.setPresence({ activities: [{ name: 'Starting...' }], status: 'away' });
+	client.user.setPresence({ activities: [{ name: `Starting...` }], status: 'away' });
 	console.log('Checking completion file...');
 	for (var run in rundowns) {
 		for (var lt in rundowns[run]) {
@@ -57,8 +57,8 @@ client.once(Events.ClientReady, () => {
 	var { completion } = require('./rundowns/completion.json');
 	global.completion = completion;
 	
-	console.log(`App started, ${client.user.tag} is now playing GTFO!`);
-	client.user.setPresence({ activities: [{ name: 'GTFO' }], status: 'online' });
+	console.log(`App started, ${client.user.tag} is now online!`);
+	client.user.setPresence({ activities: [{ name: 'Available', type: 4 }], status: 'online' });
 });
 // ====================== NEEDS TO BE LOCALIZED !!! ============================
 client.on(Events.GuildScheduledEventCreate, async event => {
@@ -96,8 +96,12 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 		}
 	}
 	
+	oldCh = channel;
 	if (event.description.match(/`ch:[aàâbcçdeéèêfghiïjklmnoôpqrstuùûvwxyz-]+`/))
 		channel = event.guild.channels.cache.find(channel => channel.name === event.description.match(/ch:[aàâbcçdeéèêfghiïjklmnoôpqrstuùûvwxyz-]+/)[0].split(':')[1]);
+	
+	if (channel == undefined)
+		channel = oldCh;
 
 	for (i in (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)) {
 		var j = (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)[i];
@@ -108,8 +112,8 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 		ping = `Hey <@&${event.guild.roles.cache.find(role => role.name === roleName).id}> !\n\n`;
 
 	channel.send(
-		ping
-		+ `Le Gardien a prévu une nouvelle expédition${missionName}, alors soyez prêts à travailler ensemble, ou à mourir ensemble !\n `
+		ping + 'Le Gardien a prévu une nouvelle expédition' + missionName
+		+ ', alors soyez prêts à travailler ensemble, ou à mourir ensemble !\n '
 		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
 		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
 		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
@@ -123,12 +127,82 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
 		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
 		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-		+ '||​||||​||||​|| _ _ _ _ _ _'
-		+ event.url
+		+ '||​||||​||||​|| _ _ _ _ _ _' + event.url
 	); // That mess allows us to show the link embed without the link, and yes, this is a glitch
 	console.log(`Sent it to ${channel.name}`);
 	if (logsChannel != undefined)
 		await logsChannel.send(`\nSent it to \`${channel.name}\``);
+});
+
+
+client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
+	var logsChannel = event.guild.channels.cache.find(channel => channel.name === logsChannelName);
+
+	// Event started
+	if (oldEvent.status === 1 && event.status === 2) {
+		var ping = '';
+		var roleName = 'Prisonniers';
+		var missionName = '';
+		var MID = '';
+		console.log(`Event “${event.name}” started!`)
+		if (event.guild.channels.cache.find(channel => channel.name === 'general')) {
+			var channel = event.guild.channels.cache.find(channel => channel.name === 'general');
+		} else {
+			console.log('This server does not have a channel named \'general\', defaulting to the system channel...');
+			if (logsChannel != undefined)
+				await logsChannel.send('This server does not have a channel named \'general\', defaulting to the system channel...');
+			if (event.guild.systemChannel) {
+				var channel = event.guild.systemChannel;
+			} else {
+				console.log('This server does not have a system channel, aborting...');
+				if (logsChannel != undefined)
+					await logsChannel.send('This server does not have a system channel, aborting...');
+				return;
+			}
+		}
+		
+		oldCh = channel;
+		if (event.description.match(/`ch:[aàâbcçdeéèêfghiïjklmnoôpqrstuùûvwxyz-]+`/))
+			channel = event.guild.channels.cache.find(channel => channel.name === event.description.match(/ch:[aàâbcçdeéèêfghiïjklmnoôpqrstuùûvwxyz-]+/)[0].split(':')[1]);
+		
+		if (channel == undefined)
+			channel = oldCh;
+	
+		for (i in (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)) {
+			var j = (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)[i];
+			missionName = ` vers ***${j}***`;
+			MID = ` (${j})`;
+		}
+	
+		if (event.guild.roles.cache.find(role => role.name === roleName) != undefined) 
+			ping = `Hey <@&${event.guild.roles.cache.find(role => role.name === roleName).id}> !\n\n`;
+	
+		channel.send(
+			ping + `L'expédition${missionName} démarre, alors préparez-vous et rejoignez-nous !\n `
+			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
+			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
+			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
+			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
+			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
+			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
+			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
+			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
+			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
+			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
+			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
+			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
+			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
+			+ '||​||||​||||​|| _ _ _ _ _ _' + event.url
+		); // That mess allows us to show the link embed without the link, and yes, this is a glitch
+
+		client.user.setPresence({ activities: [{ name: `GTFO${MID}` }], status: 'dnd' });
+	}
+
+	// Event finished
+	if (oldEvent.status === 2 && event.status === 3) {
+		console.log(`Event “${event.name}” finished!`)
+		client.user.setPresence({ activities: [{ name: 'Available', type: 4 }], status: 'online' });
+	}
 });
 
 client.on(Events.MessageCreate, async message => {
