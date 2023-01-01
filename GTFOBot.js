@@ -262,6 +262,7 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 						}
 					}
 				}
+				client.user.setPresence({ activities: [{ name: `GTFO (${MID})` }], status: 'dnd' });
 			}
 		}
 
