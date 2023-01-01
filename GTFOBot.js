@@ -197,8 +197,8 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 			+ '||​||||​||||​|| _ _ _ _ _ _' + event.url
 		); // That mess allows us to show the link embed without the link, and yes, this is a glitch
 
-		await logsChannel.send(`Event “${event.name}”${MIDp} started\nSent it to ${channel.name}`);
-		console.log(`Event “${event.name}”${MIDp} started\nSent it to ${channel.name}`);
+		await logsChannel.send(`Event “${event.name}”${MIDp} started\nSent it to \`${channel.name}\``);
+		console.log(`Event “${event.name}”${MIDp} started\nSent it to \`${channel.name}\``);
 
 		client.user.setPresence({ activities: [{ name: `GTFO${MIDp}` }], status: 'dnd' });
 	}
@@ -213,12 +213,12 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
                         if (MID == run + id) {
 							if (completion[run][lt][id].completed.main) {
 								await channel.send(`C'est avec succès que l'expédition${missionName} est maintenant terminée !\nÇa c'est une équipe de choc !`);
-								await logsChannel.send(`Event “${event.name}”${MIDp} finished! (success)\nSent it to ${channel.name}`);
-								console.log(`Event “${event.name}”${MIDp} finished! (success)\nSent it to ${channel.name}`);
+								await logsChannel.send(`Event “${event.name}”${MIDp} finished! (success)\nSent it to \`${channel.name}\``);
+								console.log(`Event “${event.name}”${MIDp} finished! (success)\nSent it to \`${channel.name}\``);
 							} else {
 								await channel.send(`L'expédition${missionName} s'est soldée par un échec, mais la prochaine sera la bonne !`);
-								await logsChannel.send(`Event “${event.name}”${MIDp} finished! (failure)\nSent it to ${channel.name}`);
-								console.log(`Event “${event.name}”${MIDp} finished! (failure)\nSent it to ${channel.name}`);
+								await logsChannel.send(`Event “${event.name}”${MIDp} finished! (failure)\nSent it to \`${channel.name}\``);
+								console.log(`Event “${event.name}”${MIDp} finished! (failure)\nSent it to \`${channel.name}\``);
 							}
 						}
 					}
@@ -251,8 +251,12 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 							if (oldMID == run + id) {
 								if (completion[run][lt][id].completed.main) {
 									await channel.send(`C'est avec succès que l'expédition vers ***${oldMID}*** se dirige maintenant vers ***${MID}***!`);
+									await logsChannel.send(`Event “${event.name}” (${oldMID}) modified to ${MID}! (success)\nSent it to \`${channel.name}\``);
+									console.log(`Event “${event.name}”${MIDp} finished! (success)\nSent it to \`${channel.name}\``);
 								} else {
 									await channel.send(`L'expédition vers ***${oldMID}*** a échoué, mais peu importe, nous sommes maintenant envoyés vers ***${MID}***!`);
+									await logsChannel.send(`Event “${event.name}” (${oldMID}) modified to ${MID}! (failure)\nSent it to \`${channel.name}\``);
+									console.log(`Event “${event.name}”${MIDp} finished! (failure)\nSent it to \`${channel.name}\``);
 								}
 							}
 						}
