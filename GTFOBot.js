@@ -111,7 +111,7 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 	if (event.guild.roles.cache.find(role => role.name === roleName) != undefined) 
 		ping = `Hey <@&${event.guild.roles.cache.find(role => role.name === roleName).id}> !\n\n`;
 
-	channel.send(
+	await channel.send(
 		ping + 'Le Gardien a prévu une nouvelle expédition' + missionName
 		+ ', alors soyez prêts à travailler ensemble, ou à mourir ensemble !\n '
 		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
@@ -175,12 +175,11 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 
 	// Event started
 	if (oldEvent.status === 1 && event.status === 2) {
-		console.log(`Event “${event.name}” started!`)
 	
 		if (event.guild.roles.cache.find(role => role.name === roleName) != undefined) 
 			ping = `Hey <@&${event.guild.roles.cache.find(role => role.name === roleName).id}> !\n\n`;
 	
-		channel.send(
+		await channel.send(
 			ping + `L'expédition${missionName} démarre, alors préparez-vous et rejoignez-nous !\n `
 			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
 			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
@@ -198,12 +197,14 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 			+ '||​||||​||||​|| _ _ _ _ _ _' + event.url
 		); // That mess allows us to show the link embed without the link, and yes, this is a glitch
 
+		await logsChannel.send(`Event “${event.name}”${MIDp} started, channel: ${channel.name}`);
+		console.log(`Event “${event.name}”${MIDp} started, channel: ${channel.name}`);
+
 		client.user.setPresence({ activities: [{ name: `GTFO${MIDp}` }], status: 'dnd' });
 	}
 
 	// Event finished
 	if (oldEvent.status === 2 && event.status === 3) {
-		console.log(`Event “${event.name}” finished!`)
 
 		if (MID != '') {
 			for (var run in rundowns) {
@@ -211,11 +212,14 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
                     for (var id in rundowns[run][lt]) {
                         if (MID == run + id) {
 							if (completion[run][lt][id].completed.main) {
-								console.log('Succès !');
-								channel.send(`C'est avec succès que l'expédition${missionName} est maintenant terminée !\nÇa c'est une équipe de choc !`);
+								await channel.send(`C'est avec succès que l'expédition${missionName} est maintenant terminée !\nÇa c'est une équipe de choc !`);
+								await logsChannel.send(`Event “${event.name}”${MIDp} finished! (success), channel: ${channel.name}`);
+								console.log(`Event “${event.name}”${MIDp} finished! (success), channel: ${channel.name}`);
 							} else {
 								console.log('Échec !');
-								channel.send(`L'expédition${missionName} s'est soldée par un échec, mais la prochaine sera la bonne !`);
+								await channel.send(`L'expédition${missionName} s'est soldée par un échec, mais la prochaine sera la bonne !`);
+								await logsChannel.send(`Event “${event.name}”${MIDp} finished! (failure), channel: ${channel.name}`);
+								console.log(`Event “${event.name}”${MIDp} finished! (failure), channel: ${channel.name}`);
 							}
 						}
 					}
