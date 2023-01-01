@@ -197,8 +197,8 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 			+ '||​||||​||||​|| _ _ _ _ _ _' + event.url
 		); // That mess allows us to show the link embed without the link, and yes, this is a glitch
 
-		await logsChannel.send(`Event “${event.name}”${MIDp} started, channel: ${channel.name}`);
-		console.log(`Event “${event.name}”${MIDp} started, channel: ${channel.name}`);
+		await logsChannel.send(`Event “${event.name}”${MIDp} started\nSent it to ${channel.name}`);
+		console.log(`Event “${event.name}”${MIDp} started\nSent it to ${channel.name}`);
 
 		client.user.setPresence({ activities: [{ name: `GTFO${MIDp}` }], status: 'dnd' });
 	}
@@ -213,13 +213,12 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
                         if (MID == run + id) {
 							if (completion[run][lt][id].completed.main) {
 								await channel.send(`C'est avec succès que l'expédition${missionName} est maintenant terminée !\nÇa c'est une équipe de choc !`);
-								await logsChannel.send(`Event “${event.name}”${MIDp} finished! (success), channel: ${channel.name}`);
-								console.log(`Event “${event.name}”${MIDp} finished! (success), channel: ${channel.name}`);
+								await logsChannel.send(`Event “${event.name}”${MIDp} finished! (success)\nSent it to ${channel.name}`);
+								console.log(`Event “${event.name}”${MIDp} finished! (success)\nSent it to ${channel.name}`);
 							} else {
-								console.log('Échec !');
 								await channel.send(`L'expédition${missionName} s'est soldée par un échec, mais la prochaine sera la bonne !`);
-								await logsChannel.send(`Event “${event.name}”${MIDp} finished! (failure), channel: ${channel.name}`);
-								console.log(`Event “${event.name}”${MIDp} finished! (failure), channel: ${channel.name}`);
+								await logsChannel.send(`Event “${event.name}”${MIDp} finished! (failure)\nSent it to ${channel.name}`);
+								console.log(`Event “${event.name}”${MIDp} finished! (failure)\nSent it to ${channel.name}`);
 							}
 						}
 					}
@@ -229,6 +228,39 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 
 
 		client.user.setPresence({ activities: [{ name: 'Available', type: 4 }], status: 'online' });
+	}
+
+	// Event modified
+	if ((oldEvent.name != event.name) || (oldEvent.description != event.description)) {
+		var oldMID = '';
+
+		for (i in (oldEvent.description + ' ' + oldEvent.name).match(/R[0-9][A-F][0-9]/g)) {
+			var j = (oldEvent.description + ' ' + oldEvent.name).match(/R[0-9][A-F][0-9]/g)[i];
+			oldMID = j;
+		}
+		for (i in (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)) {
+			var j = (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)[i];
+			MID = j;
+		}
+
+		if (MID != oldMID) {
+			if (oldMID != '') {
+				for (var run in rundowns) {
+					for (var lt in rundowns[run]) {
+						for (var id in rundowns[run][lt]) {
+							if (oldMID == run + id) {
+								if (completion[run][lt][id].completed.main) {
+									await channel.send(`C'est avec succès que l'expédition vers ***${oldMID}*** se dirige maintenant vers ***${MID}***!`);
+								} else {
+									await channel.send(`L'expédition vers ***${oldMID}*** a échoué, mais peu importe, nous sommes maintenant envoyés vers ***${MID}***!`);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
 	}
 });
 
