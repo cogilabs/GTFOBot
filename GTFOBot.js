@@ -36,7 +36,7 @@ for (const file of commandFiles) {
 	client.commands.set(command.data.name, command);
 }
 
-client.once(Events.ClientReady, () => {
+client.once(Events.ClientReady, async () => {
 	client.user.setPresence({ activities: [{ name: `Starting...` }], status: 'away' });
 	console.log('Checking completion file...');
 	for (var run in rundowns) {
@@ -57,8 +57,11 @@ client.once(Events.ClientReady, () => {
 	var { completion } = require('./rundowns/completion.json');
 	global.completion = completion;
 	
-	console.log(`App started, ${client.user.tag} is now online!`);
+	console.log(`App started, ${client.user.tag} is now online on ${client.guilds.cache.size} server(s)!`);
 	client.user.setPresence({ activities: [{ name: 'Available', type: 4 }], status: 'online' });
+
+	var logsChList = client.channels.cache.filter(channel => channel.name === logsChannelName);
+	logsChList.forEach(async channel => await channel.send(`App started, <@${client.user.id}> is now online on \`${client.guilds.cache.size}\` server(s)!`));
 });
 // ====================== NEEDS TO BE LOCALIZED !!! ============================
 client.on(Events.GuildScheduledEventCreate, async event => {
