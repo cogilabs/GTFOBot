@@ -16,7 +16,6 @@ const { rundowns } = require('./rundowns/rundowns.json');
 global.rundowns = rundowns;
 
 const editJsonFile = require('edit-json-file');
-const { timeStamp } = require('node:console');
 let file = editJsonFile('./rundowns/completion.json');
 
 const client = new Client({ 
@@ -141,9 +140,10 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 	await channel.send(`<@${event.creatorId}> participe à l'expédition !`);
 	console.log(`Sent it to ${channel.name}`);
 	console.log(`<${event.creatorId}> automatically joined the event “${event.name}”`);
-	await logsChannel.send(`\`<${event.creatorId}>\` automatically joined the event “${event.name}”`);
-	if (logsChannel != undefined)
-		await logsChannel.send(`\nSent it to \`${channel.name}\``);
+	if (logsChannel != undefined) {
+		await logsChannel.send(`Sent it to \`${channel.name}\``);
+		await logsChannel.send(`\`<${event.creatorId}>\` automatically joined the event “${event.name}”`);
+	}
 });
 
 
@@ -209,7 +209,8 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 			+ '||​||||​||||​|| _ _ _ _ _ _' + event.url
 		); // That mess allows us to show the link embed without the link, and yes, this is a glitch
 
-		await logsChannel.send(`Event “${event.name}”${MIDp} started\nSent it to \`${channel.name}\``);
+		if (logsChannel != undefined)
+			await logsChannel.send(`Event “${event.name}”${MIDp} started\nSent it to \`${channel.name}\``);
 		console.log(`Event “${event.name}”${MIDp} started\nSent it to \`${channel.name}\``);
 
 		client.user.setPresence({ activities: [{ name: `GTFO${MIDp}` }], status: 'dnd' });
@@ -225,11 +226,13 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
                         if (MID == run + id) {
 							if (completion[run][lt][id].completed.main) {
 								await channel.send(`C'est avec succès que l'expédition${missionName} est maintenant terminée !\nÇa c'est une équipe de choc !`);
-								await logsChannel.send(`Event “${event.name}”${MIDp} finished! (success)\nSent it to \`${channel.name}\``);
+								if (logsChannel != undefined)
+									await logsChannel.send(`Event “${event.name}”${MIDp} finished! (success)\nSent it to \`${channel.name}\``);
 								console.log(`Event “${event.name}”${MIDp} finished! (success)\nSent it to \`${channel.name}\``);
 							} else {
 								await channel.send(`L'expédition${missionName} s'est soldée par un échec, mais la prochaine sera la bonne !`);
-								await logsChannel.send(`Event “${event.name}”${MIDp} finished! (failure)\nSent it to \`${channel.name}\``);
+								if (logsChannel != undefined)
+									await logsChannel.send(`Event “${event.name}”${MIDp} finished! (failure)\nSent it to \`${channel.name}\``);
 								console.log(`Event “${event.name}”${MIDp} finished! (failure)\nSent it to \`${channel.name}\``);
 							}
 						}
@@ -263,11 +266,13 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 							if (oldMID == run + id) {
 								if (completion[run][lt][id].completed.main) {
 									await channel.send(`C'est avec succès que l'expédition vers ***${oldMID}*** se dirige maintenant vers ***${MID}***!`);
-									await logsChannel.send(`Event “${event.name}” (${oldMID}) modified to ${MID}! (success)\nSent it to \`${channel.name}\``);
+									if (logsChannel != undefined)
+										await logsChannel.send(`Event “${event.name}” (${oldMID}) modified to ${MID}! (success)\nSent it to \`${channel.name}\``);
 									console.log(`Event “${event.name}”${MIDp} finished! (success)\nSent it to \`${channel.name}\``);
 								} else {
 									await channel.send(`L'expédition vers ***${oldMID}*** a échoué, mais peu importe, nous sommes maintenant envoyés vers ***${MID}***!`);
-									await logsChannel.send(`Event “${event.name}” (${oldMID}) modified to ${MID}! (failure)\nSent it to \`${channel.name}\``);
+									if (logsChannel != undefined)
+										await logsChannel.send(`Event “${event.name}” (${oldMID}) modified to ${MID}! (failure)\nSent it to \`${channel.name}\``);
 									console.log(`Event “${event.name}”${MIDp} finished! (failure)\nSent it to \`${channel.name}\``);
 								}
 							}
@@ -284,7 +289,6 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 
 client.on(Events.GuildScheduledEventUserAdd, async (event, user) => {
 	var logsChannel = event.guild.channels.cache.find(channel => channel.name === logsChannelName);
-	var MID = '';
 
 	if (event.guild.channels.cache.find(channel => channel.name === 'general')) {
 		var channel = event.guild.channels.cache.find(channel => channel.name === 'general');
@@ -317,7 +321,8 @@ client.on(Events.GuildScheduledEventUserAdd, async (event, user) => {
 	if (Date.now() > event.createdTimestamp + 10000) {
 		await channel.send(`<@${user.id}> participe à l'expédition !`);
 		console.log(`@${user.tag} joined the event “${event.name}”`);
-		await logsChannel.send(`\`@${user.tag}\` joined the event “${event.name}”`);
+		if (logsChannel != undefined)
+			await logsChannel.send(`\`@${user.tag}\` joined the event “${event.name}”`);
 	}
 });
 
@@ -356,7 +361,8 @@ client.on(Events.GuildScheduledEventUserRemove, async (event, user) => {
 	await channel.send(`<@${user.id}> ne participe plus à l'expédition !`);
 
 	console.log(`@${user.tag} lef the event “${event.name}”`);
-	await logsChannel.send(`\`@${user.tag}\` left the event “${event.name}”`);
+	if (logsChannel != undefined)
+		await logsChannel.send(`\`@${user.tag}\` left the event “${event.name}”`);
 	
 });
 
