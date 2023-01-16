@@ -1,6 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits, Partials } = require('discord.js');
 const { token } = require('./config.json');
 const { supportedLocales } = require('./localization/supportedLocales.json');
 
@@ -19,12 +19,17 @@ const editJsonFile = require('edit-json-file');
 const { timeStamp } = require('node:console');
 let file = editJsonFile('./rundowns/completion.json');
 
-const client = new Client({ intents: [
-	GatewayIntentBits.Guilds, 
-	GatewayIntentBits.GuildMessages, 
-	GatewayIntentBits.MessageContent, 
-	GatewayIntentBits.GuildScheduledEvents 
-] });
+const client = new Client({ 
+	intents: [
+		GatewayIntentBits.Guilds, 
+		GatewayIntentBits.GuildMessages, 
+		GatewayIntentBits.MessageContent, 
+		GatewayIntentBits.GuildScheduledEvents 
+	],
+	partials: [
+		Partials.User
+	]
+});
 global.client = client;
 
 client.commands = new Collection();
@@ -78,7 +83,7 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 
 	if (logsChannel != undefined)
 		await logsChannel.send(
-			`A new scheduled event has been created by <${event.creatorId}>:`
+			`A new scheduled event has been created by \`<${event.creatorId}>\`:`
 			+ `\n - Title: ${event.name}`
 			+ `\n - Description: ${event.description}`
 			+ `\n - Date: ${event.scheduledStartAt}`
@@ -135,6 +140,8 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 	); // That mess allows us to show the link embed without the link, and yes, this is a glitch
 	await channel.send(`<@${event.creatorId}> participe à l'expédition !`);
 	console.log(`Sent it to ${channel.name}`);
+	console.log(`<${event.creatorId}> automatically joined the event “${event.name}”`);
+	await logsChannel.send(`\`<${event.creatorId}>\` automatically joined the event “${event.name}”`);
 	if (logsChannel != undefined)
 		await logsChannel.send(`\nSent it to \`${channel.name}\``);
 });
@@ -309,10 +316,9 @@ client.on(Events.GuildScheduledEventUserAdd, async (event, user) => {
 
 	if (Date.now() > event.createdTimestamp + 10000) {
 		await channel.send(`<@${user.id}> participe à l'expédition !`);
+		console.log(`@${user.tag} joined the event “${event.name}”`);
+		await logsChannel.send(`\`@${user.tag}\` joined the event “${event.name}”`);
 	}
-
-	console.log(`@${user.tag} joined the event “${event.name}”`);
-	await logsChannel.send(`\`@${user.tag}\` joined the event “${event.name}”`);
 });
 
 client.on(Events.GuildScheduledEventUserRemove, async (event, user) => {
