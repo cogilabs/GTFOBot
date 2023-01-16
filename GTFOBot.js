@@ -16,6 +16,7 @@ const { rundowns } = require('./rundowns/rundowns.json');
 global.rundowns = rundowns;
 
 const editJsonFile = require('edit-json-file');
+const { timeStamp } = require('node:console');
 let file = editJsonFile('./rundowns/completion.json');
 
 const client = new Client({ intents: [
@@ -132,6 +133,7 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
 		+ '||​||||​||||​|| _ _ _ _ _ _' + event.url
 	); // That mess allows us to show the link embed without the link, and yes, this is a glitch
+	await channel.send(`<@${event.creatorId}> participe à l'expédition !`);
 	console.log(`Sent it to ${channel.name}`);
 	if (logsChannel != undefined)
 		await logsChannel.send(`\nSent it to \`${channel.name}\``);
@@ -272,6 +274,86 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 	}
 });
 
+
+client.on(Events.GuildScheduledEventUserAdd, async (event, user) => {
+	var logsChannel = event.guild.channels.cache.find(channel => channel.name === logsChannelName);
+	var MID = '';
+
+	if (event.guild.channels.cache.find(channel => channel.name === 'general')) {
+		var channel = event.guild.channels.cache.find(channel => channel.name === 'general');
+	} else {
+		console.log('This server does not have a channel named \'general\', defaulting to the system channel...');
+		if (logsChannel != undefined)
+			await logsChannel.send('This server does not have a channel named \'general\', defaulting to the system channel...');
+		if (event.guild.systemChannel) {
+			var channel = event.guild.systemChannel;
+		} else {
+			console.log('This server does not have a system channel, aborting...');
+			if (logsChannel != undefined)
+				await logsChannel.send('This server does not have a system channel, aborting...');
+			return;
+		}
+	}
+	
+	oldCh = channel;
+	if (event.description.match(/`ch:[aàâbcçdeéèêfghiïjklmnoôpqrstuùûvwxyz-]+`/))
+		channel = event.guild.channels.cache.find(channel => channel.name === event.description.match(/ch:[aàâbcçdeéèêfghiïjklmnoôpqrstuùûvwxyz-]+/)[0].split(':')[1]);
+	
+	if (channel == undefined)
+		channel = oldCh;
+
+	for (i in (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)) {
+		var j = (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)[i];
+		MID = j;
+	}
+
+	if (Date.now() > event.createdTimestamp + 10000) {
+		await channel.send(`<@${user.id}> participe à l'expédition !`);
+	}
+
+	console.log(`@${user.tag} joined the event “${event.name}”`);
+	await logsChannel.send(`\`@${user.tag}\` joined the event “${event.name}”`);
+});
+
+client.on(Events.GuildScheduledEventUserRemove, async (event, user) => {
+	var logsChannel = event.guild.channels.cache.find(channel => channel.name === logsChannelName);
+	var MID = '';
+
+	if (event.guild.channels.cache.find(channel => channel.name === 'general')) {
+		var channel = event.guild.channels.cache.find(channel => channel.name === 'general');
+	} else {
+		console.log('This server does not have a channel named \'general\', defaulting to the system channel...');
+		if (logsChannel != undefined)
+			await logsChannel.send('This server does not have a channel named \'general\', defaulting to the system channel...');
+		if (event.guild.systemChannel) {
+			var channel = event.guild.systemChannel;
+		} else {
+			console.log('This server does not have a system channel, aborting...');
+			if (logsChannel != undefined)
+				await logsChannel.send('This server does not have a system channel, aborting...');
+			return;
+		}
+	}
+	
+	oldCh = channel;
+	if (event.description.match(/`ch:[aàâbcçdeéèêfghiïjklmnoôpqrstuùûvwxyz-]+`/))
+		channel = event.guild.channels.cache.find(channel => channel.name === event.description.match(/ch:[aàâbcçdeéèêfghiïjklmnoôpqrstuùûvwxyz-]+/)[0].split(':')[1]);
+	
+	if (channel == undefined)
+		channel = oldCh;
+
+	for (i in (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)) {
+		var j = (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)[i];
+		MID = j;
+	}
+	
+	await channel.send(`<@${user.id}> ne participe plus à l'expédition !`);
+
+	console.log(`@${user.tag} lef the event “${event.name}”`);
+	await logsChannel.send(`\`@${user.tag}\` left the event “${event.name}”`);
+	
+});
+
 client.on(Events.MessageCreate, async message => {
 	if (message.author == client.user) return;
 	var logsChannel = message.guild.channels.cache.find(channel => channel.name === logsChannelName);
@@ -284,7 +366,7 @@ client.on(Events.MessageCreate, async message => {
 	msgContent = message.content;
 	msgContentLowerCase = msgContent.toLowerCase();
 
-	if (msgContent.includes('@everyone')) {
+	if (msgContent.includes('@everyone') && message.channel != logsChannel) {
 		var emojiName = 'DaudaPing'
 		const reactionEmoji = message.guild.emojis.cache.find(emoji => emoji.name === emojiName);
 		if (reactionEmoji != undefined) {
