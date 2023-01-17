@@ -367,7 +367,7 @@ client.on(Events.GuildScheduledEventUserRemove, async (event, user) => {
 });
 
 client.on(Events.MessageCreate, async message => {
-	if (message.author == client.user) return;
+
 	var logsChannel = message.guild.channels.cache.find(channel => channel.name === logsChannelName);
 	var locale = '';
 	for (var loc in supportedLocales) {
@@ -377,6 +377,16 @@ client.on(Events.MessageCreate, async message => {
 
 	msgContent = message.content;
 	msgContentLowerCase = msgContent.toLowerCase();
+	
+	if (msgContent.includes('Date :') && message.channel != logsChannel) {
+		await message.react('✅');
+		await message.react('❌');
+		console.log(`Reacted “✅” and “❌” to “${msgContent}” by ${message.author.tag}`);
+		if (logsChannel != undefined)
+			await logsChannel.send(`Reacted “✅” and “❌” to \`${msgContent}\` by \`${message.author.tag}\``);
+	}
+
+	if (message.author == client.user) return;
 
 	if (msgContent.includes('@everyone') && message.channel != logsChannel) {
 		var emojiName = 'DaudaPing'
