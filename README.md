@@ -65,7 +65,7 @@ It also answers to messages like "Thanks Dauda" with a random "You're welcome" m
 
 ## More
 
-For the moment all the reactions and answers above, only works in French as me and my friends (people who use it) are French, but I intend to localize it quickly.
+For the moment, all the reactions and answers above only works in French, as me and my friends (people who use it) are French, but I intend to localize it quickly.
 
 Appart from that, the application is *fully localized* in English and French, taking the server language for command descriptions and event handling, and the asking user's language for answering to commands (Intel, mission descriptions, etc...).  
 It's also really easy to localize in other languages.  
