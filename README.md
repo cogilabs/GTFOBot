@@ -1,4 +1,7 @@
 # GTFO Companion app
+
+![Banner](Images/GTFOBot-Banner-tr.png?raw=true)
+
 This is a Discord bot I made to assist my GTFO team in expedition management.
 
 It's able to show the state of the game's rundowns and to display details about the missions.
