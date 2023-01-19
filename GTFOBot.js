@@ -76,11 +76,18 @@ client.once(Events.ClientReady, async () => {
 	logsChList.forEach(async channel => await channel.send(`App started, <@${client.user.id}> is now online on \`${client.guilds.cache.size}\` server(s)!`));
 });
 
-// ====================== NEEDS TO BE LOCALIZED !!! ============================
+
 client.on(Events.GuildScheduledEventCreate, async event => {
 	var logsChannel = event.guild.channels.cache.find(channel => channel.name === logsChannelName);
+
+	var locale = '';
+        for (var loc in supportedLocales) {
+            if (event.guild.preferredLocale == loc) locale = event.guild.preferredLocale;
+        }
+        if (locale == '') locale = 'en-US';
+
 	var ping = '';
-	var roleName = 'Prisonniers';
+	var roleName = locFile[locale][locale].events.role;
 	var missionName = '';
 
 	console.log(`A new scheduled event has been created by <${event.creatorId}>:`);
@@ -121,15 +128,14 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 
 	for (i in (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)) {
 		var j = (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)[i];
-		missionName = ` vers ***${j}***`;
+		missionName = ` ${locFile[locale][locale].events.to} ***${j}***`;
 	}
 
 	if (event.guild.roles.cache.find(role => role.name === roleName) != undefined) 
-		ping = `Hey <@&${event.guild.roles.cache.find(role => role.name === roleName).id}> !\n\n`;
+		ping = (locFile[locale][locale].events.ping).replace('#', `<@&${event.guild.roles.cache.find(role => role.name === roleName).id}>`);
 
 	await channel.send(
-		ping + 'Le Gardien a prévu une nouvelle expédition' + missionName
-		+ ', alors soyez prêts à travailler ensemble, ou à mourir ensemble !\n '
+		ping + (locFile[locale][locale].events.newExpedition).replace('#', missionName)
 		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
 		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
 		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
@@ -145,7 +151,7 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
 		+ '||​||||​||||​|| _ _ _ _ _ _' + event.url
 	); // That mess allows us to show the link embed without the link, and yes, this is a glitch
-	await channel.send(`<@${event.creatorId}> participe à l'expédition !`);
+	await channel.send(`<@${event.creatorId}> ${locFile[locale][locale].events.participate}`);
 	console.log(`Sent it to ${channel.name}`);
 	console.log(`<${event.creatorId}> automatically joined the event “${event.name}”`);
 	if (logsChannel != undefined) {
@@ -157,8 +163,15 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 
 client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 	var logsChannel = event.guild.channels.cache.find(channel => channel.name === logsChannelName);
+
+	var locale = '';
+        for (var loc in supportedLocales) {
+            if (event.guild.preferredLocale == loc) locale = event.guild.preferredLocale;
+        }
+        if (locale == '') locale = 'en-US';
+
 	var ping = '';
-	var roleName = 'Prisonniers';
+	var roleName = locFile[locale][locale].events.role;
 	var missionName = '';
 	var MID = '';
 	var MIDp = '';
@@ -188,7 +201,7 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 
 	for (i in (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)) {
 		var j = (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)[i];
-		missionName = ` vers ***${j}***`;
+		missionName = ` ${locFile[locale][locale].events.to} ***${j}***`;
 		MID = j;
 		MIDp = ` (${j})`;
 	}
@@ -197,10 +210,10 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 	if (oldEvent.status === 1 && event.status === 2) {
 	
 		if (event.guild.roles.cache.find(role => role.name === roleName) != undefined) 
-			ping = `Hey <@&${event.guild.roles.cache.find(role => role.name === roleName).id}> !\n\n`;
-	
+			ping = (locFile[locale][locale].events.ping).replace('#', `<@&${event.guild.roles.cache.find(role => role.name === roleName).id}>`);
+
 		await channel.send(
-			ping + `L'expédition${missionName} démarre, alors préparez-vous et rejoignez-nous !\n `
+			ping + (locFile[locale][locale].events.start).replace('#', missionName)
 			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
 			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
 			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
@@ -234,12 +247,12 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
                     for (var id in rundowns[run][lt]) {
                         if (MID == run + id) {
 							if (completion[event.guild.id].completion[run][lt][id].completed.main) {
-								await channel.send(`C'est avec succès que l'expédition${missionName} est maintenant terminée !\nÇa c'est une équipe de choc !`);
+								await channel.send((locFile[locale][locale].events.end.success).replace('#', missionName));
 								if (logsChannel != undefined)
 									await logsChannel.send(`Event “${event.name}”${MIDp} finished! (success)\nSent it to \`${channel.name}\``);
 								console.log(`Event “${event.name}”${MIDp} finished! (success)\nSent it to \`${channel.name}\``);
 							} else {
-								await channel.send(`L'expédition${missionName} s'est soldée par un échec, mais la prochaine sera la bonne !`);
+								await channel.send((locFile[locale][locale].events.end.fail).replace('#', missionName));
 								if (logsChannel != undefined)
 									await logsChannel.send(`Event “${event.name}”${MIDp} finished! (failure)\nSent it to \`${channel.name}\``);
 								console.log(`Event “${event.name}”${MIDp} finished! (failure)\nSent it to \`${channel.name}\``);
@@ -273,12 +286,12 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 						for (var id in rundowns[run][lt]) {
 							if (oldMID == run + id) {
 								if (completion[event.guild.id].completion[run][lt][id].completed.main) {
-									await channel.send(`C'est avec succès que l'expédition vers ***${oldMID}*** se dirige maintenant vers ***${MID}***!`);
+									await channel.send((locFile[locale][locale].events.change.success).replace('#', `***${oldMID}***`).replace('Ø', `***${MID}***`));
 									if (logsChannel != undefined)
 										await logsChannel.send(`Event “${event.name}” (${oldMID}) modified to ${MID}! (success)\nSent it to \`${channel.name}\``);
 									console.log(`Event “${event.name}”${MIDp} finished! (success)\nSent it to \`${channel.name}\``);
 								} else {
-									await channel.send(`L'expédition vers ***${oldMID}*** a échoué, mais peu importe, nous sommes maintenant envoyés vers ***${MID}***!`);
+									await channel.send((locFile[locale][locale].events.change.fail).replace('#', `***${oldMID}***`).replace('Ø', `***${MID}***`));
 									if (logsChannel != undefined)
 										await logsChannel.send(`Event “${event.name}” (${oldMID}) modified to ${MID}! (failure)\nSent it to \`${channel.name}\``);
 									console.log(`Event “${event.name}”${MIDp} finished! (failure)\nSent it to \`${channel.name}\``);
@@ -298,6 +311,12 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 
 client.on(Events.GuildScheduledEventUserAdd, async (event, user) => {
 	var logsChannel = event.guild.channels.cache.find(channel => channel.name === logsChannelName);
+
+	var locale = '';
+        for (var loc in supportedLocales) {
+            if (event.guild.preferredLocale == loc) locale = event.guild.preferredLocale;
+        }
+        if (locale == '') locale = 'en-US';
 
 	if (event.guild.channels.cache.find(channel => channel.name === 'general')) {
 		var channel = event.guild.channels.cache.find(channel => channel.name === 'general');
@@ -328,7 +347,7 @@ client.on(Events.GuildScheduledEventUserAdd, async (event, user) => {
 	}
 
 	if (Date.now() > event.createdTimestamp + 10000) {
-		await channel.send(`<@${user.id}> participe à l'expédition !`);
+		await channel.send(`<@${user.id}> ${locFile[locale][locale].events.participate}`);
 		console.log(`@${user.tag} joined the event “${event.name}”`);
 		if (logsChannel != undefined)
 			await logsChannel.send(`\`@${user.tag}\` joined the event “${event.name}”`);
@@ -337,6 +356,13 @@ client.on(Events.GuildScheduledEventUserAdd, async (event, user) => {
 
 client.on(Events.GuildScheduledEventUserRemove, async (event, user) => {
 	var logsChannel = event.guild.channels.cache.find(channel => channel.name === logsChannelName);
+
+	var locale = '';
+        for (var loc in supportedLocales) {
+            if (event.guild.preferredLocale == loc) locale = event.guild.preferredLocale;
+        }
+        if (locale == '') locale = 'en-US';
+
 	var MID = '';
 
 	if (event.guild.channels.cache.find(channel => channel.name === 'general')) {
@@ -367,9 +393,9 @@ client.on(Events.GuildScheduledEventUserRemove, async (event, user) => {
 		MID = j;
 	}
 	
-	await channel.send(`<@${user.id}> ne participe plus à l'expédition !`);
+	await channel.send(`<@${event.creatorId}> ${locFile[locale][locale].events.noParticipate}`);
 
-	console.log(`@${user.tag} lef the event “${event.name}”`);
+	console.log(`@${user.tag} left the event “${event.name}”`);
 	if (logsChannel != undefined)
 		await logsChannel.send(`\`@${user.tag}\` left the event “${event.name}”`);
 	
