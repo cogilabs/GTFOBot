@@ -6,8 +6,6 @@ for (var lang in supportedLocales) {
     locFile[lang] = require('../localization/' + lang + '.json');
 }
 
-const editJsonFile = require('edit-json-file');
-let file = editJsonFile('./rundowns/completion.json');
 const cmdName = 'rundowns';
 
 var initialInteraction;
@@ -93,7 +91,7 @@ module.exports = {
             for (var lt in rundowns[RID]) {
                 rows[i] = new ActionRowBuilder();
                 for (var nb in rundowns[RID][lt]) {
-                    if (completion[RID][lt][nb].completed.main) {
+                    if (completion[interaction.guild.id].completion[RID][lt][nb].completed.main) {
                         rows[i].addComponents(
                             new ButtonBuilder()
                                 .setCustomId(cmdName + '-mission-' + RID + nb)
@@ -136,12 +134,12 @@ module.exports = {
                                 if (value == run + id) {
                                     for (var mt in rundowns[run][lt][id].missionTypes) {
                                         if (mt == type) {
-                                            file.set(`completion.${run}.${lt}.${id}.completed.${mt}`, (String(comp).toLowerCase() == 'true'));
-                                            file.save();
-                                            file = editJsonFile('./rundowns/completion.json', {
+                                            completionFile[interaction.guild.id].set(`completion.${run}.${lt}.${id}.completed.${mt}`, (String(comp).toLowerCase() == 'true'));
+                                            completionFile[interaction.guild.id].save();
+                                            completionFile[interaction.guild.id] = editJsonFile('./rundowns/completion-' + interaction.guild.id + '.json', {
                                                 autosave: true
                                             });
-                                            completion[run][lt][id].completed[mt] = (String(comp).toLowerCase() == 'true');
+                                            completion[interaction.guild.id].completion[run][lt][id].completed[mt] = (String(comp).toLowerCase() == 'true');
                                             if (comp == 'true') {
                                                 response = locFile[locale][locale].missions.sector + ' *' + value + ':' + locFile[locale][locale].sectors[mt] + '* `✅ ' + locFile[locale][locale].missions.completed + '`';
                                             } else {
@@ -163,7 +161,7 @@ module.exports = {
                 for (var lt in rundowns[MID]) {
                     runRows[i] = new ActionRowBuilder();
                     for (var nb in rundowns[MID][lt]) {
-                        if (completion[MID][lt][nb].completed.main) {
+                        if (completion[interaction.guild.id].completion[MID][lt][nb].completed.main) {
                             runRows[i].addComponents(
                                 new ButtonBuilder()
                                     .setCustomId(cmdName + '-mission-' + MID + nb)
@@ -201,7 +199,7 @@ module.exports = {
                             var i = 0;
                             for (var mt in rundowns[run][lt][id].missionTypes) {
                                 if (rundowns[run][lt][id].missionTypes[mt] == true) {
-                                    cpltd[mt] = completion[run][lt][id].completed[mt]
+                                    cpltd[mt] = completion[interaction.guild.id].completion[run][lt][id].completed[mt]
                                     rows[i]  = new ActionRowBuilder();
                                     if (String(cpltd[mt]).toLowerCase() != 'true') {
                                         rows[i].addComponents(
@@ -222,7 +220,7 @@ module.exports = {
                                     }
                                         
                                     content = content + ' - ' + locFile[locale][locale].sectors[mt] + ': ';
-                                    if (completion[run][lt][id].completed[mt] == true) {
+                                    if (completion[interaction.guild.id].completion[run][lt][id].completed[mt] == true) {
                                         content = content + '`✅ ' + locFile[locale][locale].missions.completed + '`\n';
                                     } else {
                                         content = content + '`❌ ' + locFile[locale][locale].missions.notCompleted + '`\n';
