@@ -70,6 +70,8 @@ For the moment all the reactions and answers above, along with the event handlin
 Appart from that, the application is *fully localized* in English and French, taking the server language for command descriptions and the asking user's language for answering to commands (Intel, mission descriptions, etc...).  
 It's also really easy to localize in other languages.  
   
-If a text channel named `dauda-logs` exists, the bot will log every actions it does in this server in it.
+If a text channel named `dauda-logs` exists, the bot will log every actions it does in this server in it.  
   
-The completion is now separate between severs, every server has it's own completion file containing its progression.
+The bot has an `echo` command, allowing admins to speak in his name (User can still be checked in the `dauda-logs` channel).  
+  
+The completion is now separate between servers, every server has it's own completion file containing its progression.
