@@ -434,7 +434,7 @@ client.on(Events.MessageCreate, async message => {
 		} else {
 			console.log(`Tried to react to “${msgContent}” by ${message.author.tag} but no '${emojiName}' emoji was found`);
 			if (logsChannel != undefined)
-				(`Tried to react to \`${msgContent}\` by ${message.author.tag} but no \`${emojiName}\` emoji was found`);
+				await logsChannel.send(`Tried to react to \`${msgContent}\` by ${message.author.tag} but no \`${emojiName}\` emoji was found`);
 		}
 	}
 
@@ -475,13 +475,13 @@ client.on(Events.MessageCreate, async message => {
 			await message.react(reaction);
 			console.log(`Reacted “${reaction}” to “${msgContent}” by ${message.author.tag}`);
 			if (logsChannel != undefined)
-				(`Reacted \`${reaction}\` to \`${msgContent}\` by \`${message.author.tag}\``);
+				await logsChannel.send(`Reacted \`${reaction}\` to \`${msgContent}\` by \`${message.author.tag}\``);
 		}
 		if (reaction == '❔') {
 			await message.reply({ content: locFile[locale][locale].system.missionNotFound.replace('#', MID), ephemeral: true });
 			console.log(`Answered “${locFile[locale][locale].system.missionNotFound.replace('#', MID)}” to “${msgContent}” by ${message.author.tag}`);
 			if (logsChannel != undefined)
-				(`Answered “${locFile[locale][locale].system.missionNotFound.replace('#', MID)}” to \`${msgContent}\` by \`${message.author.tag}\``);
+				await logsChannel.send(`Answered “${locFile[locale][locale].system.missionNotFound.replace('#', MID)}” to \`${msgContent}\` by \`${message.author.tag}\``);
 		}
 	}
 	// ====================== NEEDS TO BE LOCALIZED !!! ============================
