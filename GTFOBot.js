@@ -471,13 +471,13 @@ client.on(Events.MessageCreate, async message => {
 				}
 			}
 		}
-		if (reaction != '') {
+		if (reaction != '' && message.channel != logsChannel) {
 			await message.react(reaction);
 			console.log(`Reacted “${reaction}” to “${msgContent}” by ${message.author.tag}`);
 			if (logsChannel != undefined)
 				await logsChannel.send(`Reacted \`${reaction}\` to \`${msgContent}\` by \`${message.author.tag}\``);
 		}
-		if (reaction == '❔') {
+		if (reaction == '❔' && message.channel != logsChannel) {
 			await message.reply({ content: locFile[locale][locale].system.missionNotFound.replace('#', MID), ephemeral: true });
 			console.log(`Answered “${locFile[locale][locale].system.missionNotFound.replace('#', MID)}” to “${msgContent}” by ${message.author.tag}`);
 			if (logsChannel != undefined)
