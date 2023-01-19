@@ -172,6 +172,23 @@
         "missionNotFound": "Je ne trouve pas la mission #, peut tu vérifier si elle existe vraiment ? (N'hésites pas à faire **`/rundowns`** pour le savoir :wink:)",
         "sending": "Envoi en cours..."
       },
+      "events": {
+        "role": "Prisonniers",
+        "to": "vers",
+        "newExpedition": "Le Gardien a prévu une nouvelle expédition#, alors soyez prêts à travailler ensemble, ou à mourir ensemble !\n ",
+        "start": "L'expédition# démarre, alors préparez-vous et rejoignez-nous !\n ",
+        "end": {
+          "success": "C'est avec succès que l'expédition# est maintenant terminée !\nÇa c'est une équipe de choc !",
+          "fail": "L'expédition# s'est soldée par un échec, mais la prochaine sera la bonne !"
+        },
+        "change": {
+          "success": "C'est avec succès que l'expédition vers # se dirige maintenant vers Ø !",
+          "fail": "L'expédition vers # a échoué, mais peu importe, nous sommes maintenant envoyés vers Ø !"
+        },
+        "ping": "Hey # !\n\n",
+        "participate": " participe à l'expédition !",
+        "noParticipate": " ne participe plus à l'expédition."
+      },
       "commands": {
         "rundowns": {
             "description": "État des expeditions, descriptions des missions et complétion"

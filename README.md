@@ -59,9 +59,9 @@ The bot is also able to react to some messages, like an `@everyone` ping.
 For instance it can react to messages like "Did we finish R1D1?", "What's the state of R2B1?", "Do you guys know i we are done with R7B3?" with a green checkmark or a red cross, depending of the state of the main objective of that mission.
 It also answers to messages like "Thanks Dauda" with a random "You're welcome" message, and react with a question mark when someone says things like "Just ask Dauda".
 
-For the moment all the reactions and answers above, along with the event handling, only works in French as me and my friends (people who use it) are French, but I intend to localize it quickly.
+For the moment all the reactions and answers above, only works in French as me and my friends (people who use it) are French, but I intend to localize it quickly.
 
-Appart from that, the application is *fully localized* in English and French, taking the server language for command descriptions and the asking user's language for answering to commands (Intel, mission descriptions, etc...).  
+Appart from that, the application is *fully localized* in English and French, taking the server language for command descriptions and event handling, and the asking user's language for answering to commands (Intel, mission descriptions, etc...).  
 It's also really easy to localize in other languages.  
   
 The completion is now separate between severs, every server has it's own completion file containing its progression.
