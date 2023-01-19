@@ -69,7 +69,7 @@ It also answers to messages like "Thanks Dauda" with a random "You're welcome" m
 
 For the moment, the message reacting and answering only works in French, as me and my friends (people who use it) are French, but I intend to localize it quickly.
 
-Appart from that, the application is *fully localized* in English and French, taking the server language for command descriptions and event handling, and the asking user's language for answering to commands (Intel, mission descriptions, etc...).  
+Appart from that, the application is *fully localized* in English and French, taking the server language for event handling, and the asking user's language for command descriptions and answering to commands (Intel, mission descriptions, etc...).  
 It's also really easy to localize in other languages.  
   
 If a text channel named `dauda-logs` exists, the bot will log every actions it does in this server in it.  
