@@ -15,9 +15,6 @@ for (var lang in supportedLocales) {
 const { rundowns } = require('./rundowns/rundowns.json');
 global.rundowns = rundowns;
 
-const editJsonFile = require('edit-json-file');
-let file = editJsonFile('./rundowns/completion.json');
-
 const client = new Client({ 
 	intents: [
 		GatewayIntentBits.Guilds, 
@@ -29,7 +26,6 @@ const client = new Client({
 		Partials.User
 	]
 });
-global.client = client;
 
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
@@ -43,23 +39,34 @@ for (const file of commandFiles) {
 
 client.once(Events.ClientReady, async () => {
 	client.user.setPresence({ activities: [{ name: `Starting...` }], status: 'away' });
+
+	const editJsonFile = require('edit-json-file');
+	var completionFile = [];
+	client.guilds.cache.forEach(guild => completionFile[guild.id] = editJsonFile('./rundowns/completion-' + guild.id + '.json'));
+
+	global.editJsonFile = editJsonFile;
+	global.completionFile = completionFile;
+
 	console.log('Checking completion file...');
 	for (var run in rundowns) {
 		for (var lt in rundowns[run]) {
 			for (var mission in rundowns[run][lt]) {
 				for (var mt in rundowns[run][lt][mission].missionTypes) {
-					if (rundowns[run][lt][mission].missionTypes[mt]) {
-						if (file.get(`completion.${run}.${lt}.${mission}.completed.${mt}`) == undefined) {
-							file.set(`completion.${run}.${lt}.${mission}.completed.${mt}`, false);
-							console.log(`Adding ${run}${mission}:${mt}...`)
+					client.guilds.cache.forEach(guild => {
+						if (rundowns[run][lt][mission].missionTypes[mt]) {
+							if (completionFile[guild.id].get(`completion.${run}.${lt}.${mission}.completed.${mt}`) == undefined) {
+								completionFile[guild.id].set(`completion.${run}.${lt}.${mission}.completed.${mt}`, false);
+								console.log(`Adding ${run}${mission}:${mt} for server '${guild.id}'...`)
+							}
 						}
-					}
-					file.save();
+						completionFile[guild.id].save();
+					})
 				}
 			}
 		}
 	}
-	var { completion } = require('./rundowns/completion.json');
+	var completion = []
+	client.guilds.cache.forEach(guild => completion[guild.id] = require('./rundowns/completion-' + guild.id + '.json'));
 	global.completion = completion;
 	
 	console.log(`App started, ${client.user.tag} is now online on ${client.guilds.cache.size} server(s)!`);
@@ -68,6 +75,7 @@ client.once(Events.ClientReady, async () => {
 	var logsChList = client.channels.cache.filter(channel => channel.name === logsChannelName);
 	logsChList.forEach(async channel => await channel.send(`App started, <@${client.user.id}> is now online on \`${client.guilds.cache.size}\` server(s)!`));
 });
+
 // ====================== NEEDS TO BE LOCALIZED !!! ============================
 client.on(Events.GuildScheduledEventCreate, async event => {
 	var logsChannel = event.guild.channels.cache.find(channel => channel.name === logsChannelName);
@@ -213,7 +221,8 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 			await logsChannel.send(`Event “${event.name}”${MIDp} started\nSent it to \`${channel.name}\``);
 		console.log(`Event “${event.name}”${MIDp} started\nSent it to \`${channel.name}\``);
 
-		client.user.setPresence({ activities: [{ name: `GTFO${MIDp}` }], status: 'dnd' });
+		if (event.guild.id == '1050756373182427136')
+			client.user.setPresence({ activities: [{ name: `GTFO${MIDp}` }], status: 'dnd' });
 	}
 
 	// Event finished
@@ -224,7 +233,7 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
                 for (var lt in rundowns[run]) {
                     for (var id in rundowns[run][lt]) {
                         if (MID == run + id) {
-							if (completion[run][lt][id].completed.main) {
+							if (completion[event.guild.id].completion[run][lt][id].completed.main) {
 								await channel.send(`C'est avec succès que l'expédition${missionName} est maintenant terminée !\nÇa c'est une équipe de choc !`);
 								if (logsChannel != undefined)
 									await logsChannel.send(`Event “${event.name}”${MIDp} finished! (success)\nSent it to \`${channel.name}\``);
@@ -240,9 +249,8 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 				}
 			}
 		}
-
-
-		client.user.setPresence({ activities: [{ name: 'Available', type: 4 }], status: 'online' });
+		if (event.guild.id == '1050756373182427136')
+			client.user.setPresence({ activities: [{ name: 'Available', type: 4 }], status: 'online' });
 	}
 
 	// Event modified
@@ -264,7 +272,7 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 					for (var lt in rundowns[run]) {
 						for (var id in rundowns[run][lt]) {
 							if (oldMID == run + id) {
-								if (completion[run][lt][id].completed.main) {
+								if (completion[event.guild.id].completion[run][lt][id].completed.main) {
 									await channel.send(`C'est avec succès que l'expédition vers ***${oldMID}*** se dirige maintenant vers ***${MID}***!`);
 									if (logsChannel != undefined)
 										await logsChannel.send(`Event “${event.name}” (${oldMID}) modified to ${MID}! (success)\nSent it to \`${channel.name}\``);
@@ -279,7 +287,8 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 						}
 					}
 				}
-				client.user.setPresence({ activities: [{ name: `GTFO (${MID})` }], status: 'dnd' });
+				if (event.guild.id == '1050756373182427136')
+					client.user.setPresence({ activities: [{ name: `GTFO (${MID})` }], status: 'dnd' });
 			}
 		}
 
@@ -425,12 +434,12 @@ client.on(Events.MessageCreate, async message => {
 			var lt = MID.slice(2,3);
 			var id = MID.slice(2,4);
 			var mt = 'main';
-			if (completion[run] != undefined) {
-				if (completion[run][lt] != undefined) {
-					if (completion[run][lt][id] != undefined) {
-						if (completion[run][lt][id].completed != undefined) {
-							if (completion[run][lt][id].completed[mt] == true) reaction = '✅';
-							if (completion[run][lt][id].completed[mt] == false) reaction = '❌';
+			if (completion[message.guild.id].completion[run] != undefined) {
+				if (completion[message.guild.id].completion[run][lt] != undefined) {
+					if (completion[message.guild.id].completion[run][lt][id] != undefined) {
+						if (completion[message.guild.id].completion[run][lt][id].completed != undefined) {
+							if (completion[message.guild.id].completion[run][lt][id].completed[mt] == true) reaction = '✅';
+							if (completion[message.guild.id].completion[run][lt][id].completed[mt] == false) reaction = '❌';
 						} else reaction = '❔';
 					} else reaction = '❔';
 				}
