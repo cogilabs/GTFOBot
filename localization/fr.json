@@ -198,8 +198,34 @@
             "option1": "Le contenu du message à envoyer"
         },
         "broadcast": {
-            "description": "Envoyer un message dans tous les salon de logs",
-            "option1": "Le contenu du message à envoyer"
+          "description": "Envoyer un message dans tous les salon de logs",
+          "subcommands": {
+            "custom": {
+              "name": "custom",
+              "description": "Envoyer un message dans tous les salon de logs",
+              "option1": {
+                "name": "message",
+                "description": "Le contenu du message à envoyer"
+              },
+              "option2": {
+                "name": "couleur",
+                "description": "La couleur du message",
+                "red": "rouge",
+                "orange": "orange",
+                "yellow": "jaune",
+                "green": "vert",
+                "blue": "bleu"
+              }
+            },
+            "update": {
+              "name": "update",
+              "description": "Envoyer un message “rebooting for update”"
+            },
+            "turnoff": {
+              "name": "turnoff",
+              "description": "Envoyer un message “Shutting down”"
+            }
+          }
         }
       },
       "missions": {

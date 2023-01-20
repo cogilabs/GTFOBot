@@ -16,17 +16,35 @@ module.exports = {
         })
 		.addSubcommand(subcommand =>
 			subcommand
-				.setName('custom')
-				.setDescription('Sends a custom message')
+				.setName(locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.name)
+				.setNameLocalizations({
+					fr: locFile['fr']['fr'].commands[cmdName].subcommands.custom.name,
+				})
+				.setDescription(locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.description)
+				.setDescriptionLocalizations({
+					fr: locFile['fr']['fr'].commands[cmdName].subcommands.custom.description,
+				})
 				.addStringOption(option => 
 					option
-					.setName('message')
-					.setDescription('The content of the message to send')
+					.setName(locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.option1.name)
+					.setNameLocalizations({
+						fr: locFile['fr']['fr'].commands[cmdName].subcommands.custom.option1.name,
+					})
+					.setDescription(locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.option1.description)
+					.setDescriptionLocalizations({
+						fr: locFile['fr']['fr'].commands[cmdName].subcommands.custom.option1.description,
+					})
 					.setRequired(true))
 				.addStringOption(option => 
 					option
-					.setName('color')
-					.setDescription('The color of the embed band')
+					.setName(locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.option2.name)
+					.setNameLocalizations({
+						fr: locFile['fr']['fr'].commands[cmdName].subcommands.custom.option2.name,
+					})
+					.setDescription(locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.option2.description)
+					.setDescriptionLocalizations({
+						fr: locFile['fr']['fr'].commands[cmdName].subcommands.custom.option2.description,
+					})
 					.addChoices(
 						{ name: 'red', value: '0xff0000' },
 						{ name: 'orange', value: '0xff7700' },
@@ -36,12 +54,24 @@ module.exports = {
 					)))
 		.addSubcommand(subcommand =>
 			subcommand
-				.setName('update')
-				.setDescription('Sends a “rebooting for update” message'))
+				.setName(locFile['en-US']['en-US'].commands[cmdName].subcommands.update.name)
+				.setNameLocalizations({
+					fr: locFile['fr']['fr'].commands[cmdName].subcommands.update.name,
+				})
+				.setDescription(locFile['en-US']['en-US'].commands[cmdName].subcommands.update.description))
+				.setDescriptionLocalizations({
+					fr: locFile['fr']['fr'].commands[cmdName].subcommands.update.description,
+				})
 		.addSubcommand(subcommand =>
 			subcommand
-				.setName('turnoff')
-				.setDescription('Sends a “Shutting down” message'))
+				.setName(locFile['en-US']['en-US'].commands[cmdName].subcommands.turnoff.name)
+				.setNameLocalizations({
+					fr: locFile['fr']['fr'].commands[cmdName].subcommands.turnoff.name,
+				})
+				.setDescription(locFile['en-US']['en-US'].commands[cmdName].subcommands.turnoff.description))
+				.setDescriptionLocalizations({
+					fr: locFile['fr']['fr'].commands[cmdName].subcommands.turnoff.description,
+				})
 		.setDefaultMemberPermissions(0)
 		.setDMPermission(false),
 	async execute(interaction) {

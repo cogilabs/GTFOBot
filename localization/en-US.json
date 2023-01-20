@@ -198,8 +198,36 @@
             "option1": "The content of the message to send"
         },
         "broadcast": {
-            "description": "Send a message to all logs channels",
-            "option1": "The content of the message to send"
+          "description": "Send a message to all logs channels",
+          "subcommands": {
+            "custom": {
+              "name": "custom",
+              "description": "Send a message to all logs channels",
+              "option1": {
+                "name": "message",
+                "description": "The content of the message to send"
+              },
+              "option2": {
+                "name": "color",
+                "description": "The color of the embed band",
+                "red": "red",
+                "orange": "orange",
+                "yellow": "yellow",
+                "green": "green",
+                "blue": "blue"
+              }
+            },
+            "update": {
+              "name": "update",
+              "description": "Sends a “rebooting for update” message",
+              "message": "Rebooting for update..."
+            },
+            "turnoff": {
+              "name": "turnoff",
+              "description": "Sends a “Shutting down” message",
+              "message": "Shutting down..."
+            }
+          }
         }
       },
       "missions": {
