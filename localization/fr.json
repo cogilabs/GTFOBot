@@ -197,7 +197,7 @@
             "description": "Envoyer un message dans le salon en cours",
             "option1": "Le contenu du message à envoyer"
         },
-        "logsecho": {
+        "broadcast": {
             "description": "Envoyer un message dans tous les salon de logs",
             "option1": "Le contenu du message à envoyer"
         }
