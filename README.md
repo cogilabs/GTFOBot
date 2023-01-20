@@ -83,4 +83,4 @@ The completion is now separate between servers, every server has it's own comple
 
 If you want to use it on your server, please contact me.  
   
-If you want to launch it by yourself, you'll need to create a discord app on https://discord.com/developers/ then you'll need to create a `config.json` using the template `template-config.json` and put your created bot's details inside of it.
+If you want to launch it by yourself, you'll need to create a discord app on <https://discord.com/developers/> then you'll need to create a `config.json` using the template `template-config.json` and put your created bot's details inside of it.
