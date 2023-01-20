@@ -37,6 +37,6 @@ module.exports = {
 		await interaction.deleteReply();
 		console.log(`@${interaction.user.tag} <@${interaction.user.id}> used “/${cmdName} ${message}”`);
 		if (logsChannel != undefined)
-			await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> used **\`“/${cmdName} ${message}”\`**`);
+			await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> used \`\` “/${cmdName} ${message}” \`\``);
 	},
 };
