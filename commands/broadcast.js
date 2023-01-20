@@ -34,9 +34,9 @@ module.exports = {
         var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === logsChannelName);
 
 		const embed = new EmbedBuilder()
-                    .setColor(0xFF0000)
-                    .setTitle('**System message**')
-                    .setDescription(message);
+                    .setColor(0xFFFF00)
+                    .setTitle(' ')
+                    .setDescription(`**${message}**`);
 
 		await interaction.reply({ content: locFile[locale][locale].system.sending, ephemeral: true });
 		if (logsChannel != undefined)
