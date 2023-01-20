@@ -219,13 +219,11 @@
             },
             "update": {
               "name": "update",
-              "description": "Sends a “rebooting for update” message",
-              "message": "Rebooting for update..."
+              "description": "Sends a “Rebooting for update” message"
             },
             "turnoff": {
               "name": "turnoff",
-              "description": "Sends a “Shutting down” message",
-              "message": "Shutting down..."
+              "description": "Sends a “Shutting down” message"
             }
           }
         }
