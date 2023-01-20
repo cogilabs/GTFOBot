@@ -182,7 +182,7 @@
           "fail": "Unfortunately, the expedition to # did not end up as expected... But next time will be the one!"
         },
         "change": {
-          "success": "The expedition to # was a success and is now moving to `Ø!",
+          "success": "The expedition to # was a success and is now moving to Ø!",
           "fail": "Unfortunately, the expedition to # did not end up as expected... But no worries, we are now moving to Ø!"
         },
         "ping": "Hey #!\n\n",
