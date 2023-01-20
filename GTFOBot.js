@@ -26,6 +26,7 @@ const client = new Client({
 		Partials.User
 	]
 });
+global.client = client;
 
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
