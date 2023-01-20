@@ -1,7 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits, Partials, EmbedBuilder } = require('discord.js');
-const { token } = require('./config.json');
+const { token, guildId } = require('./config.json');
 const { supportedLocales } = require('./localization/supportedLocales.json');
 
 const logsChannelName = 'dauda-logs';
@@ -240,7 +240,7 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 			await logsChannel.send(`Event “${event.name}”${MIDp} started\nSent it to \`\` ${channel.name} \`\``);
 		console.log(`Event “${event.name}”${MIDp} started\nSent it to \`${channel.name}\``);
 
-		if (event.guild.id == '1050756373182427136')
+		if (event.guild.id == guildId)
 			client.user.setPresence({ activities: [{ name: `GTFO${MIDp}` }], status: 'dnd' });
 	}
 
@@ -268,7 +268,7 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 				}
 			}
 		}
-		if (event.guild.id == '1050756373182427136')
+		if (event.guild.id == guildId)
 			client.user.setPresence({ activities: [{ name: 'Available', type: 4 }], status: 'online' });
 	}
 
@@ -306,7 +306,7 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 						}
 					}
 				}
-				if (event.guild.id == '1050756373182427136')
+				if (event.guild.id == guildId)
 					client.user.setPresence({ activities: [{ name: `GTFO (${MID})` }], status: 'dnd' });
 			}
 		}
