@@ -58,20 +58,20 @@ module.exports = {
 				.setNameLocalizations({
 					fr: locFile['fr']['fr'].commands[cmdName].subcommands.update.name,
 				})
-				.setDescription(locFile['en-US']['en-US'].commands[cmdName].subcommands.update.description))
+				.setDescription(locFile['en-US']['en-US'].commands[cmdName].subcommands.update.description)
 				.setDescriptionLocalizations({
 					fr: locFile['fr']['fr'].commands[cmdName].subcommands.update.description,
-				})
+				}))
 		.addSubcommand(subcommand =>
 			subcommand
 				.setName(locFile['en-US']['en-US'].commands[cmdName].subcommands.turnoff.name)
 				.setNameLocalizations({
 					fr: locFile['fr']['fr'].commands[cmdName].subcommands.turnoff.name,
 				})
-				.setDescription(locFile['en-US']['en-US'].commands[cmdName].subcommands.turnoff.description))
+				.setDescription(locFile['en-US']['en-US'].commands[cmdName].subcommands.turnoff.description)
 				.setDescriptionLocalizations({
 					fr: locFile['fr']['fr'].commands[cmdName].subcommands.turnoff.description,
-				})
+				}))
 		.setDefaultMemberPermissions(0)
 		.setDMPermission(false),
 	async execute(interaction) {
