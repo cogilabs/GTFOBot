@@ -1,6 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits, Partials } = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits, Partials, EmbedBuilder } = require('discord.js');
 const { token } = require('./config.json');
 const { supportedLocales } = require('./localization/supportedLocales.json');
 
@@ -68,13 +68,18 @@ client.once(Events.ClientReady, async () => {
 	var completion = []
 	client.guilds.cache.forEach(guild => completion[guild.id] = require('./rundowns/completion-' + guild.id + '.json'));
 	global.completion = completion;
+
+	const embed = new EmbedBuilder()
+		.setColor(0x00FF00)
+		.setTitle(' ')
+		.setDescription(`**App started, <@${client.user.id}> is now online on \`${client.guilds.cache.size}\` server(s)!**`);
 	
 	console.log(`App started, ${client.user.tag} is now online on ${client.guilds.cache.size} server(s)!`);
 	client.user.setPresence({ activities: [{ name: 'Available', type: 4 }], status: 'online' });
 
 	var logsChList = client.channels.cache.filter(channel => channel.name === logsChannelName);
 	global.logsChList = logsChList;
-	logsChList.forEach(async channel => await channel.send(`App started, <@${client.user.id}> is now online on \`${client.guilds.cache.size}\` server(s)!`));
+	logsChList.forEach(async channel => await channel.send({ embeds: [embed] }));
 });
 
 
