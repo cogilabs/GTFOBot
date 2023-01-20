@@ -73,6 +73,7 @@ client.once(Events.ClientReady, async () => {
 	client.user.setPresence({ activities: [{ name: 'Available', type: 4 }], status: 'online' });
 
 	var logsChList = client.channels.cache.filter(channel => channel.name === logsChannelName);
+	global.logsChList = logsChList;
 	logsChList.forEach(async channel => await channel.send(`App started, <@${client.user.id}> is now online on \`${client.guilds.cache.size}\` server(s)!`));
 });
 
@@ -97,7 +98,7 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 
 	if (logsChannel != undefined)
 		await logsChannel.send(
-			`A new scheduled event has been created by \`<${event.creatorId}>\`:`
+			`A new scheduled event has been created by \`\` <${event.creatorId}> \`\`:`
 			+ `\n - Title: ${event.name}`
 			+ `\n - Description: ${event.description}`
 			+ `\n - Date: ${event.scheduledStartAt}`
@@ -155,8 +156,8 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 	console.log(`Sent it to ${channel.name}`);
 	console.log(`<${event.creatorId}> automatically joined the event “${event.name}”`);
 	if (logsChannel != undefined) {
-		await logsChannel.send(`Sent it to \`${channel.name}\``);
-		await logsChannel.send(`\`<${event.creatorId}>\` automatically joined the event “${event.name}”`);
+		await logsChannel.send(`Sent it to \`\` ${channel.name} \`\``);
+		await logsChannel.send(`\`\` <${event.creatorId}> \`\` automatically joined the event “${event.name}”`);
 	}
 });
 
@@ -231,7 +232,7 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 		); // That mess allows us to show the link embed without the link, and yes, this is a glitch
 
 		if (logsChannel != undefined)
-			await logsChannel.send(`Event “${event.name}”${MIDp} started\nSent it to \`${channel.name}\``);
+			await logsChannel.send(`Event “${event.name}”${MIDp} started\nSent it to \`\` ${channel.name} \`\``);
 		console.log(`Event “${event.name}”${MIDp} started\nSent it to \`${channel.name}\``);
 
 		if (event.guild.id == '1050756373182427136')
@@ -249,13 +250,13 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 							if (completion[event.guild.id].completion[run][lt][id].completed.main) {
 								await channel.send((locFile[locale][locale].events.end.success).replace('#', missionName));
 								if (logsChannel != undefined)
-									await logsChannel.send(`Event “${event.name}”${MIDp} finished! (success)\nSent it to \`${channel.name}\``);
-								console.log(`Event “${event.name}”${MIDp} finished! (success)\nSent it to \`${channel.name}\``);
+									await logsChannel.send(`Event “${event.name}”${MIDp} finished! (success)\nSent it to \`\` ${channel.name} \`\``);
+								console.log(`Event “${event.name}”${MIDp} finished! (success)\nSent it to “${channel.name}”`);
 							} else {
 								await channel.send((locFile[locale][locale].events.end.fail).replace('#', missionName));
 								if (logsChannel != undefined)
-									await logsChannel.send(`Event “${event.name}”${MIDp} finished! (failure)\nSent it to \`${channel.name}\``);
-								console.log(`Event “${event.name}”${MIDp} finished! (failure)\nSent it to \`${channel.name}\``);
+									await logsChannel.send(`Event “${event.name}”${MIDp} finished! (failure)\nSent it to \`\` ${channel.name} \`\``);
+								console.log(`Event “${event.name}”${MIDp} finished! (failure)\nSent it to “${channel.name}”`);
 							}
 						}
 					}
@@ -288,13 +289,13 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 								if (completion[event.guild.id].completion[run][lt][id].completed.main) {
 									await channel.send((locFile[locale][locale].events.change.success).replace('#', `***${oldMID}***`).replace('Ø', `***${MID}***`));
 									if (logsChannel != undefined)
-										await logsChannel.send(`Event “${event.name}” (${oldMID}) modified to ${MID}! (success)\nSent it to \`${channel.name}\``);
+										await logsChannel.send(`Event “${event.name}” (${oldMID}) modified to ${MID}! (success)\nSent it to \`\` ${channel.name} \`\``);
 									console.log(`Event “${event.name}”${MIDp} finished! (success)\nSent it to \`${channel.name}\``);
 								} else {
 									await channel.send((locFile[locale][locale].events.change.fail).replace('#', `***${oldMID}***`).replace('Ø', `***${MID}***`));
 									if (logsChannel != undefined)
-										await logsChannel.send(`Event “${event.name}” (${oldMID}) modified to ${MID}! (failure)\nSent it to \`${channel.name}\``);
-									console.log(`Event “${event.name}”${MIDp} finished! (failure)\nSent it to \`${channel.name}\``);
+										await logsChannel.send(`Event “${event.name}” (${oldMID}) modified to ${MID}! (failure)\nSent it to \`\` ${channel.name} \`\``);
+									console.log(`Event “${event.name}”${MIDp} finished! (failure)\nSent it to \`\` ${channel.name} \`\``);
 								}
 							}
 						}
@@ -350,7 +351,7 @@ client.on(Events.GuildScheduledEventUserAdd, async (event, user) => {
 		await channel.send(`<@${user.id}> ${locFile[locale][locale].events.participate}`);
 		console.log(`@${user.tag} joined the event “${event.name}”`);
 		if (logsChannel != undefined)
-			await logsChannel.send(`\`@${user.tag}\` joined the event “${event.name}”`);
+			await logsChannel.send(`\`\` @${user.tag} \`\` joined the event “${event.name}”`);
 	}
 });
 
@@ -397,7 +398,7 @@ client.on(Events.GuildScheduledEventUserRemove, async (event, user) => {
 
 	console.log(`@${user.tag} left the event “${event.name}”`);
 	if (logsChannel != undefined)
-		await logsChannel.send(`\`@${user.tag}\` left the event “${event.name}”`);
+		await logsChannel.send(`\`\` @${user.tag} \`\` left the event “${event.name}”`);
 	
 });
 
@@ -418,7 +419,7 @@ client.on(Events.MessageCreate, async message => {
 		await message.react('❌');
 		console.log(`Reacted “✅” and “❌” to “${msgContent}” by ${message.author.tag}`);
 		if (logsChannel != undefined)
-			await logsChannel.send(`Reacted “✅” and “❌” to \`${msgContent}\` by \`${message.author.tag}\``);
+			await logsChannel.send(`Reacted “✅” and “❌” to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
 	}
 
 	if (message.author == client.user) return;
@@ -430,11 +431,11 @@ client.on(Events.MessageCreate, async message => {
 			await message.react(reactionEmoji);
 			console.log(`Reacted “${emojiName}” to “${msgContent}” by ${message.author.tag}`);
 			if (logsChannel != undefined)
-				await logsChannel.send(`Reacted \`${emojiName}\` to \`${msgContent}\` by \`${message.author.tag}\``);
+				await logsChannel.send(`Reacted \`\` ${emojiName} \`\` to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
 		} else {
 			console.log(`Tried to react to “${msgContent}” by ${message.author.tag} but no '${emojiName}' emoji was found`);
 			if (logsChannel != undefined)
-				await logsChannel.send(`Tried to react to \`${msgContent}\` by ${message.author.tag} but no \`${emojiName}\` emoji was found`);
+				await logsChannel.send(`Tried to react to \`\` ${msgContent} \`\` by ${message.author.tag} but no \`\` ${emojiName} \`\` emoji was found`);
 		}
 	}
 
@@ -443,7 +444,7 @@ client.on(Events.MessageCreate, async message => {
 		await message.react('❓');
 		console.log(`Reacted “❓” to “${msgContent}” by ${message.author.tag}`);
 		if (logsChannel != undefined)
-			await logsChannel.send(`Reacted \`❓\` to \`${msgContent}\` by \`${message.author.tag}\``);
+			await logsChannel.send(`Reacted \`\` ❓ \`\` to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
 	}
 
 	if (msgContentLowerCase.includes('l\'état de la mission r') || msgContentLowerCase.includes('l\'état du secteur r')
@@ -475,13 +476,13 @@ client.on(Events.MessageCreate, async message => {
 			await message.react(reaction);
 			console.log(`Reacted “${reaction}” to “${msgContent}” by ${message.author.tag}`);
 			if (logsChannel != undefined)
-				await logsChannel.send(`Reacted \`${reaction}\` to \`${msgContent}\` by \`${message.author.tag}\``);
+				await logsChannel.send(`Reacted \`\` ${reaction} \`\` to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
 		}
 		if (reaction == '❔' && message.channel != logsChannel) {
 			await message.reply({ content: locFile[locale][locale].system.missionNotFound.replace('#', MID), ephemeral: true });
 			console.log(`Answered “${locFile[locale][locale].system.missionNotFound.replace('#', MID)}” to “${msgContent}” by ${message.author.tag}`);
 			if (logsChannel != undefined)
-				await logsChannel.send(`Answered “${locFile[locale][locale].system.missionNotFound.replace('#', MID)}” to \`${msgContent}\` by \`${message.author.tag}\``);
+				await logsChannel.send(`Answered “${locFile[locale][locale].system.missionNotFound.replace('#', MID)}” to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
 		}
 	}
 	// ====================== NEEDS TO BE LOCALIZED !!! ============================
@@ -498,7 +499,7 @@ client.on(Events.MessageCreate, async message => {
 		await message.reply(answer);
 		console.log(`Answered “${answer}” to “${msgContent}” by ${message.author.tag}`)
 		if (logsChannel != undefined)
-			await logsChannel.send(`Answered “${answer}” to \`${msgContent}\` by \`${message.author.tag}\``);
+			await logsChannel.send(`Answered “${answer}” to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
 	}
 });
 

@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js');
 const { supportedLocales } = require('../localization/supportedLocales.json');
-const cmdName = 'echo';
+const cmdName = 'logsecho';
 
 var locFile = new Array();
 for (var lang in supportedLocales) {
@@ -25,6 +25,7 @@ module.exports = {
 		.setDefaultMemberPermissions(0)
 		.setDMPermission(false),
 	async execute(interaction) {
+		console.log(logsChList);
         var locale = '';
         for (var loc in supportedLocales) {
             if (interaction.locale == loc) locale = interaction.locale;
@@ -33,10 +34,10 @@ module.exports = {
         var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === logsChannelName);
 		const message = interaction.options.getString('message');
 		await interaction.reply({ content: locFile[locale][locale].system.sending, ephemeral: true });
-		await interaction.channel.send({ content: message });
-		await interaction.deleteReply();
-		console.log(`@${interaction.user.tag} <@${interaction.user.id}> used “/${cmdName} ${message}”`);
 		if (logsChannel != undefined)
 			await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> used \`\` “/${cmdName} ${message}” \`\``);
+		logsChList.forEach(async channel => await channel.send({ content: message }));
+		await interaction.deleteReply();
+		console.log(`@${interaction.user.tag} <@${interaction.user.id}> used “/${cmdName} ${message}”`);
 	},
 };
