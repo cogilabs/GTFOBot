@@ -196,6 +196,10 @@
         "echo": {
             "description": "Send a message in the current channel",
             "option1": "The content of the message to send"
+        },
+        "logsecho": {
+            "description": "Send a message to all logs channels",
+            "option1": "The content of the message to send"
         }
       },
       "missions": {

@@ -4,6 +4,7 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "type": "node",
             "request": "launch",
@@ -12,6 +13,24 @@
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}\\GTFOBot.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Deploy Global",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\deploy-commands-global.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Deploy Guild",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\deploy-commands-guild.js"
         }
     ]
 }
