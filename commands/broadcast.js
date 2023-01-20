@@ -1,6 +1,6 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const { supportedLocales } = require('../localization/supportedLocales.json');
-const cmdName = 'logsecho';
+const cmdName = 'broadcast';
 
 var locFile = new Array();
 for (var lang in supportedLocales) {
@@ -25,18 +25,24 @@ module.exports = {
 		.setDefaultMemberPermissions(0)
 		.setDMPermission(false),
 	async execute(interaction) {
-		console.log(logsChList);
         var locale = '';
+		const message = interaction.options.getString('message');
         for (var loc in supportedLocales) {
             if (interaction.locale == loc) locale = interaction.locale;
         }
         if (locale == '') locale = 'en-US';
         var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === logsChannelName);
-		const message = interaction.options.getString('message');
+
+		const embed = new EmbedBuilder()
+                    .setColor(0xFF0000)
+                    .setTitle('**System message**')
+                    .setDescription(message);
+
 		await interaction.reply({ content: locFile[locale][locale].system.sending, ephemeral: true });
 		if (logsChannel != undefined)
 			await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> used \`\` “/${cmdName} ${message}” \`\``);
-		logsChList.forEach(async channel => await channel.send({ content: message }));
+
+		logsChList.forEach(async channel => await channel.send({ embeds: [embed] }));
 		await interaction.deleteReply();
 		console.log(`@${interaction.user.tag} <@${interaction.user.id}> used “/${cmdName} ${message}”`);
 	},
