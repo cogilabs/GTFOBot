@@ -75,8 +75,12 @@ For the moment, the message reacting and answering only works in French, as me a
 Appart from that, the application is *fully localized* in English and French, taking the server language for event handling, and the asking user's language for command descriptions and answering to commands (Intel, mission descriptions, etc...).  
 It's also really easy to localize in other languages.  
   
-If a text channel named `dauda-logs` exists, the bot will log every actions it does in this server in it.  
+If a text channel named `dauda-logs` exists, the bot will log every actions it does in this server in it, along with actions like starting or rebooting.  
   
 The bot has an `echo` command, allowing admins to speak in his name (User can still be checked in the `dauda-logs` channel).  
   
 The completion is now separate between servers, every server has it's own completion file containing its progression.
+
+If you want to use it on your server, please contact me.  
+  
+If you want to launch it by yourself, you'll need to create a discord app on https://discord.com/developers/ then you'll need to create a `config.json` using the template `template-config.json` and put your created bot's details inside of it.
