@@ -34,21 +34,21 @@ You can see that the missions that have been successfully finished are represent
 
 ![/mission command result](Images/mission.png?raw=true)
 
-Here the subsectors can have a checkmark if completed.
+Here the subsectors will have a checkmark if completed.
 
 At the bottom, you can click on a button to mark a sector as complete (or as not complete).  
 *Note: To use those buttons, the user needs the permission to manage events.*
 
 ## Event handling
 
-The bot sends a message when a scheduled server event is created. By checking the name and description of the event for a mission ID, it's able to know where the expediton is going, and sends a message including the mission (if no mission is found, the message just doesn't mention it):  
+The bot sends a message when a scheduled server event is created. By checking the name and description of the event for a mission ID, it's able to know where the expediton is going, and sends a message including the mission ID (if no mission ID is found, the message just doesn't mention it):  
 "The Warden is sending us in a new expedition to ***R7B1***, so get ready to work together, or die together!".  
   
 It also keeps track of who is interested in the expedition and sends messages accordingly.  
   
 When the event starts, Dauda will tell users with a join link.  
   
-If you change the mission ID contained in the event, the bot will send a message saying the expedition is changing destination. The message will depend of the completion of the first destination:  
+If you change the mission ID contained in the event, the bot will send a message saying that the expedition is changing destination. The message will depend of the completion of the first destination:  
 "The expedition to ***R1C2*** was a success and is now moving to ***R1D1***" or "Unfortunately, the expedition to ***R7B2*** did not end up as expected... But no worries, we are now moving to ***R7C1***".  
   
 When an event is finished, a message of the same kind as above will be sent, again checking the completion of the mission in the completion file.  
