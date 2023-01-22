@@ -1,8 +1,9 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits, Partials, EmbedBuilder } = require('discord.js');
+const { Client, Collection, Events, Guild, GatewayIntentBits, Partials, EmbedBuilder } = require('discord.js');
 const { token, guildId } = require('./config.json');
 const { supportedLocales } = require('./localization/supportedLocales.json');
+const { spawn } = require('child_process');
 
 const logsChannelName = 'dauda-logs';
 global.logsChannelName = logsChannelName;
@@ -81,6 +82,30 @@ client.once(Events.ClientReady, async () => {
 	var logsChList = client.channels.cache.filter(channel => channel.name === logsChannelName);
 	global.logsChList = logsChList;
 	logsChList.forEach(async channel => await channel.send({ embeds: [embed] }));
+});
+
+client.on(Events.GuildCreate, async guild => {
+	completionFile[guild.id] = editJsonFile('./rundowns/completion-' + guild.id + '.json')
+	console.log('New server added, creating completion file...');
+	for (var run in rundowns) {
+		for (var lt in rundowns[run]) {
+			for (var mission in rundowns[run][lt]) {
+				for (var mt in rundowns[run][lt][mission].missionTypes) {
+					client.guilds.cache.forEach(guild => {
+						if (rundowns[run][lt][mission].missionTypes[mt]) {
+							if (completionFile[guild.id].get(`completion.${run}.${lt}.${mission}.completed.${mt}`) == undefined) {
+								completionFile[guild.id].set(`completion.${run}.${lt}.${mission}.completed.${mt}`, false);
+								console.log(`Adding ${run}${mission}:${mt} for server '${guild.id}'...`)
+							}
+						}
+						completionFile[guild.id].save();
+					})
+				}
+			}
+		}
+	}
+	completion[guild.id] = require('./rundowns/completion-' + guild.id + '.json')
+	const deployCommands = spawn('node', ['./deploy-commands-global.js']);
 });
 
 
