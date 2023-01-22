@@ -85,8 +85,12 @@ client.once(Events.ClientReady, async () => {
 });
 
 client.on(Events.GuildCreate, async guild => {
-	completionFile[guild.id] = editJsonFile('./rundowns/completion-' + guild.id + '.json')
-	console.log('New server added, creating completion file...');
+	completionFile[guild.id] = editJsonFile('./rundowns/completion-' + guild.id + '.json');
+	var mainGuild = client.guilds.cache.find(mainGuild => mainGuild.id == guildId);
+	var mainGuildLogsChannel = mainGuild.channels.cache.find(channel => channel.name === logsChannelName);
+	if (mainGuildLogsChannel != undefined)
+		await mainGuildLogsChannel.send(`New server added: “${guild.name}” (${guild.id}) creating completion file...`);
+	console.log(`New server added: “${guild.name}” (${guild.id}) creating completion file...`);
 	for (var run in rundowns) {
 		for (var lt in rundowns[run]) {
 			for (var mission in rundowns[run][lt]) {
@@ -104,8 +108,14 @@ client.on(Events.GuildCreate, async guild => {
 			}
 		}
 	}
-	completion[guild.id] = require('./rundowns/completion-' + guild.id + '.json')
+	completion[guild.id] = require('./rundowns/completion-' + guild.id + '.json');
+	if (mainGuildLogsChannel != undefined)
+		await mainGuildLogsChannel.send('New server\'s completion file added, redeploying commands...');
+	console.log('New server\'s completion file added, redeploying commands...');
 	const deployCommands = spawn('node', ['./deploy-commands-global.js']);
+	if (mainGuildLogsChannel != undefined)
+		await mainGuildLogsChannel.send('Commands redeployed');
+	console.log('Commands redeployed');
 });
 
 
