@@ -57,7 +57,7 @@ module.exports = {
 				completionFile[interaction.guild.id].set(`configuration.eventChannel`, eventChannel.id);
 				completionFile[interaction.guild.id].save();
 				logMessage = logMessage + eventChannel.name + '(Success) ';
-				message = message + `Event channel set to “${eventChannel.name}”\n`;
+				message = message + `${locFile[locale][locale].system.eventChannelSetTo} “${eventChannel.name}”\n`;
 			} else {
 				logMessage = eventChannel.name + '(failure) ';
 				message = message + `**“${eventChannel.name}” ${locFile[locale][locale].system.notATextChannel}**\n`;

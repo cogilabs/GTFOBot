@@ -170,6 +170,7 @@
         "noOptionsProvided": "Aucune option fournie !",
         "notATextChannel": "n'est pas un salon texte!",
         "roleSetTo": "Rôle réglé sur",
+        "eventChannelSetTo": "Salon d'évènements réglé sur",
         "commandError": "Il y a eu une erreur lors de l'exécution de cette commande !",
         "buttonError": "Il y a eu une erreur lors du traitement de ce bouton !",
         "missionNotFound": "Je ne trouve pas la mission #, peut tu vérifier si elle existe vraiment ? (N'hésites pas à faire **`/rundowns`** pour le savoir :wink:)",
