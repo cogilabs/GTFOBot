@@ -14,82 +14,71 @@ for (var lang in supportedLocales) {
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName(cmdName)
-		.setDescription('Configuration of the bot')
-		//.setDescription(locFile['en-US']['en-US'].commands[cmdName].description)
-        /*.setDescriptionLocalizations({
+		.setDescription(locFile['en-US']['en-US'].commands[cmdName].description)
+        .setDescriptionLocalizations({
             fr: locFile['fr']['fr'].commands[cmdName].description,
-        })*/
+        })
 		.addChannelOption(option => 
             option
-            .setName('eventchannel')
-			.setDescription('The channel where the event messages are sent')
-			//.setDescription(locFile['en-US']['en-US'].commands[cmdName].option1)
-			/*.setDescriptionLocalizations({
-				fr: locFile['fr']['fr'].commands[cmdName].option1,
-			})*/)
-		.addStringOption(option => 
+            .setName(locFile['en-US']['en-US'].commands[cmdName].option1.name)
+			.setNameLocalizations({
+				fr: locFile['fr']['fr'].commands[cmdName].option1.name,
+			})
+			.setDescription(locFile['en-US']['en-US'].commands[cmdName].option1.description)
+			.setDescriptionLocalizations({
+				fr: locFile['fr']['fr'].commands[cmdName].option1.description,
+			}))
+		.addRoleOption(option => 
             option
-            .setName('option2')
-			.setDescription('The second option')
-			//.setDescription(locFile['en-US']['en-US'].commands[cmdName].option1)
-			/*.setDescriptionLocalizations({
-				fr: locFile['fr']['fr'].commands[cmdName].option1,
-			})*/)
-		.addStringOption(option => 
-            option
-            .setName('option3')
-			.setDescription('The third option')
-			//.setDescription(locFile['en-US']['en-US'].commands[cmdName].option2)
-			/*.setDescriptionLocalizations({
-				fr: locFile['fr']['fr'].commands[cmdName].option2,
-			})*/)
+            .setName(locFile['en-US']['en-US'].commands[cmdName].option2.name)
+			.setNameLocalizations({
+				fr: locFile['fr']['fr'].commands[cmdName].option2.name,
+			})
+			.setDescription(locFile['en-US']['en-US'].commands[cmdName].option2.description)
+			.setDescriptionLocalizations({
+				fr: locFile['fr']['fr'].commands[cmdName].option2.description,
+			}))
 		.setDefaultMemberPermissions(0)
 		.setDMPermission(false),
 	async execute(interaction) {
         var locale = '';
 		var message = '';
+		var logMessage = '';
         for (var loc in supportedLocales) {
             if (interaction.locale == loc) locale = interaction.locale;
         }
         if (locale == '') locale = 'en-US';
         var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === logsChannelName);
-		const eventChannel = interaction.options.getChannel('eventchannel');
-		const option2 = interaction.options.getString('option2');
-		const option3 = interaction.options.getString('option3');
+		const eventChannel = interaction.options.getChannel(locFile['en-US']['en-US'].commands[cmdName].option1.name);
+		const role = interaction.options.getRole(locFile['en-US']['en-US'].commands[cmdName].option2.name);
 		if (eventChannel != null) {
 			console.log('Channel:', eventChannel);
 			if (eventChannel.type == 0) {
 				completionFile[interaction.guild.id].set(`configuration.eventChannel`, eventChannel.id);
 				completionFile[interaction.guild.id].save();
-				message = eventChannel.name + ' (Success)';
-				await interaction.reply({ content: 'Done.', ephemeral: true });
-				await interaction.deleteReply();
+				logMessage = logMessage + eventChannel.name + '(Success) ';
+				message = message + `Event channel set to “${eventChannel.name}”\n`;
 			} else {
-				message = eventChannel.name + ' (failure)';
-				const embed = new EmbedBuilder()
-					.setColor(0xff0000)
-					.setTitle('**Error**')
-					.setDescription(`**This is not a text channel!**`);
-				await interaction.reply({ embeds: [embed], ephemeral: true });
+				logMessage = eventChannel.name + '(failure) ';
+				message = message + `**“${eventChannel.name}” ${locFile[locale][locale].system.notATextChannel}**\n`;
 			}
+		} 
+		
+		if(role != null) {
+			completionFile[interaction.guild.id].set(`configuration.prisonnersRole`, role.id);
+			completionFile[interaction.guild.id].save();
+			logMessage = logMessage + role.name + ' ';
+			message = message + `${locFile[locale][locale].system.roleSetTo} “${role.name}”\n`;
+		} 
+		
+		if(role == null && eventChannel == null) {
+			message = message + locFile[locale][locale].system.noOptionsProvided;
 		}
-		if (option2 != null) {
-			console.log('Option2:', option2);
-			message = "Option2";
-			await interaction.reply({ content: locFile[locale][locale].system.sending, ephemeral: true });
-			await interaction.deleteReply();
-		}
-		if (option3 != null) {
-			console.log('Option3:', option3);
-			message = "Option3";
-			await interaction.reply({ content: locFile[locale][locale].system.sending, ephemeral: true });
-			await interaction.deleteReply();
-		}
+
+		await interaction.reply({ content: message, ephemeral: true });
 
 		if (logsChannel != undefined)
-			await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> used \`\` “/${cmdName} ${message}” \`\``);
-		console.log(`@${interaction.user.tag} <@${interaction.user.id}> used “/${cmdName} ${message}”`);
-
-		/*await interaction.channel.send({ content: message });*/
+			await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> used \`\` “ /${cmdName} ${logMessage}” \`\``);
+		console.log(`@${interaction.user.tag} <@${interaction.user.id}> used “ /${cmdName} ${logMessage}”`);
 	},
 };
