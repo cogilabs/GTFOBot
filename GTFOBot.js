@@ -1,3 +1,7 @@
+// GTFOBot.js - GTFO Discord Companion app
+// Copyright (C) 2022 David "0Davgi0" Girou
+// License: BSD2.
+
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, Guild, GatewayIntentBits, Partials, EmbedBuilder } = require('discord.js');

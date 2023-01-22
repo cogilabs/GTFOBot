@@ -1,3 +1,7 @@
+// rundowns.js - GTFO Discord Companion app rundowns command
+// Copyright (C) 2022 David "0Davgi0" Girou
+// License: BSD2.
+
 const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const { supportedLocales } = require('../localization/supportedLocales.json');
 

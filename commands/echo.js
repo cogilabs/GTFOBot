@@ -1,3 +1,7 @@
+// echo.js - GTFO Discord Companion app echo command
+// Copyright (C) 2022 David "0Davgi0" Girou
+// License: BSD2.
+
 const { SlashCommandBuilder } = require('discord.js');
 const { supportedLocales } = require('../localization/supportedLocales.json');
 const cmdName = 'echo';
