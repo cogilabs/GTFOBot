@@ -6,6 +6,7 @@ const commands = [];
 const commandFiles = [
 	"echo.js",
 	"rundowns.js",
+	"config.js",
   ]
 
 for (const file of commandFiles) {
