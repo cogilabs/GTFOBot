@@ -56,7 +56,8 @@ When an event is finished, a message of the same kind as above will be sent, aga
 Of course it means you have to update the file with `/rundowns` before modifying or finishing the event.  
   
 By default, all of these messages will be sent to the first channel named `general` it finds. If there is none, it will send it to the system channel. If no system channel is defined, it doesn't send the messages.  
-This default setting is overideable, by putting `` `ch:channelname` `` somewhere in the event description, the bot will send any message about this event in that selected channel (here, "channelname").  
+You can change this setting (per server) with the `` /config `` command.
+The setting is still overideable, by putting `` `ch:channelname` `` somewhere in the event description, the bot will send any message about this event in that selected channel (here, "channelname").  
   
 Soon, the bot will only detect events containing the text "GTFO" in their description, for obvious reasons.
 
