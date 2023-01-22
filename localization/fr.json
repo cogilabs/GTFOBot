@@ -167,9 +167,13 @@
       "system": {
         "noCommandPermission": "Vous n'avez pas la permission d'utiliser cette commande !",
         "noButtonPermission": "Vous n'avez pas la permission d'utiliser ce bouton !",
+        "noOptionsProvided": "Aucune option fournie !",
+        "notATextChannel": "n'est pas un salon texte!",
+        "roleSetTo": "Rôle réglé sur",
         "commandError": "Il y a eu une erreur lors de l'exécution de cette commande !",
         "buttonError": "Il y a eu une erreur lors du traitement de ce bouton !",
         "missionNotFound": "Je ne trouve pas la mission #, peut tu vérifier si elle existe vraiment ? (N'hésites pas à faire **`/rundowns`** pour le savoir :wink:)",
+        "error": "Erreur",
         "sending": "Envoi en cours..."
       },
       "events": {
@@ -225,6 +229,17 @@
               "name": "turnoff",
               "description": "Envoyer un message “Shutting down”"
             }
+          }
+        },
+        "config": {
+          "description": "Configuration du bot",
+          "option1": {
+            "name": "salonevenement",
+            "description": "Le salon dans lequel les messages d'évènements sont envoyés"
+          },
+          "option2": {
+            "name": "roleprisonniers",
+            "description": "Le rôle que les joueurs de GTFO ont sur le serveur (“Prisonniers” par défaut)"
           }
         }
       },

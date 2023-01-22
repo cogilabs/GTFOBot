@@ -149,21 +149,34 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 			+ `\n - Date: ${event.scheduledStartAt}`
 		);
 
-	if (event.guild.channels.cache.find(channel => channel.name === 'general')) {
-		var channel = event.guild.channels.cache.find(channel => channel.name === 'general');
-	} else {
-		console.log('This server does not have a channel named \'general\', defaulting to the system channel...');
-		if (logsChannel != undefined)
-			await logsChannel.send('This server does not have a channel named \'general\', defaulting to the system channel...');
-		if (event.guild.systemChannel) {
-			var channel = event.guild.systemChannel;
-		} else {
-			console.log('This server does not have a system channel, aborting...');
+		var eventChannel = completionFile[event.guild.id].get(`configuration.eventChannel`);
+		if (eventChannel != undefined) {
+			var channel = event.guild.channels.cache.find(channel => channel.id === eventChannel);
+			console.log('Custom event channel detected: ' + eventChannel);
 			if (logsChannel != undefined)
-				await logsChannel.send('This server does not have a system channel, aborting...');
-			return;
+				await logsChannel.send('Custom event channel detected: ' + eventChannel);
+		} else {
+			console.log('This server does not have a custom event channel, defaulting to the \'general\' channel...');
+			if (logsChannel != undefined)
+				await logsChannel.send('This server does not have a custom event channel, defaulting to the \'general\' channel...');
+			if (event.guild.channels.cache.find(channel => channel.name === 'general')) {
+				var channel = event.guild.channels.cache.find(channel => channel.name === 'general');
+			} else {
+				console.log('This server does not have a channel named \'general\', defaulting to the system channel...');
+				if (logsChannel != undefined)
+					await logsChannel.send('This server does not have a channel named \'general\', defaulting to the system channel...');
+				if (event.guild.systemChannel) {
+					var channel = event.guild.systemChannel;
+				} else {
+					console.log('This server does not have a system channel, aborting...');
+					if (logsChannel != undefined)
+						await logsChannel.send('This server does not have a system channel, aborting...');
+					return;
+				}
+			}
 		}
-	}
+
+	
 	
 	oldCh = channel;
 	if (event.description.match(/`ch:[aàâbcçdeéèêfghiïjklmnoôpqrstuùûvwxyz-]+`/))
@@ -177,7 +190,10 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 		missionName = ` ${locFile[locale][locale].events.to} ***${j}***`;
 	}
 
-	if (event.guild.roles.cache.find(role => role.name === roleName) != undefined) 
+	var prisonnersRole = completionFile[event.guild.id].get(`configuration.prisonnersRole`);
+	if (prisonnersRole != undefined)
+		ping = (locFile[locale][locale].events.ping).replace('#', `<@&${event.guild.roles.cache.find(role => role.id === prisonnersRole).id}>`);
+	else if (event.guild.roles.cache.find(role => role.name === roleName) != undefined) 
 		ping = (locFile[locale][locale].events.ping).replace('#', `<@&${event.guild.roles.cache.find(role => role.name === roleName).id}>`);
 
 	await channel.send(
@@ -222,19 +238,30 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 	var MID = '';
 	var MIDp = '';
 
-	if (event.guild.channels.cache.find(channel => channel.name === 'general')) {
-		var channel = event.guild.channels.cache.find(channel => channel.name === 'general');
-	} else {
-		console.log('This server does not have a channel named \'general\', defaulting to the system channel...');
-		if (logsChannel != undefined)
-			await logsChannel.send('This server does not have a channel named \'general\', defaulting to the system channel...');
-		if (event.guild.systemChannel) {
-			var channel = event.guild.systemChannel;
-		} else {
-			console.log('This server does not have a system channel, aborting...');
+	var eventChannel = completionFile[event.guild.id].get(`configuration.eventChannel`);
+		if (eventChannel != undefined) {
+			var channel = event.guild.channels.cache.find(channel => channel.id === eventChannel);
+			console.log('Custom event channel detected: ' + eventChannel);
 			if (logsChannel != undefined)
-				await logsChannel.send('This server does not have a system channel, aborting...');
-			return;
+				await logsChannel.send('Custom event channel detected: ' + eventChannel);
+	} else {
+		console.log('This server does not have a custom event channel, defaulting to the \'general\' channel...');
+		if (logsChannel != undefined)
+			await logsChannel.send('This server does not have a custom event channel, defaulting to the \'general\' channel...');
+		if (event.guild.channels.cache.find(channel => channel.name === 'general')) {
+			var channel = event.guild.channels.cache.find(channel => channel.name === 'general');
+		} else {
+			console.log('This server does not have a channel named \'general\', defaulting to the system channel...');
+			if (logsChannel != undefined)
+				await logsChannel.send('This server does not have a channel named \'general\', defaulting to the system channel...');
+			if (event.guild.systemChannel) {
+				var channel = event.guild.systemChannel;
+			} else {
+				console.log('This server does not have a system channel, aborting...');
+				if (logsChannel != undefined)
+					await logsChannel.send('This server does not have a system channel, aborting...');
+				return;
+			}
 		}
 	}
 	
@@ -255,7 +282,10 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 	// Event started
 	if (oldEvent.status === 1 && event.status === 2) {
 	
-		if (event.guild.roles.cache.find(role => role.name === roleName) != undefined) 
+		var prisonnersRole = completionFile[event.guild.id].get(`configuration.prisonnersRole`);
+		if (prisonnersRole != undefined)
+		ping = (locFile[locale][locale].events.ping).replace('#', `<@&${event.guild.roles.cache.find(role => role.id === prisonnersRole).id}>`);
+		else if (event.guild.roles.cache.find(role => role.name === roleName) != undefined) 
 			ping = (locFile[locale][locale].events.ping).replace('#', `<@&${event.guild.roles.cache.find(role => role.name === roleName).id}>`);
 
 		await channel.send(
@@ -364,21 +394,32 @@ client.on(Events.GuildScheduledEventUserAdd, async (event, user) => {
         }
         if (locale == '') locale = 'en-US';
 
-	if (event.guild.channels.cache.find(channel => channel.name === 'general')) {
-		var channel = event.guild.channels.cache.find(channel => channel.name === 'general');
-	} else {
-		console.log('This server does not have a channel named \'general\', defaulting to the system channel...');
-		if (logsChannel != undefined)
-			await logsChannel.send('This server does not have a channel named \'general\', defaulting to the system channel...');
-		if (event.guild.systemChannel) {
-			var channel = event.guild.systemChannel;
-		} else {
-			console.log('This server does not have a system channel, aborting...');
+		var eventChannel = completionFile[event.guild.id].get(`configuration.eventChannel`);
+		if (eventChannel != undefined) {
+			console.log('Custom event channel detected: ' + eventChannel);
 			if (logsChannel != undefined)
-				await logsChannel.send('This server does not have a system channel, aborting...');
-			return;
+				await logsChannel.send('Custom event channel detected: ' + eventChannel);
+			var channel = eventChannel;
+		} else {
+			console.log('This server does not have a custom event channel, defaulting to the \'general\' channel...');
+			if (logsChannel != undefined)
+				await logsChannel.send('This server does not have a custom event channel, defaulting to the \'general\' channel...');
+			if (event.guild.channels.cache.find(channel => channel.name === 'general')) {
+				var channel = event.guild.channels.cache.find(channel => channel.name === 'general');
+			} else {
+				console.log('This server does not have a channel named \'general\', defaulting to the system channel...');
+				if (logsChannel != undefined)
+					await logsChannel.send('This server does not have a channel named \'general\', defaulting to the system channel...');
+				if (event.guild.systemChannel) {
+					var channel = event.guild.systemChannel;
+				} else {
+					console.log('This server does not have a system channel, aborting...');
+					if (logsChannel != undefined)
+						await logsChannel.send('This server does not have a system channel, aborting...');
+					return;
+				}
+			}
 		}
-	}
 	
 	oldCh = channel;
 	if (event.description.match(/`ch:[aàâbcçdeéèêfghiïjklmnoôpqrstuùûvwxyz-]+`/))
@@ -411,19 +452,30 @@ client.on(Events.GuildScheduledEventUserRemove, async (event, user) => {
 
 	var MID = '';
 
-	if (event.guild.channels.cache.find(channel => channel.name === 'general')) {
-		var channel = event.guild.channels.cache.find(channel => channel.name === 'general');
-	} else {
-		console.log('This server does not have a channel named \'general\', defaulting to the system channel...');
-		if (logsChannel != undefined)
-			await logsChannel.send('This server does not have a channel named \'general\', defaulting to the system channel...');
-		if (event.guild.systemChannel) {
-			var channel = event.guild.systemChannel;
-		} else {
-			console.log('This server does not have a system channel, aborting...');
+	var eventChannel = completionFile[event.guild.id].get(`configuration.eventChannel`);
+		if (eventChannel != undefined) {
+			var channel = event.guild.channels.cache.find(channel => channel.id === eventChannel);
+			console.log('Custom event channel detected: ' + eventChannel);
 			if (logsChannel != undefined)
-				await logsChannel.send('This server does not have a system channel, aborting...');
-			return;
+				await logsChannel.send('Custom event channel detected: ' + eventChannel);
+	} else {
+		console.log('This server does not have a custom event channel, defaulting to the \'general\' channel...');
+		if (logsChannel != undefined)
+			await logsChannel.send('This server does not have a custom event channel, defaulting to the \'general\' channel...');
+		if (event.guild.channels.cache.find(channel => channel.name === 'general')) {
+			var channel = event.guild.channels.cache.find(channel => channel.name === 'general');
+		} else {
+			console.log('This server does not have a channel named \'general\', defaulting to the system channel...');
+			if (logsChannel != undefined)
+				await logsChannel.send('This server does not have a channel named \'general\', defaulting to the system channel...');
+			if (event.guild.systemChannel) {
+				var channel = event.guild.systemChannel;
+			} else {
+				console.log('This server does not have a system channel, aborting...');
+				if (logsChannel != undefined)
+					await logsChannel.send('This server does not have a system channel, aborting...');
+				return;
+			}
 		}
 	}
 	
