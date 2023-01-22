@@ -1,4 +1,4 @@
-// echo.js - GTFO Discord Companion app echo command
+// config.js - GTFO Discord Companion app config command
 // Copyright (C) 2022 David "0Davgi0" Girou
 // License: BSD2.
 
@@ -59,10 +59,11 @@ module.exports = {
 		if (eventChannel != null) {
 			console.log('Channel:', eventChannel);
 			if (eventChannel.type == 0) {
+				completionFile[interaction.guild.id].set(`configuration.eventChannel`, eventChannel.id);
+				completionFile[interaction.guild.id].save();
 				message = eventChannel.name + ' (Success)';
 				await interaction.reply({ content: 'Done.', ephemeral: true });
 				await interaction.deleteReply();
-
 			} else {
 				message = eventChannel.name + ' (failure)';
 				const embed = new EmbedBuilder()
