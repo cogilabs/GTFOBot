@@ -81,7 +81,7 @@ The bot has an `echo` command, allowing admins to speak in his name (User can st
   
 The completion is now separate between servers, every server has it's own completion file containing its progression.
 
-If you want to try it, you can add it to your server via [this link](https://discord.com/api/oauth2/authorize?client_id%3D1050757215885209640%26permissions%3D283736656976%26scope%3Dbot).  
+If you want to try it, you can add it to your server via [this link](https://discord.com/api/oauth2/authorize?client_id=1050757215885209640&permissions=283736656976&scope=bot).  
 Keep in mind that it is still in active developement and that it's currently hosted on a raspberry pi zero, which doesn't have the best performances in the world.  
   
 If you want to launch it by yourself, you'll need to create a discord app on <https://discord.com/developers/> then you'll need to create a `config.json` using the template `template-config.json` and put your created bot's details inside of it.
