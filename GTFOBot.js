@@ -94,6 +94,7 @@ client.once(Events.ClientReady, async () => {
 		timeFile.set('time', Math.floor(Date.now()/ 1000).toString());
 		timeFile.save();
 	}
+	updateTimeFile;
 	setInterval(updateTimeFile, 60 * 1000);
 });
 
