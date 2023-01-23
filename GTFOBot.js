@@ -5,6 +5,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, Guild, GatewayIntentBits, Partials, EmbedBuilder } = require('discord.js');
+const { setInterval } = require('node:timers');
 const { token, guildId } = require('./config.json');
 const { supportedLocales } = require('./localization/supportedLocales.json');
 const { spawn } = require('child_process');
@@ -86,6 +87,14 @@ client.once(Events.ClientReady, async () => {
 	var logsChList = client.channels.cache.filter(channel => channel.name === logsChannelName);
 	global.logsChList = logsChList;
 	logsChList.forEach(async channel => await channel.send({ embeds: [embed] }));
+
+	var timeFile = editJsonFile('./timeFile.json')
+
+	function updateTimeFile() {
+		timeFile.set('time', Math.floor(Date.now()/ 1000).toString());
+		timeFile.save();
+	}
+	setInterval(updateTimeFile, 60 * 1000);
 });
 
 client.on(Events.GuildCreate, async guild => {
