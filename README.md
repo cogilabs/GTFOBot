@@ -3,8 +3,8 @@
 ![Banner](Images/GTFOBot-Banner-tr.png?raw=true)
 
 <p align="center">
-    <a href="https://nodejs.org/"><img alt="Node.js badge" title="Using Node.js!" src="https://img.shields.io/badge/node.js-233056?style=for-the-badge&logo=node.js&logoColor=white"/></a>
-    <a href="https://discord.js.org/"><img alt="Discord.js badge" title="Using Discord.js!" src="https://img.shields.io/badge/-Discord.js-5865F2?style=for-the-badge&logo=discord.js"/></a><br>
+    <a href="https://nodejs.org/" target="_blank"><img alt="Node.js badge" title="Using Node.js!" src="https://img.shields.io/badge/node.js-233056?style=for-the-badge&logo=node.js&logoColor=white"/></a>
+    <a href="https://discord.js.org/" target="_blank"><img alt="Discord.js badge" title="Using Discord.js!" src="https://img.shields.io/badge/-Discord.js-5865F2?style=for-the-badge&logo=discord.js"/></a><br>
     <img alt="Dauda Status" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fcogilabs.eu%2FGTFOBotState.php?style=for-the-badge"/>
 </p>
 
@@ -92,7 +92,7 @@ The bot has an `echo` command, allowing admins to speak in his name (User can st
 The completion is now separate between servers, every server has it's own completion file containing its progression.
 
 If you want to try it, you can add it to your server By clicking this button:
-<p align="center"><a href="https://discord.com/api/oauth2/authorize?client_id=1050757215885209640&permissions=283736656976&scope=bot"><img alt="Add me on discord button" title="Add me on your discord server!" src="https://img.shields.io/badge/Add%20me%20on-Discord-5865F2?style=for-the-badge"></a></p>
+<p align="center"><a href="https://discord.com/api/oauth2/authorize?client_id=1050757215885209640&permissions=283736656976&scope=bot" target="_blank"><img alt="Add me on discord button" title="Add me on your discord server!" src="https://img.shields.io/badge/Add%20me%20on-Discord-5865F2?style=for-the-badge"></a></p>
 
 🔺 Keep in mind that it is still in active developement and that it's currently hosted on a raspberry pi zero, which doesn't have the best performances in the world. 🔺  
   
