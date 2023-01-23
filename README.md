@@ -1,4 +1,9 @@
-![Dauda Status Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fcogilabs.eu%2FGTFOBotState.php)
+<p align="center">
+    <img alt="youtube subscribers" title="Subscribe to my YouTube channel" src="https://img.shields.io/badge/node.js-233056?style=for-the-badge&logo=node.js&logoColor=white"/>
+    <img alt="youtube views" title="YouTube views" src="https://img.shields.io/badge/-Discord.js-5865F2?style=for-the-badge&logo=discord.js"/><br>
+    <img alt="youtube views" title="YouTube views" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fcogilabs.eu%2FGTFOBotState.php?style=for-the-badge"/>
+</p>
+
 # GTFO Companion app
 
 ![Banner](Images/GTFOBot-Banner-tr.png?raw=true)
