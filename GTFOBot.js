@@ -122,6 +122,12 @@ client.on(Events.GuildCreate, async guild => {
 	console.log('Commands redeployed');
 });
 
+client.on(Events.GuildDelete, async guild => {
+	fs.unlink('./rundowns/server-' + guild.id + '.json', (err) => {
+		if (err) throw err;
+		console.log('./rundowns/server-' + guild.id + '.json was deleted');
+	  });
+});
 
 client.on(Events.GuildScheduledEventCreate, async event => {
 	var logsChannel = event.guild.channels.cache.find(channel => channel.name === logsChannelName);
