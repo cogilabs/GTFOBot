@@ -54,8 +54,8 @@ module.exports = {
 		if (eventChannel != null) {
 			console.log('Channel:', eventChannel);
 			if (eventChannel.type == 0) {
-				completionFile[interaction.guild.id].set(`configuration.eventChannel`, eventChannel.id);
-				completionFile[interaction.guild.id].save();
+				configFile[interaction.guild.id].set(`configuration.eventChannel`, eventChannel.id);
+				configFile[interaction.guild.id].save();
 				logMessage = logMessage + eventChannel.name + '(Success) ';
 				message = message + `${locFile[locale][locale].system.eventChannelSetTo} “${eventChannel.name}”\n`;
 			} else {
@@ -65,8 +65,8 @@ module.exports = {
 		} 
 		
 		if(role != null) {
-			completionFile[interaction.guild.id].set(`configuration.prisonnersRole`, role.id);
-			completionFile[interaction.guild.id].save();
+			configFile[interaction.guild.id].set(`configuration.prisonnersRole`, role.id);
+			configFile[interaction.guild.id].save();
 			logMessage = logMessage + role.name + ' ';
 			message = message + `${locFile[locale][locale].system.roleSetTo} “${role.name}”\n`;
 		} 

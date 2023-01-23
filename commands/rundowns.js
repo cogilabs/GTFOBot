@@ -138,9 +138,9 @@ module.exports = {
                                 if (value == run + id) {
                                     for (var mt in rundowns[run][lt][id].missionTypes) {
                                         if (mt == type) {
-                                            completionFile[interaction.guild.id].set(`completion.${run}.${lt}.${id}.completed.${mt}`, (String(comp).toLowerCase() == 'true'));
-                                            completionFile[interaction.guild.id].save();
-                                            completionFile[interaction.guild.id] = editJsonFile('./rundowns/completion-' + interaction.guild.id + '.json', {
+                                            configFile[interaction.guild.id].set(`completion.${run}.${lt}.${id}.completed.${mt}`, (String(comp).toLowerCase() == 'true'));
+                                            configFile[interaction.guild.id].save();
+                                            configFile[interaction.guild.id] = editJsonFile('./rundowns/server-' + interaction.guild.id + '.json', {
                                                 autosave: true
                                             });
                                             completion[interaction.guild.id].completion[run][lt][id].completed[mt] = (String(comp).toLowerCase() == 'true');

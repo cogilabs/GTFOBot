@@ -47,32 +47,32 @@ client.once(Events.ClientReady, async () => {
 	client.user.setPresence({ activities: [{ name: `Starting...` }], status: 'away' });
 
 	const editJsonFile = require('edit-json-file');
-	var completionFile = [];
-	client.guilds.cache.forEach(guild => completionFile[guild.id] = editJsonFile('./rundowns/completion-' + guild.id + '.json'));
+	var configFile = [];
+	client.guilds.cache.forEach(guild => configFile[guild.id] = editJsonFile('./rundowns/server-' + guild.id + '.json'));
 
 	global.editJsonFile = editJsonFile;
-	global.completionFile = completionFile;
+	global.configFile = configFile;
 
-	console.log('Checking completion file...');
+	console.log('Checking configuration files...');
 	for (var run in rundowns) {
 		for (var lt in rundowns[run]) {
 			for (var mission in rundowns[run][lt]) {
 				for (var mt in rundowns[run][lt][mission].missionTypes) {
 					client.guilds.cache.forEach(guild => {
 						if (rundowns[run][lt][mission].missionTypes[mt]) {
-							if (completionFile[guild.id].get(`completion.${run}.${lt}.${mission}.completed.${mt}`) == undefined) {
-								completionFile[guild.id].set(`completion.${run}.${lt}.${mission}.completed.${mt}`, false);
+							if (configFile[guild.id].get(`completion.${run}.${lt}.${mission}.completed.${mt}`) == undefined) {
+								configFile[guild.id].set(`completion.${run}.${lt}.${mission}.completed.${mt}`, false);
 								console.log(`Adding ${run}${mission}:${mt} for server '${guild.id}'...`)
 							}
 						}
-						completionFile[guild.id].save();
+						configFile[guild.id].save();
 					})
 				}
 			}
 		}
 	}
 	var completion = []
-	client.guilds.cache.forEach(guild => completion[guild.id] = require('./rundowns/completion-' + guild.id + '.json'));
+	client.guilds.cache.forEach(guild => completion[guild.id] = require('./rundowns/server-' + guild.id + '.json'));
 	global.completion = completion;
 
 	const embed = new EmbedBuilder()
@@ -89,7 +89,7 @@ client.once(Events.ClientReady, async () => {
 });
 
 client.on(Events.GuildCreate, async guild => {
-	completionFile[guild.id] = editJsonFile('./rundowns/completion-' + guild.id + '.json');
+	configFile[guild.id] = editJsonFile('./rundowns/server-' + guild.id + '.json');
 	var mainGuild = client.guilds.cache.find(mainGuild => mainGuild.id == guildId);
 	var mainGuildLogsChannel = mainGuild.channels.cache.find(channel => channel.name === logsChannelName);
 	if (mainGuildLogsChannel != undefined)
@@ -101,21 +101,21 @@ client.on(Events.GuildCreate, async guild => {
 				for (var mt in rundowns[run][lt][mission].missionTypes) {
 					client.guilds.cache.forEach(guild => {
 						if (rundowns[run][lt][mission].missionTypes[mt]) {
-							if (completionFile[guild.id].get(`completion.${run}.${lt}.${mission}.completed.${mt}`) == undefined) {
-								completionFile[guild.id].set(`completion.${run}.${lt}.${mission}.completed.${mt}`, false);
+							if (configFile[guild.id].get(`completion.${run}.${lt}.${mission}.completed.${mt}`) == undefined) {
+								configFile[guild.id].set(`completion.${run}.${lt}.${mission}.completed.${mt}`, false);
 								console.log(`Adding ${run}${mission}:${mt} for server '${guild.id}'...`)
 							}
 						}
-						completionFile[guild.id].save();
+						configFile[guild.id].save();
 					})
 				}
 			}
 		}
 	}
-	completion[guild.id] = require('./rundowns/completion-' + guild.id + '.json');
+	completion[guild.id] = require('./rundowns/server-' + guild.id + '.json');
 	if (mainGuildLogsChannel != undefined)
-		await mainGuildLogsChannel.send('New server\'s completion file added, redeploying commands...');
-	console.log('New server\'s completion file added, redeploying commands...');
+		await mainGuildLogsChannel.send('New server\'s configuration file added, redeploying commands...');
+	console.log('New server\'s configuration file added, redeploying commands...');
 	const deployCommands = spawn('node', ['./deploy-commands-global.js']);
 	if (mainGuildLogsChannel != undefined)
 		await mainGuildLogsChannel.send('Commands redeployed');
@@ -149,7 +149,7 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 			+ `\n - Date: ${event.scheduledStartAt}`
 		);
 
-		var eventChannel = completionFile[event.guild.id].get(`configuration.eventChannel`);
+		var eventChannel = configFile[event.guild.id].get(`configuration.eventChannel`);
 		if (eventChannel != undefined) {
 			var channel = event.guild.channels.cache.find(channel => channel.id === eventChannel);
 			console.log('Custom event channel detected: ' + eventChannel);
@@ -190,7 +190,7 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 		missionName = ` ${locFile[locale][locale].events.to} ***${j}***`;
 	}
 
-	var prisonnersRole = completionFile[event.guild.id].get(`configuration.prisonnersRole`);
+	var prisonnersRole = configFile[event.guild.id].get(`configuration.prisonnersRole`);
 	if (prisonnersRole != undefined)
 		ping = (locFile[locale][locale].events.ping).replace('#', `<@&${event.guild.roles.cache.find(role => role.id === prisonnersRole).id}>`);
 	else if (event.guild.roles.cache.find(role => role.name === roleName) != undefined) 
@@ -238,7 +238,7 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 	var MID = '';
 	var MIDp = '';
 
-	var eventChannel = completionFile[event.guild.id].get(`configuration.eventChannel`);
+	var eventChannel = configFile[event.guild.id].get(`configuration.eventChannel`);
 		if (eventChannel != undefined) {
 			var channel = event.guild.channels.cache.find(channel => channel.id === eventChannel);
 			console.log('Custom event channel detected: ' + eventChannel);
@@ -282,7 +282,7 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 	// Event started
 	if (oldEvent.status === 1 && event.status === 2) {
 	
-		var prisonnersRole = completionFile[event.guild.id].get(`configuration.prisonnersRole`);
+		var prisonnersRole = configFile[event.guild.id].get(`configuration.prisonnersRole`);
 		if (prisonnersRole != undefined)
 		ping = (locFile[locale][locale].events.ping).replace('#', `<@&${event.guild.roles.cache.find(role => role.id === prisonnersRole).id}>`);
 		else if (event.guild.roles.cache.find(role => role.name === roleName) != undefined) 
@@ -394,7 +394,7 @@ client.on(Events.GuildScheduledEventUserAdd, async (event, user) => {
         }
         if (locale == '') locale = 'en-US';
 
-		var eventChannel = completionFile[event.guild.id].get(`configuration.eventChannel`);
+		var eventChannel = configFile[event.guild.id].get(`configuration.eventChannel`);
 		if (eventChannel != undefined) {
 			console.log('Custom event channel detected: ' + eventChannel);
 			if (logsChannel != undefined)
@@ -452,7 +452,7 @@ client.on(Events.GuildScheduledEventUserRemove, async (event, user) => {
 
 	var MID = '';
 
-	var eventChannel = completionFile[event.guild.id].get(`configuration.eventChannel`);
+	var eventChannel = configFile[event.guild.id].get(`configuration.eventChannel`);
 		if (eventChannel != undefined) {
 			var channel = event.guild.channels.cache.find(channel => channel.id === eventChannel);
 			console.log('Custom event channel detected: ' + eventChannel);
