@@ -3,9 +3,9 @@
 ![Banner](Images/GTFOBot-Banner-tr.png?raw=true)
 
 <p align="center">
-    <img alt="youtube subscribers" title="Subscribe to my YouTube channel" src="https://img.shields.io/badge/node.js-233056?style=for-the-badge&logo=node.js&logoColor=white"/>
-    <img alt="youtube views" title="YouTube views" src="https://img.shields.io/badge/-Discord.js-5865F2?style=for-the-badge&logo=discord.js"/><br>
-    <img alt="youtube views" title="YouTube views" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fcogilabs.eu%2FGTFOBotState.php?style=for-the-badge"/>
+    <a href="https://nodejs.org/"><img alt="Node.js badge" title="Using Node.js!" src="https://img.shields.io/badge/node.js-233056?style=for-the-badge&logo=node.js&logoColor=white"/></a>
+    <a href="https://discord.js.org/"><img alt="Discord.js badge" title="Using Discord.js!" src="https://img.shields.io/badge/-Discord.js-5865F2?style=for-the-badge&logo=discord.js"/></a><br>
+    <img alt="Dauda Status" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fcogilabs.eu%2FGTFOBotState.php?style=for-the-badge"/>
 </p>
 
 ## Introduction
@@ -19,7 +19,7 @@ The application itself is just a bot named Dauda (like one of the bots in the ga
 
 ![The bot](Images/dauda.png?raw=true)
 
-It allows only one command:  
+It allows several commands, but its main one is `/rundowns`:  
 
 ![Command list](Images/commands.png?raw=true)
 
@@ -33,13 +33,13 @@ From there, you'll be able to check any rundowns state and mission intel, but al
 
 #### Here is the result of an user clicking the `R7` button:
 
-![/rundown command result](Images/rundown.png?raw=true)
+![rundown display](Images/rundown.png?raw=true)
 
 You can see that the missions that have been successfully finished are represented in green.
 
 #### Here is the result of an user clicking the `B3` button:
 
-![/mission command result](Images/mission.png?raw=true)
+![mission display](Images/mission.png?raw=true)
 
 Here the subsectors will have a checkmark if completed.
 
@@ -63,8 +63,10 @@ When an event is finished, a message of the same kind as above will be sent, aga
 Of course it means you have to update the file with `/rundowns` before modifying or finishing the event.  
   
 By default, all of these messages will be sent to the first channel named `general` it finds. If there is none, it will send it to the system channel. If no system channel is defined, it doesn't send the messages.  
-You can change this setting (per server) with the `` /config `` command.
+You can change this setting (per server) with the `/config` command.
 The setting is still overideable, by putting `` `ch:channelname` `` somewhere in the event description, the bot will send any message about this event in that selected channel (here, "channelname").  
+  
+The `/config` command also allows to configure a role to be pinged when event messages are sent.
   
 Soon, the bot will only detect events containing the text "GTFO" in their description, for obvious reasons.
 
@@ -72,9 +74,9 @@ Soon, the bot will only detect events containing the text "GTFO" in their descri
 
 The bot is also able to react to some messages, like an `@everyone` ping.  
    
-For instance it can react to messages like "Did we finish R1D1?", "What's the state of R2B1?", "Do you guys know if we are done with R7B3?" with a green checkmark or a red cross, depending of the state of the main objective of that mission.  
+For instance it can react to messages like "Did we finish R1D1?", "What's the state of R2B1?", "Do you guys know if we are done with R7B3?" with a green checkmark ✅ or a red cross ❌, depending of the state of the main objective of that mission.  
   
-It also answers to messages like "Thanks Dauda" with a random "You're welcome" message, and react with a question mark when someone says things like "Just ask Dauda".
+It also answers to messages like "Thanks Dauda" with a random "You're welcome" message, and react with a question mark ❔ when someone says things like "Just ask Dauda".
 
 ## More
 
@@ -89,7 +91,9 @@ The bot has an `echo` command, allowing admins to speak in his name (User can st
   
 The completion is now separate between servers, every server has it's own completion file containing its progression.
 
-If you want to try it, you can add it to your server via [this link](https://discord.com/api/oauth2/authorize?client_id=1050757215885209640&permissions=283736656976&scope=bot).  
-Keep in mind that it is still in active developement and that it's currently hosted on a raspberry pi zero, which doesn't have the best performances in the world.  
+If you want to try it, you can add it to your server By clicking this button:
+<p align="center"><a href="https://discord.com/api/oauth2/authorize?client_id=1050757215885209640&permissions=283736656976&scope=bot"><img alt="Add me on discord button" title="Add me on your discord server!" src="https://img.shields.io/badge/Add%20me%20on-Discord-5865F2?style=for-the-badge"></a></p>
+
+🔺 Keep in mind that it is still in active developement and that it's currently hosted on a raspberry pi zero, which doesn't have the best performances in the world. 🔺  
   
 If you want to launch it by yourself, you'll need to create a discord app on <https://discord.com/developers/> then you'll need to create a `config.json` using the template [`template-config.json`](template-config.json) and put your created bot's details inside of it.
