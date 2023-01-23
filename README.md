@@ -1,5 +1,5 @@
-# GTFO Companion app
 ![Dauda Status Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fcogilabs.eu%2FGTFOBotState.php)
+# GTFO Companion app
 
 ![Banner](Images/GTFOBot-Banner-tr.png?raw=true)
 
