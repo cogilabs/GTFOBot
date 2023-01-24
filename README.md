@@ -81,14 +81,12 @@ The bot is also able to react to some messages, like an `@everyone` ping.
    
 For instance it can react to messages like "Did we finish R1D1?", "What's the state of R2B1?", "Do you guys know if we are done with R7B3?" with a green checkmark ✅ or a red cross ❌, depending of the state of the main objective of that mission.  
   
-It also answers to messages like "Thanks Dauda" with a random "You're welcome" message, and react with a question mark ❔ when someone says things like "Just ask Dauda".
+It also answers to messages like "Thanks Dauda" with a random "You're welcome" message, and react with a question mark ❓ when someone says things like "Just ask Dauda".
 
 ## More
 
-For the moment, the message reacting and answering only works in French, as me and my friends (people who use it) are French, but I intend to localize it quickly.
-
-Appart from that, the application is *fully localized* in English and French, taking the server language for event handling, and the asking user's language for command descriptions and answering to commands (Intel, mission descriptions, etc...).  
-It's also really easy to localize in other languages (cf. [the english localization file](localization/en-US.json)).  
+The application is *fully localized* in English and French, taking the server language for event handling and answering/reacting to messages, and the interacting user's language for command descriptions, and answering to commands (Intel, mission descriptions, etc...).  
+It's also quite easy to localize in other languages (cf. [the english localization file](localization/en-US.json)).  
   
 If a text channel named `dauda-logs` exists, the bot will log every actions it does in this server in it, along with actions like starting or rebooting.  
   

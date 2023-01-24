@@ -4,7 +4,7 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, Guild, GatewayIntentBits, Partials, EmbedBuilder } = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits, Partials, EmbedBuilder } = require('discord.js');
 const { setInterval } = require('node:timers');
 const { token, guildId } = require('./config.json');
 const { supportedLocales } = require('./localization/supportedLocales.json');
@@ -476,8 +476,6 @@ client.on(Events.GuildScheduledEventUserRemove, async (event, user) => {
         }
         if (locale == '') locale = 'en-US';
 
-	var MID = '';
-
 	var eventChannel = configFile[event.guild.id].get(`configuration.eventChannel`);
 		if (eventChannel != undefined) {
 			var channel = event.guild.channels.cache.find(channel => channel.id === eventChannel);
@@ -526,18 +524,15 @@ client.on(Events.GuildScheduledEventUserRemove, async (event, user) => {
 });
 
 client.on(Events.MessageCreate, async message => {
-
+	
 	var logsChannel = message.guild.channels.cache.find(channel => channel.name === logsChannelName);
 	var locale = '';
 	for (var loc in supportedLocales) {
 		if (message.guild.preferredLocale == loc) locale = message.guild.preferredLocale;
 	}
 	if (locale == '') locale = 'en-US';
-
-	msgContent = message.content;
-	msgContentLowerCase = msgContent.toLowerCase();
 	
-	if (msgContent.includes('Date :') && message.channel != logsChannel) {
+	if ((message.content).includes('Date :') && message.channel != logsChannel) {
 		await message.react('✅');
 		await message.react('❌');
 		console.log(`Reacted “✅” and “❌” to “${msgContent}” by ${message.author.tag}`);
@@ -546,6 +541,9 @@ client.on(Events.MessageCreate, async message => {
 	}
 
 	if (message.author == client.user) return;
+
+	msgContent = message.content;
+	msgContentLowerCase = msgContent.toLowerCase();
 
 	if (msgContent.includes('@everyone') && message.channel != logsChannel) {
 		var emojiName = 'DaudaPing'
@@ -562,62 +560,62 @@ client.on(Events.MessageCreate, async message => {
 		}
 	}
 
-	// ====================== NEEDS TO BE LOCALIZED !!! ============================
-	if (msgContentLowerCase.includes('demande') && msgContentLowerCase.includes('dauda')) {
+	if (msgContentLowerCase.includes(locFile[locale][locale].chat.ask) && msgContentLowerCase.includes('dauda')) {
 		await message.react('❓');
 		console.log(`Reacted “❓” to “${msgContent}” by ${message.author.tag}`);
 		if (logsChannel != undefined)
 			await logsChannel.send(`Reacted \`\` ❓ \`\` to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
 	}
 
-	if (msgContentLowerCase.includes('l\'état de la mission r') || msgContentLowerCase.includes('l\'état du secteur r')
-		|| ((msgContentLowerCase.includes('mission r') || (msgContentLowerCase.includes('secteur r'))) 
-			&& (msgContentLowerCase.includes('terminé') || msgContentLowerCase.includes('fini')))
-		|| (msgContentLowerCase.includes('terminé r')) || (msgContentLowerCase.includes('fini r'))) {
-		var start = msgContentLowerCase.search("mission r") + 8;
-		if (start == 7) start = msgContentLowerCase.search("terminé r") + 8;
-		if (start == 7) start = msgContentLowerCase.search("fini r") + 5;
-		var MID = msgContent.slice(start, start + 4);
-		var reaction = '';
-		if (MID.length == 4 && !MID.includes('!') && !MID.includes('?') && !MID.includes('.')) {
-			var run = MID.slice(0,2);
-			var lt = MID.slice(2,3);
-			var id = MID.slice(2,4);
-			var mt = 'main';
-			if (completion[message.guild.id].completion[run] != undefined) {
-				if (completion[message.guild.id].completion[run][lt] != undefined) {
-					if (completion[message.guild.id].completion[run][lt][id] != undefined) {
-						if (completion[message.guild.id].completion[run][lt][id].completed != undefined) {
-							if (completion[message.guild.id].completion[run][lt][id].completed[mt] == true) reaction = '✅';
-							if (completion[message.guild.id].completion[run][lt][id].completed[mt] == false) reaction = '❌';
-						} else reaction = '❔';
-					} else reaction = '❔';
-				}
-			}
-		}
-		if (reaction != '' && message.channel != logsChannel) {
-			await message.react(reaction);
-			console.log(`Reacted “${reaction}” to “${msgContent}” by ${message.author.tag}`);
-			if (logsChannel != undefined)
-				await logsChannel.send(`Reacted \`\` ${reaction} \`\` to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
-		}
-		if (reaction == '❔' && message.channel != logsChannel) {
-			await message.reply({ content: locFile[locale][locale].system.missionNotFound.replace('#', MID), ephemeral: true });
-			console.log(`Answered “${locFile[locale][locale].system.missionNotFound.replace('#', MID)}” to “${msgContent}” by ${message.author.tag}`);
-			if (logsChannel != undefined)
-				await logsChannel.send(`Answered “${locFile[locale][locale].system.missionNotFound.replace('#', MID)}” to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
+	function checker(x) {
+		return msgContentLowerCase.includes(x);
+	}
+
+	var finishedMissionR = [];
+
+	for (i in locFile[locale][locale].chat.finished) {
+		for (j in locFile[locale][locale].chat.missionR) {
+			finishedMissionR.push(locFile[locale][locale].chat.finished[i] + ' ' + locFile[locale][locale].chat.missionR[j]);
 		}
 	}
-	// ====================== NEEDS TO BE LOCALIZED !!! ============================
-	if (msgContentLowerCase.includes('merci dauda') || msgContentLowerCase.includes('merci beaucoup dauda') || msgContentLowerCase.includes('merci à toi dauda')) {
-		var response = [
-			"Mais de rien !",
-			"Avec plaisir !",
-			"Il n'y a pas de quoi !",
-			"Tout le plaisir est pour moi :wink:",
-			"De rien :wink:",
-			"Mais c'est avec plaisir !"
-		]
+	
+	if ((finishedMissionR).some(checker)) {
+		for (i in msgContent.match(/R[0-9][A-F][0-9]/g)) {
+			var MID = msgContent.match(/R[0-9][A-F][0-9]/g)[i];
+			var reaction = '';
+			if (MID.length == 4 && !MID.includes('!') && !MID.includes('?') && !MID.includes('.')) {
+				var run = MID.slice(0,2);
+				var lt = MID.slice(2,3);
+				var id = MID.slice(2,4);
+				var mt = 'main';
+				if (completion[message.guild.id].completion[run] != undefined) {
+					if (completion[message.guild.id].completion[run][lt] != undefined) {
+						if (completion[message.guild.id].completion[run][lt][id] != undefined) {
+							if (completion[message.guild.id].completion[run][lt][id].completed != undefined) {
+								if (completion[message.guild.id].completion[run][lt][id].completed[mt] == true) reaction = '✅';
+								if (completion[message.guild.id].completion[run][lt][id].completed[mt] == false) reaction = '❌';
+							} else reaction = '❔';
+						} else reaction = '❔';
+					}
+				}
+			}
+			if (reaction != '' && message.channel != logsChannel) {
+				await message.react(reaction);
+				console.log(`Reacted “${reaction}” to “${msgContent}” by ${message.author.tag}`);
+				if (logsChannel != undefined)
+					await logsChannel.send(`Reacted \`\` ${reaction} \`\` to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
+			}
+			if (reaction == '❔' && message.channel != logsChannel) {
+				await message.reply({ content: locFile[locale][locale].system.missionNotFound.replace('#', MID), ephemeral: true });
+				console.log(`Answered “${locFile[locale][locale].system.missionNotFound.replace('#', MID)}” to “${msgContent}” by ${message.author.tag}`);
+				if (logsChannel != undefined)
+					await logsChannel.send(`Answered “${locFile[locale][locale].system.missionNotFound.replace('#', MID)}” to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
+			}
+		}
+	}
+
+	if ((locFile[locale][locale].chat.thanks).some(checker)) {
+		var response = locFile[locale][locale].chat.youreWelcome;
 		var answer = response[Math.floor(Math.random() * response.length)];
 		await message.reply(answer);
 		console.log(`Answered “${answer}” to “${msgContent}” by ${message.author.tag}`)

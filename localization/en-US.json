@@ -1,268 +1,309 @@
 {
-    "en-US": {
-      "R1": {
-        "A": {
-          "A1": {
-            "name": "The Admin",
-            "intel": "Clearance for section B necessary. DNA sample required. Prisoners sent to locate Administrator's HSU.",
-            "comms": ">...\n **>..they react to light and sounds!**\n >..stand still! [unintelligible scream]"
-          }
-        },
-        "B": {
-          "B1": {
-            "name": "PID Search",
-            "intel": "Tier 4 security PID required to reboot power grid. Prisoners sent to gather all PIDs from designated area.",
-            "comms": ">..What way should we go?\n >..Ssssh [unintelligible]\n **>Don't move when their hearts beat!**\n >..Careful, quiet! [scream, gunfire, unintelligible]."
-          },
-          "B2": {
-            "name": "The Officer",
-            "intel": "Security Officer DNA required to override power grid security system. Prisoners sent to extract DNA sample from HSU.",
-            "comms": ">..alarms!! [unintelligible, scream]\n **>..everyone, follow the plan!**\n >[unintelligible, gunfire]"
-          }
-        },
-        "C": {
-          "C1": {
-            "name": "Reconnect",
-            "intel": "Bypass required in Sec_D:842m. Prisoners sent to overload grid.",
-            "comms": ">[Alarm siren]\n >..They are coming!\n >[gunfire, unintelligible]\n **>We need to move up!**"
-          },
-          "C2": {
-            "name": "Decode",
-            "intel": "Dispersed encryption matrix found in Sec_D:842m. Prisoners sent to collect partial decoders.",
-            "comms": ">...don't look up don't look up don't look up\n >[unintelligible]\n >[distant scream]\n >..are you ok?"
-          }
-        },
-        "D": {
-          "D1": {
-            "name": "Deeper",
-            "intel": "Egress path from Sec_D:842m acquired. Access locked pending grid shutdown. High prisoner mortality rate expected. Additional resources on standby.",
-            "comms": ">[Radio static]\n >[unintelligible]\n >...\n **>...everyone is dead**\n >..I can't....I won't make it\n >[gunfire]"
-          }
+  "en-US": {
+    "R1": {
+      "A": {
+        "A1": {
+          "name": "The Admin",
+          "intel": "Clearance for section B necessary. DNA sample required. Prisoners sent to locate Administrator's HSU.",
+          "comms": ">...\n **>..they react to light and sounds!**\n >..stand still! [unintelligible scream]"
         }
       },
-      "R2": {
-        "A": {
-          "A1": {
-            "name": "The Dig",
-            "intel": "Genotype resisitance database update required. Prisoners dispatched to secure pMOTHER DNA trial samples.",
-            "comms": ">...\n **>..[whispering] Schh! You'll wake them up!**\n >...the flashlight! Turn it off!\n >...[sudden shriek, unintelligible]"
-          }
+      "B": {
+        "B1": {
+          "name": "PID Search",
+          "intel": "Tier 4 security PID required to reboot power grid. Prisoners sent to gather all PIDs from designated area.",
+          "comms": ">..What way should we go?\n >..Ssssh [unintelligible]\n **>Don't move when their hearts beat!**\n >..Careful, quiet! [scream, gunfire, unintelligible]."
         },
-        "B": {
-          "B1": {
-            "name": "Sacrifice",
-            "intel": "Preferred route through R2B2 compromised by aggressive biomass. Nonessential resources assigned to execute diversionary tactic.",
-            "comms": ">...\n **>...Don't open that door!**\n >...there's something on the other- NO!!\n...[commation, screams]"
-          },
-          "B2": {
-            "name": "Power Corrupt",
-            "intel": "Insufficient power in [R2C] for RISE equipment triangulation. Resources sent to divert pow@65error-",
-            "comms": ">...\n **>...what's that... on the wall?**\n >...[loud crack, unintelligible]\n >...Shit! SHIT! [coughing, commation]"
-          },
-          "B3": {
-            "name": "Pathfinder",
-            "intel": "BIOCOM controlled security systems not responding/ External uplink required.",
-            "comms": ">...\n **>...what's the password?!**\n >...[unintelligible, gunfire, commotion]\n >...WHAT'S THE PASSWORD?!\n >...[commotion, screams]"
-          },
-          "B4": {
-            "name": "Septic",
-            "intel": "Virulent contagion barrier between section [R2B] and [R2C]. Decontamination required.",
-            "comms": ">...\n **>...I need to get rid of this - NOW!**\n >...I found a disinfection station!\n >...[coughing, commotion, unintelligible]"
-          }
-        },
-        "C": {
-          "C1": {
-            "name": "Triangulation",
-            "intel": "WARNING: Navigation database corrupted. Vertical triangulation required to confirm cold storage bulkhead location.",
-            "comms": ">...\n >...This is not the right way...\n >...Well, no way is the right way!\n **>...Are we lost? Are we fucking lost?**"
-          },
-          "C2": {
-            "name": "???",
-            "intel": "Navigation database rebuild required. Prisoners sent to gather all PIDs from designated area.\n \n##WARNING: High fatality rate presumed##",
-            "comms": ">...\n >...I can't take this any longer… **I'm not taking another step. NOT ONE-**\n >...[sudden noise, screams, unintelligible]\n >...[connection lost]"
-          }
-        },
-        "D": {
-          "D1": {
-            "name": "Statistics",
-            "intel": "WARNING: Cold storage bulkhead filtration system offline. Prisoners dispatched to reactivate central power cluster.",
-            "comms": ">...\n >.....whats this....whu\n >[unintelligible, loud hum]"
-          },
-          "D2": {
-            "name": "Powerless",
-            "intel": "WARNING: Cold storage bulkhead filtration system offline. Grid reboot required.",
-            "comms": ">...\n >...what's the password?\n **>...what's the damn password?**\n >...[blaring siren]\n >...Shit! SHIT! [gunfire, commotion]"
-          }
-        },
-        "E": {
-          "E1": {
-            "name": "Crib",
-            "intel": "RISE equipment triangulation completed. Prisoners dispatched to retrieve Neonate.",
-            "comms": ">...what is this thing..?\n >**.....don't ..touch.. DAMNIT!**\n>[screams in the distance]"
-          }
+        "B2": {
+          "name": "The Officer",
+          "intel": "Security Officer DNA required to override power grid security system. Prisoners sent to extract DNA sample from HSU.",
+          "comms": ">..alarms!! [unintelligible, scream]\n **>..everyone, follow the plan!**\n >[unintelligible, gunfire]"
         }
       },
-      "R7": {
-        "A": {
-          "A1": {
-            "name": "Unit 23",
-            "intel": "Neonate HSU contents require resuscitation.\nCollateral resource loss acceptable.",
-            "comms": ">… I feel like we're being watched.\n >… The Warden is always watching us.\n >… No, **something else...**"
-          }
+      "C": {
+        "C1": {
+          "name": "Reconnect",
+          "intel": "Bypass required in Sec_D:842m. Prisoners sent to overload grid.",
+          "comms": ">[Alarm siren]\n >..They are coming!\n >[gunfire, unintelligible]\n **>We need to move up!**"
         },
-        "B": {
-          "B1": {
-            "name": "Cargo",
-            "intel": "Neonate phase two initiated.\nPrisoners dispatched to deliver the Neonate to the depressurazation chamber.",
-            "comms": ">… Shouldn't this all be dead? Everything else is\n >… That **thing** you're carrying isn't."
-          },
-          "B2": {
-            "name": "Dense",
-            "intel": "Establish uplinks from selected terminals to locate Neonate HSU Preparation site.",
-            "comms": ">… What's behind **these?**\n >… I don't even want to know.\n >… Let's prepare for the worst."
-          },
-          "B3": {
-            "name": "Vault",
-            "intel": "Prisoners to retrieve DNA samples from HSU storage annex. Environmental protection equipment will increase survival chances.",
-            "comms": ">… Don't breath it in!\n >… Let's just **get through** it.\n >… Whatever's in these HSUs must be dead, right?"
-          }
-        },
-        "C": {
-          "C1": {
-            "name": "Monster",
-            "intel": "Prisoners dispatched to locate Glucagon peptide hormone vials. Limited vision due to unknown gas. Exit route blocked.",
-            "comms": ">... “Let's just go. This isn't right”\n >… “It's been eaten. What did that?”\n >… “You want to be next? **Move!**”"
-          },
-          "C2": {
-            "name": "Sublimation",
-            "intel": "Quadrant Warp gate access required. Prisoners sent to power up local Generator cluster. Abnormal atmospheric conditions will increase prisoner casualties.",
-            "comms": ">… My lungs… get me out of here!\n >… We can't clear this fog without power!\n >… **Everyone ready?** Okay, grab the power ce-"
-          },
-          "C3": {
-            "name": "Reckless",
-            "intel": "Further uplinks needed for stock-taking in biomechanical storage facilities.\nRudimentary objective, reduced resource distribution.",
-            "comms": ">.. I got nothing wh.. What do we do!?\n >.. **Check every box**, use whatever you find\n >.. This can't get worse right?"
-          }
-        },
-        "D": {
-          "D1": {
-            "name": "Mother",
-            "intel": "Neonate qualified for final phase initialization.\nExpendable prisoners sent to transport vessel to Preparation site.",
-            "comms": ">.. What the hell are these machines?\n >.. Shut up and focus, Confirm **on my mark!**\n >.. Fuck! Here they come!"
-          },
-          "D2": {
-            "name": "AWOL",
-            "intel": "Prisoners sent down to collect new seeds for the HSU neonatal process. Exp::ERR ###",
-            "comms": ">... Ugh, these things are **fucking heavy!**\n >.. Yeah, how many are we expected to take?\n >... Let's just carry two and see it Warden picks us up..."
-          }
-        },
-        "E": {
-          "E1": {
-            "name": "Chaos",
-            "intel": "Critical process died.\nEmergency shutdown initiated.\nPrisoners dispatched to reboot reactor.",
-            "comms": ">.. We're being followed\n >.. Why won't it fucking die?!\n >.. This is chaos. **CHAOS!**"
-          }
+        "C2": {
+          "name": "Decode",
+          "intel": "Dispersed encryption matrix found in Sec_D:842m. Prisoners sent to collect partial decoders.",
+          "comms": ">...don't look up don't look up don't look up\n >[unintelligible]\n >[distant scream]\n >..are you ok?"
         }
       },
-      "system": {
-        "noCommandPermission": "You don't have the permission to use this command!",
-        "noButtonPermission": "You don't have the permission to use this button!",
-        "noOptionsProvided": "No options were provided!",
-        "notATextChannel": "is not a text channel!",
-        "roleSetTo": "Role set to",
-        "eventChannelSetTo": "Event channel set to",
-        "commandError": "There was an error while executing this command!",
-        "buttonError": "There was an error while treating the button!",
-        "missionNotFound": "I can't find the mission #, could you check if it really exists? (Don't hesitate to do **`/rundowns`** to check :wink:)",
-        "error": "Error",
-        "sending": "Sending..."
-      },
-      "events": {
-        "role": "Prisonners",
-        "to": "to",
-        "newExpedition": "The Warden is sending us in a new expedition#, so get ready to work together, or die together!\n ",
-        "start": "The expedition# is starting, so get ready and join us!\n ",
-        "end": {
-          "success": "The expedition to # was a success!\n*That* is what I call a great team!",
-          "fail": "Unfortunately, the expedition to # did not end up as expected... But next time will be the one!"
-        },
-        "change": {
-          "success": "The expedition to # was a success and is now moving to Ø!",
-          "fail": "Unfortunately, the expedition to # did not end up as expected... But no worries, we are now moving to Ø!"
-        },
-        "ping": "Hey #!\n\n",
-        "participate": " joined the expedition!",
-        "noParticipate": " left the expedition."
-      },
-      "commands": {
-        "rundowns": {
-            "description": "State of the expeditions, mission descriptions and completion"
-        },
-        "echo": {
-            "description": "Send a message in the current channel",
-            "option1": "The content of the message to send"
-        },
-        "broadcast": {
-          "description": "Send a message to all logs channels",
-          "subcommands": {
-            "custom": {
-              "name": "custom",
-              "description": "Send a message to all logs channels",
-              "option1": {
-                "name": "message",
-                "description": "The content of the message to send"
-              },
-              "option2": {
-                "name": "color",
-                "description": "The color of the embed band",
-                "red": "red",
-                "orange": "orange",
-                "yellow": "yellow",
-                "green": "green",
-                "blue": "blue"
-              }
-            },
-            "update": {
-              "name": "update",
-              "description": "Sends a “Rebooting for update” message"
-            },
-            "turnoff": {
-              "name": "turnoff",
-              "description": "Sends a “Shutting down” message"
-            }
-          }
-        },
-        "config": {
-          "description": "Configuration of the bot",
-          "option1": {
-            "name": "eventchannel",
-            "description": "The channel where the event messages are sent"
-          },
-          "option2": {
-            "name": "prisonnersrole",
-            "description": "The role GTFO players have on the server (defaults to any role names “Prisonners”)"
-          }
+      "D": {
+        "D1": {
+          "name": "Deeper",
+          "intel": "Egress path from Sec_D:842m acquired. Access locked pending grid shutdown. High prisoner mortality rate expected. Additional resources on standby.",
+          "comms": ">[Radio static]\n >[unintelligible]\n >...\n **>...everyone is dead**\n >..I can't....I won't make it\n >[gunfire]"
         }
-      },
-      "missions": {
-        "rundownTitle": "Rundown",
-        "missionTitle": "Mission #:",
-        "sector": "Sector",
-        "intel": ":://Intel_",
-        "sectors": ":://Sectors_&&_progression_permits_",
-        "comms": ":://Interupted_Communications_",
-        "metrics": ":://Expedition_metrics_",
-        "depth": "Drop cage target depth:",
-        "completed": "Completed",
-        "notCompleted": "Not completed",
-        "completeSector": "Complete # sector",
-        "uncompleteSector": "Uncomplete # sector"
-      },
-      "sectors": {
-        "main": "main",
-        "secondary": "secondary",
-        "overload": "overload",
-        "efficiency": "efficiency"
       }
+    },
+    "R2": {
+      "A": {
+        "A1": {
+          "name": "The Dig",
+          "intel": "Genotype resisitance database update required. Prisoners dispatched to secure pMOTHER DNA trial samples.",
+          "comms": ">...\n **>..[whispering] Schh! You'll wake them up!**\n >...the flashlight! Turn it off!\n >...[sudden shriek, unintelligible]"
+        }
+      },
+      "B": {
+        "B1": {
+          "name": "Sacrifice",
+          "intel": "Preferred route through R2B2 compromised by aggressive biomass. Nonessential resources assigned to execute diversionary tactic.",
+          "comms": ">...\n **>...Don't open that door!**\n >...there's something on the other- NO!!\n...[commation, screams]"
+        },
+        "B2": {
+          "name": "Power Corrupt",
+          "intel": "Insufficient power in [R2C] for RISE equipment triangulation. Resources sent to divert pow@65error-",
+          "comms": ">...\n **>...what's that... on the wall?**\n >...[loud crack, unintelligible]\n >...Shit! SHIT! [coughing, commation]"
+        },
+        "B3": {
+          "name": "Pathfinder",
+          "intel": "BIOCOM controlled security systems not responding/ External uplink required.",
+          "comms": ">...\n **>...what's the password?!**\n >...[unintelligible, gunfire, commotion]\n >...WHAT'S THE PASSWORD?!\n >...[commotion, screams]"
+        },
+        "B4": {
+          "name": "Septic",
+          "intel": "Virulent contagion barrier between section [R2B] and [R2C]. Decontamination required.",
+          "comms": ">...\n **>...I need to get rid of this - NOW!**\n >...I found a disinfection station!\n >...[coughing, commotion, unintelligible]"
+        }
+      },
+      "C": {
+        "C1": {
+          "name": "Triangulation",
+          "intel": "WARNING: Navigation database corrupted. Vertical triangulation required to confirm cold storage bulkhead location.",
+          "comms": ">...\n >...This is not the right way...\n >...Well, no way is the right way!\n **>...Are we lost? Are we fucking lost?**"
+        },
+        "C2": {
+          "name": "???",
+          "intel": "Navigation database rebuild required. Prisoners sent to gather all PIDs from designated area.\n \n##WARNING: High fatality rate presumed##",
+          "comms": ">...\n >...I can't take this any longer… **I'm not taking another step. NOT ONE-**\n >...[sudden noise, screams, unintelligible]\n >...[connection lost]"
+        }
+      },
+      "D": {
+        "D1": {
+          "name": "Statistics",
+          "intel": "WARNING: Cold storage bulkhead filtration system offline. Prisoners dispatched to reactivate central power cluster.",
+          "comms": ">...\n >.....whats this....whu\n >[unintelligible, loud hum]"
+        },
+        "D2": {
+          "name": "Powerless",
+          "intel": "WARNING: Cold storage bulkhead filtration system offline. Grid reboot required.",
+          "comms": ">...\n >...what's the password?\n **>...what's the damn password?**\n >...[blaring siren]\n >...Shit! SHIT! [gunfire, commotion]"
+        }
+      },
+      "E": {
+        "E1": {
+          "name": "Crib",
+          "intel": "RISE equipment triangulation completed. Prisoners dispatched to retrieve Neonate.",
+          "comms": ">...what is this thing..?\n >**.....don't ..touch.. DAMNIT!**\n>[screams in the distance]"
+        }
+      }
+    },
+    "R7": {
+      "A": {
+        "A1": {
+          "name": "Unit 23",
+          "intel": "Neonate HSU contents require resuscitation.\nCollateral resource loss acceptable.",
+          "comms": ">… I feel like we're being watched.\n >… The Warden is always watching us.\n >… No, **something else...**"
+        }
+      },
+      "B": {
+        "B1": {
+          "name": "Cargo",
+          "intel": "Neonate phase two initiated.\nPrisoners dispatched to deliver the Neonate to the depressurazation chamber.",
+          "comms": ">… Shouldn't this all be dead? Everything else is\n >… That **thing** you're carrying isn't."
+        },
+        "B2": {
+          "name": "Dense",
+          "intel": "Establish uplinks from selected terminals to locate Neonate HSU Preparation site.",
+          "comms": ">… What's behind **these?**\n >… I don't even want to know.\n >… Let's prepare for the worst."
+        },
+        "B3": {
+          "name": "Vault",
+          "intel": "Prisoners to retrieve DNA samples from HSU storage annex. Environmental protection equipment will increase survival chances.",
+          "comms": ">… Don't breath it in!\n >… Let's just **get through** it.\n >… Whatever's in these HSUs must be dead, right?"
+        }
+      },
+      "C": {
+        "C1": {
+          "name": "Monster",
+          "intel": "Prisoners dispatched to locate Glucagon peptide hormone vials. Limited vision due to unknown gas. Exit route blocked.",
+          "comms": ">... “Let's just go. This isn't right”\n >… “It's been eaten. What did that?”\n >… “You want to be next? **Move!**”"
+        },
+        "C2": {
+          "name": "Sublimation",
+          "intel": "Quadrant Warp gate access required. Prisoners sent to power up local Generator cluster. Abnormal atmospheric conditions will increase prisoner casualties.",
+          "comms": ">… My lungs… get me out of here!\n >… We can't clear this fog without power!\n >… **Everyone ready?** Okay, grab the power ce-"
+        },
+        "C3": {
+          "name": "Reckless",
+          "intel": "Further uplinks needed for stock-taking in biomechanical storage facilities.\nRudimentary objective, reduced resource distribution.",
+          "comms": ">.. I got nothing wh.. What do we do!?\n >.. **Check every box**, use whatever you find\n >.. This can't get worse right?"
+        }
+      },
+      "D": {
+        "D1": {
+          "name": "Mother",
+          "intel": "Neonate qualified for final phase initialization.\nExpendable prisoners sent to transport vessel to Preparation site.",
+          "comms": ">.. What the hell are these machines?\n >.. Shut up and focus, Confirm **on my mark!**\n >.. Fuck! Here they come!"
+        },
+        "D2": {
+          "name": "AWOL",
+          "intel": "Prisoners sent down to collect new seeds for the HSU neonatal process. Exp::ERR ###",
+          "comms": ">... Ugh, these things are **fucking heavy!**\n >.. Yeah, how many are we expected to take?\n >... Let's just carry two and see it Warden picks us up..."
+        }
+      },
+      "E": {
+        "E1": {
+          "name": "Chaos",
+          "intel": "Critical process died.\nEmergency shutdown initiated.\nPrisoners dispatched to reboot reactor.",
+          "comms": ">.. We're being followed\n >.. Why won't it fucking die?!\n >.. This is chaos. **CHAOS!**"
+        }
+      }
+    },
+    "system": {
+      "noCommandPermission": "You don't have the permission to use this command!",
+      "noButtonPermission": "You don't have the permission to use this button!",
+      "noOptionsProvided": "No options were provided!",
+      "notATextChannel": "is not a text channel!",
+      "roleSetTo": "Role set to",
+      "eventChannelSetTo": "Event channel set to",
+      "commandError": "There was an error while executing this command!",
+      "buttonError": "There was an error while treating the button!",
+      "missionNotFound": "I can't find the mission #, could you check if it really exists? (Don't hesitate to do **`/rundowns`** to check :wink:)",
+      "error": "Error",
+      "sending": "Sending..."
+    },
+    "events": {
+      "role": "Prisonners",
+      "to": "to",
+      "newExpedition": "The Warden is sending us in a new expedition#, so get ready to work together, or die together!\n ",
+      "start": "The expedition# is starting, so get ready and join us!\n ",
+      "end": {
+        "success": "The expedition to # was a success!\n*That* is what I call a great team!",
+        "fail": "Unfortunately, the expedition to # did not end up as expected... But next time will be the one!"
+      },
+      "change": {
+        "success": "The expedition to # was a success and is now moving to Ø!",
+        "fail": "Unfortunately, the expedition to # did not end up as expected... But no worries, we are now moving to Ø!"
+      },
+      "ping": "Hey #!\n\n",
+      "participate": " joined the expedition!",
+      "noParticipate": " left the expedition."
+    },
+    "commands": {
+      "rundowns": {
+          "description": "State of the expeditions, mission descriptions and completion"
+      },
+      "echo": {
+          "description": "Send a message in the current channel",
+          "option1": "The content of the message to send"
+      },
+      "broadcast": {
+        "description": "Send a message to all logs channels",
+        "subcommands": {
+          "custom": {
+            "name": "custom",
+            "description": "Send a message to all logs channels",
+            "option1": {
+              "name": "message",
+              "description": "The content of the message to send"
+            },
+            "option2": {
+              "name": "color",
+              "description": "The color of the embed band",
+              "red": "red",
+              "orange": "orange",
+              "yellow": "yellow",
+              "green": "green",
+              "blue": "blue"
+            }
+          },
+          "update": {
+            "name": "update",
+            "description": "Sends a “Rebooting for update” message"
+          },
+          "turnoff": {
+            "name": "turnoff",
+            "description": "Sends a “Shutting down” message"
+          }
+        }
+      },
+      "config": {
+        "description": "Configuration of the bot",
+        "option1": {
+          "name": "eventchannel",
+          "description": "The channel where the event messages are sent"
+        },
+        "option2": {
+          "name": "prisonnersrole",
+          "description": "The role GTFO players have on the server (defaults to any role names “Prisonners”)"
+        }
+      }
+    },
+    "missions": {
+      "rundownTitle": "Rundown",
+      "missionTitle": "Mission #:",
+      "sector": "Sector",
+      "intel": ":://Intel_",
+      "sectors": ":://Sectors_&&_progression_permits_",
+      "comms": ":://Interupted_Communications_",
+      "metrics": ":://Expedition_metrics_",
+      "depth": "Drop cage target depth:",
+      "completed": "Completed",
+      "notCompleted": "Not completed",
+      "completeSector": "Complete # sector",
+      "uncompleteSector": "Uncomplete # sector"
+    },
+    "sectors": {
+      "main": "main",
+      "secondary": "secondary",
+      "overload": "overload",
+      "efficiency": "efficiency"
+    },
+    "chat": {
+      "youreWelcome": [
+        "You're welcome :wink:",
+        "My pleasure!",
+        "No problem :wink:",
+        "Anytime!",
+        "Don't mention it.",
+        "Glad to help!",
+        "Sure thing!",
+        "Happy to assist :wink:",
+        "It was nothing!",
+        "No worries!",
+        "Anytime, friend :wink:",
+        "No big deal!",
+        "My pleasure!",
+        "No sweat.",
+        "Don't even think about it!"
+      ],
+      "thanks": [
+        "thanks dauda",
+        "thank you dauda",
+        "thanks very much dauda",
+        "thank you very much dauda",
+        "thanks to dauda"
+      ],
+      "ask": "ask",
+      "finished": [
+        "done",
+        "done with",
+        "finished",
+        "succeed",
+        "state of"
+      ],
+      "missionR": [
+        "r",
+        "mission r",
+        "sector r",
+        "the mission r",
+        "the sector r"
+      ]
     }
   }
+}
