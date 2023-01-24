@@ -52,7 +52,6 @@ module.exports = {
 		const eventChannel = interaction.options.getChannel(locFile['en-US']['en-US'].commands[cmdName].option1.name);
 		const role = interaction.options.getRole(locFile['en-US']['en-US'].commands[cmdName].option2.name);
 		if (eventChannel != null) {
-			console.log('Channel:', eventChannel);
 			if (eventChannel.type == 0) {
 				configFile[interaction.guild.id].set(`configuration.eventChannel`, eventChannel.id);
 				configFile[interaction.guild.id].save();
