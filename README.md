@@ -59,7 +59,7 @@ When the event starts, Dauda will tell users with a join link.
   
 If you change the mission ID contained in the event, the bot will send a message saying that the expedition is changing destination. The message will depend of the completion of the first destination:
 
-> The expedition to ***R1C2*** was a success and is now moving to ***R1D1***  
+> The expedition to ***R1C2*** was a success and is now moving to ***R1D1***!  
   
 > Unfortunately, the expedition to ***R7B2*** did not end up as expected... But no worries, we are now moving to ***R7C1***.  
   
@@ -96,9 +96,12 @@ The bot has an `echo` command, allowing admins to speak in his name (User can st
   
 The completion is now separate between servers, every server has it's own completion file containing its progression.
 
-If you want to try it, you can add it to your server By clicking this button:
+## Trying/launching
+
+If you want to try Dauda, you can add it to your server by clicking this button:
 <p align="center"><a href="https://discord.com/api/oauth2/authorize?client_id=1050757215885209640&permissions=283736656976&scope=bot" target="_blank"><img alt="Add me on discord button" title="Add me on your discord server!" src="https://img.shields.io/badge/Add%20me%20on-Discord-5865F2?style=for-the-badge"></a></p>
 
-🔺 Keep in mind that it is still in active developement and that it's currently hosted on a raspberry pi zero, which doesn't have the best performances in the world. 🔺  
+**🔺 Warning! 🔺  
+Keep in mind that it is still in active developement and that it's currently hosted on a raspberry pi zero, which doesn't have the best performances in the world.**  
   
-If you want to launch it by yourself, you'll need to create a discord app on <https://discord.com/developers/> then you'll need to create a `config.json` using the template [`template-config.json`](template-config.json) and put your created bot's details inside of it.
+If you want to launch it by yourself, you'll need to create a discord app on <https://discord.com/developers/> then you'll need to create a `config.json` file using the template [`template-config.json`](template-config.json) and put your created bot's details inside of it.
