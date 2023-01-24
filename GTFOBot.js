@@ -135,7 +135,7 @@ client.on(Events.GuildCreate, async guild => {
 		await mainGuildLogsChannel.send('Commands redeployed');
 	console.log('Commands redeployed');
 
-	outputFile.set('numberOfServers', client.guilds.cache.size);
+	outputFile.set('numberOfServers', (client.guilds.cache.size).toString());
 	outputFile.save();
 });
 
@@ -145,7 +145,7 @@ client.on(Events.GuildDelete, async guild => {
 		console.log('./rundowns/server-' + guild.id + '.json was deleted');
 	  });
 
-	  outputFile.set('numberOfServers', client.guilds.cache.size);
+	  outputFile.set('numberOfServers', (client.guilds.cache.size).toString());
 	  outputFile.save();
 });
 
