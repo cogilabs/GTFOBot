@@ -18,6 +18,10 @@ for (var lang in supportedLocales) {
     locFile[lang] = require('./localization/' + lang + '.json');
 }
 
+const editJsonFile = require('edit-json-file');
+
+var outputFile = editJsonFile('./outputFile.json')
+
 const { rundowns } = require('./rundowns/rundowns.json');
 global.rundowns = rundowns;
 
@@ -47,7 +51,6 @@ for (const file of commandFiles) {
 client.once(Events.ClientReady, async () => {
 	client.user.setPresence({ activities: [{ name: `Starting...` }], status: 'away' });
 
-	const editJsonFile = require('edit-json-file');
 	var configFile = [];
 	client.guilds.cache.forEach(guild => configFile[guild.id] = editJsonFile('./rundowns/server-' + guild.id + '.json'));
 
@@ -88,14 +91,15 @@ client.once(Events.ClientReady, async () => {
 	global.logsChList = logsChList;
 	logsChList.forEach(async channel => await channel.send({ embeds: [embed] }));
 
-	var timeFile = editJsonFile('./timeFile.json')
-
-	function updateTimeFile() {
-		timeFile.set('time', Math.floor(Date.now()/ 1000).toString());
-		timeFile.save();
+	function updateTime() {
+		outputFile.set('time', Math.floor(Date.now()/ 1000).toString());
+		outputFile.save();
 	}
-	updateTimeFile;
-	setInterval(updateTimeFile, 60 * 1000);
+	updateTime();
+	setInterval(updateTime, 60 * 1000);
+
+	outputFile.set('numberOfServers', (client.guilds.cache.size).toString());
+	outputFile.save();
 });
 
 client.on(Events.GuildCreate, async guild => {
@@ -130,6 +134,9 @@ client.on(Events.GuildCreate, async guild => {
 	if (mainGuildLogsChannel != undefined)
 		await mainGuildLogsChannel.send('Commands redeployed');
 	console.log('Commands redeployed');
+
+	outputFile.set('numberOfServers', client.guilds.cache.size);
+	outputFile.save();
 });
 
 client.on(Events.GuildDelete, async guild => {
@@ -137,6 +144,9 @@ client.on(Events.GuildDelete, async guild => {
 		if (err) throw err;
 		console.log('./rundowns/server-' + guild.id + '.json was deleted');
 	  });
+
+	  outputFile.set('numberOfServers', client.guilds.cache.size);
+	  outputFile.save();
 });
 
 client.on(Events.GuildScheduledEventCreate, async event => {
