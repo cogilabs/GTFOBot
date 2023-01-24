@@ -293,12 +293,14 @@
       "finished": [
         "terminé",
         "fini",
-        "l'état de"
+        "l'état de",
+        "l'état du"
       ],
       "missionR": [
         "r",
         "la mission r",
-        "le secteur r"
+        "le secteur r",
+        "secteur r"
       ]
     }
   }
