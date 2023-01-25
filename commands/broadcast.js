@@ -84,7 +84,12 @@ module.exports = {
             if (interaction.locale == loc) locale = interaction.locale;
         }
         if (locale == '') locale = 'en-US';
-        var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === logsChannelName);
+		var configLogsChannel = configFile[interaction.guild.id].get(`configuration.logsChannel`);
+			if (configLogsChannel != undefined) {
+				var logsChannel = interaction.guild.channels.cache.find(channel => channel.id === configLogsChannel);
+			} else {
+				var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === logsChannelName);
+			}
 		var message = '';
 		var color = '';
 		var subcommand = interaction.options.getSubcommand();
