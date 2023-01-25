@@ -5,7 +5,6 @@ const fs = require('node:fs');
 const commands = [];
 const commandFiles = [
 	"broadcast.js",
-	"config.js",
   ]
 
 for (const file of commandFiles) {
