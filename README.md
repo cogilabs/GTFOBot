@@ -89,8 +89,9 @@ The application is *fully localized* in English and French, taking the server la
 It's also quite easy to localize in other languages (cf. [the english localization file](localization/en-US.json)).  
   
 If a text channel named `dauda-logs` exists, the bot will log every actions it does in this server in it, along with actions like starting or rebooting.  
+You can also add those logs to another channel (like your “bot-logs” channel for instance) using the `/config` command.
   
-The bot has an `echo` command, allowing admins to speak in his name (User can still be checked in the `dauda-logs` channel).  .
+The bot has an `echo` command, allowing admins to speak in his name (Real message author can still be checked in the logs channel(s)).  .
 
 ## Trying/launching
 
