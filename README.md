@@ -90,9 +90,7 @@ It's also quite easy to localize in other languages (cf. [the english localizati
   
 If a text channel named `dauda-logs` exists, the bot will log every actions it does in this server in it, along with actions like starting or rebooting.  
   
-The bot has an `echo` command, allowing admins to speak in his name (User can still be checked in the `dauda-logs` channel).  
-  
-The completion is now separate between servers, every server has it's own completion file containing its progression.
+The bot has an `echo` command, allowing admins to speak in his name (User can still be checked in the `dauda-logs` channel).  .
 
 ## Trying/launching
 

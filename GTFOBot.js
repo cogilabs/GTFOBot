@@ -88,6 +88,12 @@ client.once(Events.ClientReady, async () => {
 	client.user.setPresence({ activities: [{ name: 'Available', type: 4 }], status: 'online' });
 
 	var logsChList = client.channels.cache.filter(channel => channel.name === logsChannelName);
+	client.guilds.cache.forEach(guild => {
+		if (completion[guild.id].configuration.logsChannel != undefined) {
+			logsChList.set(guild.id , client.channels.cache.find(channel => channel.id === completion[guild.id].configuration.logsChannel));
+		}
+	});
+
 	global.logsChList = logsChList;
 	logsChList.forEach(async channel => await channel.send({ embeds: [embed] }));
 
@@ -150,7 +156,12 @@ client.on(Events.GuildDelete, async guild => {
 });
 
 client.on(Events.GuildScheduledEventCreate, async event => {
-	var logsChannel = event.guild.channels.cache.find(channel => channel.name === logsChannelName);
+	var configLogsChannel = configFile[event.guild.id].get(`configuration.logsChannel`);
+		if (configLogsChannel != undefined) {
+			var logsChannel = event.guild.channels.cache.find(channel => channel.id === configLogsChannel);
+		} else {
+			var logsChannel = event.guild.channels.cache.find(channel => channel.name === logsChannelName);
+		}
 
 	var locale = '';
         for (var loc in supportedLocales) {
@@ -250,7 +261,12 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 
 
 client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
-	var logsChannel = event.guild.channels.cache.find(channel => channel.name === logsChannelName);
+	var configLogsChannel = configFile[event.guild.id].get(`configuration.logsChannel`);
+		if (configLogsChannel != undefined) {
+			var logsChannel = event.guild.channels.cache.find(channel => channel.id === configLogsChannel);
+		} else {
+			var logsChannel = event.guild.channels.cache.find(channel => channel.name === logsChannelName);
+		}
 
 	var locale = '';
         for (var loc in supportedLocales) {
@@ -412,7 +428,12 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 
 
 client.on(Events.GuildScheduledEventUserAdd, async (event, user) => {
-	var logsChannel = event.guild.channels.cache.find(channel => channel.name === logsChannelName);
+	var configLogsChannel = configFile[event.guild.id].get(`configuration.logsChannel`);
+		if (configLogsChannel != undefined) {
+			var logsChannel = event.guild.channels.cache.find(channel => channel.id === configLogsChannel);
+		} else {
+			var logsChannel = event.guild.channels.cache.find(channel => channel.name === logsChannelName);
+		}
 
 	var locale = '';
         for (var loc in supportedLocales) {
@@ -468,7 +489,12 @@ client.on(Events.GuildScheduledEventUserAdd, async (event, user) => {
 });
 
 client.on(Events.GuildScheduledEventUserRemove, async (event, user) => {
-	var logsChannel = event.guild.channels.cache.find(channel => channel.name === logsChannelName);
+	var configLogsChannel = configFile[event.guild.id].get(`configuration.logsChannel`);
+		if (configLogsChannel != undefined) {
+			var logsChannel = event.guild.channels.cache.find(channel => channel.id === configLogsChannel);
+		} else {
+			var logsChannel = event.guild.channels.cache.find(channel => channel.name === logsChannelName);
+		}
 
 	var locale = '';
         for (var loc in supportedLocales) {
@@ -524,8 +550,12 @@ client.on(Events.GuildScheduledEventUserRemove, async (event, user) => {
 });
 
 client.on(Events.MessageCreate, async message => {
-	
-	var logsChannel = message.guild.channels.cache.find(channel => channel.name === logsChannelName);
+	var configLogsChannel = configFile[message.guild.id].get(`configuration.logsChannel`);
+		if (configLogsChannel != undefined) {
+			var logsChannel = message.guild.channels.cache.find(channel => channel.id === configLogsChannel);
+		} else {
+			var logsChannel = message.guild.channels.cache.find(channel => channel.name === logsChannelName);
+		}
 	var locale = '';
 	for (var loc in supportedLocales) {
 		if (message.guild.preferredLocale == loc) locale = message.guild.preferredLocale;
@@ -627,7 +657,12 @@ client.on(Events.MessageCreate, async message => {
 //Chat commands interactions
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
-	var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === logsChannelName);
+	var configLogsChannel = configFile[interaction.guild.id].get(`configuration.logsChannel`);
+		if (configLogsChannel != undefined) {
+			var logsChannel = interaction.guild.channels.cache.find(channel => channel.id === configLogsChannel);
+		} else {
+			var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === logsChannelName);
+		}
 
 	const command = client.commands.get(interaction.commandName);
 
@@ -649,7 +684,12 @@ client.on(Events.InteractionCreate, async interaction => {
 //Button interactions
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isButton()) return;
-	var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === logsChannelName);
+	var configLogsChannel = configFile[interaction.guild.id].get(`configuration.logsChannel`);
+		if (configLogsChannel != undefined) {
+			var logsChannel = interaction.guild.channels.cache.find(channel => channel.id === configLogsChannel);
+		} else {
+			var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === logsChannelName);
+		}
 
 	const commandArray = (interaction.customId).split('-');
 

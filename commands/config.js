@@ -38,6 +38,16 @@ module.exports = {
 			.setDescriptionLocalizations({
 				fr: locFile['fr']['fr'].commands[cmdName].option2.description,
 			}))
+		.addChannelOption(option => 
+			option
+			.setName(locFile['en-US']['en-US'].commands[cmdName].option3.name)
+			.setNameLocalizations({
+				fr: locFile['fr']['fr'].commands[cmdName].option3.name,
+			})
+			.setDescription(locFile['en-US']['en-US'].commands[cmdName].option3.description)
+			.setDescriptionLocalizations({
+				fr: locFile['fr']['fr'].commands[cmdName].option3.description,
+			}))
 		.setDefaultMemberPermissions(0)
 		.setDMPermission(false),
 	async execute(interaction) {
@@ -48,9 +58,15 @@ module.exports = {
             if (interaction.locale == loc) locale = interaction.locale;
         }
         if (locale == '') locale = 'en-US';
-        var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === logsChannelName);
+		var configLogsChannel = configFile[interaction.guild.id].get(`configuration.logsChannel`);
+			if (configLogsChannel != undefined) {
+				var logsChannel = interaction.guild.channels.cache.find(channel => channel.id === configLogsChannel);
+			} else {
+				var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === logsChannelName);
+			}
 		const eventChannel = interaction.options.getChannel(locFile['en-US']['en-US'].commands[cmdName].option1.name);
 		const role = interaction.options.getRole(locFile['en-US']['en-US'].commands[cmdName].option2.name);
+		const newLogsChannel = interaction.options.getChannel(locFile['en-US']['en-US'].commands[cmdName].option3.name);
 		if (eventChannel != null) {
 			if (eventChannel.type == 0) {
 				configFile[interaction.guild.id].set(`configuration.eventChannel`, eventChannel.id);
@@ -70,7 +86,16 @@ module.exports = {
 			message = message + `${locFile[locale][locale].system.roleSetTo} “${role.name}”\n`;
 		} 
 		
-		if(role == null && eventChannel == null) {
+		if(newLogsChannel != null) {
+			configFile[interaction.guild.id].set(`configuration.logsChannel`, newLogsChannel.id);
+			configFile[interaction.guild.id].save();
+			logsChList.set(interaction.guild.id , client.channels.cache.find(channel => channel.id === newLogsChannel.id));
+			logsChannel = client.channels.cache.find(channel => channel.id === newLogsChannel.id);
+			logMessage = logMessage + newLogsChannel.name + ' ';
+			message = message + `${locFile[locale][locale].system.logsChannelSetTo} “${newLogsChannel.name}”\n`;
+		}
+		
+		if(role == null && eventChannel == null && newLogsChannel == null) {
 			message = message + locFile[locale][locale].system.noOptionsProvided;
 		}
 
