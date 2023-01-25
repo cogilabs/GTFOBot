@@ -88,11 +88,11 @@ client.once(Events.ClientReady, async () => {
 	client.user.setPresence({ activities: [{ name: 'Available', type: 4 }], status: 'online' });
 
 	var logsChList = client.channels.cache.filter(channel => channel.name === logsChannelName);
-	/*completion.forEach((element) => {
-		console.log(element)
-		//console.log(completion[i].configuration.logsChannel)
-	});*/
-	//console.log(completion["1065540461118361650"].configuration.logsChannel); 
+	client.guilds.cache.forEach(guild => {
+		if (completion[guild.id].configuration.logsChannel != undefined) {
+			logsChList.set(guild.id , client.channels.cache.find(channel => channel.id === completion[guild.id].configuration.logsChannel));
+		}
+	});
 
 	global.logsChList = logsChList;
 	logsChList.forEach(async channel => await channel.send({ embeds: [embed] }));

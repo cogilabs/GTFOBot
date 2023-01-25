@@ -89,6 +89,8 @@ module.exports = {
 		if(newLogsChannel != null) {
 			configFile[interaction.guild.id].set(`configuration.logsChannel`, newLogsChannel.id);
 			configFile[interaction.guild.id].save();
+			logsChList.set(interaction.guild.id , client.channels.cache.find(channel => channel.id === newLogsChannel.id));
+			logsChannel = client.channels.cache.find(channel => channel.id === newLogsChannel.id);
 			logMessage = logMessage + newLogsChannel.name + ' ';
 			message = message + `${locFile[locale][locale].system.logsChannelSetTo} “${newLogsChannel.name}”\n`;
 		}
