@@ -1,6 +1,6 @@
 # GTFO Companion app
 
-![Banner](Images/GTFOBot-Banner-tr.png?raw=true)
+![Banner](/Images/GTFOBot-Banner-tr.png?raw=true)
 
 <p align="center">
     <a href="https://nodejs.org/" target="_blank"><img alt="Node.js badge" title="Using Node.js!" src="https://img.shields.io/badge/node.js-233056?style=for-the-badge&logo=node.js&logoColor=white"/></a>
@@ -18,15 +18,15 @@ We use it to follow our progress through the complex and to familiarise with the
 ## The application
 The application itself is just a bot named Dauda (like one of the bots in the game).
 
-![The bot](Images/dauda.png?raw=true)
+![The bot](/Images/dauda.png?raw=true)
 
 It allows several commands, but its main one is `/rundowns`:  
 
-![Command list](Images/commands.png?raw=true)
+![Command list](/Images/commands.png?raw=true)
 
 `/rundowns` displays the list of available rundowns:
 
-![rundowns list](Images/rundownsList.png?raw=true)
+![rundowns list](/Images/rundownsList.png?raw=true)
 
 From there, you'll be able to check any rundowns state and mission intel, but also to mark missions and subsectors as completed or not.
 
@@ -34,13 +34,13 @@ From there, you'll be able to check any rundowns state and mission intel, but al
 
 #### Here is the result of an user clicking the `R7` button:
 
-![rundown display](Images/rundown.png?raw=true)
+![rundown display](/Images/rundown.png?raw=true)
 
 You can see that the missions that have been successfully finished are represented in green.
 
 #### Here is the result of an user clicking the `B3` button:
 
-![mission display](Images/mission.png?raw=true)
+![mission display](/Images/mission.png?raw=true)
 
 Here the subsectors will have a checkmark if completed.
 
@@ -86,7 +86,7 @@ It also answers to messages like "Thanks Dauda" with a random "You're welcome" m
 ## More
 
 The application is *fully localized* in English and French, taking the server language for event handling and answering/reacting to messages, and the interacting user's language for command descriptions, and answering to commands (Intel, mission descriptions, etc...).  
-It's also quite easy to localize in other languages (cf. [the english localization file](localization/en-US.json)).  
+It's also quite easy to localize in other languages (cf. [the english localization file](/localization/en-US.json)).  
   
 If a text channel named `dauda-logs` exists, the bot will log every actions it does in this server in it, along with actions like starting or rebooting.  
 You can also add those logs to another channel (like your “bot-logs” channel for instance) using the `/config` command.
