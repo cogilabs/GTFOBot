@@ -66,11 +66,19 @@ module.exports = {
 			await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> used **\`\` /${cmdName} \`\`** in ${locale}`);
 
         if (lastMissionInteraction != undefined && lastMissionInteraction.channelId == interaction.channelId) {
-            await lastMissionInteraction.deleteReply();
+            try {
+                await lastMissionInteraction.deleteReply();
+            } catch(error) {
+                console.error(error);
+            }
             lastMissionInteraction = undefined;
         }
         if (rundownsInteraction != undefined && rundownsInteraction.channelId == interaction.channelId) {
-            await rundownsInteraction.deleteReply();
+            try {
+                await rundownsInteraction.deleteReply();
+            } catch(error) {
+                console.error(error);
+            }
             rundownsInteraction = undefined;
         }
 
