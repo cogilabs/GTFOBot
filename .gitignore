@@ -1,5 +1,5 @@
 config.json
-outputFile.json
 rundowns/server-*.json
 node_modules
 outputWeb/*
+!outputWeb/.whatsThis.md
