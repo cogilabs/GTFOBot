@@ -106,6 +106,6 @@ Keep in mind that it is still in active developement and that it's currently hos
 If you want to launch it by yourself you'll need to:
 - Create a discord app on <https://discord.com/developers/> 
 - Create a `config.json` file using the template [`template-config.json`](/template-config.json) and put your created bot's details inside of it
-- Run `npm-install` in the project's folder to install dependencies
+- Run `npm install` in the project's folder to install dependencies
 - Launch [`GTFOBot.js`](/GTFOBot.js) with node.js (this is the main program)
 - Deploy the commands by launching at least once [`deploy-commands-global.js`](/deploy-commands-global.js) (also with node.js)
