@@ -20,7 +20,7 @@ for (var lang in supportedLocales) {
 
 const editJsonFile = require('edit-json-file');
 
-var outputFile = editJsonFile('./outputFile.json')
+var outputFile = editJsonFile('./outputWeb/outputFile.json')
 
 const { rundowns } = require('./rundowns/rundowns.json');
 global.rundowns = rundowns;
