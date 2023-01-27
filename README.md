@@ -99,8 +99,9 @@ If you want to try Dauda, you can add it to your server by clicking this button:
 <p align="center"><a href="https://discord.com/api/oauth2/authorize?client_id=1050757215885209640&permissions=283736656976&scope=bot" target="_blank"><img alt="Add me on discord button" title="Add me on your discord server!" src="https://img.shields.io/badge/Add%20Dauda%20on-Discord-5865F2?style=for-the-badge"></a></p>
 
 **🔺 Warning! 🔺  
-Keep in mind that it is still in active developement and that it's currently hosted on a raspberry pi zero, which doesn't have the best performances in the world.**  
-  
+Keep in mind that it is still in active developement and that it's currently hosted on a raspberry pi zero\*, which doesn't have the best performances in the world.**
+###### \**The bot is moving to a real server before 28/01/2023*
+
 If you want to launch it by yourself you'll need to:
 - Create a discord app on <https://discord.com/developers/> 
 - Create a `config.json` file using the template [`template-config.json`](/template-config.json) and put your created bot's details inside of it
