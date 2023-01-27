@@ -7,7 +7,7 @@
     <a href="https://discord.js.org/" target="_blank"><img alt="Discord.js badge" title="Using Discord.js!" src="https://img.shields.io/badge/-Discord.js-5865F2?style=for-the-badge&logo=discord.js"/></a><br>
     <img alt="Dauda Status" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fcogilabs.eu%2FProjects%2FGTFOBot%2FGTFOBotState.php?style=for-the-badge"/>
     <img alt="Servers joined" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fcogilabs.eu%2FProjects%2FGTFOBot%2FGTFOBotServersNumber.php?style=for-the-badge"/><br>
-    <i style="color: red">Infos are unavailable during the bot's relocation</i>
+    <i style="color: red">Infos are unavailable during the bot's relocation</i><br><i>Sorry for the inconvenience</i>
 </p>
 
 ## Introduction
@@ -101,7 +101,7 @@ If you want to try Dauda, you can add it to your server by clicking this button:
 
 **🔺 Warning! 🔺  
 Keep in mind that it is still in active developement and that it's currently hosted on a raspberry pi zero\*, which doesn't have the best performances in the world.**
-###### \**The bot is moving to a real server before 28/01/2023*
+###### \**The bot is moving to a real server between the 27/01/2023 and the 30/01/2023*
 
 If you want to launch it by yourself you'll need to:
 - Create a discord app on <https://discord.com/developers/> 
