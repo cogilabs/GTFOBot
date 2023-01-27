@@ -5,9 +5,9 @@
 <p align="center">
     <a href="https://nodejs.org/" target="_blank"><img alt="Node.js badge" title="Using Node.js!" src="https://img.shields.io/badge/node.js-233056?style=for-the-badge&logo=node.js&logoColor=white"/></a>
     <a href="https://discord.js.org/" target="_blank"><img alt="Discord.js badge" title="Using Discord.js!" src="https://img.shields.io/badge/-Discord.js-5865F2?style=for-the-badge&logo=discord.js"/></a><br>
-    <img alt="Dauda Status" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fcogilabs.eu%2FProjects%2FGTFOBot%2FGTFOBotState.php?style=for-the-badge"/>
+    <!-- <img alt="Dauda Status" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fcogilabs.eu%2FProjects%2FGTFOBot%2FGTFOBotState.php?style=for-the-badge"/>
     <img alt="Servers joined" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fcogilabs.eu%2FProjects%2FGTFOBot%2FGTFOBotServersNumber.php?style=for-the-badge"/><br>
-    <i style="color: red">Infos are unavailable during the bot's relocation</i><br><i>Sorry for the inconvenience</i>
+    <i style="color: red">Infos are unavailable during the bot's relocation</i><br><i>Sorry for the inconvenience</i> -->
 </p>
 
 ## Introduction
