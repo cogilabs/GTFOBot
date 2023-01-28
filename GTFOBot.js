@@ -79,10 +79,10 @@ client.once(Events.ClientReady, async () => {
 	client.guilds.cache.forEach(guild => completion[guild.id] = require('./rundowns/server-' + guild.id + '.json'));
 	global.completion = completion;
 
-	const embed = new EmbedBuilder()
+	/*const embed = new EmbedBuilder()
 		.setColor(0x00FF00)
 		.setTitle(' ')
-		.setDescription(`**App started, <@${client.user.id}> is now online on \`${client.guilds.cache.size}\` server(s)!**`);
+		.setDescription(`**App started, <@${client.user.id}> is now online on \`${client.guilds.cache.size}\` server(s)!**`);*/
 	
 	console.log(`App started, ${client.user.tag} is now online on ${client.guilds.cache.size} server(s)!`);
 	client.user.setPresence({ activities: [{ name: 'Available', type: 4 }], status: 'online' });
