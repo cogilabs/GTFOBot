@@ -97,7 +97,7 @@ client.once(Events.ClientReady, async () => {
 	});
 
 	global.logsChList = logsChList;
-	logsChList.forEach(async channel => await channel.send({ embeds: [embed] }));
+	//logsChList.forEach(async channel => await channel.send({ embeds: [embed] }));
 
 	function updateTime() {
 		outputFile.set('time', Math.floor(Date.now()/ 1000).toString());

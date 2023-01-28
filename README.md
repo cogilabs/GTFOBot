@@ -89,7 +89,7 @@ It also answers to messages like "Thanks Dauda" with a random "You're welcome" m
 The application is *fully localized* in English and French, taking the server language for event handling and answering/reacting to messages, and the interacting user's language for command descriptions, and answering to commands (Intel, mission descriptions, etc...).  
 It's also quite easy to localize in other languages (cf. [the english localization file](/localization/en-US.json)).  
   
-If a text channel named `dauda-logs` exists, the bot will log every actions it does in this server in it, along with actions like starting or rebooting.  
+If a text channel named `dauda-logs` exists, the bot will log every actions it does in this server in it, along with actions like rebooting or updating.  
 You can also add those logs to another channel (like your “bot-logs” channel for instance) using the `/config` command.
   
 The bot has an `echo` command, allowing admins to speak in his name (Real message author can still be checked in the logs channel(s)).  .
