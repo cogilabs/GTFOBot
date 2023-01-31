@@ -144,9 +144,7 @@ module.exports = {
         } else if (commandArray[1] == 'mission' || commandArray[1] == 'complete') {
 
             if (commandArray[1] == 'complete') {
-                const value = commandArray[2];
-                const type = commandArray[3];
-                const comp = commandArray[4];
+                const [, , value, type, comp] = commandArray;
                 
                 // Check if the user has the MANAGE_EVENTS permission
                 if ((interaction.member.permissions.bitfield & 8589934592n) == 8589934592n) {
@@ -278,8 +276,7 @@ module.exports = {
                 await interaction.reply({ embeds: [embed], components: rows });
 
             } else if (commandArray[1] == 'complete') {
-                const value = commandArray[2];
-                const comp = commandArray[4];
+                const [, , value, , comp] = commandArray;
 
                 // Check if the user has the MANAGE_EVENTS permission
                 if ((interaction.member.permissions.bitfield & 8589934592n) == 8589934592n) {
