@@ -9,6 +9,7 @@ const { setInterval } = require('node:timers');
 const { token, guildId } = require('./config.json');
 const { supportedLocales } = require('./localization/supportedLocales.json');
 const { spawn } = require('child_process');
+const { compCheck, glitchText, logToServer, channelSelection } = require('./modules/smallModules.js')
 
 const logsChannelName = 'dauda-logs';
 global.logsChannelName = logsChannelName;
@@ -57,29 +58,13 @@ client.once(Events.ClientReady, async () => {
 	global.editJsonFile = editJsonFile;
 	global.configFile = configFile;
 
-	console.log('Checking configuration files...');
-	for (var run in rundowns) {
-		for (var lt in rundowns[run]) {
-			for (var mission in rundowns[run][lt]) {
-				for (var mt in rundowns[run][lt][mission].missionTypes) {
-					client.guilds.cache.forEach(guild => {
-						if (rundowns[run][lt][mission].missionTypes[mt]) {
-							if (configFile[guild.id].get(`completion.${run}.${lt}.${mission}.completed.${mt}`) == undefined) {
-								configFile[guild.id].set(`completion.${run}.${lt}.${mission}.completed.${mt}`, false);
-								console.log(`Adding ${run}${mission}:${mt} for server '${guild.id}'...`)
-							}
-						}
-						configFile[guild.id].save();
-					})
-				}
-			}
-		}
-	}
-	var completion = []
-	client.guilds.cache.forEach(guild => completion[guild.id] = require('./rundowns/server-' + guild.id + '.json'));
+    console.log('Checking configuration files...');
+	compCheck();
+    var completion = []
+    client.guilds.cache.forEach(guild => completion[guild.id] = require('./rundowns/server-' + guild.id + '.json'));
 	global.completion = completion;
 
-	/*const embed = new EmbedBuilder()
+	/*const embed = new EmbedBuilder() //Removed while the bot restarts 4 times a day
 		.setColor(0x00FF00)
 		.setTitle(' ')
 		.setDescription(`**App started, <@${client.user.id}> is now online on \`${client.guilds.cache.size}\` server(s)!**`);*/
@@ -97,7 +82,7 @@ client.once(Events.ClientReady, async () => {
 	});
 
 	global.logsChList = logsChList;
-	//logsChList.forEach(async channel => await channel.send({ embeds: [embed] }));
+	//logsChList.forEach(async channel => await channel.send({ embeds: [embed] })); //Removed while the bot restarts 4 times a day
 
 	function updateTime() {
 		outputFile.set('time', Math.floor(Date.now()/ 1000).toString());
@@ -117,23 +102,7 @@ client.on(Events.GuildCreate, async guild => {
 	if (mainGuildLogsChannel != undefined)
 		await mainGuildLogsChannel.send(`New server added: “${guild.name}” (${guild.id}) creating completion file...`);
 	console.log(`New server added: “${guild.name}” (${guild.id}) creating completion file...`);
-	for (var run in rundowns) {
-		for (var lt in rundowns[run]) {
-			for (var mission in rundowns[run][lt]) {
-				for (var mt in rundowns[run][lt][mission].missionTypes) {
-					client.guilds.cache.forEach(guild => {
-						if (rundowns[run][lt][mission].missionTypes[mt]) {
-							if (configFile[guild.id].get(`completion.${run}.${lt}.${mission}.completed.${mt}`) == undefined) {
-								configFile[guild.id].set(`completion.${run}.${lt}.${mission}.completed.${mt}`, false);
-								console.log(`Adding ${run}${mission}:${mt} for server '${guild.id}'...`)
-							}
-						}
-						configFile[guild.id].save();
-					})
-				}
-			}
-		}
-	}
+	compCheck();
 	completion[guild.id] = require('./rundowns/server-' + guild.id + '.json');
 	if (mainGuildLogsChannel != undefined)
 		await mainGuildLogsChannel.send('New server\'s configuration file added, redeploying commands...');
@@ -159,63 +128,26 @@ client.on(Events.GuildDelete, async guild => {
 
 client.on(Events.GuildScheduledEventCreate, async event => {
 	var configLogsChannel = configFile[event.guild.id].get(`configuration.logsChannel`);
-		if (configLogsChannel != undefined) {
-			var logsChannel = event.guild.channels.cache.find(channel => channel.id === configLogsChannel);
-		} else {
-			var logsChannel = event.guild.channels.cache.find(channel => channel.name === logsChannelName);
-		}
+	if (configLogsChannel != undefined) var logsChannel = event.guild.channels.cache.find(channel => channel.id === configLogsChannel);
+	else var logsChannel = event.guild.channels.cache.find(channel => channel.name === logsChannelName);
 
 	var locale = '';
-        for (var loc in supportedLocales) {
-            if (event.guild.preferredLocale == loc) locale = event.guild.preferredLocale;
-        }
-        if (locale == '') locale = 'en-US';
+	for (var loc in supportedLocales) {
+		if (event.guild.preferredLocale == loc) locale = event.guild.preferredLocale;
+	}
+	if (locale == '') locale = 'en-US';
 
 	var ping = '';
 	var roleName = locFile[locale][locale].events.role;
 	var missionName = '';
 
-	console.log(`A new scheduled event has been created by <${event.creatorId}>:`);
-	console.log(`- Title: ${event.name}`);
-	console.log(`- Description: ${event.description}`);
-	console.log(`- Date: ${event.scheduledStartAt}`);
+	logToServer(logsChannel, `A new scheduled event has been created by \`\` <${event.creatorId}> \`\`:`
+	+ `\n - Title: ${event.name}`
+	+ `\n - Description: ${event.description}`
+	+ `\n - Date: ${event.scheduledStartAt}`);
 
-	if (logsChannel != undefined)
-		await logsChannel.send(
-			`A new scheduled event has been created by \`\` <${event.creatorId}> \`\`:`
-			+ `\n - Title: ${event.name}`
-			+ `\n - Description: ${event.description}`
-			+ `\n - Date: ${event.scheduledStartAt}`
-		);
-
-		var eventChannel = configFile[event.guild.id].get(`configuration.eventChannel`);
-		if (eventChannel != undefined) {
-			var channel = event.guild.channels.cache.find(channel => channel.id === eventChannel);
-			console.log('Custom event channel detected: ' + eventChannel);
-			if (logsChannel != undefined)
-				await logsChannel.send('Custom event channel detected: ' + eventChannel);
-		} else {
-			console.log('This server does not have a custom event channel, defaulting to the \'general\' channel...');
-			if (logsChannel != undefined)
-				await logsChannel.send('This server does not have a custom event channel, defaulting to the \'general\' channel...');
-			if (event.guild.channels.cache.find(channel => channel.name === 'general')) {
-				var channel = event.guild.channels.cache.find(channel => channel.name === 'general');
-			} else {
-				console.log('This server does not have a channel named \'general\', defaulting to the system channel...');
-				if (logsChannel != undefined)
-					await logsChannel.send('This server does not have a channel named \'general\', defaulting to the system channel...');
-				if (event.guild.systemChannel) {
-					var channel = event.guild.systemChannel;
-				} else {
-					console.log('This server does not have a system channel, aborting...');
-					if (logsChannel != undefined)
-						await logsChannel.send('This server does not have a system channel, aborting...');
-					return;
-				}
-			}
-		}
-
-	
+	var channel = channelSelection(event, logsChannel);
+	if (channel == null) return
 	
 	oldCh = channel;
 	if (event.description.match(/`ch:[aàâbcçdeéèêfghiïjklmnoôpqrstuùûvwxyz-]+`/))
@@ -235,30 +167,10 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 	else if (event.guild.roles.cache.find(role => role.name === roleName) != undefined) 
 		ping = (locFile[locale][locale].events.ping).replace('#', `<@&${event.guild.roles.cache.find(role => role.name === roleName).id}>`);
 
-	await channel.send(
-		ping + (locFile[locale][locale].events.newExpedition).replace('#', missionName)
-		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-		+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-		+ '||​||||​||||​|| _ _ _ _ _ _' + event.url
-	); // That mess allows us to show the link embed without the link, and yes, this is a glitch
+	await channel.send(ping + (locFile[locale][locale].events.newExpedition).replace('#', missionName) + glitchText + event.url);
 	await channel.send(`<@${event.creatorId}> ${locFile[locale][locale].events.participate}`);
-	console.log(`Sent it to ${channel.name}`);
-	console.log(`<${event.creatorId}> automatically joined the event “${event.name}”`);
-	if (logsChannel != undefined) {
-		await logsChannel.send(`Sent it to \`\` ${channel.name} \`\``);
-		await logsChannel.send(`\`\` <${event.creatorId}> \`\` automatically joined the event “${event.name}”`);
-	}
+	logToServer(logsChannel, `Sent it to \`\` ${channel.name} \`\``);
+	logToServer(logsChannel, `\`\` <${event.creatorId}> \`\` automatically joined the event “${event.name}”`);
 });
 
 
@@ -282,32 +194,8 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 	var MID = '';
 	var MIDp = '';
 
-	var eventChannel = configFile[event.guild.id].get(`configuration.eventChannel`);
-		if (eventChannel != undefined) {
-			var channel = event.guild.channels.cache.find(channel => channel.id === eventChannel);
-			console.log('Custom event channel detected: ' + eventChannel);
-			if (logsChannel != undefined)
-				await logsChannel.send('Custom event channel detected: ' + eventChannel);
-	} else {
-		console.log('This server does not have a custom event channel, defaulting to the \'general\' channel...');
-		if (logsChannel != undefined)
-			await logsChannel.send('This server does not have a custom event channel, defaulting to the \'general\' channel...');
-		if (event.guild.channels.cache.find(channel => channel.name === 'general')) {
-			var channel = event.guild.channels.cache.find(channel => channel.name === 'general');
-		} else {
-			console.log('This server does not have a channel named \'general\', defaulting to the system channel...');
-			if (logsChannel != undefined)
-				await logsChannel.send('This server does not have a channel named \'general\', defaulting to the system channel...');
-			if (event.guild.systemChannel) {
-				var channel = event.guild.systemChannel;
-			} else {
-				console.log('This server does not have a system channel, aborting...');
-				if (logsChannel != undefined)
-					await logsChannel.send('This server does not have a system channel, aborting...');
-				return;
-			}
-		}
-	}
+	var channel = channelSelection(event, logsChannel);
+	if (channel == null) return
 	
 	oldCh = channel;
 	if (event.description.match(/`ch:[aàâbcçdeéèêfghiïjklmnoôpqrstuùûvwxyz-]+`/))
@@ -332,27 +220,9 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 		else if (event.guild.roles.cache.find(role => role.name === roleName) != undefined) 
 			ping = (locFile[locale][locale].events.ping).replace('#', `<@&${event.guild.roles.cache.find(role => role.name === roleName).id}>`);
 
-		await channel.send(
-			ping + (locFile[locale][locale].events.start).replace('#', missionName)
-			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-			+ '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
-			+ '||​||||​||||​|| _ _ _ _ _ _' + event.url
-		); // That mess allows us to show the link embed without the link, and yes, this is a glitch
+		await channel.send(ping + (locFile[locale][locale].events.start).replace('#', missionName) + glitchText + event.url);
 
-		if (logsChannel != undefined)
-			await logsChannel.send(`Event “${event.name}”${MIDp} started\nSent it to \`\` ${channel.name} \`\``);
-		console.log(`Event “${event.name}”${MIDp} started\nSent it to \`${channel.name}\``);
+		logToServer(logsChannel, `Event “${event.name}”${MIDp} started\nSent it to \`\` ${channel.name} \`\``);
 
 		if (event.guild.id == guildId)
 			client.user.setPresence({ activities: [{ name: `GTFO${MIDp}` }], status: 'dnd' });
@@ -368,14 +238,10 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
                         if (MID == run + id) {
 							if (completion[event.guild.id].completion[run][lt][id].completed.main) {
 								await channel.send((locFile[locale][locale].events.end.success).replace('#', missionName));
-								if (logsChannel != undefined)
-									await logsChannel.send(`Event “${event.name}”${MIDp} finished! (success)\nSent it to \`\` ${channel.name} \`\``);
-								console.log(`Event “${event.name}”${MIDp} finished! (success)\nSent it to “${channel.name}”`);
+								logToServer(logsChannel, `Event “${event.name}”${MIDp} finished! (success)\nSent it to \`\` ${channel.name} \`\``);
 							} else {
 								await channel.send((locFile[locale][locale].events.end.fail).replace('#', missionName));
-								if (logsChannel != undefined)
-									await logsChannel.send(`Event “${event.name}”${MIDp} finished! (failure)\nSent it to \`\` ${channel.name} \`\``);
-								console.log(`Event “${event.name}”${MIDp} finished! (failure)\nSent it to “${channel.name}”`);
+								logToServer(logsChannel, `Event “${event.name}”${MIDp} finished! (failure)\nSent it to \`\` ${channel.name} \`\``);
 							}
 						}
 					}
@@ -407,14 +273,10 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 							if (oldMID == run + id) {
 								if (completion[event.guild.id].completion[run][lt][id].completed.main) {
 									await channel.send((locFile[locale][locale].events.change.success).replace('#', `***${oldMID}***`).replace('Ø', `***${MID}***`));
-									if (logsChannel != undefined)
-										await logsChannel.send(`Event “${event.name}” (${oldMID}) modified to ${MID}! (success)\nSent it to \`\` ${channel.name} \`\``);
-									console.log(`Event “${event.name}”${MIDp} finished! (success)\nSent it to \`${channel.name}\``);
+									logToServer(logsChannel, `Event “${event.name}”${MIDp} finished! (success)\nSent it to \`${channel.name}\``);
 								} else {
 									await channel.send((locFile[locale][locale].events.change.fail).replace('#', `***${oldMID}***`).replace('Ø', `***${MID}***`));
-									if (logsChannel != undefined)
-										await logsChannel.send(`Event “${event.name}” (${oldMID}) modified to ${MID}! (failure)\nSent it to \`\` ${channel.name} \`\``);
-									console.log(`Event “${event.name}”${MIDp} finished! (failure)\nSent it to \`\` ${channel.name} \`\``);
+									logToServer(logsChannel, `Event “${event.name}” (${oldMID}) modified to ${MID}! (failure)\nSent it to \`\` ${channel.name} \`\``);
 								}
 							}
 						}
@@ -438,37 +300,13 @@ client.on(Events.GuildScheduledEventUserAdd, async (event, user) => {
 		}
 
 	var locale = '';
-        for (var loc in supportedLocales) {
-            if (event.guild.preferredLocale == loc) locale = event.guild.preferredLocale;
-        }
-        if (locale == '') locale = 'en-US';
+	for (var loc in supportedLocales) {
+		if (event.guild.preferredLocale == loc) locale = event.guild.preferredLocale;
+	}
+	if (locale == '') locale = 'en-US';
 
-		var eventChannel = configFile[event.guild.id].get(`configuration.eventChannel`);
-		if (eventChannel != undefined) {
-			console.log('Custom event channel detected: ' + eventChannel);
-			if (logsChannel != undefined)
-				await logsChannel.send('Custom event channel detected: ' + eventChannel);
-			var channel = eventChannel;
-		} else {
-			console.log('This server does not have a custom event channel, defaulting to the \'general\' channel...');
-			if (logsChannel != undefined)
-				await logsChannel.send('This server does not have a custom event channel, defaulting to the \'general\' channel...');
-			if (event.guild.channels.cache.find(channel => channel.name === 'general')) {
-				var channel = event.guild.channels.cache.find(channel => channel.name === 'general');
-			} else {
-				console.log('This server does not have a channel named \'general\', defaulting to the system channel...');
-				if (logsChannel != undefined)
-					await logsChannel.send('This server does not have a channel named \'general\', defaulting to the system channel...');
-				if (event.guild.systemChannel) {
-					var channel = event.guild.systemChannel;
-				} else {
-					console.log('This server does not have a system channel, aborting...');
-					if (logsChannel != undefined)
-						await logsChannel.send('This server does not have a system channel, aborting...');
-					return;
-				}
-			}
-		}
+	var channel = channelSelection(event, logsChannel);
+	if (channel == null) return
 	
 	oldCh = channel;
 	if (event.description.match(/`ch:[aàâbcçdeéèêfghiïjklmnoôpqrstuùûvwxyz-]+`/))
@@ -484,9 +322,7 @@ client.on(Events.GuildScheduledEventUserAdd, async (event, user) => {
 
 	if (Date.now() > event.createdTimestamp + 10000) {
 		await channel.send(`<@${user.id}> ${locFile[locale][locale].events.participate}`);
-		console.log(`@${user.tag} joined the event “${event.name}”`);
-		if (logsChannel != undefined)
-			await logsChannel.send(`\`\` @${user.tag} \`\` joined the event “${event.name}”`);
+		logToServer(logsChannel, `\`\` @${user.tag} \`\` joined the event “${event.name}”`);
 	}
 });
 
@@ -499,37 +335,13 @@ client.on(Events.GuildScheduledEventUserRemove, async (event, user) => {
 		}
 
 	var locale = '';
-        for (var loc in supportedLocales) {
-            if (event.guild.preferredLocale == loc) locale = event.guild.preferredLocale;
-        }
-        if (locale == '') locale = 'en-US';
-
-	var eventChannel = configFile[event.guild.id].get(`configuration.eventChannel`);
-		if (eventChannel != undefined) {
-			var channel = event.guild.channels.cache.find(channel => channel.id === eventChannel);
-			console.log('Custom event channel detected: ' + eventChannel);
-			if (logsChannel != undefined)
-				await logsChannel.send('Custom event channel detected: ' + eventChannel);
-	} else {
-		console.log('This server does not have a custom event channel, defaulting to the \'general\' channel...');
-		if (logsChannel != undefined)
-			await logsChannel.send('This server does not have a custom event channel, defaulting to the \'general\' channel...');
-		if (event.guild.channels.cache.find(channel => channel.name === 'general')) {
-			var channel = event.guild.channels.cache.find(channel => channel.name === 'general');
-		} else {
-			console.log('This server does not have a channel named \'general\', defaulting to the system channel...');
-			if (logsChannel != undefined)
-				await logsChannel.send('This server does not have a channel named \'general\', defaulting to the system channel...');
-			if (event.guild.systemChannel) {
-				var channel = event.guild.systemChannel;
-			} else {
-				console.log('This server does not have a system channel, aborting...');
-				if (logsChannel != undefined)
-					await logsChannel.send('This server does not have a system channel, aborting...');
-				return;
-			}
-		}
+	for (var loc in supportedLocales) {
+		if (event.guild.preferredLocale == loc) locale = event.guild.preferredLocale;
 	}
+	if (locale == '') locale = 'en-US';
+
+	var channel = channelSelection(event, logsChannel);
+	if (channel == null) return
 	
 	oldCh = channel;
 	if (event.description.match(/`ch:[aàâbcçdeéèêfghiïjklmnoôpqrstuùûvwxyz-]+`/))
@@ -545,9 +357,7 @@ client.on(Events.GuildScheduledEventUserRemove, async (event, user) => {
 	
 	await channel.send(`<@${event.creatorId}> ${locFile[locale][locale].events.noParticipate}`);
 
-	console.log(`@${user.tag} left the event “${event.name}”`);
-	if (logsChannel != undefined)
-		await logsChannel.send(`\`\` @${user.tag} \`\` left the event “${event.name}”`);
+	logToServer(logsChannel, `\`\` @${user.tag} \`\` left the event “${event.name}”`);
 	
 });
 
@@ -567,9 +377,7 @@ client.on(Events.MessageCreate, async message => {
 	if ((message.content).includes('Date :') && message.channel != logsChannel) {
 		await message.react('✅');
 		await message.react('❌');
-		console.log(`Reacted “✅” and “❌” to “${msgContent}” by ${message.author.tag}`);
-		if (logsChannel != undefined)
-			await logsChannel.send(`Reacted “✅” and “❌” to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
+		logToServer(logsChannel, `Reacted “✅” and “❌” to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
 	}
 
 	if (message.author == client.user) return;
@@ -582,21 +390,15 @@ client.on(Events.MessageCreate, async message => {
 		const reactionEmoji = message.guild.emojis.cache.find(emoji => emoji.name === emojiName);
 		if (reactionEmoji != undefined) {
 			await message.react(reactionEmoji);
-			console.log(`Reacted “${emojiName}” to “${msgContent}” by ${message.author.tag}`);
-			if (logsChannel != undefined)
-				await logsChannel.send(`Reacted \`\` ${emojiName} \`\` to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
+			logToServer(logsChannel, `Reacted \`\` ${emojiName} \`\` to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
 		} else {
-			console.log(`Tried to react to “${msgContent}” by ${message.author.tag} but no '${emojiName}' emoji was found`);
-			if (logsChannel != undefined)
-				await logsChannel.send(`Tried to react to \`\` ${msgContent} \`\` by ${message.author.tag} but no \`\` ${emojiName} \`\` emoji was found`);
+			logToServer(logsChannel, `Tried to react to \`\` ${msgContent} \`\` by ${message.author.tag} but no \`\` ${emojiName} \`\` emoji was found`);
 		}
 	}
 
 	if (msgContentLowerCase.includes(locFile[locale][locale].chat.ask) && msgContentLowerCase.includes('dauda')) {
 		await message.react('❓');
-		console.log(`Reacted “❓” to “${msgContent}” by ${message.author.tag}`);
-		if (logsChannel != undefined)
-			await logsChannel.send(`Reacted \`\` ❓ \`\` to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
+		logToServer(logsChannel, `Reacted \`\` ❓ \`\` to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
 	}
 
 	function checker(x) {
@@ -633,15 +435,11 @@ client.on(Events.MessageCreate, async message => {
 			}
 			if (reaction != '' && message.channel != logsChannel) {
 				await message.react(reaction);
-				console.log(`Reacted “${reaction}” to “${msgContent}” by ${message.author.tag}`);
-				if (logsChannel != undefined)
-					await logsChannel.send(`Reacted \`\` ${reaction} \`\` to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
+				logToServer(logsChannel, `Reacted \`\` ${reaction} \`\` to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
 			}
 			if (reaction == '❔' && message.channel != logsChannel) {
 				await message.reply({ content: locFile[locale][locale].system.missionNotFound.replace('#', MID), ephemeral: true });
-				console.log(`Answered “${locFile[locale][locale].system.missionNotFound.replace('#', MID)}” to “${msgContent}” by ${message.author.tag}`);
-				if (logsChannel != undefined)
-					await logsChannel.send(`Answered “${locFile[locale][locale].system.missionNotFound.replace('#', MID)}” to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
+				logToServer(logsChannel, `Answered “${locFile[locale][locale].system.missionNotFound.replace('#', MID)}” to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
 			}
 		}
 	}
@@ -650,9 +448,7 @@ client.on(Events.MessageCreate, async message => {
 		var response = locFile[locale][locale].chat.youreWelcome;
 		var answer = response[Math.floor(Math.random() * response.length)];
 		await message.reply(answer);
-		console.log(`Answered “${answer}” to “${msgContent}” by ${message.author.tag}`)
-		if (logsChannel != undefined)
-			await logsChannel.send(`Answered “${answer}” to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
+		logToServer(logsChannel, `Answered “${answer}” to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
 	}
 });
 
