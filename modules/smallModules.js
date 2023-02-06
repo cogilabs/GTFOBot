@@ -2,6 +2,7 @@
 // Copyright (C) 2023 David "0Davgi0" Girou
 // License: BSD2.
 
+// Function used to check a completion file, and add missing entries, useful for a new file or after a game update
 function compCheck() {
     for (var run in rundowns) {
         for (var lt in rundowns[run]) {
@@ -22,6 +23,8 @@ function compCheck() {
     }
 }
 
+// That text, placed at the end of a discord message,
+// allows us to show a link embed without the link, and yes, this is a glitch.
 const glitchText = 
   '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
 + '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
@@ -37,14 +40,15 @@ const glitchText =
 + '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
 + '||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||||​||'
 + '||​||||​||||​|| _ _ _ _ _ _';
-// That mess allows us to show the link embed without the link, and yes, this is a glitch
 
+// Function used to log a message both in the console and the server's logs channel
 async function logToServer(logsChannel, textToLog) {
 console.log(textToLog);
     if (logsChannel != undefined)
         await logsChannel.send(textToLog);
 }
 
+// Function used to select in which channel an event special messages will be sent
 function channelSelection(event, logsChannel) {
     var eventChannel = configFile[event.guild.id].get(`configuration.eventChannel`);
 	if (eventChannel != undefined) {
