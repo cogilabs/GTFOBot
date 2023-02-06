@@ -200,7 +200,9 @@ module.exports = {
                     i = i+1;
                 }
                 if (rundownsInteraction != undefined && rundownsInteraction.channelId == interaction.channelId)
-                    await rundownsInteraction.editReply({ content: title, components: runRows });
+                    try {await rundownsInteraction.editReply({ content: title, components: runRows });} catch(error) {
+                        console.error(error);
+                    }
             }
 
             const RID = commandArray[2];
@@ -268,7 +270,9 @@ module.exports = {
 			        await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> opened mission ${RID} via **\`\` /${commandArray[0]} \`\`** in ${locale}`);
 
                 if (lastMissionInteraction != undefined && lastMissionInteraction.channelId == interaction.channelId) {
-                    await lastMissionInteraction.deleteReply();
+                    try {await lastMissionInteraction.deleteReply();} catch(error) {
+                console.error(error);
+            }
                     lastMissionInteraction = undefined;
                 }
 
@@ -287,7 +291,9 @@ module.exports = {
                     .setDescription(content);
 
                     if (lastMissionInteraction != undefined && lastMissionInteraction.channelId == interaction.channelId) {
-                        await lastMissionInteraction.editReply({ embeds: [embed], components: rows });
+                        try {await lastMissionInteraction.editReply({ embeds: [embed], components: rows });} catch(error) {
+                console.error(error);
+            }
                     } else {
                         await interaction.reply({ embeds: [embed], components: rows });
                     }
