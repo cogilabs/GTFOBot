@@ -185,11 +185,13 @@
       "start": "L'expédition# démarre, alors préparez-vous et rejoignez-nous !\n ",
       "end": {
         "success": "C'est avec succès que l'expédition# est maintenant terminée !\nÇa c'est une équipe de choc !",
-        "fail": "L'expédition# s'est soldée par un échec, mais la prochaine sera la bonne !"
+        "fail": "L'expédition# s'est soldée par un échec, mais la prochaine sera la bonne !",
+        "noProgression": "L'expédition# est terminée !"
       },
       "change": {
         "success": "C'est avec succès que l'expédition vers # se dirige maintenant vers Ø !",
-        "fail": "L'expédition vers # a échoué, mais peu importe, nous sommes maintenant envoyés vers Ø !"
+        "fail": "L'expédition vers # a échoué, mais peu importe, nous sommes maintenant envoyés vers Ø !",
+        "noProgression": "L'expédition vers # est terminée, nous allons maintenant vers Ø!"
       },
       "ping": "Hey # !\n\n",
       "participate": " participe à l'expédition !",

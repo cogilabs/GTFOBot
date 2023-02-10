@@ -236,12 +236,17 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
                 for (var lt in rundowns[run]) {
                     for (var id in rundowns[run][lt]) {
                         if (MID == run + id) {
-							if (completion[event.guild.id].completion[run][lt][id].completed.main) {
-								await channel.send((locFile[locale][locale].events.end.success).replace('#', missionName));
-								logToServer(logsChannel, `Event “${event.name}”${MIDp} finished! (success)\nSent it to \`\` ${channel.name} \`\``);
+							if (!configFile[event.guild.id].get(`configuration.progressionDisabled`)) {
+								if (completion[event.guild.id].completion[run][lt][id].completed.main) {
+									await channel.send((locFile[locale][locale].events.end.success).replace('#', missionName));
+									logToServer(logsChannel, `Event “${event.name}”${MIDp} finished! (success)\nSent it to \`\` ${channel.name} \`\``);
+								} else {
+									await channel.send((locFile[locale][locale].events.end.fail).replace('#', missionName));
+									logToServer(logsChannel, `Event “${event.name}”${MIDp} finished! (failure)\nSent it to \`\` ${channel.name} \`\``);
+								}
 							} else {
-								await channel.send((locFile[locale][locale].events.end.fail).replace('#', missionName));
-								logToServer(logsChannel, `Event “${event.name}”${MIDp} finished! (failure)\nSent it to \`\` ${channel.name} \`\``);
+								await channel.send((locFile[locale][locale].events.end.noProgression).replace('#', missionName));
+								logToServer(logsChannel, `Event “${event.name}”${MIDp} finished! \nSent it to \`\` ${channel.name} \`\``);
 							}
 						}
 					}
@@ -271,12 +276,17 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 					for (var lt in rundowns[run]) {
 						for (var id in rundowns[run][lt]) {
 							if (oldMID == run + id) {
-								if (completion[event.guild.id].completion[run][lt][id].completed.main) {
-									await channel.send((locFile[locale][locale].events.change.success).replace('#', `***${oldMID}***`).replace('Ø', `***${MID}***`));
-									logToServer(logsChannel, `Event “${event.name}”${MIDp} finished! (success)\nSent it to \`${channel.name}\``);
+								if (!configFile[event.guild.id].get(`configuration.progressionDisabled`)) {
+									if (completion[event.guild.id].completion[run][lt][id].completed.main) {
+										await channel.send((locFile[locale][locale].events.change.success).replace('#', `***${oldMID}***`).replace('Ø', `***${MID}***`));
+										logToServer(logsChannel, `Event “${event.name}”${MIDp} finished! (success)\nSent it to \`${channel.name}\``);
+									} else {
+										await channel.send((locFile[locale][locale].events.change.fail).replace('#', `***${oldMID}***`).replace('Ø', `***${MID}***`));
+										logToServer(logsChannel, `Event “${event.name}” (${oldMID}) modified to ${MID}! (failure)\nSent it to \`\` ${channel.name} \`\``);
+									}
 								} else {
-									await channel.send((locFile[locale][locale].events.change.fail).replace('#', `***${oldMID}***`).replace('Ø', `***${MID}***`));
-									logToServer(logsChannel, `Event “${event.name}” (${oldMID}) modified to ${MID}! (failure)\nSent it to \`\` ${channel.name} \`\``);
+									await channel.send((locFile[locale][locale].events.change.noProgression).replace('#', `***${oldMID}***`).replace('Ø', `***${MID}***`));
+									logToServer(logsChannel, `Event “${event.name}” (${oldMID}) modified to ${MID}!\nSent it to \`\` ${channel.name} \`\``);
 								}
 							}
 						}
@@ -414,32 +424,34 @@ client.on(Events.MessageCreate, async message => {
 	}
 	
 	if ((finishedMissionR).some(checker)) {
-		for (i in msgContent.match(/R[0-9][A-F][0-9]/g)) {
-			var MID = msgContent.match(/R[0-9][A-F][0-9]/g)[i];
-			var reaction = '';
-			if (MID.length == 4 && !MID.includes('!') && !MID.includes('?') && !MID.includes('.')) {
-				var run = MID.slice(0,2);
-				var lt = MID.slice(2,3);
-				var id = MID.slice(2,4);
-				var mt = 'main';
-				if (completion[message.guild.id].completion[run] != undefined) {
-					if (completion[message.guild.id].completion[run][lt] != undefined) {
-						if (completion[message.guild.id].completion[run][lt][id] != undefined) {
-							if (completion[message.guild.id].completion[run][lt][id].completed != undefined) {
-								if (completion[message.guild.id].completion[run][lt][id].completed[mt] == true) reaction = '✅';
-								if (completion[message.guild.id].completion[run][lt][id].completed[mt] == false) reaction = '❌';
+		if (!configFile[message.guild.id].get(`configuration.progressionDisabled`)) {
+			for (i in msgContent.match(/R[0-9][A-F][0-9]/g)) {
+				var MID = msgContent.match(/R[0-9][A-F][0-9]/g)[i];
+				var reaction = '';
+				if (MID.length == 4 && !MID.includes('!') && !MID.includes('?') && !MID.includes('.')) {
+					var run = MID.slice(0,2);
+					var lt = MID.slice(2,3);
+					var id = MID.slice(2,4);
+					var mt = 'main';
+					if (completion[message.guild.id].completion[run] != undefined) {
+						if (completion[message.guild.id].completion[run][lt] != undefined) {
+							if (completion[message.guild.id].completion[run][lt][id] != undefined) {
+								if (completion[message.guild.id].completion[run][lt][id].completed != undefined) {
+									if (completion[message.guild.id].completion[run][lt][id].completed[mt] == true) reaction = '✅';
+									if (completion[message.guild.id].completion[run][lt][id].completed[mt] == false) reaction = '❌';
+								} else reaction = '❔';
 							} else reaction = '❔';
-						} else reaction = '❔';
+						}
 					}
 				}
-			}
-			if (reaction != '' && message.channel != logsChannel) {
-				await message.react(reaction);
-				logToServer(logsChannel, `Reacted \`\` ${reaction} \`\` to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
-			}
-			if (reaction == '❔' && message.channel != logsChannel) {
-				await message.reply({ content: locFile[locale][locale].system.missionNotFound.replace('#', MID), ephemeral: true });
-				logToServer(logsChannel, `Answered “${locFile[locale][locale].system.missionNotFound.replace('#', MID)}” to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
+				if (reaction != '' && message.channel != logsChannel) {
+					await message.react(reaction);
+					logToServer(logsChannel, `Reacted \`\` ${reaction} \`\` to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
+				}
+				if (reaction == '❔' && message.channel != logsChannel) {
+					await message.reply({ content: locFile[locale][locale].system.missionNotFound.replace('#', MID), ephemeral: true });
+					logToServer(logsChannel, `Answered “${locFile[locale][locale].system.missionNotFound.replace('#', MID)}” to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
+				}
 			}
 		}
 	}
