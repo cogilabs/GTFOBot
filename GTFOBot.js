@@ -127,7 +127,7 @@ client.on(Events.GuildDelete, async guild => {
 });
 
 client.on(Events.GuildScheduledEventCreate, async event => {
-	if (!event.description.match("GTFO")) return;
+	if (!event.description.match("GTFO") && !configFile[event.guild.id].get(`configuration.eventRequirementDisabled`)) return;
 	var configLogsChannel = configFile[event.guild.id].get(`configuration.logsChannel`);
 	if (configLogsChannel != undefined) var logsChannel = event.guild.channels.cache.find(channel => channel.id === configLogsChannel);
 	else var logsChannel = event.guild.channels.cache.find(channel => channel.name === logsChannelName);
@@ -176,7 +176,7 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 
 
 client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
-	if (!event.description.match("GTFO")) return;
+	if (!event.description.match("GTFO") && !configFile[event.guild.id].get(`configuration.eventRequirementDisabled`)) return;
 	var configLogsChannel = configFile[event.guild.id].get(`configuration.logsChannel`);
 		if (configLogsChannel != undefined) {
 			var logsChannel = event.guild.channels.cache.find(channel => channel.id === configLogsChannel);
@@ -304,7 +304,7 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 
 
 client.on(Events.GuildScheduledEventUserAdd, async (event, user) => {
-	if (!event.description.match("GTFO")) return;
+	if (!event.description.match("GTFO") && !configFile[event.guild.id].get(`configuration.eventRequirementDisabled`)) return;
 	var configLogsChannel = configFile[event.guild.id].get(`configuration.logsChannel`);
 		if (configLogsChannel != undefined) {
 			var logsChannel = event.guild.channels.cache.find(channel => channel.id === configLogsChannel);
@@ -340,7 +340,7 @@ client.on(Events.GuildScheduledEventUserAdd, async (event, user) => {
 });
 
 client.on(Events.GuildScheduledEventUserRemove, async (event, user) => {
-	if (!event.description.match("GTFO")) return;
+	if (!event.description.match("GTFO") && !configFile[event.guild.id].get(`configuration.eventRequirementDisabled`)) return;
 	var configLogsChannel = configFile[event.guild.id].get(`configuration.logsChannel`);
 		if (configLogsChannel != undefined) {
 			var logsChannel = event.guild.channels.cache.find(channel => channel.id === configLogsChannel);

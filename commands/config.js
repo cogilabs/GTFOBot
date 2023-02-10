@@ -50,6 +50,14 @@ module.exports = {
 			}))
 		.addStringOption(option =>
 			option
+			.setName("eventrequirement")
+			.setDescription("Whether the events need \"GTFO\" in their description to be taken in account by the bot or not")
+			.addChoices(
+				{ name: 'enabled', value: 'enabled' },
+				{ name: 'disabled', value: 'disabled' },
+			))
+		.addStringOption(option =>
+			option
 			.setName(locFile['en-US']['en-US'].commands[cmdName].option4.name)
 			.setNameLocalizations({
 				fr: locFile['fr']['fr'].commands[cmdName].option4.name,
@@ -94,6 +102,7 @@ module.exports = {
 		const newLogsChannel = interaction.options.getChannel(locFile['en-US']['en-US'].commands[cmdName].option3.name);
 		const progressionEnabled = interaction.options.getString(locFile['en-US']['en-US'].commands[cmdName].option4.name);
 		const resetProgression = interaction.options.getString(locFile['en-US']['en-US'].commands[cmdName].option5.name);
+		const eventRequirement = interaction.options.getString("eventrequirement");
 		if (eventChannel != null) {
 			if (eventChannel.type == 0) {
 				configFile[interaction.guild.id].set(`configuration.eventChannel`, eventChannel.id);
@@ -125,6 +134,14 @@ module.exports = {
 				logMessage = logMessage + 'logsCh:' + newLogsChannel.name + '(failure) ';
 				message = message + `**“${newLogsChannel.name}” ${locFile[locale][locale].system.notATextChannel}**\n`;
 			}
+		}
+
+		if (eventRequirement != null) {
+			configFile[interaction.guild.id].set(`configuration.eventRequirementDisabled`, (eventRequirement === "disabled"));
+			configFile[interaction.guild.id].save();
+
+			logMessage = logMessage + 'eventRequirement:' + eventRequirement + ' ';
+			message = message + `Event requirement ${eventRequirement}\n`;
 		}
 
 		if (progressionEnabled != null) {
@@ -159,7 +176,7 @@ module.exports = {
 			}
 		}
 		
-		if(role == null && eventChannel == null && newLogsChannel == null && progressionEnabled == null && resetProgression == null) {
+		if(role == null && eventChannel == null && newLogsChannel == null && progressionEnabled == null && resetProgression == null && eventRequirement == null) {
 			message = message + locFile[locale][locale].system.noOptionsProvided;
 		}
 
