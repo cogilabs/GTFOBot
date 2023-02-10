@@ -62,6 +62,17 @@ module.exports = {
 				{ name: 'enabled', value: 'enabled' },
 				{ name: 'disabled', value: 'disabled' },
 			))
+		.addStringOption(option =>
+			option
+			.setName(locFile['en-US']['en-US'].commands[cmdName].option5.name)
+			.setNameLocalizations({
+				fr: locFile['fr']['fr'].commands[cmdName].option5.name,
+			})
+			.setDescription(locFile['en-US']['en-US'].commands[cmdName].option5.description)
+			.setDescriptionLocalizations({
+				fr: locFile['fr']['fr'].commands[cmdName].option5.description,
+			})
+			)
 		.setDefaultMemberPermissions(0)
 		.setDMPermission(false),
 	async execute(interaction) {
@@ -82,6 +93,7 @@ module.exports = {
 		const role = interaction.options.getRole(locFile['en-US']['en-US'].commands[cmdName].option2.name);
 		const newLogsChannel = interaction.options.getChannel(locFile['en-US']['en-US'].commands[cmdName].option3.name);
 		const progressionEnabled = interaction.options.getString(locFile['en-US']['en-US'].commands[cmdName].option4.name);
+		const resetProgression = interaction.options.getString(locFile['en-US']['en-US'].commands[cmdName].option5.name);
 		if (eventChannel != null) {
 			if (eventChannel.type == 0) {
 				configFile[interaction.guild.id].set(`configuration.eventChannel`, eventChannel.id);
@@ -94,14 +106,14 @@ module.exports = {
 			}
 		}
 		
-		if(role != null) {
+		if (role != null) {
 			configFile[interaction.guild.id].set(`configuration.prisonnersRole`, role.id);
 			configFile[interaction.guild.id].save();
 			logMessage = logMessage + 'pingRole:' + role.name + ' ';
 			message = message + `${locFile[locale][locale].system.roleSetTo} “${role.name}”\n`;
 		} 
 		
-		if(newLogsChannel != null) {
+		if (newLogsChannel != null) {
 			if (newLogsChannel.type == 0) {
 				configFile[interaction.guild.id].set(`configuration.logsChannel`, newLogsChannel.id);
 				configFile[interaction.guild.id].save();
@@ -115,15 +127,39 @@ module.exports = {
 			}
 		}
 
-		if(progressionEnabled != null) {
+		if (progressionEnabled != null) {
 			configFile[interaction.guild.id].set(`configuration.progressionDisabled`, (progressionEnabled === "disabled"));
 			configFile[interaction.guild.id].save();
 
 			logMessage = logMessage + 'progression:' + progressionEnabled + ' ';
 			message = message + `progression ${progressionEnabled}\n`;
 		}
+
+		if (resetProgression != null) {
+			if (resetProgression == locFile[locale][locale].commands[cmdName].option5.confirm) {
+				for (var run in rundowns) {
+					for (var lt in rundowns[run]) {
+						for (var mission in rundowns[run][lt]) {
+							for (var mt in rundowns[run][lt][mission].missionTypes) {
+								client.guilds.cache.forEach(guild => {
+									if (rundowns[run][lt][mission].missionTypes[mt]) {
+										configFile[interaction.guild.id].set(`completion.${run}.${lt}.${mission}.completed.${mt}`, false);
+									}
+									configFile[interaction.guild.id].save();
+								})
+							}
+						}
+					}
+				}				
+				logMessage = logMessage + 'reset:' + resetProgression + '(success) ';
+				message = message + `Progression resetted\n`;
+			} else {
+				logMessage = logMessage + 'reset:' + resetProgression + '(fail) ';
+				message = message + `Progression **not** resetted (bad confirmation: ${resetProgression})\n`;
+			}
+		}
 		
-		if(role == null && eventChannel == null && newLogsChannel == null && progressionEnabled == null) {
+		if(role == null && eventChannel == null && newLogsChannel == null && progressionEnabled == null && resetProgression == null) {
 			message = message + locFile[locale][locale].system.noOptionsProvided;
 		}
 

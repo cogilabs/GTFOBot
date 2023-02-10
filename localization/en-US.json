@@ -252,6 +252,11 @@
         "option4": {
           "name": "progression",
           "description": "Wether to enable or disable the progression function"
+        },
+        "option5": {
+          "name": "resetprogression",
+          "description": "Reset your progression (type confirm to confirm)",
+          "confirm": "confirm"
         }
       }
     },

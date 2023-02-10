@@ -12,7 +12,7 @@ function compCheck() {
                         if (rundowns[run][lt][mission].missionTypes[mt]) {
                             if (configFile[guild.id].get(`completion.${run}.${lt}.${mission}.completed.${mt}`) == undefined) {
                                 configFile[guild.id].set(`completion.${run}.${lt}.${mission}.completed.${mt}`, false);
-                                console.log(`Adding ${run}${mission}:${mt} for server '${guild.id}'...`)
+                                console.log(`Adding ${run}${mission}:${mt} for server '${guild.id}'...`);
                             }
                         }
                         configFile[guild.id].save();
