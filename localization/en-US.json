@@ -251,7 +251,7 @@
         },
         "option4": {
           "name": "progression",
-          "description": "Wether to enable or disable the progression function"
+          "description": "Wether to enable or disable the progression function (enabled by default)"
         },
         "option5": {
           "name": "resetprogression",

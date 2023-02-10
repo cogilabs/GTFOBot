@@ -251,7 +251,7 @@
         },
         "option4": {
           "name": "progression",
-          "description": "Activer ou désactiver la fonction de progression"
+          "description": "Activer ou désactiver la fonction de progression (activé par défaut)"
         },
         "option5": {
           "name": "resetprogression",
