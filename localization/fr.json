@@ -248,6 +248,10 @@
         "option3": {
           "name": "salonlogs",
           "description": "Le salon où sont envoyés les logs (“dauda-logs” par défaut)"
+        },
+        "option4": {
+          "name": "progression",
+          "description": "Activer ou désactiver la fonction de progression"
         }
       }
     },

@@ -248,6 +248,10 @@
         "option3": {
           "name": "logschannel",
           "description": "The channel where the logs are sent (defaults to “dauda-logs”)"
+        },
+        "option4": {
+          "name": "progression",
+          "description": "Wether to enable or disable the progression function"
         }
       }
     },
