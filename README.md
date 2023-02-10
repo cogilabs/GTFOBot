@@ -77,7 +77,7 @@ The setting is still overideable, by putting `` `ch:channelname` `` somewhere in
   
 The `/config` command also allows to configure a role to be pinged when event messages are sent.
   
-Soon, the bot will only detect events containing the text "GTFO" in their description, for obvious reasons.
+By default, the bot only reacts ton events with the text `GTFO` in their descriptions, this comportment is toggleable with the `/config` command.
 
 ## Message reacting and answering
 
