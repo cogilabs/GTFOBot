@@ -250,10 +250,14 @@
           "description": "The channel where the logs are sent (defaults to “dauda-logs”)"
         },
         "option4": {
+          "name": "eventrequirement",
+          "description": "Whether the events need \"GTFO\" in their description to be taken in account by the bot or not"
+        },
+        "option5": {
           "name": "progression",
           "description": "Wether to enable or disable the progression function (enabled by default)"
         },
-        "option5": {
+        "option6": {
           "name": "resetprogression",
           "description": "Reset your progression (type confirm to confirm)",
           "confirm": "confirm"

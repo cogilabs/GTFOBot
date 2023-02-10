@@ -250,10 +250,14 @@
           "description": "Le salon où sont envoyés les logs (“dauda-logs” par défaut)"
         },
         "option4": {
+          "name": "exigenceevenement",
+          "description": "Règle si les évènements ont besoin de la mention \"GTFO\" dans leurs descriptions"
+        },
+        "option5": {
           "name": "progression",
           "description": "Activer ou désactiver la fonction de progression (activé par défaut)"
         },
-        "option5": {
+        "option6": {
           "name": "resetprogression",
           "description": "Réinitialise votre progression (taper confirmer pour confirmer)",
           "confirm": "confirmer"
