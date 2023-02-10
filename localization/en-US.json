@@ -184,12 +184,14 @@
       "newExpedition": "The Warden is sending us in a new expedition#, so get ready to work together, or die together!\n ",
       "start": "The expedition# is starting, so get ready and join us!\n ",
       "end": {
-        "success": "The expedition to # was a success!\n*That* is what I call a great team!",
-        "fail": "Unfortunately, the expedition to # did not end up as expected... But next time will be the one!"
+        "success": "The expedition# was a success!\n*That* is what I call a great team!",
+        "fail": "Unfortunately, the expedition# did not end up as expected... But next time will be the one!",
+        "noProgression": "The expedition# is over!"
       },
       "change": {
         "success": "The expedition to # was a success and is now moving to Ø!",
-        "fail": "Unfortunately, the expedition to # did not end up as expected... But no worries, we are now moving to Ø!"
+        "fail": "Unfortunately, the expedition to # did not end up as expected... But no worries, we are now moving to Ø!",
+        "noProgression": "The expedition to # is over, we are now going to Ø!"
       },
       "ping": "Hey #!\n\n",
       "participate": " joined the expedition!",
@@ -246,6 +248,10 @@
         "option3": {
           "name": "logschannel",
           "description": "The channel where the logs are sent (defaults to “dauda-logs”)"
+        },
+        "option4": {
+          "name": "progression",
+          "description": "Wether to enable or disable the progression function"
         }
       }
     },

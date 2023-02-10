@@ -113,13 +113,22 @@ module.exports = {
             for (var lt in rundowns[RID]) {
                 rows[i] = new ActionRowBuilder();
                 for (var nb in rundowns[RID][lt]) {
-                    if (completion[interaction.guild.id].completion[RID][lt][nb].completed.main) {
-                        rows[i].addComponents(
-                            new ButtonBuilder()
-                                .setCustomId(cmdName + '-mission-' + RID + nb)
-                                .setLabel(nb)
-                                .setStyle(ButtonStyle.Success),
-                        );
+                    if (!configFile[interaction.guild.id].get(`configuration.progressionDisabled`)) {
+                        if (completion[interaction.guild.id].completion[RID][lt][nb].completed.main) {
+                            rows[i].addComponents(
+                                new ButtonBuilder()
+                                    .setCustomId(cmdName + '-mission-' + RID + nb)
+                                    .setLabel(nb)
+                                    .setStyle(ButtonStyle.Success),
+                            );
+                        } else {
+                            rows[i].addComponents(
+                                new ButtonBuilder()
+                                    .setCustomId(cmdName + '-mission-' + RID + nb)
+                                    .setLabel(nb)
+                                    .setStyle(ButtonStyle.Secondary),
+                            );
+                        }
                     } else {
                         rows[i].addComponents(
                             new ButtonBuilder()
@@ -127,6 +136,7 @@ module.exports = {
                                 .setLabel(nb)
                                 .setStyle(ButtonStyle.Secondary),
                         );
+
                     }
                 }
                 i = i+1;
@@ -221,31 +231,35 @@ module.exports = {
                             var i = 0;
                             for (var mt in rundowns[run][lt][id].missionTypes) {
                                 if (rundowns[run][lt][id].missionTypes[mt] == true) {
-                                    cpltd[mt] = completion[interaction.guild.id].completion[run][lt][id].completed[mt]
-                                    rows[i]  = new ActionRowBuilder();
-                                    if (String(cpltd[mt]).toLowerCase() != 'true') {
-                                        rows[i].addComponents(
-                                            new ButtonBuilder()
-                                                .setCustomId(cmdName + '-complete-' + RID + '-' + mt + '-true-' + cpltd[mt].toString())
-                                                .setLabel((locFile[locale][locale].missions.completeSector).replace('#', locFile[locale][locale].sectors[mt]))
-                                                .setStyle(ButtonStyle.Success),
+                                    if(!configFile[interaction.guild.id].get(`configuration.progressionDisabled`)) {
+                                        cpltd[mt] = completion[interaction.guild.id].completion[run][lt][id].completed[mt]
+                                        rows[i]  = new ActionRowBuilder();
+                                        if (String(cpltd[mt]).toLowerCase() != 'true') {
+                                            rows[i].addComponents(
+                                                new ButtonBuilder()
+                                                    .setCustomId(cmdName + '-complete-' + RID + '-' + mt + '-true-' + cpltd[mt].toString())
+                                                    .setLabel((locFile[locale][locale].missions.completeSector).replace('#', locFile[locale][locale].sectors[mt]))
+                                                    .setStyle(ButtonStyle.Success),
+                                                );
+                                            i++;
+                                        } else {
+                                            rows[i].addComponents(
+                                                new ButtonBuilder()
+                                                    .setCustomId(cmdName + '-complete-' + RID + '-' + mt + '-false-' + cpltd[mt].toString())
+                                                    .setLabel((locFile[locale][locale].missions.uncompleteSector).replace('#', locFile[locale][locale].sectors[mt]))
+                                                    .setStyle(ButtonStyle.Danger),
                                             );
-                                        i++;
+                                            i++;
+                                        }
+                                            
+                                        content = content + ' - ' + locFile[locale][locale].sectors[mt] + ': ';
+                                        if (completion[interaction.guild.id].completion[run][lt][id].completed[mt] == true) {
+                                            content = content + '`✅ ' + locFile[locale][locale].missions.completed + '`\n';
+                                        } else {
+                                            content = content + '`❌ ' + locFile[locale][locale].missions.notCompleted + '`\n';
+                                        }
                                     } else {
-                                        rows[i].addComponents(
-                                            new ButtonBuilder()
-                                                .setCustomId(cmdName + '-complete-' + RID + '-' + mt + '-false-' + cpltd[mt].toString())
-                                                .setLabel((locFile[locale][locale].missions.uncompleteSector).replace('#', locFile[locale][locale].sectors[mt]))
-                                                .setStyle(ButtonStyle.Danger),
-                                        );
-                                        i++;
-                                    }
-                                        
-                                    content = content + ' - ' + locFile[locale][locale].sectors[mt] + ': ';
-                                    if (completion[interaction.guild.id].completion[run][lt][id].completed[mt] == true) {
-                                        content = content + '`✅ ' + locFile[locale][locale].missions.completed + '`\n';
-                                    } else {
-                                        content = content + '`❌ ' + locFile[locale][locale].missions.notCompleted + '`\n';
+                                        content = content + ' - ' + locFile[locale][locale].sectors[mt] + '\n';
                                     }
                                 }
                             }

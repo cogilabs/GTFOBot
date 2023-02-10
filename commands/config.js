@@ -48,6 +48,20 @@ module.exports = {
 			.setDescriptionLocalizations({
 				fr: locFile['fr']['fr'].commands[cmdName].option3.description,
 			}))
+		.addStringOption(option =>
+			option
+			.setName(locFile['en-US']['en-US'].commands[cmdName].option4.name)
+			.setNameLocalizations({
+				fr: locFile['fr']['fr'].commands[cmdName].option4.name,
+			})
+			.setDescription(locFile['en-US']['en-US'].commands[cmdName].option4.description)
+			.setDescriptionLocalizations({
+				fr: locFile['fr']['fr'].commands[cmdName].option4.description,
+			})
+			.addChoices(
+				{ name: 'enabled', value: 'enabled' },
+				{ name: 'disabled', value: 'disabled' },
+			))
 		.setDefaultMemberPermissions(0)
 		.setDMPermission(false),
 	async execute(interaction) {
@@ -67,6 +81,7 @@ module.exports = {
 		const eventChannel = interaction.options.getChannel(locFile['en-US']['en-US'].commands[cmdName].option1.name);
 		const role = interaction.options.getRole(locFile['en-US']['en-US'].commands[cmdName].option2.name);
 		const newLogsChannel = interaction.options.getChannel(locFile['en-US']['en-US'].commands[cmdName].option3.name);
+		const progressionEnabled = interaction.options.getString(locFile['en-US']['en-US'].commands[cmdName].option4.name);
 		if (eventChannel != null) {
 			if (eventChannel.type == 0) {
 				configFile[interaction.guild.id].set(`configuration.eventChannel`, eventChannel.id);
@@ -74,28 +89,41 @@ module.exports = {
 				logMessage = logMessage + eventChannel.name + '(Success) ';
 				message = message + `${locFile[locale][locale].system.eventChannelSetTo} “${eventChannel.name}”\n`;
 			} else {
-				logMessage = eventChannel.name + '(failure) ';
+				logMessage = 'eventCh:' + eventChannel.name + '(failure) ';
 				message = message + `**“${eventChannel.name}” ${locFile[locale][locale].system.notATextChannel}**\n`;
 			}
-		} 
+		}
 		
 		if(role != null) {
 			configFile[interaction.guild.id].set(`configuration.prisonnersRole`, role.id);
 			configFile[interaction.guild.id].save();
-			logMessage = logMessage + role.name + ' ';
+			logMessage = logMessage + 'pingRole:' + role.name + ' ';
 			message = message + `${locFile[locale][locale].system.roleSetTo} “${role.name}”\n`;
 		} 
 		
 		if(newLogsChannel != null) {
-			configFile[interaction.guild.id].set(`configuration.logsChannel`, newLogsChannel.id);
+			if (newLogsChannel.type == 0) {
+				configFile[interaction.guild.id].set(`configuration.logsChannel`, newLogsChannel.id);
+				configFile[interaction.guild.id].save();
+				logsChList.set(interaction.guild.id , client.channels.cache.find(channel => channel.id === newLogsChannel.id));
+				logsChannel = client.channels.cache.find(channel => channel.id === newLogsChannel.id);
+				logMessage = logMessage + newLogsChannel.name + ' ';
+				message = message + `${locFile[locale][locale].system.logsChannelSetTo} “${newLogsChannel.name}”\n`;
+			} else {
+				logMessage = logMessage + 'logsCh:' + newLogsChannel.name + '(failure) ';
+				message = message + `**“${newLogsChannel.name}” ${locFile[locale][locale].system.notATextChannel}**\n`;
+			}
+		}
+
+		if(progressionEnabled != null) {
+			configFile[interaction.guild.id].set(`configuration.progressionDisabled`, (progressionEnabled === "disabled"));
 			configFile[interaction.guild.id].save();
-			logsChList.set(interaction.guild.id , client.channels.cache.find(channel => channel.id === newLogsChannel.id));
-			logsChannel = client.channels.cache.find(channel => channel.id === newLogsChannel.id);
-			logMessage = logMessage + newLogsChannel.name + ' ';
-			message = message + `${locFile[locale][locale].system.logsChannelSetTo} “${newLogsChannel.name}”\n`;
+
+			logMessage = logMessage + 'progression:' + progressionEnabled + ' ';
+			message = message + `progression ${progressionEnabled}\n`;
 		}
 		
-		if(role == null && eventChannel == null && newLogsChannel == null) {
+		if(role == null && eventChannel == null && newLogsChannel == null && progressionEnabled == null) {
 			message = message + locFile[locale][locale].system.noOptionsProvided;
 		}
 
