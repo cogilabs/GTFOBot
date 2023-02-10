@@ -28,7 +28,7 @@ It allows several commands, but its main one is `/rundowns`:
 
 ![rundowns list](/Images/rundownsList.png?raw=true)
 
-From there, you'll be able to check any rundowns state and mission intel, but also to mark missions and subsectors as completed or not.
+From there, you'll be able to check any rundowns state and mission intel, but also to mark missions and subsectors as completed or not (optional).
 
 ## Examples
 
@@ -45,7 +45,9 @@ You can see that the missions that have been successfully finished are represent
 Here the subsectors will have a checkmark if completed.
 
 At the bottom, you can click on a button to mark a sector as complete (or as not complete).  
-*Note: To use those buttons, the user needs the permission to manage events.*
+  
+*Note: To use those buttons, the user needs the permission to manage events.*  
+*Note #2: Like the checkmarks, those buttons only appear when progression mode in enabled*
 
 ## Event handling
 
@@ -66,6 +68,8 @@ If you change the mission ID contained in the event, the bot will send a message
 When an event is finished, a message of the same kind as above will be sent, again checking the completion of the mission in the completion file.  
   
 Of course it means you have to update the file with `/rundowns` before modifying or finishing the event.  
+  
+If progression is disabled (with the `/config` command, the sentence still appears, but will be more neutral)
   
 By default, all of these messages will be sent to the first channel named `general` it finds. If there is none, it will send it to the system channel. If no system channel is defined, it doesn't send the messages.  
 You can change this setting (per server) with the `/config` command.
@@ -89,7 +93,9 @@ The application is *fully localized* in English and French, taking the server la
 It's also quite easy to localize in other languages (cf. [the english localization file](/localization/en-US.json)).  
   
 If a text channel named `dauda-logs` exists, the bot will log every actions it does in this server in it, along with actions like rebooting or updating.  
-You can also add those logs to another channel (like your “bot-logs” channel for instance) using the `/config` command.
+You can also add those logs to another channel (like your “bot-logs” channel for instance) using the `/config` command.  
+  
+You can use the bot without its progression functions by disabling it with the `/config` command, you can also completly reset your progression from there.  
   
 The bot has an `echo` command, allowing admins to speak in his name (Real message author can still be checked in the logs channel(s)).  .
 
