@@ -64,8 +64,14 @@ module.exports = {
 			))
 		.addStringOption(option =>
 			option
-			.setName("resetprogression")
-			.setDescription("Reset your progression (type confirm to confirm)")
+			.setName(locFile['en-US']['en-US'].commands[cmdName].option5.name)
+			.setNameLocalizations({
+				fr: locFile['fr']['fr'].commands[cmdName].option5.name,
+			})
+			.setDescription(locFile['en-US']['en-US'].commands[cmdName].option5.description)
+			.setDescriptionLocalizations({
+				fr: locFile['fr']['fr'].commands[cmdName].option5.description,
+			})
 			)
 		.setDefaultMemberPermissions(0)
 		.setDMPermission(false),
@@ -87,7 +93,7 @@ module.exports = {
 		const role = interaction.options.getRole(locFile['en-US']['en-US'].commands[cmdName].option2.name);
 		const newLogsChannel = interaction.options.getChannel(locFile['en-US']['en-US'].commands[cmdName].option3.name);
 		const progressionEnabled = interaction.options.getString(locFile['en-US']['en-US'].commands[cmdName].option4.name);
-		const resetProgression = interaction.options.getString("resetprogression");
+		const resetProgression = interaction.options.getString(locFile['en-US']['en-US'].commands[cmdName].option5.name);
 		if (eventChannel != null) {
 			if (eventChannel.type == 0) {
 				configFile[interaction.guild.id].set(`configuration.eventChannel`, eventChannel.id);
@@ -130,7 +136,7 @@ module.exports = {
 		}
 
 		if (resetProgression != null) {
-			if (resetProgression == "confirm") {
+			if (resetProgression == locFile[locale][locale].commands[cmdName].option5.confirm) {
 				for (var run in rundowns) {
 					for (var lt in rundowns[run]) {
 						for (var mission in rundowns[run][lt]) {

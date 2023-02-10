@@ -252,6 +252,11 @@
         "option4": {
           "name": "progression",
           "description": "Activer ou désactiver la fonction de progression"
+        },
+        "option5": {
+          "name": "resetprogression",
+          "description": "Réinitialise votre progression (taper confirmer pour confirmer)",
+          "confirm": "confirmer"
         }
       }
     },
