@@ -48,6 +48,14 @@ module.exports = {
 			.setDescriptionLocalizations({
 				fr: locFile['fr']['fr'].commands[cmdName].option3.description,
 			}))
+		.addStringOption(option =>
+			option
+			.setName("progression")
+			.setDescription("Enable or disable progression functionnality")
+			.addChoices(
+				{ name: 'enabled', value: 'enabled' },
+				{ name: 'disabled', value: 'disabled' },
+			))
 		.setDefaultMemberPermissions(0)
 		.setDMPermission(false),
 	async execute(interaction) {
@@ -67,6 +75,7 @@ module.exports = {
 		const eventChannel = interaction.options.getChannel(locFile['en-US']['en-US'].commands[cmdName].option1.name);
 		const role = interaction.options.getRole(locFile['en-US']['en-US'].commands[cmdName].option2.name);
 		const newLogsChannel = interaction.options.getChannel(locFile['en-US']['en-US'].commands[cmdName].option3.name);
+		const progressionEnabled = interaction.options.getString("progression");
 		if (eventChannel != null) {
 			if (eventChannel.type == 0) {
 				configFile[interaction.guild.id].set(`configuration.eventChannel`, eventChannel.id);
@@ -94,8 +103,16 @@ module.exports = {
 			logMessage = logMessage + newLogsChannel.name + ' ';
 			message = message + `${locFile[locale][locale].system.logsChannelSetTo} “${newLogsChannel.name}”\n`;
 		}
+
+		if(progressionEnabled != null) {
+			configFile[interaction.guild.id].set(`configuration.progressionDisabled`, (progressionEnabled === "disabled"));
+			configFile[interaction.guild.id].save();
+
+			logMessage = logMessage + 'progression:' + progressionEnabled + ' ';
+			message = message + `progression ${progressionEnabled}\n`;
+		}
 		
-		if(role == null && eventChannel == null && newLogsChannel == null) {
+		if(role == null && eventChannel == null && newLogsChannel == null && progressionEnabled == null) {
 			message = message + locFile[locale][locale].system.noOptionsProvided;
 		}
 
