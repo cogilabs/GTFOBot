@@ -6,7 +6,7 @@
     <a href="https://nodejs.org/" target="_blank"><img alt="Node.js badge" title="Using Node.js!" src="https://img.shields.io/badge/node.js-233056?style=for-the-badge&logo=node.js&logoColor=white"/></a>
     <a href="https://discord.js.org/" target="_blank"><img alt="Discord.js badge" title="Using Discord.js!" src="https://img.shields.io/badge/-Discord.js-5865F2?style=for-the-badge&logo=discord.js"/></a><br>
     <img alt="Dauda Status" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fcogilabs.eu%2FGTFOBotStateCheck%2Fstate?style=for-the-badge"/>
-    <img alt="Servers joined" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fcogilabs.eu%2FGTFOBotStateCheck%2Fservers?style=for-the-badge"/>
+    <img alt="Servers joined" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fcogilabs.eu%2FGTFOBotStateCheck%2Fservers?style=for-the-badge"/><br>
 </p>
 
 ## Introduction
@@ -99,16 +99,16 @@ You can use the bot without its progression functions by disabling it with the `
   
 The bot has an `echo` command, allowing admins to speak in his name (Real message author can still be checked in the logs channel(s)).  .
 
-## Trying/launching
+## Using/launching
 
-If you want to try Dauda, you can add it to your server by clicking this button:
+If you want to use or try Dauda, you can add it to your server by clicking this button:
 <p align="center"><a href="https://discord.com/api/oauth2/authorize?client_id=1050757215885209640&permissions=283736656976&scope=bot" target="_blank"><img alt="Add me on discord button" title="Add me on your discord server!" src="https://img.shields.io/badge/Add%20Dauda%20on-Discord-5865F2?style=for-the-badge"></a></p>
-
-**🔺 Keep in mind that it is still in active developement 🔺**  
 
 If you want to launch it by yourself you'll need to:
 - Create a discord app on <https://discord.com/developers/> 
 - Create a `config.json` file using the template [`template-config.json`](/template-config.json) and put your created bot's details inside of it
-- Run `npm install` in the project's folder to install dependencies
+- Run `npm install` in the project's folder to install the dependencies
 - Launch [`GTFOBot.js`](/GTFOBot.js) with node.js (this is the main program)
-- Deploy the commands by launching at least once [`deploy-commands-global.js`](/deploy-commands-global.js) (also with node.js)
+- Deploy the commands by launching (only once) [`deploy-commands-global.js`](/deploy-commands-global.js) (also with node.js)  
+  
+I do recommend the first option, in order to get the (frequent) updates automatically.
