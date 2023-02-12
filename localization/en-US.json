@@ -243,7 +243,7 @@
         },
         "option2": {
           "name": "prisonersrole",
-          "description": "The role GTFO players have on the server (defaults to any role names “Prisoners”)"
+          "description": "The role GTFO players have on the server (defaults to any role named “Prisoners”)"
         },
         "option3": {
           "name": "logschannel",
