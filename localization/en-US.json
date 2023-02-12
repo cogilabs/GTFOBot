@@ -179,7 +179,7 @@
       "sending": "Sending..."
     },
     "events": {
-      "role": "Prisonners",
+      "role": "Prisoners",
       "to": "to",
       "newExpedition": "The Warden is sending us in a new expedition#, so get ready to work together, or die together!\n ",
       "start": "The expedition# is starting, so get ready and join us!\n ",
@@ -242,8 +242,8 @@
           "description": "The channel where the event messages are sent"
         },
         "option2": {
-          "name": "prisonnersrole",
-          "description": "The role GTFO players have on the server (defaults to any role names “Prisonners”)"
+          "name": "prisonersrole",
+          "description": "The role GTFO players have on the server (defaults to any role names “Prisoners”)"
         },
         "option3": {
           "name": "logschannel",

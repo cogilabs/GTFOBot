@@ -122,7 +122,7 @@ module.exports = {
 		}
 		
 		if (role != null) {
-			configFile[interaction.guild.id].set(`configuration.prisonnersRole`, role.id);
+			configFile[interaction.guild.id].set(`configuration.prisonersRole`, role.id);
 			configFile[interaction.guild.id].save();
 			logMessage = logMessage + 'pingRole:' + role.name + ' ';
 			message = message + `${locFile[locale][locale].system.roleSetTo} “${role.name}”\n`;

@@ -162,9 +162,9 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 		missionName = ` ${locFile[locale][locale].events.to} ***${j}***`;
 	}
 
-	var prisonnersRole = configFile[event.guild.id].get(`configuration.prisonnersRole`);
-	if (prisonnersRole != undefined)
-		ping = (locFile[locale][locale].events.ping).replace('#', `<@&${event.guild.roles.cache.find(role => role.id === prisonnersRole).id}>`);
+	var prisonersRole = configFile[event.guild.id].get(`configuration.prisonersRole`);
+	if (prisonersRole != undefined)
+		ping = (locFile[locale][locale].events.ping).replace('#', `<@&${event.guild.roles.cache.find(role => role.id === prisonersRole).id}>`);
 	else if (event.guild.roles.cache.find(role => role.name === roleName) != undefined) 
 		ping = (locFile[locale][locale].events.ping).replace('#', `<@&${event.guild.roles.cache.find(role => role.name === roleName).id}>`);
 
@@ -216,9 +216,9 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 	// Event started
 	if (oldEvent.status === 1 && event.status === 2) {
 	
-		var prisonnersRole = configFile[event.guild.id].get(`configuration.prisonnersRole`);
-		if (prisonnersRole != undefined)
-		ping = (locFile[locale][locale].events.ping).replace('#', `<@&${event.guild.roles.cache.find(role => role.id === prisonnersRole).id}>`);
+		var prisonersRole = configFile[event.guild.id].get(`configuration.prisonersRole`);
+		if (prisonersRole != undefined)
+		ping = (locFile[locale][locale].events.ping).replace('#', `<@&${event.guild.roles.cache.find(role => role.id === prisonersRole).id}>`);
 		else if (event.guild.roles.cache.find(role => role.name === roleName) != undefined) 
 			ping = (locFile[locale][locale].events.ping).replace('#', `<@&${event.guild.roles.cache.find(role => role.name === roleName).id}>`);
 
