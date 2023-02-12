@@ -47,7 +47,7 @@ Here the subsectors will have a checkmark if completed.
 At the bottom, you can click on a button to mark a sector as complete (or as not complete).  
   
 *Note: To use those buttons, the user needs the permission to manage events.*  
-*Note #2: Like the checkmarks, those buttons only appear when progression mode in enabled*
+*Note #2: Like the checkmarks, those buttons only appear when progression mode[^1] in enabled*
 
 ## Event handling
 
@@ -69,15 +69,15 @@ When an event is finished, a message of the same kind as above will be sent, aga
   
 Of course it means you have to update the file with `/rundowns` before modifying or finishing the event.  
   
-If progression is disabled (with the `/config` command, the sentence still appears, but will be more neutral)
+If progression is disabled[^1], the sentence still appears, but will be more neutral.
   
 By default, all of these messages will be sent to the first channel named `general` it finds. If there is none, it will send it to the system channel. If no system channel is defined, it doesn't send the messages.  
-You can change this setting (per server) with the `/config` command.
+You can change this setting (per server) with the `/config`[^1] command.
 The setting is still overideable, by putting `` `ch:channelname` `` somewhere in the event description, the bot will send any message about this event in that selected channel (here, "channelname").  
   
-The `/config` command also allows to configure a role to be pinged when event messages are sent.
+The `/config`[^1] command also allows to configure a role to be pinged when event messages are sent.
   
-By default, the bot only reacts ton events with the text `GTFO` in their descriptions, this comportment is toggleable with the `/config` command.
+By default, the bot only reacts ton events with the text `GTFO` in their descriptions, this comportment is toggleable with the `/config`[^1] command.
 
 ## Message reacting and answering
 
@@ -93,11 +93,24 @@ The application is *fully localized* in English and French, taking the server la
 It's also quite easy to localize in other languages (cf. [the english localization file](/localization/en-US.json)).  
   
 If a text channel named `dauda-logs` exists, the bot will log every actions it does in this server in it, along with actions like rebooting or updating.  
-You can also add those logs to another channel (like your “bot-logs” channel for instance) using the `/config` command.  
-  
-You can use the bot without its progression functions by disabling it with the `/config` command, you can also completly reset your progression from there.  
+You can also add those logs to another channel (like your “bot-logs” channel for instance)[^1].  
   
 The bot has an `echo` command, allowing admins to speak in his name (Real message author can still be checked in the logs channel(s)).  .
+
+## Configuration
+
+The `/config` command allows you customisation of some of the bot functions:
+
+| Option  | Description |
+| ------------- | ------------- |
+| eventchannel  | The channel where the event related messages are sent  |
+| prisonersrole  | The role GTFO players have on the server (defaults to any role named “Prisoners”)  |
+| logschannel  | The channel where the logs are sent (defaults to any channel named “dauda-logs”)  |
+| eventrequirement  | Whether the events need "GTFO" in their description to be taken in account by the bot or not (enabled by default)  |
+| progression  | Wether to enable or disable the progression function (enabled by default)  |
+| resetprogression  | Resets the server's progression (irreversible, you'll have to type "confirm" for the command to execute)  |  
+
+Keep in mind the name of the options will change according to the language of your discord client.
 
 ## Using/launching
 
@@ -112,3 +125,5 @@ If you want to launch it by yourself you'll need to:
 - Deploy the commands by launching (only once) [`deploy-commands-global.js`](/deploy-commands-global.js) (also with node.js)  
   
 I do recommend the first option, in order to get the (frequent) updates automatically.
+
+[^1]:See the configuration section
