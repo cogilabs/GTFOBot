@@ -147,7 +147,7 @@ module.exports = {
 			configFile[interaction.guild.id].save();
 
 			logMessage = logMessage + 'eventRequirement:' + eventRequirement + ' ';
-			message = message + `Event requirement ${eventRequirement}\n`;
+			message = message + `${locFile[locale][locale].system.eventRequirementSet} ${locFile[locale][locale].system[eventRequirement]}\n`;
 		}
 
 		if (progressionEnabled != null) {
@@ -155,7 +155,7 @@ module.exports = {
 			configFile[interaction.guild.id].save();
 
 			logMessage = logMessage + 'progression:' + progressionEnabled + ' ';
-			message = message + `progression ${progressionEnabled}\n`;
+			message = message + `${locFile[locale][locale].system.progressionModeSet} ${locFile[locale][locale].system[progressionEnabled]}\n`;
 		}
 
 		if (resetProgression != null) {
@@ -175,10 +175,10 @@ module.exports = {
 					}
 				}				
 				logMessage = logMessage + 'reset:' + resetProgression + '(success) ';
-				message = message + `Progression resetted\n`;
+				message = message + `${locFile[locale][locale].system.progressionReset}\n`;
 			} else {
 				logMessage = logMessage + 'reset:' + resetProgression + '(fail) ';
-				message = message + `Progression **not** resetted (bad confirmation: ${resetProgression})\n`;
+				message = message + `${(locFile[locale][locale].system.progressionNoReset).replace('#', resetProgression)}\n`;
 			}
 		}
 		

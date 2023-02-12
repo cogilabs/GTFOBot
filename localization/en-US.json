@@ -172,11 +172,17 @@
       "roleSetTo": "Role set to",
       "eventChannelSetTo": "Event channel set to",
       "logsChannelSetTo": "Logs channel set to",
+      "eventRequirementSet": "Event requirement",
+      "progressionModeSet": "Progression",
+      "progressionReset": "Progression resetted",
+      "progressionNoReset": "Progression **not** resetted (bad confirmation: #)",
       "commandError": "There was an error while executing this command!",
       "buttonError": "There was an error while treating the button!",
       "missionNotFound": "I can't find the mission #, could you check if it really exists? (Don't hesitate to do **`/rundowns`** to check :wink:)",
       "error": "Error",
-      "sending": "Sending..."
+      "sending": "Sending...",
+      "enabled": "enabled",
+      "disabled": "disabled"
     },
     "events": {
       "role": "Prisoners",
