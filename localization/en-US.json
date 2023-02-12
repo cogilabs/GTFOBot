@@ -164,6 +164,13 @@
         }
       }
     },
+    "colors": {
+      "red": "red",
+      "orange": "orange",
+      "yellow": "yellow",
+      "green": "green",
+      "blue": "blue"
+    },
     "system": {
       "noCommandPermission": "You don't have the permission to use this command!",
       "noButtonPermission": "You don't have the permission to use this button!",
@@ -182,7 +189,9 @@
       "error": "Error",
       "sending": "Sending...",
       "enabled": "enabled",
-      "disabled": "disabled"
+      "disabled": "disabled",
+      "enable": "enable",
+      "disable": "disable"
     },
     "events": {
       "role": "Prisoners",

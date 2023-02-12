@@ -50,11 +50,31 @@ module.exports = {
 						fr: locFile['fr']['fr'].commands[cmdName].subcommands.custom.option2.description,
 					})
 					.addChoices(
-						{ name: 'red', value: '0xff0000' },
-						{ name: 'orange', value: '0xff7700' },
-						{ name: 'yellow', value: '0xFFFF00' },
-						{ name: 'green', value: '0x00FF00' },
-						{ name: 'blue', value: '0x0066ff' },
+						{ name: locFile['en-US']['en-US'].colors.red, 
+						name_localizations: {
+							fr: locFile['fr']['fr'].colors.red,
+						},
+						value: '0xff0000' },
+						{ name: locFile['en-US']['en-US'].colors.orange, 
+						name_localizations: {
+							fr: locFile['fr']['fr'].colors.orange,
+						},
+						value: '0xff7700' },
+						{ name: locFile['en-US']['en-US'].colors.yellow, 
+						name_localizations: {
+							fr: locFile['fr']['fr'].colors.yellow,
+						},
+						value: '0xFFFF00' },
+						{ name: locFile['en-US']['en-US'].colors.green, 
+						name_localizations: {
+							fr: locFile['fr']['fr'].colors.green,
+						},
+						value: '0x00FF00' },
+						{ name: locFile['en-US']['en-US'].colors.blue, 
+						name_localizations: {
+							fr: locFile['fr']['fr'].colors.blue,
+						},
+						value: '0x0066ff' },
 					)))
 		.addSubcommand(subcommand =>
 			subcommand

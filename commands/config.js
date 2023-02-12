@@ -59,8 +59,16 @@ module.exports = {
 				fr: locFile['fr']['fr'].commands[cmdName].option4.description,
 			})
 			.addChoices(
-				{ name: 'enabled', value: 'enabled' },
-				{ name: 'disabled', value: 'disabled' },
+				{ name: locFile['en-US']['en-US'].system.enable, 
+				name_localizations: {
+					fr: locFile['fr']['fr'].system.enable,
+				},
+				value: 'enabled' },
+				{ name: locFile['en-US']['en-US'].system.disable, 
+				name_localizations: {
+					fr: locFile['fr']['fr'].system.disable,
+				},
+				value: 'disabled' },
 			))
 		.addStringOption(option =>
 			option
@@ -73,8 +81,16 @@ module.exports = {
 				fr: locFile['fr']['fr'].commands[cmdName].option5.description,
 			})
 			.addChoices(
-				{ name: 'enabled', value: 'enabled' },
-				{ name: 'disabled', value: 'disabled' },
+				{ name: locFile['en-US']['en-US'].system.enable, 
+				name_localizations: {
+					fr: locFile['fr']['fr'].system.enable,
+				},
+				value: 'enabled' },
+				{ name: locFile['en-US']['en-US'].system.disable, 
+				name_localizations: {
+					fr: locFile['fr']['fr'].system.disable,
+				},
+				value: 'disabled' },
 			))
 		.addStringOption(option =>
 			option
