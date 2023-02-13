@@ -99,16 +99,42 @@ The bot has an `echo` command, allowing admins to speak in his name (Real messag
 
 ## Configuration
 
-The `/config` command allows you customisation of some of the bot functions:
-
-| Option  | Description |
-| ------------- | ------------- |
-| eventchannel  | The channel where the event related messages are sent  |
-| prisonersrole  | The role GTFO players have on the server (defaults to any role named “Prisoners”)  |
-| logschannel  | The channel where the logs are sent (defaults to any channel named “dauda-logs”)  |
-| eventrequirement  | Whether the events need "GTFO" in their description to be taken in account by the bot or not (enabled by default)  |
-| progression  | Wether to enable or disable the progression function (enabled by default)  |
-| resetprogression  | Resets the server's progression (irreversible, you'll have to type "confirm" for the command to execute)  |  
+The `/config` command allows you customisation of some of the bot functions:  
+<!--Table directly in html because I couldn't transform it for my website-->
+<table>
+    <thead>
+        <tr>
+            <th>Option</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>eventchannel</td>
+            <td>The channel where the event related messages are sent</td>
+        </tr>
+        <tr>
+            <td>prisonersrole</td>
+            <td>The role GTFO players have on the server (defaults to any role named “Prisoners”)</td>
+        </tr>
+        <tr>
+            <td>logschannel</td>
+            <td>The channel where the logs are sent (defaults to any channel named “dauda-logs”)</td>
+        </tr>
+        <tr>
+            <td>eventrequirement</td>
+            <td>Whether the events need &quot;GTFO&quot; in their description to be taken in account by the bot or not (enabled by default)</td>
+        </tr>
+        <tr>
+            <td>progression</td>
+            <td>Wether to enable or disable the progression function (enabled by default)</td>
+        </tr>
+        <tr>
+            <td>resetprogression</td>
+            <td>Resets the server&#39;s progression (irreversible, you&#39;ll have to type &quot;confirm&quot; for the command to execute)</td>
+        </tr>
+    </tbody>
+</table>  
 
 Keep in mind the name of the options will change according to the language of your discord client.
 
@@ -125,5 +151,5 @@ If you want to launch it by yourself you'll need to:
 - Deploy the commands by launching (only once) [`deploy-commands-global.js`](/deploy-commands-global.js) (also with node.js)  
   
 I do recommend the first option, in order to get the (frequent) updates automatically.
-
+<!--footnotes-->
 [^1]:See the configuration section
