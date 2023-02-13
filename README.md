@@ -95,7 +95,7 @@ It's also quite easy to localize in other languages (cf. [the english localizati
 If a text channel named `dauda-logs` exists, the bot will log every actions it does in this server in it, along with actions like rebooting or updating.  
 You can also add those logs to another channel (like your “bot-logs” channel for instance)[^1].  
   
-The bot has an `echo` command, allowing admins to speak in his name (Real message author can still be checked in the logs channel(s)).  .
+The bot has an `echo` command, allowing admins to speak in his name (Real message author can still be checked in the logs channel(s)).  
 
 ## Configuration
 
