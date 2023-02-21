@@ -87,7 +87,11 @@ module.exports = {
             rundownsInteraction = undefined;
         }
 
-        await interaction.reply({ components: rows, ephemeral: true });
+        await interaction.reply({ 
+            content: (locFile[locale][locale].missions?.chooseRundown ?? locFile["en-US"]["en-US"].missions.chooseRundown), 
+            components: rows, 
+            ephemeral: true 
+        });
     },
 	async replyButton(interaction) {
 		var configLogsChannel = configFile[interaction.guild.id].get(`configuration.logsChannel`);

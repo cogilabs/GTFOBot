@@ -280,6 +280,7 @@
       }
     },
     "missions": {
+      "chooseRundown": "Choose the rundown you want to display:",
       "rundownTitle": "Rundown",
       "missionTitle": "Mission #:",
       "sector": "Sector",

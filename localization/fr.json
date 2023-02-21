@@ -280,6 +280,7 @@
       }
     },
     "missions": {
+      "chooseRundown": "Choisissez la campagne à afficher :",
       "rundownTitle": "Campagne",
       "missionTitle": "Mission # :",
       "sector": "Secteur",
