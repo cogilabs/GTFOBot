@@ -12,9 +12,9 @@ for (var lang in supportedLocales) {
 
 const cmdName = 'rundowns';
 
-var initialInteraction;
-var lastMissionInteraction;
-var rundownsInteraction;
+var initialInteraction = new Array;
+var lastMissionInteraction = new Array;
+var rundownsInteraction = new Array;
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -30,7 +30,7 @@ module.exports = {
 			} else {
 				var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === logsChannelName);
 			}
-        initialInteraction = interaction;
+        initialInteraction[`${interaction.guild.id}-${interaction.channelId}`] = interaction;
         var locale = '';
         for (var loc in supportedLocales) {
             if (interaction.locale == loc) locale = interaction.locale;
@@ -70,21 +70,21 @@ module.exports = {
 		if (logsChannel != undefined)
 			await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> used **\`\` /${cmdName} \`\`** in ${locale}`);
 
-        if (lastMissionInteraction != undefined && lastMissionInteraction.channelId == interaction.channelId) {
+        if (lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`] != undefined) {
             try {
-                await lastMissionInteraction.deleteReply();
+                await lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`].deleteReply();
             } catch(error) {
                 console.error(error);
             }
-            lastMissionInteraction = undefined;
+            lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`] = undefined;
         }
-        if (rundownsInteraction != undefined && rundownsInteraction.channelId == interaction.channelId) {
+        if (rundownsInteraction[`${interaction.guild.id}-${interaction.channelId}`] != undefined) {
             try {
-                await rundownsInteraction.deleteReply();
+                await rundownsInteraction[`${interaction.guild.id}-${interaction.channelId}`].deleteReply();
             } catch(error) {
                 console.error(error);
             }
-            rundownsInteraction = undefined;
+            rundownsInteraction[`${interaction.guild.id}-${interaction.channelId}`] = undefined;
         }
 
         await interaction.reply({ components: rows, ephemeral: true });
@@ -103,7 +103,7 @@ module.exports = {
         if (locale == '') locale = 'en-US';
         const commandArray = (interaction.customId).split('-');
         if (commandArray[1] == 'select') {
-            rundownsInteraction = interaction;
+            rundownsInteraction[`${interaction.guild.id}-${interaction.channelId}`] = interaction;
             const RID = commandArray[2];
             var title = '';
             var rows = new Array();
@@ -146,9 +146,9 @@ module.exports = {
             if (logsChannel != undefined)
 			    await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> opened rundown ${RID} via **\`\` /${commandArray[0]} \`\`** in ${locale}`);
             await interaction.reply({ content: title, components: rows });
-            if (initialInteraction != undefined && initialInteraction.channelId == interaction.channelId) {
-                await initialInteraction.deleteReply();
-                initialInteraction = undefined;
+            if (initialInteraction[`${interaction.guild.id}-${interaction.channelId}`] != undefined) {
+                await initialInteraction[`${interaction.guild.id}-${interaction.channelId}`].deleteReply();
+                initialInteraction[`${interaction.guild.id}-${interaction.channelId}`] = undefined;
             }
 
         } else if (commandArray[1] == 'mission' || commandArray[1] == 'complete') {
@@ -209,8 +209,8 @@ module.exports = {
                     }
                     i = i+1;
                 }
-                if (rundownsInteraction != undefined && rundownsInteraction.channelId == interaction.channelId)
-                    try {await rundownsInteraction.editReply({ content: title, components: runRows });} catch(error) {
+                if (rundownsInteraction[`${interaction.guild.id}-${interaction.channelId}`] != undefined)
+                    try {await rundownsInteraction[`${interaction.guild.id}-${interaction.channelId}`].editReply({ content: title, components: runRows });} catch(error) {
                         console.error(error);
                     }
             }
@@ -283,14 +283,14 @@ module.exports = {
                 if (logsChannel != undefined)
 			        await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> opened mission ${RID} via **\`\` /${commandArray[0]} \`\`** in ${locale}`);
 
-                if (lastMissionInteraction != undefined && lastMissionInteraction.channelId == interaction.channelId) {
-                    try {await lastMissionInteraction.deleteReply();} catch(error) {
+                if (lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`] != undefined) {
+                    try {await lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`].deleteReply();} catch(error) {
                 console.error(error);
             }
-                    lastMissionInteraction = undefined;
+            lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`] = undefined;
                 }
 
-                lastMissionInteraction = interaction;
+                lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`] = interaction;
                 await interaction.reply({ embeds: [embed], components: rows });
 
             } else if (commandArray[1] == 'complete') {
@@ -304,8 +304,8 @@ module.exports = {
                     .setTitle(title)
                     .setDescription(content);
 
-                    if (lastMissionInteraction != undefined && lastMissionInteraction.channelId == interaction.channelId) {
-                        try {await lastMissionInteraction.editReply({ embeds: [embed], components: rows });} catch(error) {
+                    if (lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`] != undefined) {
+                        try {await lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`].editReply({ embeds: [embed], components: rows });} catch(error) {
                 console.error(error);
             }
                     } else {
@@ -322,11 +322,11 @@ module.exports = {
                 if (logsChannel != undefined)
 			        await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> used “${commandArray[1]} ${value} ${comp}” via **\`\` /${commandArray[0]} \`\`** in ${locale}${rights}`);
                 
-                if (lastMissionInteraction != undefined && lastMissionInteraction.channelId == interaction.channelId) {
+                if (lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`] != undefined) {
                     await interaction.reply( {content: response, ephemeral: true} );
                     return interaction.deleteReply();
                 } else {
-                    lastMissionInteraction = interaction;
+                    lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`] = interaction;
                 }
             }
         }

@@ -74,10 +74,8 @@ client.once(Events.ClientReady, async () => {
 
 	var logsChList = client.channels.cache.filter(channel => channel.name === logsChannelName);
 	client.guilds.cache.forEach(guild => {
-		if (completion[guild.id].configuration != undefined) {
-			if (completion[guild.id].configuration.logsChannel != undefined) {
-				logsChList.set(guild.id , client.channels.cache.find(channel => channel.id === completion[guild.id].configuration.logsChannel));
-			}
+		if (completion[guild.id].configuration != undefined && completion[guild.id].configuration.logsChannel != undefined) {
+			logsChList.set(guild.id , client.channels.cache.find(channel => channel.id === completion[guild.id].configuration.logsChannel));
 		}
 	});
 
