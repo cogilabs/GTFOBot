@@ -16,63 +16,63 @@ module.exports = {
 		.setName(cmdName)
 		.setDescription(locFile['en-US']['en-US'].commands[cmdName].description)
         .setDescriptionLocalizations({
-            fr: locFile['fr']['fr'].commands[cmdName].description,
+            fr: locFile['fr']['fr'].commands?.[cmdName]?.description ?? locFile['en-US']['en-US'].commands[cmdName].description,
         })
 		.addSubcommand(subcommand =>
 			subcommand
 				.setName(locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.name)
 				.setNameLocalizations({
-					fr: locFile['fr']['fr'].commands[cmdName].subcommands.custom.name,
+					fr: locFile['fr']['fr'].commands?.[cmdName]?.subcommands?.custom?.name ?? locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.name,
 				})
 				.setDescription(locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.description)
 				.setDescriptionLocalizations({
-					fr: locFile['fr']['fr'].commands[cmdName].subcommands.custom.description,
+					fr: locFile['fr']['fr'].commands?.[cmdName]?.subcommands?.custom?.description ?? locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.description,
 				})
 				.addStringOption(option => 
 					option
 					.setName(locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.option1.name)
 					.setNameLocalizations({
-						fr: locFile['fr']['fr'].commands[cmdName].subcommands.custom.option1.name,
+						fr: locFile['fr']['fr'].commands?.[cmdName]?.subcommands?.custom?.option1?.name ?? locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.option1.name,
 					})
 					.setDescription(locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.option1.description)
 					.setDescriptionLocalizations({
-						fr: locFile['fr']['fr'].commands[cmdName].subcommands.custom.option1.description,
+						fr: locFile['fr']['fr'].commands?.[cmdName]?.subcommands?.custom?.option1?.description ?? locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.option1.description,
 					})
 					.setRequired(true))
 				.addStringOption(option => 
 					option
 					.setName(locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.option2.name)
 					.setNameLocalizations({
-						fr: locFile['fr']['fr'].commands[cmdName].subcommands.custom.option2.name,
+						fr: locFile['fr']['fr'].commands?.[cmdName]?.subcommands?.custom?.option2?.name ?? locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.option2.name,
 					})
 					.setDescription(locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.option2.description)
 					.setDescriptionLocalizations({
-						fr: locFile['fr']['fr'].commands[cmdName].subcommands.custom.option2.description,
+						fr: locFile['fr']['fr'].commands?.[cmdName]?.subcommands?.custom?.option2?.description ?? locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.option2.description,
 					})
 					.addChoices(
 						{ name: locFile['en-US']['en-US'].colors.red, 
 						name_localizations: {
-							fr: locFile['fr']['fr'].colors.red,
+							fr: locFile['fr']['fr'].colors?.red ?? locFile['en-US']['en-US'].colors.red,
 						},
 						value: '0xff0000' },
 						{ name: locFile['en-US']['en-US'].colors.orange, 
 						name_localizations: {
-							fr: locFile['fr']['fr'].colors.orange,
+							fr: locFile['fr']['fr'].colors?.orange ?? locFile['en-US']['en-US'].colors.orange,
 						},
 						value: '0xff7700' },
 						{ name: locFile['en-US']['en-US'].colors.yellow, 
 						name_localizations: {
-							fr: locFile['fr']['fr'].colors.yellow,
+							fr: locFile['fr']['fr'].colors?.yellow ?? locFile['en-US']['en-US'].colors.yellow,
 						},
 						value: '0xFFFF00' },
 						{ name: locFile['en-US']['en-US'].colors.green, 
 						name_localizations: {
-							fr: locFile['fr']['fr'].colors.green,
+							fr: locFile['fr']['fr'].colors?.green ?? locFile['en-US']['en-US'].colors.green,
 						},
 						value: '0x00FF00' },
 						{ name: locFile['en-US']['en-US'].colors.blue, 
 						name_localizations: {
-							fr: locFile['fr']['fr'].colors.blue,
+							fr: locFile['fr']['fr'].colors?.blue ?? locFile['en-US']['en-US'].colors.blue,
 						},
 						value: '0x0066ff' },
 					)))
@@ -80,21 +80,21 @@ module.exports = {
 			subcommand
 				.setName(locFile['en-US']['en-US'].commands[cmdName].subcommands.update.name)
 				.setNameLocalizations({
-					fr: locFile['fr']['fr'].commands[cmdName].subcommands.update.name,
+					fr: locFile['fr']['fr'].commands?.[cmdName]?.subcommands?.update?.name ?? locFile['en-US']['en-US'].commands[cmdName].subcommands.update.name,
 				})
 				.setDescription(locFile['en-US']['en-US'].commands[cmdName].subcommands.update.description)
 				.setDescriptionLocalizations({
-					fr: locFile['fr']['fr'].commands[cmdName].subcommands.update.description,
+					fr: locFile['fr']['fr'].commands?.[cmdName]?.subcommands?.update?.description ?? locFile['en-US']['en-US'].commands[cmdName].subcommands.update.description,
 				}))
 		.addSubcommand(subcommand =>
 			subcommand
 				.setName(locFile['en-US']['en-US'].commands[cmdName].subcommands.turnoff.name)
 				.setNameLocalizations({
-					fr: locFile['fr']['fr'].commands[cmdName].subcommands.turnoff.name,
+					fr: locFile['fr']['fr'].commands?.[cmdName]?.subcommands?.turnoff?.name ?? locFile['en-US']['en-US'].commands[cmdName].subcommands.turnoff.name,
 				})
 				.setDescription(locFile['en-US']['en-US'].commands[cmdName].subcommands.turnoff.description)
 				.setDescriptionLocalizations({
-					fr: locFile['fr']['fr'].commands[cmdName].subcommands.turnoff.description,
+					fr: locFile['fr']['fr'].commands?.[cmdName]?.subcommands?.turnoff?.description ?? locFile['en-US']['en-US'].commands[cmdName].subcommands.turnoff.description,
 				}))
 		.setDefaultMemberPermissions(0)
 		.setDMPermission(false),
@@ -143,7 +143,7 @@ module.exports = {
                     .setDescription(`**${message}**`);
 
 					
-		await interaction.reply({ content: locFile[locale][locale].system.sending, ephemeral: true });
+		await interaction.reply({ content: locFile[locale][locale].system?.sending ?? locFile["en-US"]["en-US"].system.sending, ephemeral: true });
 		if (logsChannel != undefined)
 			await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> used \`\` “/${cmdName} ${subcommand}” \`\``);
 

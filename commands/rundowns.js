@@ -21,7 +21,7 @@ module.exports = {
 		.setName(cmdName)
 		.setDescription(locFile['en-US']['en-US'].commands[cmdName].description)
         .setDescriptionLocalizations({
-            fr: locFile['fr']['fr'].commands[cmdName].description,
+            fr: locFile['fr']['fr'].commands?.[cmdName]?.description ?? locFile['en-US']['en-US'].commands[cmdName].description,
         }),
 	async execute(interaction) {
 		var configLogsChannel = configFile[interaction.guild.id].get(`configuration.logsChannel`);
@@ -87,7 +87,11 @@ module.exports = {
             rundownsInteraction[`${interaction.guild.id}-${interaction.channelId}`] = undefined;
         }
 
-        await interaction.reply({ components: rows, ephemeral: true });
+        await interaction.reply({ 
+            content: (locFile[locale][locale].missions?.chooseRundown ?? locFile["en-US"]["en-US"].missions.chooseRundown), 
+            components: rows, 
+            ephemeral: true 
+        });
     },
 	async replyButton(interaction) {
 		var configLogsChannel = configFile[interaction.guild.id].get(`configuration.logsChannel`);
@@ -107,7 +111,7 @@ module.exports = {
             const RID = commandArray[2];
             var title = '';
             var rows = new Array();
-            title = '***' + locFile[locale][locale].missions.rundownTitle + ' ' + RID + '***';
+            title = '***' + (locFile[locale][locale].missions?.rundownTitle ?? locFile["en-US"]["en-US"].missions.rundownTitle) + ' ' + RID + '***';
 
             i = 0;
             for (var lt in rundowns[RID]) {
@@ -170,10 +174,11 @@ module.exports = {
                                                 autosave: true
                                             });
                                             completion[interaction.guild.id].completion[run][lt][id].completed[mt] = (String(comp).toLowerCase() == 'true');
+                                            response = (locFile[locale][locale].missions?.sector ?? locFile["en-US"]["en-US"].missions.sector) + ' *' + value + ':' + (locFile[locale][locale].sectors?.[mt] ?? locFile["en-US"]["en-US"].sectors[mt])
                                             if (comp == 'true') {
-                                                response = locFile[locale][locale].missions.sector + ' *' + value + ':' + locFile[locale][locale].sectors[mt] + '* `✅ ' + locFile[locale][locale].missions.completed + '`';
+                                                response = response + '* `✅ ' + (locFile[locale][locale].missions?.completed ?? locFile["en-US"]["en-US"].missions.completed) + '`';
                                             } else {
-                                                response = locFile[locale][locale].missions.sector + ' *' + value + ':' + locFile[locale][locale].sectors[mt] + '* `❌ ' + locFile[locale][locale].missions.notCompleted + '`';
+                                                response = response + '* `❌ ' + (locFile[locale][locale].missions?.notCompleted ?? locFile["en-US"]["en-US"].missions.notCompleted) + '`';
                                             }
                                         }
                                     }
@@ -185,7 +190,7 @@ module.exports = {
                 const MID = commandArray[2].slice(0,2);
                 var title = '';
                 var runRows = new Array();
-                title = '***' + locFile[locale][locale].missions.rundownTitle + ' ' + MID + '***';
+                title = '***' + (locFile[locale][locale].missions?.rundownTitle ?? locFile["en-US"]["en-US"].missions.rundownTitle) + ' ' + MID + '***';
         
                 i = 0;
                 for (var lt in rundowns[MID]) {
@@ -225,9 +230,11 @@ module.exports = {
                 for (var lt in rundowns[run]) {
                     for (var id in rundowns[run][lt]) {
                         if (RID == run + id) {
-                            title = '**' + (locFile[locale][locale].missions.missionTitle).replace('#', run + id) + '** *“' + locFile[locale][locale][run][lt][id].name + '”*';
-                            content = '\n \n`' + locFile[locale][locale].missions.intel + '`\n```' + locFile[locale][locale][run][lt][id].intel + '```'
-                                + '\n`' + locFile[locale][locale].missions.sectors + '`\n';
+                            title = '**' + (locFile[locale][locale].missions?.missionTitle ?? locFile["en-US"]["en-US"].missions.missionTitle).replace('#', run + id) 
+                                + '** *“' + (locFile[locale][locale][run]?.[lt]?.[id]?.name ?? locFile["en-US"]["en-US"][run][lt][id].name) + '”*';
+                            content = '\n \n`' + (locFile[locale][locale].missions?.intel ?? locFile["en-US"]["en-US"].missions.intel) 
+                                + '`\n```' + (locFile[locale][locale][run]?.[lt]?.[id]?.intel ?? locFile["en-US"]["en-US"][run][lt][id].intel) + '```'
+                                + '\n`' + (locFile[locale][locale].missions?.sectors ?? locFile["en-US"]["en-US"].missions.sectors) + '`\n';
                             var i = 0;
                             for (var mt in rundowns[run][lt][id].missionTypes) {
                                 if (rundowns[run][lt][id].missionTypes[mt] == true) {
@@ -238,7 +245,7 @@ module.exports = {
                                             rows[i].addComponents(
                                                 new ButtonBuilder()
                                                     .setCustomId(cmdName + '-complete-' + RID + '-' + mt + '-true-' + cpltd[mt].toString())
-                                                    .setLabel((locFile[locale][locale].missions.completeSector).replace('#', locFile[locale][locale].sectors[mt]))
+                                                    .setLabel((locFile[locale][locale].missions?.completeSector ?? locFile["en-US"]["en-US"].missions.completeSector).replace('#', locFile[locale][locale].sectors?.[mt] ?? locFile["en-US"]["en-US"].sectors[mt]))
                                                     .setStyle(ButtonStyle.Success),
                                                 );
                                             i++;
@@ -246,27 +253,29 @@ module.exports = {
                                             rows[i].addComponents(
                                                 new ButtonBuilder()
                                                     .setCustomId(cmdName + '-complete-' + RID + '-' + mt + '-false-' + cpltd[mt].toString())
-                                                    .setLabel((locFile[locale][locale].missions.uncompleteSector).replace('#', locFile[locale][locale].sectors[mt]))
+                                                    .setLabel((locFile[locale][locale].missions?.uncompleteSector ?? locFile["en-US"]["en-US"].missions.uncompleteSector).replace('#', locFile[locale][locale].sectors?.[mt] ?? locFile["en-US"]["en-US"].sectors[mt]))
                                                     .setStyle(ButtonStyle.Danger),
                                             );
                                             i++;
                                         }
                                             
-                                        content = content + ' - ' + locFile[locale][locale].sectors[mt] + ': ';
+                                        content = content + ' - ' + (locFile[locale][locale].sectors?.[mt] ?? locFile["en-US"]["en-US"].sectors[mt]) + ': ';
                                         if (completion[interaction.guild.id].completion[run][lt][id].completed[mt] == true) {
-                                            content = content + '`✅ ' + locFile[locale][locale].missions.completed + '`\n';
+                                            content = content + '`✅ ' + (locFile[locale][locale].missions?.completed ?? locFile["en-US"]["en-US"].missions.completed) + '`\n';
                                         } else {
-                                            content = content + '`❌ ' + locFile[locale][locale].missions.notCompleted + '`\n';
+                                            content = content + '`❌ ' + (locFile[locale][locale].missions?.notCompleted ?? locFile["en-US"]["en-US"].missions.notCompleted) + '`\n';
                                         }
                                     } else {
-                                        content = content + ' - ' + locFile[locale][locale].sectors[mt] + '\n';
+                                        content = content + ' - ' + (locFile[locale][locale].sectors?.[mt] ?? locFile["en-US"]["en-US"].sectors[mt]) + '\n';
                                     }
                                 }
                             }
                             content = content 
-                                + '\n`' + locFile[locale][locale].missions.comms + '`\n *' + locFile[locale][locale][run][lt][id].comms
-                                + '*\n \n`' + locFile[locale][locale].missions.metrics + '`\n'
-                                + ' ' + locFile[locale][locale].missions.depth + ' `' + rundowns[run][lt][id].depth +'`m';
+                                + '\n`' + (locFile[locale][locale].missions?.comms ?? locFile["en-US"]["en-US"].missions.comms) 
+                                + '`\n *' + (locFile[locale][locale][run]?.[lt]?.[id].comms ?? locFile["en-US"]["en-US"][run][lt][id].comms)
+                                + '*\n \n`' + (locFile[locale][locale].missions?.metrics ?? locFile["en-US"]["en-US"].missions.metrics) + '`\n'
+                                + ' ' + (locFile[locale][locale].missions?.depth ?? locFile["en-US"]["en-US"].missions.depth) 
+                                + ' `' + rundowns[run][lt][id].depth +'`m';
                         }
                     }
                 }
@@ -314,7 +323,7 @@ module.exports = {
                     
 
                 } else {
-                    response = ({ content: locFile[locale][locale].system.noButtonPermission, ephemeral: true });
+                    response = ({ content: (locFile[locale][locale].system?.noButtonPermission ?? locFile["en-US"]["en-US"].system.noButtonPermission), ephemeral: true });
                     rights = ' but didn\'t have the rights';
                 }
 

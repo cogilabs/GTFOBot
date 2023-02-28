@@ -16,14 +16,14 @@ module.exports = {
 		.setName(cmdName)
 		.setDescription(locFile['en-US']['en-US'].commands[cmdName].description)
         .setDescriptionLocalizations({
-            fr: locFile['fr']['fr'].commands[cmdName].description,
+            fr: locFile['fr']['fr'].commands?.[cmdName]?.description ?? locFile['en-US']['en-US'].commands[cmdName].description,
         })
 		.addStringOption(option => 
             option
             .setName('message')
 			.setDescription(locFile['en-US']['en-US'].commands[cmdName].option1)
 			.setDescriptionLocalizations({
-				fr: locFile['fr']['fr'].commands[cmdName].option1,
+				fr: locFile['fr']['fr'].commands?.[cmdName]?.option1 ?? locFile['en-US']['en-US'].commands[cmdName].option1,
 			})
 			.setRequired(true))
 		.setDefaultMemberPermissions(0)
@@ -41,7 +41,7 @@ module.exports = {
 				var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === logsChannelName);
 			}
 		const message = interaction.options.getString('message');
-		await interaction.reply({ content: locFile[locale][locale].system.sending, ephemeral: true });
+		await interaction.reply({ content: locFile[locale][locale].system?.sending ?? locFile["en-US"]["en-US"].system.sending, ephemeral: true });
 		await interaction.channel.send({ content: message });
 		await interaction.deleteReply();
 		console.log(`@${interaction.user.tag} <@${interaction.user.id}> used “/${cmdName} ${message}”`);

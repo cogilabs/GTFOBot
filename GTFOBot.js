@@ -137,7 +137,7 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 	if (locale == '') locale = 'en-US';
 
 	var ping = '';
-	var roleName = locFile[locale][locale].events.role;
+	var roleName = locFile[locale][locale].events?.role ?? locFile["en-US"]["en-US"].events.role;
 	var missionName = '';
 
 	logToServer(logsChannel, `A new scheduled event has been created by \`\` <${event.creatorId}> \`\`:`
@@ -157,17 +157,17 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 
 	for (i in (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)) {
 		var j = (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)[i];
-		missionName = ` ${locFile[locale][locale].events.to} ***${j}***`;
+		missionName = ` ${locFile[locale][locale].events?.to ?? locFile["en-US"]["en-US"].events.to} ***${j}***`;
 	}
 
 	var prisonersRole = configFile[event.guild.id].get(`configuration.prisonersRole`);
 	if (prisonersRole != undefined)
-		ping = (locFile[locale][locale].events.ping).replace('#', `<@&${event.guild.roles.cache.find(role => role.id === prisonersRole).id}>`);
+		ping = (locFile[locale][locale].events?.ping ?? locFile["en-US"]["en-US"].events.ping).replace('#', `<@&${event.guild.roles.cache.find(role => role.id === prisonersRole).id}>`);
 	else if (event.guild.roles.cache.find(role => role.name === roleName) != undefined) 
-		ping = (locFile[locale][locale].events.ping).replace('#', `<@&${event.guild.roles.cache.find(role => role.name === roleName).id}>`);
+		ping = (locFile[locale][locale].events?.ping ?? locFile["en-US"]["en-US"].events.ping).replace('#', `<@&${event.guild.roles.cache.find(role => role.name === roleName).id}>`);
 
-	await channel.send(ping + (locFile[locale][locale].events.newExpedition).replace('#', missionName) + glitchText + event.url);
-	await channel.send(`<@${event.creatorId}> ${locFile[locale][locale].events.participate}`);
+	await channel.send(ping + (locFile[locale][locale].events?.newExpedition ?? locFile["en-US"]["en-US"].events.newExpedition).replace('#', missionName) + glitchText + event.url);
+	await channel.send(`<@${event.creatorId}> ${locFile[locale][locale].events?.participate ?? locFile["en-US"]["en-US"].events.participate}`);
 	logToServer(logsChannel, `Sent it to \`\` ${channel.name} \`\``);
 	logToServer(logsChannel, `\`\` <${event.creatorId}> \`\` automatically joined the event “${event.name}”`);
 });
@@ -189,7 +189,7 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
         if (locale == '') locale = 'en-US';
 
 	var ping = '';
-	var roleName = locFile[locale][locale].events.role;
+	var roleName = locFile[locale][locale].events?.role ?? locFile["en-US"]["en-US"].events.role;
 	var missionName = '';
 	var MID = '';
 	var MIDp = '';
@@ -206,7 +206,7 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 
 	for (i in (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)) {
 		var j = (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)[i];
-		missionName = ` ${locFile[locale][locale].events.to} ***${j}***`;
+		missionName = ` ${locFile[locale][locale].events?.to ?? locFile["en-US"]["en-US"].events.to} ***${j}***`;
 		MID = j;
 		MIDp = ` (${j})`;
 	}
@@ -216,11 +216,11 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 	
 		var prisonersRole = configFile[event.guild.id].get(`configuration.prisonersRole`);
 		if (prisonersRole != undefined)
-		ping = (locFile[locale][locale].events.ping).replace('#', `<@&${event.guild.roles.cache.find(role => role.id === prisonersRole).id}>`);
+		ping = (locFile[locale][locale].events?.ping ?? locFile["en-US"]["en-US"].events.ping).replace('#', `<@&${event.guild.roles.cache.find(role => role.id === prisonersRole).id}>`);
 		else if (event.guild.roles.cache.find(role => role.name === roleName) != undefined) 
-			ping = (locFile[locale][locale].events.ping).replace('#', `<@&${event.guild.roles.cache.find(role => role.name === roleName).id}>`);
+			ping = (locFile[locale][locale].events?.ping ?? locFile["en-US"]["en-US"].events.ping).replace('#', `<@&${event.guild.roles.cache.find(role => role.name === roleName).id}>`);
 
-		await channel.send(ping + (locFile[locale][locale].events.start).replace('#', missionName) + glitchText + event.url);
+		await channel.send(ping + (locFile[locale][locale].events?.start ?? locFile["en-US"]["en-US"].events.start).replace('#', missionName) + glitchText + event.url);
 
 		logToServer(logsChannel, `Event “${event.name}”${MIDp} started\nSent it to \`\` ${channel.name} \`\``);
 
@@ -238,14 +238,14 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
                         if (MID == run + id) {
 							if (!configFile[event.guild.id].get(`configuration.progressionDisabled`)) {
 								if (completion[event.guild.id].completion[run][lt][id].completed.main) {
-									await channel.send((locFile[locale][locale].events.end.success).replace('#', missionName));
+									await channel.send((locFile[locale][locale].events?.end?.success ?? locFile["en-US"]["en-US"].events.end.success).replace('#', missionName));
 									logToServer(logsChannel, `Event “${event.name}”${MIDp} finished! (success)\nSent it to \`\` ${channel.name} \`\``);
 								} else {
-									await channel.send((locFile[locale][locale].events.end.fail).replace('#', missionName));
+									await channel.send((locFile[locale][locale].events?.end?.fail ?? locFile["en-US"]["en-US"].events.end.fail).replace('#', missionName));
 									logToServer(logsChannel, `Event “${event.name}”${MIDp} finished! (failure)\nSent it to \`\` ${channel.name} \`\``);
 								}
 							} else {
-								await channel.send((locFile[locale][locale].events.end.noProgression).replace('#', missionName));
+								await channel.send((locFile[locale][locale].events?.end?.noProgression ?? locFile["en-US"]["en-US"].events.end.noProgression).replace('#', missionName));
 								logToServer(logsChannel, `Event “${event.name}”${MIDp} finished! \nSent it to \`\` ${channel.name} \`\``);
 							}
 						}
@@ -278,14 +278,14 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 							if (oldMID == run + id) {
 								if (!configFile[event.guild.id].get(`configuration.progressionDisabled`)) {
 									if (completion[event.guild.id].completion[run][lt][id].completed.main) {
-										await channel.send((locFile[locale][locale].events.change.success).replace('#', `***${oldMID}***`).replace('Ø', `***${MID}***`));
+										await channel.send((locFile[locale][locale].events?.change?.success ?? locFile["en-US"]["en-US"].events.change.success).replace('#', `***${oldMID}***`).replace('Ø', `***${MID}***`));
 										logToServer(logsChannel, `Event “${event.name}”${MIDp} finished! (success)\nSent it to \`${channel.name}\``);
 									} else {
-										await channel.send((locFile[locale][locale].events.change.fail).replace('#', `***${oldMID}***`).replace('Ø', `***${MID}***`));
+										await channel.send((locFile[locale][locale].events?.change?.fail ?? locFile["en-US"]["en-US"].events.change.fail).replace('#', `***${oldMID}***`).replace('Ø', `***${MID}***`));
 										logToServer(logsChannel, `Event “${event.name}” (${oldMID}) modified to ${MID}! (failure)\nSent it to \`\` ${channel.name} \`\``);
 									}
 								} else {
-									await channel.send((locFile[locale][locale].events.change.noProgression).replace('#', `***${oldMID}***`).replace('Ø', `***${MID}***`));
+									await channel.send((locFile[locale][locale].events?.change?.noProgression ?? locFile["en-US"]["en-US"].events.change.noProgression).replace('#', `***${oldMID}***`).replace('Ø', `***${MID}***`));
 									logToServer(logsChannel, `Event “${event.name}” (${oldMID}) modified to ${MID}!\nSent it to \`\` ${channel.name} \`\``);
 								}
 							}
@@ -332,7 +332,7 @@ client.on(Events.GuildScheduledEventUserAdd, async (event, user) => {
 	}
 
 	if (Date.now() > event.createdTimestamp + 10000) {
-		await channel.send(`<@${user.id}> ${locFile[locale][locale].events.participate}`);
+		await channel.send(`<@${user.id}> ${locFile[locale][locale].events?.participate ?? locFile["en-US"]["en-US"].events.participate}`);
 		logToServer(logsChannel, `\`\` @${user.tag} \`\` joined the event “${event.name}”`);
 	}
 });
@@ -367,7 +367,7 @@ client.on(Events.GuildScheduledEventUserRemove, async (event, user) => {
 		MID = j;
 	}
 	
-	await channel.send(`<@${event.creatorId}> ${locFile[locale][locale].events.noParticipate}`);
+	await channel.send(`<@${event.creatorId}> ${locFile[locale][locale].events?.noParticipate ?? locFile["en-US"]["en-US"].events.noParticipate}`);
 
 	logToServer(logsChannel, `\`\` @${user.tag} \`\` left the event “${event.name}”`);
 	
@@ -408,7 +408,7 @@ client.on(Events.MessageCreate, async message => {
 		}
 	}
 
-	if (msgContentLowerCase.includes(locFile[locale][locale].chat.ask) && msgContentLowerCase.includes('dauda')) {
+	if (locFile[locale][locale].chat?.ask && (msgContentLowerCase.includes(locFile[locale][locale].chat.ask) && msgContentLowerCase.includes('dauda'))) {
 		await message.react('❓');
 		logToServer(logsChannel, `Reacted \`\` ❓ \`\` to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
 	}
@@ -419,9 +419,11 @@ client.on(Events.MessageCreate, async message => {
 
 	var finishedMissionR = [];
 
-	for (i in locFile[locale][locale].chat.finished) {
-		for (j in locFile[locale][locale].chat.missionR) {
-			finishedMissionR.push(locFile[locale][locale].chat.finished[i] + ' ' + locFile[locale][locale].chat.missionR[j]);
+	if (locFile[locale][locale].chat?.finished && locFile[locale][locale].chat?.missionR) {
+		for (i in locFile[locale][locale].chat.finished) {
+			for (j in locFile[locale][locale].chat.missionR) {
+				finishedMissionR.push(locFile[locale][locale].chat.finished[i] + ' ' + locFile[locale][locale].chat.missionR[j]);
+			}
 		}
 	}
 	
@@ -451,15 +453,15 @@ client.on(Events.MessageCreate, async message => {
 					logToServer(logsChannel, `Reacted \`\` ${reaction} \`\` to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
 				}
 				if (reaction == '❔' && message.channel != logsChannel) {
-					await message.reply({ content: locFile[locale][locale].system.missionNotFound.replace('#', MID), ephemeral: true });
-					logToServer(logsChannel, `Answered “${locFile[locale][locale].system.missionNotFound.replace('#', MID)}” to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
+					await message.reply({ content: (locFile[locale][locale].system?.missionNotFound ?? locFile["en-US"]["en-US"].system.missionNotFound).replace('#', MID), ephemeral: true });
+					logToServer(logsChannel, `Answered “${(locFile[locale][locale].system?.missionNotFound ?? locFile["en-US"]["en-US"].system.missionNotFound).replace('#', MID)}” to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
 				}
 			}
 		}
 	}
 
-	if ((locFile[locale][locale].chat.thanks).some(checker)) {
-		var response = locFile[locale][locale].chat.youreWelcome;
+	if (locFile[locale][locale].chat?.thanks && (locFile[locale][locale].chat.thanks).some(checker)) {
+		var response = locFile[locale][locale].chat?.youreWelcome ?? locFile["en-US"]["en-US"].chat.youreWelcome;
 		var answer = response[Math.floor(Math.random() * response.length)];
 		await message.reply(answer);
 		logToServer(logsChannel, `Answered “${answer}” to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
@@ -489,7 +491,7 @@ client.on(Events.InteractionCreate, async interaction => {
             if (interaction.locale == loc) locale = interaction.locale;
         }
         if (locale == '') locale = 'en-US';
-		await interaction.reply({ content: locFile[locale][locale].system.commandError, ephemeral: true });
+		await interaction.reply({ content: locFile[locale][locale].system?.commandError ?? locFile["en-US"]["en-US"].system.commandError, ephemeral: true });
 	}
 });
 
@@ -518,7 +520,7 @@ client.on(Events.InteractionCreate, async interaction => {
             if (interaction.locale == loc) locale = interaction.locale;
         }
         if (locale == '') locale = 'en-US';
-		await interaction.reply({ content: locFile[locale][locale].system.buttonError, ephemeral: true });
+		await interaction.reply({ content: locFile[locale][locale].system?.buttonError ?? locFile["en-US"]["en-US"].system.buttonError, ephemeral: true });
 	}
 });
 

@@ -185,7 +185,7 @@
       "progressionNoReset": "Progression **non** réinitialisée (mauvaise confirmation: #)",
       "commandError": "Il y a eu une erreur lors de l'exécution de cette commande !",
       "buttonError": "Il y a eu une erreur lors du traitement de ce bouton !",
-      "missionNotFound": "Je ne trouve pas la mission #, peut tu vérifier si elle existe vraiment ? (N'hésites pas à faire **`/rundowns`** pour le savoir :wink:)",
+      "missionNotFound": "Je ne trouve pas la mission #, peut tu vérifier si elle existe vraiment ? (N'hésites pas à faire </rundowns:1053336622197919794> pour le savoir :wink:)",
       "error": "Erreur",
       "sending": "Envoi en cours...",
       "enabled": "activé(e)",
@@ -280,6 +280,7 @@
       }
     },
     "missions": {
+      "chooseRundown": "Choisissez la campagne à afficher :",
       "rundownTitle": "Campagne",
       "missionTitle": "Mission # :",
       "sector": "Secteur",
