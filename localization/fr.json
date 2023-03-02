@@ -102,6 +102,51 @@
         }
       }
     },
+    "R3": {
+      "A": {
+        "A1": {
+          "name": "Resuscitation",
+          "intel": "Protocole de campagne 2.0 terminé. Accès de la section R2E1 établi. Nouveau-né en hydrostase confirmé. Réanimation cardiaque neurogène [RCN] requise.",
+          "comms": ">...\n**>... [chuchotement] Chut ! Vous allez les réveiller !**\n>... Éteignez la torche !\n...[cri soudain, inintelligible]"
+        },
+        "A2": {
+          "name": "Purification",
+          "intel": "Les prisonniers doivent rétablir la grappe de générateurs pour faciliter le redémarrage du système de purification d'air centralisé.",
+          "comms": ">... l'air est si... lourd... [toux]\n**>... vite, on doit réactiver ces générateurs !**\n>... ça devrait nous permettre de mieux respirer..."
+        },
+        "A3": {
+          "name": "Bolt",
+          "intel": "Alimentation de secours activée dans le secteur B1.\nLes prisonniers doivent redémarrer le réacteur.\nNombreuses pertes à prévoir.",
+          "comms": ">... Il y en a partout !\n**>... continuez à tirer !**\n>... attendez, c'est quoi ce truc ?! ... On se sépare pour le chercher !"
+        }
+      },
+      "B": {
+        "B1": {
+          "name": "Treshold",
+          "intel": "Protocoles d'empreintes neurales requis. Les prisonniers doivent localiser la liaison montante.",
+          "comms": ">... Attendez... qu'est-ce que le gardien compte faire avec ça... ?\n**>... Vous voulez vraiment le savoir... ?**"
+        },
+        "B2": {
+          "name": "Pressure",
+          "intel": "Dépresseur hydrostatique [DPR] requis pour accéder au HSU infantile. Les prisonniers doivent trouver une unité DPR fonctionnelle et dépressuriser la HSU infantile.",
+          "comms": ">... On doit vraiment le mettre dans ce... truc... ?\n>... Fermez-la et faites-le !\n**\\> On a encore... ATTENTION !**\n [coups de feu]"
+        }
+      },
+      "C": {
+        "C1": {
+          "name": "Alpha",
+          "intel": "ALERTE : échantillon d'ADN de protocole ALPHA corrompu. Échantillon requis pour faciliter l'empreinte neurale du conduit.\n--ERR : ROT47 --\n&?XMA64E65 86@8C2A9:42= 52E2 >:0>AP49[2C52 566>65 F?WQ87=4]",
+          "comms": ">... il a ... changé ...\n**>... Fermez-la et gardez les yeux ouverts !**\n>..[inintelligible]"
+        }
+      },
+      "D": {
+        "D1": {
+          "name": "Bianhua",
+          "intel": "Empreinte du nouveau-né réussie. Les prisonniers doivent récupérer l'objet et se connecter au cadre neural [nFrame]\nLes prisonniers ::ERR ####",
+          "comms": ">... On devrait pas faire ça... c'est trop dangereux...\n**>... On n'a pas le choix**\n>Hein... ? c'est quoi ce bruit ?!\n>... [rugissement lointain]"
+        }
+      }
+    },
     "R7": {
       "A": {
         "A1": {

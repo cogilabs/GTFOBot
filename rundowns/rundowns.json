@@ -166,6 +166,79 @@
         }
       }
     },
+    "R3": {
+      "A": {
+        "A1": {
+          "depth": "482",
+          "missionTypes": {
+            "main": true,
+            "secondary": false,
+            "overload": false,
+            "efficiency": false
+          }
+        },
+        "A2": {
+          "depth": "563",
+          "missionTypes": {
+            "main": true,
+            "secondary": false,
+            "overload": false,
+            "efficiency": false
+          }
+        },
+        "A3": {
+          "depth": "579",
+          "missionTypes": {
+            "main": true,
+            "secondary": false,
+            "overload": false,
+            "efficiency": false
+          }
+        }
+      },
+      "B": {
+        "B1": {
+          "depth": "716",
+          "missionTypes": {
+            "main": true,
+            "secondary": false,
+            "overload": false,
+            "efficiency": false
+          }
+        },
+        "B2": {
+          "depth": "670",
+          "missionTypes": {
+            "main": true,
+            "secondary": false,
+            "overload": false,
+            "efficiency": false
+          }
+        }
+      },
+      "C": {
+        "C1": {
+          "depth": "833",
+          "missionTypes": {
+            "main": true,
+            "secondary": false,
+            "overload": false,
+            "efficiency": false
+          }
+        }
+      },
+      "D": {
+        "D1": {
+          "depth": "989",
+          "missionTypes": {
+            "main": true,
+            "secondary": false,
+            "overload": false,
+            "efficiency": false
+          }
+        }
+      }
+    },
     "R7": {
       "A": {
         "A1": {

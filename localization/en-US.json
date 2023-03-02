@@ -102,6 +102,51 @@
         }
       }
     },
+    "R3": {
+      "A": {
+        "A1": {
+          "name": "Resuscitation",
+          "intel": "Rundown Protocol 2.0 completed. Access from section R2E1 established.\nNeonate in hydro stasis.\nNeurogenic Cardiac Rescitation (NCR) needed.",
+          "comms": ">...\n**>...[whispering] Schh! You'll wake them up!**\n>...the flashlight! Turn it off!\n...[sudden shriek, unintelligible]"
+        },
+        "A2": {
+          "name": "Purification",
+          "intel": "Prisoners sent to get a generator cluster back online for the centralized air purification system of the Reactor.",
+          "comms": ">..the air is so.. thick.. [coughing]\n**>..hurry, let's get these generators back online!**\n>..it should make it easier to breathe.."
+        },
+        "A3": {
+          "name": "Bolt",
+          "intel": "Power out in section B1. Reactor to be brought online at any cost of prisoners.",
+          "comms": ">..They keep coming..!\n**>..keep firing..!**\n>..wait..what the hell is this?! ..spread out and search!"
+        }
+      },
+      "B": {
+        "B1": {
+          "name": "Treshold",
+          "intel": "Protocols needed for neural imprinting. Prisoners sent to find uplink and retrieve.",
+          "comms": ">..Wait.. What could The Warden possibly do with this..?\n**>..do you really want to know..?**"
+        },
+        "B2": {
+          "name": "Pressure",
+          "intel": "HydroStasis Depressurizer(DPR) needed to access resuscitated NeonateHSU contents.\nPrisoners used to find a DPR unit and depressurise the NeonateHSU.",
+          "comms": ">..are we really putting it in that.. thing..?\n>just shut up and get on with it already!\n**>We've got ..INCOMING!!**\n [gunfire]"
+        }
+      },
+      "C": {
+        "C1": {
+          "name": "Alpha",
+          "intel": "WARNING: ALPHA protocol DNA sample corrupted. Sample required to facilitate neural imprite of Conduit.\n--ERR : ROT47 --\n&?6IA64E65 86@8C2A9:42= 52E2 >:D>2E49[ 2C62 566>65F?DE23=6]",
+          "comms": ">..it's ..changed...\n**>..shut up and keep your eyes open!**\n>..[unintelligible]"
+        }
+      },
+      "D": {
+        "D1": {
+          "name": "Bianhua",
+          "intel": "Imprinted Neonate needs to be secured and connected to the Neural Frame (nFrame).\nPrisoners ::ERR ###",
+          "comms": ">..We shouldn't do this... it feels wrong..\n**>..We.. have no choice**\n>..wait.. what the hell is that sound?!\n>...[distant roar]"
+        }
+      }
+    },
     "R7": {
       "A": {
         "A1": {
