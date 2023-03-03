@@ -150,7 +150,7 @@ module.exports = {
 				configFile[interaction.guild.id].save();
 				logsChList.set(interaction.guild.id , client.channels.cache.find(channel => channel.id === newLogsChannel.id));
 				logsChannel = client.channels.cache.find(channel => channel.id === newLogsChannel.id);
-				logMessage = logMessage + newLogsChannel.name + ' ';
+				logMessage = logMessage + 'logsCh:' + newLogsChannel.name + ' ';
 				message = message + `${locFile[locale][locale].system?.logsChannelSetTo ?? locFile["en-US"]["en-US"].system.logsChannelSetTo} “${newLogsChannel.name}”\n`;
 			} else {
 				logMessage = logMessage + 'logsCh:' + newLogsChannel.name + '(failure) ';

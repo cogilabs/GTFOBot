@@ -72,7 +72,10 @@ client.once(Events.ClientReady, async () => {
 	console.log(`App started, ${client.user.tag} is now online on ${client.guilds.cache.size} server(s)!`);
 	client.user.setPresence({ activities: [{ name: 'Available', type: 4 }], status: 'online' });
 
-	var logsChList = client.channels.cache.filter(channel => channel.name === logsChannelName);
+	var logsChList = new Map();
+	client.channels.cache.filter(channel => channel.name === logsChannelName).forEach(channel => {
+		logsChList.set(channel.guild.id , channel);
+	})
 	client.guilds.cache.forEach(guild => {
 		if (completion[guild.id].configuration != undefined && completion[guild.id].configuration.logsChannel != undefined) {
 			logsChList.set(guild.id , client.channels.cache.find(channel => channel.id === completion[guild.id].configuration.logsChannel));
