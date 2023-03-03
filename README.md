@@ -93,14 +93,14 @@ The application is *fully localized* in English and French, taking the server la
 It's also quite easy to localize in other languages (cf. [the english localization file](/localization/en-US.json)).  
   
 If a text channel named `dauda-logs` exists, the bot will log every actions it does in this server in it, along with actions like rebooting or updating.  
-You can also add those logs to another channel (like your “bot-logs” channel for instance)[^1].  
+You can of course change it to any other channel (like your “bot-logs” channel for instance)[^1].  
   
 The bot has an `echo` command, allowing admins to speak in his name (Real message author can still be checked in the logs channel(s)).  
 
 ## Configuration
 
 The `/config` command allows you customisation of some of the bot functions:  
-<!--Table directly in html because I couldn't transform it for my website-->
+<!--Table directly in html because I couldn't transform it from markdown to html for my website-->
 <table>
     <thead>
         <tr>
@@ -123,7 +123,7 @@ The `/config` command allows you customisation of some of the bot functions:
         </tr>
         <tr>
             <td>eventrequirement</td>
-            <td>Whether the events need &quot;GTFO&quot; in their description to be taken in account by the bot or not (enabled by default)</td>
+            <td>Whether the events need “GTFO” in their description to be taken in account by the bot or not (enabled by default)</td>
         </tr>
         <tr>
             <td>progression</td>
@@ -131,7 +131,7 @@ The `/config` command allows you customisation of some of the bot functions:
         </tr>
         <tr>
             <td>resetprogression</td>
-            <td>Resets the server&#39;s progression (irreversible, you&#39;ll have to type &quot;confirm&quot; for the command to execute)</td>
+            <td>Resets the server&#39;s progression (irreversible, you&#39;ll have to type “confirm” for the command to execute)</td>
         </tr>
     </tbody>
 </table>  
