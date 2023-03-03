@@ -15,6 +15,11 @@ This is a Discord bot I made to assist my GTFO team in expedition management.
 It's able to show the state of the game's rundowns and to display details about the missions.
 We use it to follow our progress through the complex and to familiarise with the next mission intels and objectives before dropping in.
 
+## Using/launching
+
+If you want to use or try Dauda, you can add it to your server by clicking this button:
+<p align="center"><a href="https://discord.com/api/oauth2/authorize?client_id=1050757215885209640&permissions=283736656976&scope=bot" target="_blank"><img alt="Add me on discord button" title="Add me on your discord server!" src="https://img.shields.io/badge/Add%20Dauda%20on-Discord-5865F2?style=for-the-badge"></a></p>
+
 ## The application
 The application itself is just a bot named Dauda (like one of the bots in the game).
 
@@ -138,18 +143,5 @@ The `/config` command allows you customisation of some of the bot functions:
 
 Keep in mind the name of the options will change according to the language of your discord client.
 
-## Using/launching
-
-If you want to use or try Dauda, you can add it to your server by clicking this button:
-<p align="center"><a href="https://discord.com/api/oauth2/authorize?client_id=1050757215885209640&permissions=283736656976&scope=bot" target="_blank"><img alt="Add me on discord button" title="Add me on your discord server!" src="https://img.shields.io/badge/Add%20Dauda%20on-Discord-5865F2?style=for-the-badge"></a></p>
-
-If you want to launch it by yourself you'll need to:
-- Create a discord app on <https://discord.com/developers/> 
-- Create a `config.json` file using the template [`template-config.json`](/template-config.json) and put your created bot's details inside of it
-- Run `npm install` in the project's folder to install the dependencies
-- Launch [`GTFOBot.js`](/GTFOBot.js) with node.js (this is the main program)
-- Deploy the commands by launching (only once) [`deploy-commands-global.js`](/deploy-commands-global.js) (also with node.js)  
-  
-I do recommend the first option, in order to get the (frequent) updates automatically.
 <!--footnotes-->
 [^1]:See the configuration section
