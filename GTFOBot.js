@@ -101,8 +101,8 @@ client.on(Events.GuildCreate, async guild => {
 	var mainGuild = client.guilds.cache.find(mainGuild => mainGuild.id == guildId);
 	var mainGuildLogsChannel = mainGuild.channels.cache.find(channel => channel.name === logsChannelName);
 	if (mainGuildLogsChannel != undefined)
-		await mainGuildLogsChannel.send(`New server added: “${guild.name}” (${guild.id}) creating completion file...`);
-	console.log(`New server added: “${guild.name}” (${guild.id}) creating completion file...`);
+		await mainGuildLogsChannel.send(`New server added: “${guild.name}” (${guild.id}) creating configuration file...`);
+	console.log(`New server added: “${guild.name}” (${guild.id}) creating configuration file...`);
 	compCheck();
 	completion[guild.id] = require('./rundowns/server-' + guild.id + '.json');
 	if (mainGuildLogsChannel != undefined)

@@ -2,7 +2,7 @@
 // Copyright (C) 2023 David "0Davgi0" Girou
 // License: BSD2.
 
-// Function used to check a completion file, and add missing entries, useful for a new file or after a game update
+// Function used to check completion in a configuration file, and add missing entries, useful for a new file or after a game update
 function compCheck() {
     for (var run in rundowns) {
         for (var lt in rundowns[run]) {
