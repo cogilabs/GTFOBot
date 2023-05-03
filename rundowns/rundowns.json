@@ -239,6 +239,126 @@
         }
       }
     },
+    "R4": {
+      "A": {
+        "A1": {
+          "depth": "485",
+          "missionTypes": {
+            "main": true,
+            "secondary": true,
+            "overload": false,
+            "efficiency": false
+          }
+        },
+        "A2": {
+          "depth": "662",
+          "missionTypes": {
+            "main": true,
+            "secondary": true,
+            "overload": true,
+            "efficiency": false
+          }
+        },
+        "A3": {
+          "depth": "622",
+          "missionTypes": {
+            "main": true,
+            "secondary": true,
+            "overload": true,
+            "efficiency": false
+          }
+        }
+      },
+      "B": {
+        "B1": {
+          "depth": "967",
+          "missionTypes": {
+            "main": true,
+            "secondary": true,
+            "overload": false,
+            "efficiency": false
+          }
+        },
+        "B2": {
+          "depth": "844",
+          "missionTypes": {
+            "main": true,
+            "secondary": true,
+            "overload": true,
+            "efficiency": false
+          }
+        },
+        "B3": {
+          "depth": "887",
+          "missionTypes": {
+            "main": true,
+            "secondary": true,
+            "overload": true,
+            "efficiency": false
+          }
+        }
+      },
+      "C": {
+        "C1": {
+          "depth": "972",
+          "missionTypes": {
+            "main": true,
+            "secondary": true,
+            "overload": false,
+            "efficiency": false
+          }
+        },
+        "C2": {
+          "depth": "910",
+          "missionTypes": {
+            "main": true,
+            "secondary": true,
+            "overload": true,
+            "efficiency": false
+          }
+        },
+        "C3": {
+          "depth": "931",
+          "missionTypes": {
+            "main": true,
+            "secondary": true,
+            "overload": true,
+            "efficiency": false
+          }
+        }
+      },
+      "D": {
+        "D1": {
+          "depth": "953",
+          "missionTypes": {
+            "main": true,
+            "secondary": true,
+            "overload": false,
+            "efficiency": false
+          }
+        },
+        "D2": {
+          "depth": "1031",
+          "missionTypes": {
+            "main": true,
+            "secondary": true,
+            "overload": true,
+            "efficiency": false
+          }
+        }
+      },
+      "E": {
+        "E1": {
+          "depth": "1082",
+          "missionTypes": {
+            "main": true,
+            "secondary": true,
+            "overload": false,
+            "efficiency": false
+          }
+        }
+      }
+    },
     "R7": {
       "A": {
         "A1": {

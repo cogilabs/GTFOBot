@@ -147,6 +147,78 @@
         }
       }
     },
+    "R4": {
+      "A": {
+        "A1": {
+          "name": "Cytology",
+          "intel": "Accès de la section R3D1 établi. Données de recherche supplémentaire nécessaires pour poursuivre le développement.",
+          "comms": ">...\n>... Qu'est-ce qu'il y a derrière la grande porte à cloison ?\n>... Mieux vaut rester à l'écart.\n**>... Ouais, t'es du genre suicidaire ?**"
+        },
+        "A2": {
+          "name": "Foster",
+          "intel": "Les registres d'inventaire ont révélé que plusieurs dispositifs de stockage sont en mode d'économie d'énergie. Les prisonniers ont été envoyés pour localiser et extraire deux caisses de cryogénisation.",
+          "comms": ">... \"Niveau d'alerte élevé\"...\n>... J'aime pas ça du tout.\n**>... Si on doit y aller, autant garder ça pour la fin.**"
+        },
+        "A3": {
+          "name": "Onwards",
+          "intel": "Le relevé de navigation a révélé une voie d'exploration idéale dans le quadrant est. Les prisonniers ont été déployés pour sécuriser l'itinéraire. Nombreuses pertes à prévoir.",
+          "comms": "**>... On va tomber à court de ressources...**\n>... Au moins, il nous reste les grenades à mousse. Autant les utiliser à bon escient."
+        }
+      },
+      "B": {
+        "B1": {
+          "name": "Malachite",
+          "intel": "Les coupures d'électricité ont compromis l'intégrité du réseau. Les prosonniers ont été envoyés pour relier les piles au réseau local à travers le générateur central du groupe électrogène [Z085]. Priorité : stabiliser le réseau électrique. Niveau de tolérance à la perte de ressource augmenté.",
+          "comms": ">... Ces trucs sont super lourds.\n**>... [Cuchotement] Chut ! Tu vas réveiller les gros.**\n>... [Chuchotement] Ouais, ferme-la et bouge-toi."
+        },
+        "B2": {
+          "name": "Variscite",
+          "intel": "Évaluation de la navigation entravée par les conditions environnementales en la zone [Z0852]. Stabilisation du climat critique. Prisonniers déployés.",
+          "comms": ">... Je vois rien à travers ce foutu brouillard... [tousse]\n**>... On doit activer la grappe de générateurs !**\n>... Ouais, c'est peut-être notre seule chance..."
+        },
+        "B3": {
+          "name": "Chrysolite",
+          "intel": "Voie d'exploration idéale établie. Les prisonniers doivent localiser (3) nœuds et redémarrer le réseau local dans le quadrant est.",
+          "comms": ">... Ce bioscan...\n**>... RENTREZ ! Il est en train de reculer !**\n>... Oh bordel !"
+        }
+      },
+      "C": {
+        "C1": {
+          "name": "Cognition",
+          "intel": "Erreur de checksum nFrame. Sphères de données allouées aux prisonniers pour récupérer les données nFrame du cache.",
+          "comms": ">... C'est quoi ce truc ?!\n>... BORDEL !\n**>... TIREZ SUR LES TUMEURS DANS SON DOS !**"
+        },
+        "C2": {
+          "name": "Pabulum",
+          "intel": "Activation de la routine de récolte des congénères. 48 300 unités requises. Initiative de membrane croisée requise. Prisonniers déployés.",
+          "comms": ">... Non... c'est encore ce truc !\n**>... ATTENTION !**\n[coups de feu, vacarme]"
+        },
+        "C3": {
+          "name": "Cuernos",
+          "intel": "Les prisonniers doivent localiser et rapporter [objet : turbine de répulsif à brouillard] avant la mise en quarantaine du quadrant.\nLa liste d'objectifs sera répétée jusqu'à ce que [objet : turbine de répulsif à brouillard] soit pleinement opérationnelle.",
+          "comms": ">... Comment on peut les contourner ?\n**>... Il nous faut du répulsif.\nBEAUCOUP de répulsif.**"
+        }
+      },
+      "D": {
+        "D1": {
+          "name": "Nucleus",
+          "intel": "Aucune erreur n'est survenue dans le gestionnaire du réseau électrique. Les prisonniers sont chargés d'exécuter le redémarrage du générateur du quadrant.",
+          "comms": "[coups de feu, vacarme]\n>... Hé ! C'est quoi ce truc bizarre au plafond ?\n>... Hein ? C'est quoi ça ?\n**>... Je crois l'avoir déjà vu avant...**"
+        },
+        "D2": {
+          "name": "Growth",
+          "intel": "Biomasse hostile détectée dans un quadrant inexploré. Évaluation du niveau de danger pour les prisonniers requise.",
+          "comms": ">... Attendez... C'est quoi ce bruit ?!\n**>... RAH, BORDEL !**\n>... CONTOURNEZ-LE !\n[coups de feu, cris]"
+        }
+      },
+      "E": {
+        "E1": {
+          "name": "Downwards",
+          "intel": "Les prisonniers sont envoyés pour installer des piles à combustile sur le réseau local. Biomasse mobile détectée. Augmentation des pertes de ressources à prévoir.",
+          "comms": "**>... Euh, c'est moi ou le brouillard... se déplace ?**\n>... Ouais, j'allais le dire.\n>... Cet endroit devient de plus en plus étouffant."
+        }
+      }
+    },
     "R7": {
       "A": {
         "A1": {

@@ -147,6 +147,78 @@
         }
       }
     },
+    "R4": {
+      "A": {
+        "A1": {
+          "name": "Cytology",
+          "intel": "Access form section R3D1 established. Additionnal research data required for further development",
+          "comms": ">...\n>..What's behind this big bulkhead door?\n>...Better leave it alone.\n**>...yeah, you got a death wish?**"
+        },
+        "A2": {
+          "name": "Foster",
+          "intel": "Inventory logs reveal multiple storage devices in power conservation mode. Prisoners sent to locate and extract two Cryo cases.",
+          "comms": ">..\"Threat level overload\"..\n>..I don't like the sound of that.\n**>..If we gotta go there, let's save it for last.**"
+        },
+        "A3": {
+          "name": "Onwards",
+          "intel": "Navigation survey reveals ideal explorative path through eastern quadrant. Prisoners dispatched to secure route. High collateral damage expected.",
+          "comms": "**>..We're running out of resources...**\n>...At least we have the foam grenades, might as well put them to good use."
+        }
+      },
+      "B": {
+        "B1": {
+          "name": "Malachite",
+          "intel": "Power interruptions compromising grid integrity. Prisoners sent to link cells to local grid through the [Z085] power clusters. Power grid stability imperative. Standard resource loss tolerance increased.",
+          "comms": ">..These things are fucking heavy.\n**>..[whispering]Schh! You'll wake up the big ones.**\n>..[whispering] Yeah shut up and carry on."
+        },
+        "B2": {
+          "name": "Variscite",
+          "intel": "Navigation evaluation impeded by environmental conditions in [Z085]. Climate stabilization critical. Prisoners dispatched.",
+          "comms": ">..Can't see shit through this fucking fog.. [coughing]\n**>..let's just get that generator cluster running!**\n>..Yeah it might just help. It might.."
+        },
+        "B3": {
+          "name": "Chrysolite",
+          "intel": "Ideal explorative path established. Prisoners to locate (3) network nodes and reboot local network in eastern quadrant.",
+          "comms": ">...This bioscan--\n**>...GET BACK IN! It's going backwards!**\n>...Oh fuck!"
+        }
+      },
+      "C": {
+        "C1": {
+          "name": "Cognition",
+          "intel": "nFrame checksum error. Prisoners allocated Data Spheres to salvage nFrame data from cache.",
+          "comms": ">..What the fuck is that?!\n>..Holy SHIT!\n**>..SHOOT THE TUMORS ON THE BACK!**"
+        },
+        "C2": {
+          "name": "Pabulum",
+          "intel": "Congeners collection routine established. 48,300 units required. Cross membrane initiative required. Prisoners dispatched.",
+          "comms": ">..No, not that thing- not again!\n**>..INCOMING!!**\n[gunfire, commotion]"
+        },
+        "C3": {
+          "name": "Cuernos",
+          "intel": "Prisoners to locate and return [item: Fog Repeller Turbine] prior to quadrant quarantine.\nObjective Stack to repeat until returned [item: Fog Repeller Turbine] evaluated as fully operational.",
+          "comms": ">...How do we get past?\n**>...We need fog repellers.\nLots of 'em.**"
+        }
+      },
+      "D": {
+        "D1": {
+          "name": "Nucleus",
+          "intel": "Power grid manager reports no system errors in primary generator. Prisoners dispatched to execute quadrant generator reboot.",
+          "comms": "[gunfire, commotion]\n>..Hey! See that, uh.. evil looking stuff in the ceiling?\n>..Yeah, what is that?\n**>..I think I've seen this before**"
+        },
+        "D2": {
+          "name": "Growth",
+          "intel": "Hostile biomass detected in unexplored quadrant. Prisoners threat evaluation required.",
+          "comms": ">..wait.. what the hell is that sound?!\n**>..aw FUCK!**\n>..CIRCLE AROUND IT!\n[gunfire, screams]"
+        }
+      },
+      "E": {
+        "E1": {
+          "name": "Downwards",
+          "intel": "Prisoners sent to install power cells to locate grid. Motile biomass detected. Increased resource expense expected.",
+          "comms": "**>...The fog... is it-- uh, moving?**\n>...Yeah I was just about to say.\n>...This place is getting more and more claustrophobic bvy the minute."
+        }
+      }
+    },
     "R7": {
       "A": {
         "A1": {
