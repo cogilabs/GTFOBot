@@ -4,6 +4,7 @@
       "A": {
         "A1": {
           "depth": "421",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -15,6 +16,7 @@
       "B": {
         "B1": {
           "depth": "562",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -24,6 +26,7 @@
         },
         "B2": {
           "depth": "565",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -35,6 +38,7 @@
       "C": {
         "C1": {
           "depth": "678",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -44,6 +48,7 @@
         },
         "C2": {
           "depth": "624",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -55,6 +60,7 @@
       "D": {
         "D1": {
           "depth": "842",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -68,6 +74,7 @@
       "A": {
         "A1": {
           "depth": "543",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -79,6 +86,7 @@
       "B": {
         "B1": {
           "depth": "580",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -88,6 +96,7 @@
         },
         "B2": {
           "depth": "612",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -97,6 +106,7 @@
         },
         "B3": {
           "depth": "633",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -106,6 +116,7 @@
         },
         "B4": {
           "depth": "658",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -117,6 +128,7 @@
       "C": {
         "C1": {
           "depth": "729",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -126,6 +138,7 @@
         },
         "C2": {
           "depth": "790",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -137,6 +150,7 @@
       "D": {
         "D1": {
           "depth": "811",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -146,6 +160,7 @@
         },
         "D2": {
           "depth": "883",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -157,6 +172,7 @@
       "E": {
         "E1": {
           "depth": "924",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -170,6 +186,7 @@
       "A": {
         "A1": {
           "depth": "482",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -179,6 +196,7 @@
         },
         "A2": {
           "depth": "563",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -188,6 +206,7 @@
         },
         "A3": {
           "depth": "579",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -199,6 +218,7 @@
       "B": {
         "B1": {
           "depth": "716",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -208,6 +228,7 @@
         },
         "B2": {
           "depth": "670",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -219,6 +240,7 @@
       "C": {
         "C1": {
           "depth": "833",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -230,6 +252,7 @@
       "D": {
         "D1": {
           "depth": "989",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -243,6 +266,7 @@
       "A": {
         "A1": {
           "depth": "485",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": true,
@@ -252,6 +276,7 @@
         },
         "A2": {
           "depth": "662",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": true,
@@ -261,6 +286,7 @@
         },
         "A3": {
           "depth": "622",
+          "ext": "true",
           "missionTypes": {
             "main": true,
             "secondary": true,
@@ -272,6 +298,7 @@
       "B": {
         "B1": {
           "depth": "967",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": true,
@@ -281,6 +308,7 @@
         },
         "B2": {
           "depth": "844",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": true,
@@ -290,6 +318,7 @@
         },
         "B3": {
           "depth": "887",
+          "ext": "true",
           "missionTypes": {
             "main": true,
             "secondary": true,
@@ -301,6 +330,7 @@
       "C": {
         "C1": {
           "depth": "972",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": true,
@@ -310,6 +340,7 @@
         },
         "C2": {
           "depth": "910",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": true,
@@ -319,6 +350,7 @@
         },
         "C3": {
           "depth": "931",
+          "ext": "true",
           "missionTypes": {
             "main": true,
             "secondary": true,
@@ -330,6 +362,7 @@
       "D": {
         "D1": {
           "depth": "953",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": true,
@@ -339,6 +372,7 @@
         },
         "D2": {
           "depth": "1031",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": true,
@@ -350,6 +384,7 @@
       "E": {
         "E1": {
           "depth": "1082",
+          "ext": "true",
           "missionTypes": {
             "main": true,
             "secondary": true,
@@ -363,6 +398,7 @@
       "A": {
         "A1": {
           "depth": "798",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -374,6 +410,7 @@
       "B": {
         "B1": {
           "depth": "985",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -383,6 +420,7 @@
         },
         "B2": {
           "depth": "855",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": true,
@@ -392,6 +430,7 @@
         },
         "B3": {
           "depth": "1248",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": true,
@@ -403,6 +442,7 @@
       "C": {
         "C1": {
           "depth": "1071",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -412,6 +452,7 @@
         },
         "C2": {
           "depth": "920",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": true,
@@ -421,6 +462,7 @@
         },
         "C3": {
           "depth": "1193",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": true,
@@ -432,6 +474,7 @@
       "D": {
         "D1": {
           "depth": "1303",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -441,6 +484,7 @@
         },
         "D2": {
           "depth": "1366",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -452,6 +496,7 @@
       "E": {
         "E1": {
           "depth": "1411",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,

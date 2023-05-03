@@ -232,6 +232,9 @@ module.exports = {
                         if (RID == run + id) {
                             title = '**' + (locFile[locale][locale].missions?.missionTitle ?? locFile["en-US"]["en-US"].missions.missionTitle).replace('#', run + id) 
                                 + '** *“' + (locFile[locale][locale][run]?.[lt]?.[id]?.name ?? locFile["en-US"]["en-US"][run][lt][id].name) + '”*';
+                            if (rundowns[run][lt][id].ext == 'true') {
+                                title = title + " `://EXT`"
+                            }
                             content = '\n \n`' + (locFile[locale][locale].missions?.intel ?? locFile["en-US"]["en-US"].missions.intel) 
                                 + '`\n```' + (locFile[locale][locale][run]?.[lt]?.[id]?.intel ?? locFile["en-US"]["en-US"][run][lt][id].intel) + '```'
                                 + '\n`' + (locFile[locale][locale].missions?.sectors ?? locFile["en-US"]["en-US"].missions.sectors) + '`\n';
