@@ -138,7 +138,7 @@ module.exports = {
 		}
 
 		const embed = new EmbedBuilder()
-                    .setColor(color)
+                    .setColor(Number(color))
                     .setTitle(' ')
                     .setDescription(`**${message}**`);
 
