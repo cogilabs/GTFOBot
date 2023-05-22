@@ -64,10 +64,11 @@ client.once(Events.ClientReady, async () => {
     client.guilds.cache.forEach(guild => completion[guild.id] = require('./rundowns/server-' + guild.id + '.json'));
 	global.completion = completion;
 
-	/*const embed = new EmbedBuilder() //Removed while the bot restarts 4 times a day
-		.setColor(0x00FF00)
-		.setTitle(' ')
-		.setDescription(`**App started, <@${client.user.id}> is now online on \`${client.guilds.cache.size}\` server(s)!**`);*/
+	// Removed while the bot restarts 4 times a day
+	////const embed = new EmbedBuilder()
+		////.setColor(0x00FF00)
+		////.setTitle(' ')
+		////.setDescription(`**App started, <@${client.user.id}> is now online on \`${client.guilds.cache.size}\` server(s)!**`);
 	
 	console.log(`App started, ${client.user.tag} is now online on ${client.guilds.cache.size} server(s)!`);
 	client.user.setPresence({ activities: [{ name: 'Available', type: 4 }], status: 'online' });
@@ -83,7 +84,8 @@ client.once(Events.ClientReady, async () => {
 	});
 
 	global.logsChList = logsChList;
-	//logsChList.forEach(async channel => await channel.send({ embeds: [embed] })); //Removed while the bot restarts 4 times a day
+	// Removed while the bot restarts 4 times a day
+	//// logsChList.forEach(async channel => await channel.send({ embeds: [embed] }));
 
 	function updateTime() {
 		outputFile.set('time', Math.floor(Date.now()/ 1000).toString());
@@ -471,7 +473,7 @@ client.on(Events.MessageCreate, async message => {
 	}
 });
 
-//Chat commands interactions
+// Chat commands interactions
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
 	var configLogsChannel = configFile[interaction.guild.id].get(`configuration.logsChannel`);
@@ -498,7 +500,7 @@ client.on(Events.InteractionCreate, async interaction => {
 	}
 });
 
-//Button interactions
+// Button interactions
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isButton()) return;
 	var configLogsChannel = configFile[interaction.guild.id].get(`configuration.logsChannel`);

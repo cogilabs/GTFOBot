@@ -111,7 +111,7 @@ module.exports = {
             const RID = commandArray[2];
             var title = '';
             var rows = new Array();
-            title = '***' + (locFile[locale][locale].missions?.rundownTitle ?? locFile["en-US"]["en-US"].missions.rundownTitle) + ' ' + RID + '***';
+            title = '## ***' + (locFile[locale][locale].missions?.rundownTitle ?? locFile["en-US"]["en-US"].missions.rundownTitle) + ' ' + RID + '***';
 
             i = 0;
             for (var lt in rundowns[RID]) {
@@ -190,8 +190,8 @@ module.exports = {
                 const MID = commandArray[2].slice(0,2);
                 var title = '';
                 var runRows = new Array();
-                title = '***' + (locFile[locale][locale].missions?.rundownTitle ?? locFile["en-US"]["en-US"].missions.rundownTitle) + ' ' + MID + '***';
-        
+                title = '## ***' + (locFile[locale][locale].missions?.rundownTitle ?? locFile["en-US"]["en-US"].missions.rundownTitle) + ' ' + MID + '***';
+                
                 i = 0;
                 for (var lt in rundowns[MID]) {
                     runRows[i] = new ActionRowBuilder();
