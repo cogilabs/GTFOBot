@@ -23,7 +23,7 @@ module.exports = {
         .setDescriptionLocalizations({
             fr: locFile['fr']['fr'].commands?.[cmdName]?.description ?? locFile['en-US']['en-US'].commands[cmdName].description,
         }),
-	async execute(interaction) {
+	async execute(interaction) { // * Execution of the /rundowns command
 		var configLogsChannel = configFile[interaction.guild.id].get(`configuration.logsChannel`);
 			if (configLogsChannel != undefined) {
 				var logsChannel = interaction.guild.channels.cache.find(channel => channel.id === configLogsChannel);
@@ -93,7 +93,7 @@ module.exports = {
             ephemeral: true 
         });
     },
-	async replyButton(interaction) {
+	async replyButton(interaction) { // * Click on a button
 		var configLogsChannel = configFile[interaction.guild.id].get(`configuration.logsChannel`);
 			if (configLogsChannel != undefined) {
 				var logsChannel = interaction.guild.channels.cache.find(channel => channel.id === configLogsChannel);
@@ -106,7 +106,7 @@ module.exports = {
         }
         if (locale == '') locale = 'en-US';
         const commandArray = (interaction.customId).split('-');
-        if (commandArray[1] == 'select') {
+        if (commandArray[1] == 'select') { // * Click on a rundown selection button
             rundownsInteraction[`${interaction.guild.id}-${interaction.channelId}`] = interaction;
             const RID = commandArray[2];
             var title = '';
@@ -155,31 +155,37 @@ module.exports = {
                 initialInteraction[`${interaction.guild.id}-${interaction.channelId}`] = undefined;
             }
 
-        } else if (commandArray[1] == 'mission' || commandArray[1] == 'complete') {
+        }
+        
+        const RID = commandArray[2];
+        var title = '';
+        var cpltd = new Array();
+        const compRows  = new Array();
+        var content = '';
+        var rights = '';
 
-            if (commandArray[1] == 'complete') {
-                const [, , value, type, comp] = commandArray;
-                
-                // Check if the user has the MANAGE_EVENTS permission
-                if ((interaction.member.permissions.bitfield & 8589934592n) == 8589934592n) {
-                    for (var run in rundowns) {
-                        for (var lt in rundowns[run]) {
-                            for (var id in rundowns[run][lt]) {
-                                if (value == run + id) {
-                                    for (var mt in rundowns[run][lt][id].missionTypes) {
-                                        if (mt == type) {
-                                            configFile[interaction.guild.id].set(`completion.${run}.${lt}.${id}.completed.${mt}`, (String(comp).toLowerCase() == 'true'));
-                                            configFile[interaction.guild.id].save();
-                                            configFile[interaction.guild.id] = editJsonFile('./rundowns/server-' + interaction.guild.id + '.json', {
-                                                autosave: true
-                                            });
-                                            completion[interaction.guild.id].completion[run][lt][id].completed[mt] = (String(comp).toLowerCase() == 'true');
-                                            response = (locFile[locale][locale].missions?.sector ?? locFile["en-US"]["en-US"].missions.sector) + ' *' + value + ':' + (locFile[locale][locale].sectors?.[mt] ?? locFile["en-US"]["en-US"].sectors[mt])
-                                            if (comp == 'true') {
-                                                response = response + '* `✅ ' + (locFile[locale][locale].missions?.completed ?? locFile["en-US"]["en-US"].missions.completed) + '`';
-                                            } else {
-                                                response = response + '* `❌ ' + (locFile[locale][locale].missions?.notCompleted ?? locFile["en-US"]["en-US"].missions.notCompleted) + '`';
-                                            }
+        if (commandArray[1] == 'complete') { // * Click on a Complete/Uncomplete button
+            const [, , value, type, comp] = commandArray;
+            
+            // Check if the user has the MANAGE_EVENTS permission
+            if ((interaction.member.permissions.bitfield & 8589934592n) == 8589934592n) {
+                for (var run in rundowns) {
+                    for (var lt in rundowns[run]) {
+                        for (var id in rundowns[run][lt]) {
+                            if (value == run + id) {
+                                for (var mt in rundowns[run][lt][id].missionTypes) {
+                                    if (mt == type) {
+                                        configFile[interaction.guild.id].set(`completion.${run}.${lt}.${id}.completed.${mt}`, (String(comp).toLowerCase() == 'true'));
+                                        configFile[interaction.guild.id].save();
+                                        configFile[interaction.guild.id] = editJsonFile('./rundowns/server-' + interaction.guild.id + '.json', {
+                                            autosave: true
+                                        });
+                                        completion[interaction.guild.id].completion[run][lt][id].completed[mt] = (String(comp).toLowerCase() == 'true');
+                                        response = (locFile[locale][locale].missions?.sector ?? locFile["en-US"]["en-US"].missions.sector) + ' *' + value + ':' + (locFile[locale][locale].sectors?.[mt] ?? locFile["en-US"]["en-US"].sectors[mt])
+                                        if (comp == 'true') {
+                                            response = response + '* `✅ ' + (locFile[locale][locale].missions?.completed ?? locFile["en-US"]["en-US"].missions.completed) + '`';
+                                        } else {
+                                            response = response + '* `❌ ' + (locFile[locale][locale].missions?.notCompleted ?? locFile["en-US"]["en-US"].missions.notCompleted) + '`';
                                         }
                                     }
                                 }
@@ -187,45 +193,41 @@ module.exports = {
                         }
                     }
                 }
-                const MID = commandArray[2].slice(0,2);
-                var title = '';
-                var runRows = new Array();
-                title = '## ***' + (locFile[locale][locale].missions?.rundownTitle ?? locFile["en-US"]["en-US"].missions.rundownTitle) + ' ' + MID + '***';
-                
-                i = 0;
-                for (var lt in rundowns[MID]) {
-                    runRows[i] = new ActionRowBuilder();
-                    for (var nb in rundowns[MID][lt]) {
-                        if (completion[interaction.guild.id].completion[MID][lt][nb].completed.main) {
-                            runRows[i].addComponents(
-                                new ButtonBuilder()
-                                    .setCustomId(cmdName + '-mission-' + MID + nb)
-                                    .setLabel(nb)
-                                    .setStyle(ButtonStyle.Success),
-                            );
-                        } else {
-                            runRows[i].addComponents(
-                                new ButtonBuilder()
-                                    .setCustomId(cmdName + '-mission-' + MID + nb)
-                                    .setLabel(nb)
-                                    .setStyle(ButtonStyle.Secondary),
-                            );
-                        }
-                    }
-                    i = i+1;
-                }
-                if (rundownsInteraction[`${interaction.guild.id}-${interaction.channelId}`] != undefined)
-                    try {await rundownsInteraction[`${interaction.guild.id}-${interaction.channelId}`].editReply({ content: title, components: runRows });} catch(error) {
-                        console.error(error);
-                    }
             }
-
-            const RID = commandArray[2];
-            var title = '';
-            var cpltd = new Array();
-            const rows  = new Array();
-            var content = '';
-            var rights = '';
+            const MID = commandArray[2].slice(0,2);
+            var runTitle = '';
+            var runRows = new Array();
+            runTitle = '## ***' + (locFile[locale][locale].missions?.rundownTitle ?? locFile["en-US"]["en-US"].missions.rundownTitle) + ' ' + MID + '***';
+            
+            i = 0;
+            for (var lt in rundowns[MID]) {
+                runRows[i] = new ActionRowBuilder();
+                for (var nb in rundowns[MID][lt]) {
+                    if (completion[interaction.guild.id].completion[MID][lt][nb].completed.main) {
+                        runRows[i].addComponents(
+                            new ButtonBuilder()
+                                .setCustomId(cmdName + '-mission-' + MID + nb)
+                                .setLabel(nb)
+                                .setStyle(ButtonStyle.Success),
+                        );
+                    } else {
+                        runRows[i].addComponents(
+                            new ButtonBuilder()
+                                .setCustomId(cmdName + '-mission-' + MID + nb)
+                                .setLabel(nb)
+                                .setStyle(ButtonStyle.Secondary),
+                        );
+                    }
+                }
+                i = i+1;
+            }
+            if (rundownsInteraction[`${interaction.guild.id}-${interaction.channelId}`] != undefined)
+                try {await rundownsInteraction[`${interaction.guild.id}-${interaction.channelId}`].editReply({ content: title, components: runRows });} catch(error) {
+                    console.error(error);
+                }
+        }
+        // * Click on a mission button or a Complete/Uncomplete button
+        if (commandArray[1] == 'mission' || commandArray[1] == 'complete') {
             for (var run in rundowns) {
                 for (var lt in rundowns[run]) {
                     for (var id in rundowns[run][lt]) {
@@ -243,9 +245,9 @@ module.exports = {
                                 if (rundowns[run][lt][id].missionTypes[mt] == true) {
                                     if(!configFile[interaction.guild.id].get(`configuration.progressionDisabled`)) {
                                         cpltd[mt] = completion[interaction.guild.id].completion[run][lt][id].completed[mt]
-                                        rows[i]  = new ActionRowBuilder();
+                                        compRows[i]  = new ActionRowBuilder();
                                         if (String(cpltd[mt]).toLowerCase() != 'true') {
-                                            rows[i].addComponents(
+                                            compRows[i].addComponents(
                                                 new ButtonBuilder()
                                                     .setCustomId(cmdName + '-complete-' + RID + '-' + mt + '-true-' + cpltd[mt].toString())
                                                     .setLabel((locFile[locale][locale].missions?.completeSector ?? locFile["en-US"]["en-US"].missions.completeSector).replace('#', locFile[locale][locale].sectors?.[mt] ?? locFile["en-US"]["en-US"].sectors[mt]))
@@ -253,7 +255,7 @@ module.exports = {
                                                 );
                                             i++;
                                         } else {
-                                            rows[i].addComponents(
+                                            compRows[i].addComponents(
                                                 new ButtonBuilder()
                                                     .setCustomId(cmdName + '-complete-' + RID + '-' + mt + '-false-' + cpltd[mt].toString())
                                                     .setLabel((locFile[locale][locale].missions?.uncompleteSector ?? locFile["en-US"]["en-US"].missions.uncompleteSector).replace('#', locFile[locale][locale].sectors?.[mt] ?? locFile["en-US"]["en-US"].sectors[mt]))
@@ -283,63 +285,63 @@ module.exports = {
                     }
                 }
             }
+        }
 
-            if (commandArray[1] == 'mission') {
+        if (commandArray[1] == 'mission') { // * Click on a mission button
+
+            const embed = new EmbedBuilder()
+            .setColor(0x110022)
+            .setTitle(title)
+            .setDescription(content);
+            
+            console.log(`@${interaction.user.tag} <@${interaction.user.id}> opened mission ${RID} via /${commandArray[0]} in ${locale}`);
+            if (logsChannel != undefined)
+                await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> opened mission ${RID} via **\`\` /${commandArray[0]} \`\`** in ${locale}`);
+
+            if (lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`] != undefined) {
+                try {await lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`].deleteReply();} catch(error) {
+                    console.error(error);
+                }
+                lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`] = undefined;
+            }
+
+            lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`] = interaction;
+            await interaction.reply({ embeds: [embed], components: compRows });
+
+        } else if (commandArray[1] == 'complete') { // * Click on a Complete/Uncomplete button
+            const [, , value, , comp] = commandArray;
+
+            // Check if the user has the MANAGE_EVENTS permission
+            if ((interaction.member.permissions.bitfield & 8589934592n) == 8589934592n) {
 
                 const embed = new EmbedBuilder()
                 .setColor(0x110022)
                 .setTitle(title)
                 .setDescription(content);
-                
-                console.log(`@${interaction.user.tag} <@${interaction.user.id}> opened mission ${RID} via /${commandArray[0]} in ${locale}`);
-                if (logsChannel != undefined)
-			        await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> opened mission ${RID} via **\`\` /${commandArray[0]} \`\`** in ${locale}`);
 
                 if (lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`] != undefined) {
-                    try {await lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`].deleteReply();} catch(error) {
-                console.error(error);
-            }
-            lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`] = undefined;
+                    try {await lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`].editReply({ embeds: [embed], components: compRows });} catch(error) {
+                    console.error(error);
                 }
+                } else {
+                    await interaction.reply({ embeds: [embed], components: compRows });
+                }
+                
 
+            } else {
+                response = ({ content: (locFile[locale][locale].system?.noButtonPermission ?? locFile["en-US"]["en-US"].system.noButtonPermission), ephemeral: true });
+                rights = ' but didn\'t have the rights';
+            }
+
+            console.log(`@${interaction.user.tag} <@${interaction.user.id}> used “${commandArray[1]} ${value} ${comp}” via /${commandArray[0]} in ${locale}${rights}`);
+            if (logsChannel != undefined)
+                await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> used “${commandArray[1]} ${value} ${comp}” via **\`\` /${commandArray[0]} \`\`** in ${locale}${rights}`);
+            
+            if (lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`] != undefined) {
+                await interaction.reply( {content: response, ephemeral: true} );
+                return interaction.deleteReply();
+            } else {
                 lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`] = interaction;
-                await interaction.reply({ embeds: [embed], components: rows });
-
-            } else if (commandArray[1] == 'complete') {
-                const [, , value, , comp] = commandArray;
-
-                // Check if the user has the MANAGE_EVENTS permission
-                if ((interaction.member.permissions.bitfield & 8589934592n) == 8589934592n) {
-
-                    const embed = new EmbedBuilder()
-                    .setColor(0x110022)
-                    .setTitle(title)
-                    .setDescription(content);
-
-                    if (lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`] != undefined) {
-                        try {await lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`].editReply({ embeds: [embed], components: rows });} catch(error) {
-                console.error(error);
-            }
-                    } else {
-                        await interaction.reply({ embeds: [embed], components: rows });
-                    }
-                    
-
-                } else {
-                    response = ({ content: (locFile[locale][locale].system?.noButtonPermission ?? locFile["en-US"]["en-US"].system.noButtonPermission), ephemeral: true });
-                    rights = ' but didn\'t have the rights';
-                }
-
-                console.log(`@${interaction.user.tag} <@${interaction.user.id}> used “${commandArray[1]} ${value} ${comp}” via /${commandArray[0]} in ${locale}${rights}`);
-                if (logsChannel != undefined)
-			        await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> used “${commandArray[1]} ${value} ${comp}” via **\`\` /${commandArray[0]} \`\`** in ${locale}${rights}`);
-                
-                if (lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`] != undefined) {
-                    await interaction.reply( {content: response, ephemeral: true} );
-                    return interaction.deleteReply();
-                } else {
-                    lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`] = interaction;
-                }
             }
         }
 	}

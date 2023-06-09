@@ -2,7 +2,8 @@
 // Copyright (C) 2023 David "0Davgi0" Girou
 // License: BSD2.
 
-// Function used to check completion in a configuration file, and add missing entries, useful for a new file or after a game update
+// Function used to check completion in a configuration file, and add missing entries, 
+// useful for a new file or after a game update
 function compCheck() {
     for (var run in rundowns) {
         for (var lt in rundowns[run]) {
@@ -48,7 +49,7 @@ console.log(textToLog);
         await logsChannel.send(textToLog);
 }
 
-// Function used to select in which channel an event special messages will be sent
+// Function used to select in which channel an event's special messages will be sent
 function channelSelection(event, logsChannel) {
     var eventChannel = configFile[event.guild.id].get(`configuration.eventChannel`);
 	if (eventChannel != undefined) {
