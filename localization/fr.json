@@ -219,6 +219,74 @@
         }
       }
     },
+    "R5": {
+      "A": {
+        "A1": {
+        },
+        "A2": {
+        },
+        "A3": {
+        }
+      },
+      "B": {
+        "B1": {
+          "name": "Smother",
+          "intel": "Programme d'évaluation d'ADN instauré. Collecte de tissus compatibles requise. Taux de pertes estimé : 78 %. Les prisonniers sont jugés remplaçables.",
+          "comms": ">... Ils doivent dormir.\n**>... Derrière ! Reculez !**\n>... [inaudible] Bordel.\n>... [coups de feu, vacarme]"
+        },
+        "B2": {
+          "name": "Discharge",
+          "intel": "Échantillons supplémentaires de composés requis pour l'analyse TDS. Niveau de tolérance à la perte de prisonniers augmenté.",
+          "comms": ">... Attendez...\n**>... [murmures] Des cracheurs.**\n>... [soupir] Bordel..."
+        },
+        "B3": {
+          "name": "Unseal",
+          "intel": "Prisonniers envoyés pour initier le traitement des caisses HISEC. Biomasse mobile détectée. Niveau de tolérance à la perte de prisonniers augmenté.",
+          "comms": ">... J'en peux plus, ils sont trop nombreux...\n**>... Qu'es-ce que... pose ça tout de suite !**\n>... [coup de feu]"
+        },
+        "B4": {
+          "name": "Diversion",
+          "intel": "Procédure de diversion standard lancée.\nRéseau électrique local : instable. Taux de survie estimé : 17 %.",
+          "comms": ">... Je peux plus les retenir longtemps !\n**>... La porte est ouverte !**\n>... Prenez le nécessaire et allez-y !"
+        }
+      },
+      "C": {
+        "C1": {
+          "name": "Binary",
+          "intel": "Quadrant du système de maintenance inactif. Prisonniers envoyés pour établir une liaison montante. Taux de mortalité : élevé.",
+          "comms": ">... Merde, merde... Donnez-moi une minute...\n>... Pas le temps ! Ils arrivent bientôt.\n**>... Hein ?! C'est quoi ce bordel...**"
+        },
+        "C2": {
+          "name": "Access",
+          "intel": "Systèmes essentiels hors-ligne. Prisonniers envoyés pour procéder au redémarrage du système dans le quadrant central. Sécurité des prisonniers réduite.",
+          "comms": ">... Attendez... vous avez vu ça ?\n**>... On dirait qu'un truc bouge là-dedans...**\n>... [cris, coups de feu]"
+        },
+        "C3": {
+          "name": "Starvation",
+          "intel": "Erreur de réseau causée par une corruption du réseau électrique. Redémarrage du système requis.\nPrisonniers envoyés.",
+          "comms": ">... Je suis à court de munitions.\n>... C'était le dernier.\n**>... [bruissement, couteau dégainé]**"
+        }
+      },
+      "D": {
+        "D1": {
+          "name": "Even deeper",
+          "intel": "Le protocole de sécurité empêche l'accès aux niveaux inférieurs. Prisnniers envoyés pour installer un exécutable de neutralisation dans le réacteur local. Taux de mortalité : élevé.",
+          "comms": ">... It's having us shut down security...\n>... I don't like where this is going.\n**>... Deeper, that's where.**"
+        },
+        "D2": {
+          "name": "Error",
+          "intel": "Le protocole nécessite une alimentation supplémentaire. Prisonniers envoyés à :: ERR ###",
+          "comms": ">... [murmures] Hé, fais gaffe !\n**>... Désolé ! On n'y voit rien ici.**\n>... [rires] On est foutus..."
+        }
+      },
+      "E": {
+        "E1": {
+          "name": "KDS deep",
+          "intel": "Prisonniers envoyés aux profondeurs du KDS pour lancer le protocole d'afflux.",
+          "comms": ">... [alarme]\n>... Bordel, j'arrive pas à l'éteindre !\n**>... Cherchez un autre terminal !**"
+        }
+      }
+    },
     "R7": {
       "A": {
         "A1": {

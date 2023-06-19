@@ -219,6 +219,83 @@
         }
       }
     },
+    "R5": {
+      "A": {
+        "A1": {
+          "name": "Floodways",
+          "intel": "Section processor requiring override. Sensors detecting unidentified biomass. Prisoners graded non-essential",
+          "comms": ">... [whispering] Slowly... Don't wake them up.\n>... [whisper] Light off.\n**>... Stop! It's pulsating.**"
+        },
+        "A2": {
+          "name": "Recollect",
+          "intel": "Prisoners to retrieve hisec cargo crate. Sensors detecting unidentified biomass. Prisoners graded non-essential.",
+          "comms": ">... [clang]\n**>... Of god. How did they get here?**\n>... They hatched..."
+        },
+        "A3": {
+          "name": "Mining",
+          "intel": "Prisoners sent to extract datacores from digsite terminals. Prisoners graded non-essential. Filtration capacity ar eee%ror#:",
+          "comms": ">... And... got it! That's all of them.\n>... Let's get that door open then.\n**>... Ready?**"
+        }
+      },
+      "B": {
+        "B1": {
+          "name": "Smother",
+          "intel": "DNA evaluation routine established. Collection of matching tissue required. Estimated casualty rate at 78%. Prisoners expandable.",
+          "comms": ">... They're sleeping.\n**>... The back! Go for the back!**\n>... [inaudible] Fuck.\n>… [gunfire, commotion]"
+        },
+        "B2": {
+          "name": "Discharge",
+          "intel": "Additional compound samples required for TDS analysis. Prisoners loss tolerance increased.",
+          "comms": ">... Hold up-\n**>... [whispering] Spitters.**\n>... [sigh] Shit."
+        },
+        "B3": {
+          "name": "Unseal",
+          "intel": "Prisoners sent to initiate hisec crate processing. Motile biomass detected. Adjusting prisoner casualty tolerance.",
+          "comms": ">... I can't do this anymore, there's too many of them...\n**>... What are you-- Don't you fucking dare!**\n>... [gunshot]"
+        },
+        "B4": {
+          "name": "Diversion",
+          "intel": "Standard diversionary procedure initiated.\nLocal power grid: irregular. Estimated survival rate 17%.",
+          "comms": ">... I can't hold them off much longer!\n**>... Door's open!**\n>... Take what you need and GO!"
+        }
+      },
+      "C": {
+        "C1": {
+          "name": "Binary",
+          "intel": "Quadrant maintenace system unresponsive. Prisoners sent to establish uplink. High asset fatality rate expected.",
+          "comms": ">... Shit, shit... I need a minute-\n>... No time! We've got incoming.\n**>... [gasp] What the fuck...**"
+        },
+        "C2": {
+          "name": "Access",
+          "intel": "Essential systems offline. Prisoners to perform system reboot in central quadrant. Prisoner safety deprioritized.",
+          "comms": ">... Wait... did you see that?\n**>... Something's moving moving in there...**\n>... [screaming, gunfire]"
+        },
+        "C3": {
+          "name": "Starvation",
+          "intel": "Network error caused by powergrid corruption. System reboot required. Prisoners dispatched.",
+          "comms": ">... I'm out of ammo.\n>... That was the last of it.\n**>... [rustle, unsheathing knife]**"
+        }
+      },
+      "D": {
+        "D1": {
+          "name": "Even deeper",
+          "intel": "Security protocol prohibiting sub-level exploration. Prisoners sent to install override executable in local reactor. High resource loss expected.",
+          "comms": ">... It's having us shut down security...\n>... I don't like where this is going.\n**>... Deeper, that's where.**"
+        },
+        "D2": {
+          "name": "Error",
+          "intel": "Protocol requiring additional power. Prisoners dispatched to :: ERR ###",
+          "comms": ">... [whispering] Hey, watch it!\n**>... Sorry! I can't see shit in here.**\n>... [laughing] We're so done for..."
+        }
+      },
+      "E": {
+        "E1": {
+          "name": "KDS deep",
+          "intel": "Prisoners dispatched to KDS deep for Influx Protocol initiation.",
+          "comms": ">… [alarm blaring]\n>... Fuck, I can't turn it off!\n**>... Look for another terminal!**"
+        }
+      }
+    },
     "R7": {
       "A": {
         "A1": {

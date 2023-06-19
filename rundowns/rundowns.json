@@ -394,6 +394,148 @@
         }
       }
     },
+    "R5": {
+      "A": {
+        "A1": {
+          "depth": "545",
+          "ext": "false",
+          "missionTypes": {
+            "main": true,
+            "secondary": true,
+            "overload": false,
+            "efficiency": false
+          }
+        },
+        "A2": {
+          "depth": "498",
+          "ext": "false",
+          "missionTypes": {
+            "main": true,
+            "secondary": true,
+            "overload": true,
+            "efficiency": false
+          }
+        },
+        "A3": {
+          "depth": "761",
+          "ext": "true",
+          "missionTypes": {
+            "main": true,
+            "secondary": true,
+            "overload": true,
+            "efficiency": false
+          }
+        }
+      },
+      "B": {
+        "B1": {
+          "depth": "702",
+          "ext": "false",
+          "missionTypes": {
+            "main": true,
+            "secondary": true,
+            "overload": true,
+            "efficiency": false
+          }
+        },
+        "B2": {
+          "depth": "521",
+          "ext": "false",
+          "missionTypes": {
+            "main": true,
+            "secondary": true,
+            "overload": true,
+            "efficiency": false
+          }
+        },
+        "B3": {
+          "depth": "784",
+          "ext": "false",
+          "missionTypes": {
+            "main": true,
+            "secondary": true,
+            "overload": false,
+            "efficiency": false
+          }
+        },
+        "B4": {
+          "depth": "798",
+          "ext": "true",
+          "missionTypes": {
+            "main": true,
+            "secondary": false,
+            "overload": false,
+            "efficiency": false
+          }
+        }
+      },
+      "C": {
+        "C1": {
+          "depth": "1004",
+          "ext": "false",
+          "missionTypes": {
+            "main": true,
+            "secondary": true,
+            "overload": false,
+            "efficiency": false
+          }
+        },
+        "C2": {
+          "depth": "990",
+          "ext": "false",
+          "missionTypes": {
+            "main": true,
+            "secondary": true,
+            "overload": true,
+            "efficiency": false
+          }
+        },
+        "C3": {
+          "depth": "1109",
+          "ext": "true",
+          "missionTypes": {
+            "main": true,
+            "secondary": true,
+            "overload": false,
+            "efficiency": false
+          }
+        }
+      },
+      "D": {
+        "D1": {
+          "depth": "842",
+          "ext": "false",
+          "missionTypes": {
+            "main": true,
+            "secondary": true,
+            "overload": false,
+            "efficiency": false
+          }
+        },
+        "D2": {
+          "depth": "1051",
+          "ext": "true",
+          "missionTypes": {
+            "main": true,
+            "secondary": false,
+            "overload": false,
+            "efficiency": false
+          }
+        }
+      },
+      "E": {
+        "E1": {
+          "depth": "984",
+          "ext": "true",
+          "missionTypes": {
+            "main": true,
+            "secondary": false,
+            "overload": false,
+            "efficiency": false
+          }
+        }
+      }
+    },
     "R7": {
       "A": {
         "A1": {
