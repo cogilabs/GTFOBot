@@ -403,8 +403,9 @@ client.on(Events.MessageCreate, async message => {
 	msgContentLowerCase = msgContent.toLowerCase();
 
 	if (msgContent.includes('@everyone') && message.channel != logsChannel) {
+		const mainGuild = client.guilds.cache.find(mainGuild => mainGuild.id == guildId);
 		var emojiName = 'DaudaPing'
-		const reactionEmoji = message.guild.emojis.cache.find(emoji => emoji.name === emojiName);
+		const reactionEmoji = mainGuild.emojis.cache.find(emoji => emoji.name === emojiName);
 		if (reactionEmoji != undefined) {
 			await message.react(reactionEmoji);
 			logToServer(logsChannel, `Reacted \`\` ${emojiName} \`\` to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
