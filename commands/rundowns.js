@@ -49,12 +49,15 @@ module.exports = {
         }
         var j = 0;
         var u = 0;
+        while (parseInt(higher)%4) {
+            higher = parseInt(higher) + 1;
+        }
         rows[j] = new ActionRowBuilder();
         for (var i = 1; i <= higher; i++) {
             RID = 'R' + i;
             if (i > u+4) {
                 j++;
-                u = i;
+                u = i-1;
                 rows[j] = new ActionRowBuilder();
             }
             rows[j].addComponents(
