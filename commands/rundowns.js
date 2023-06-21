@@ -225,7 +225,7 @@ module.exports = {
                 i = i+1;
             }
             if (rundownsInteraction[`${interaction.guild.id}-${interaction.channelId}`] != undefined)
-                try {await rundownsInteraction[`${interaction.guild.id}-${interaction.channelId}`].editReply({ content: title, components: runRows });} catch(error) {
+                try {await rundownsInteraction[`${interaction.guild.id}-${interaction.channelId}`].editReply({ content: runTitle, components: runRows });} catch(error) {
                     console.error(error);
                 }
         }
