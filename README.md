@@ -56,7 +56,7 @@ At the bottom, you can click on a button to mark a sector as complete (or as not
 
 ## Event handling
 
-The bot sends a message when a scheduled server event is created. By checking the name and description of the event for a mission ID, it's able to know where the expediton is going, and sends a message including the mission ID (if no mission ID is found, the message just doesn't mention it):
+The bot sends a message when a scheduled server event is created. By checking the name and description of the event for a mission ID, it's able to know where the expedition is going, and sends a message including the mission ID (if no mission ID is found, the message just doesn't mention it):
   
 > The Warden is sending us in a new expedition to ***R7B1***, so get ready to work together, or die together!  
   
@@ -78,11 +78,11 @@ If progression is disabled[^1], the sentence still appears, but will be more neu
   
 By default, all of these messages will be sent to the first channel named `general` it finds. If there is none, it will send it to the system channel. If no system channel is defined, it doesn't send the messages.  
 You can change this setting (per server) with the `/config`[^1] command.
-The setting is still overideable, by putting `` `ch:channelname` `` somewhere in the event description, the bot will send any message about this event in that selected channel (here, "channelname").  
+The setting is still overideable, by putting `` `ch:channelname` `` somewhere in the event description, the bot will send any message about this event in that selected channel (here, "#channelname").  
   
 The `/config`[^1] command also allows to configure a role to be pinged when event messages are sent.
   
-By default, the bot only reacts ton events with the text `GTFO` in their descriptions, this comportment is toggleable with the `/config`[^1] command.
+By default, the bot only reacts to events with the text `GTFO` in their descriptions, this comportment is toggleable with the `/config`[^1] command.
 
 ## Message reacting and answering
 
@@ -98,9 +98,9 @@ The application is *fully localized* in English and French, taking the server la
 It's also quite easy to localize in other languages (cf. [the english localization file](/localization/en-US.json)).  
   
 If a text channel named `dauda-logs` exists, the bot will log every actions it does in this server in it, along with actions like rebooting or updating.  
-You can of course change it to any other channel (like your “bot-logs” channel for instance) b usin the `/config` command[^1].  
+You can of course change it to any other channel (like your “bot-logs” channel for instance) by using the `/config` command[^1].  
   
-The bot has an `echo` command, allowing admins to speak in his name (Real message author can still be checked in the logs channel(s)).  
+The bot has an `echo` command, allowing admins to speak in his name (Real message author can still be checked in the logs channel).  
 
 ## Configuration
 
