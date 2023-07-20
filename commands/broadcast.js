@@ -4,6 +4,7 @@
 
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const { supportedLocales } = require('../localization/supportedLocales.json');
+const { logToServer } = require('../modules/smallModules.js')
 const cmdName = 'broadcast';
 
 var locFile = new Array();
@@ -144,11 +145,8 @@ module.exports = {
 
 					
 		await interaction.reply({ content: locFile[locale][locale].system?.sending ?? locFile["en-US"]["en-US"].system.sending, ephemeral: true });
-		if (logsChannel != undefined)
-			await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> used \`\` “/${cmdName} ${subcommand}” \`\``);
-
+		logToServer(logsChannel, `${interaction.user.tag} <${interaction.user.id}> used \`\` “/${cmdName} ${subcommand}” \`\``);
 		logsChList.forEach(async channel => await channel.send({ embeds: [embed] }));
 		await interaction.deleteReply();
-		console.log(`@${interaction.user.tag} <@${interaction.user.id}> used “/${cmdName} ${subcommand}”`);
 	},
 };

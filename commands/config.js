@@ -4,6 +4,7 @@
 
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const { supportedLocales } = require('../localization/supportedLocales.json');
+const { logToServer } = require('../modules/smallModules.js')
 const cmdName = 'config';
 
 var locFile = new Array();
@@ -129,7 +130,7 @@ module.exports = {
 			if (eventChannel.type == 0) {
 				configFile[interaction.guild.id].set(`configuration.eventChannel`, eventChannel.id);
 				configFile[interaction.guild.id].save();
-				logMessage = logMessage + eventChannel.name + '(Success) ';
+				logMessage = 'eventCh:' + eventChannel.name + '(Success) ';
 				message = message + `${locFile[locale][locale].system?.eventChannelSetTo ?? locFile["en-US"]["en-US"].system.eventChannelSetTo} “${eventChannel.name}”\n`;
 			} else {
 				logMessage = 'eventCh:' + eventChannel.name + '(failure) ';
@@ -204,8 +205,6 @@ module.exports = {
 
 		await interaction.reply({ content: message, ephemeral: true });
 
-		if (logsChannel != undefined)
-			await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> used \`\` “ /${cmdName} ${logMessage}” \`\``);
-		console.log(`@${interaction.user.tag} <@${interaction.user.id}> used “ /${cmdName} ${logMessage}”`);
+		logToServer(logsChannel, `${interaction.user.tag} <${interaction.user.id}> used \`\` “ /${cmdName} ${logMessage}” \`\``);
 	},
 };

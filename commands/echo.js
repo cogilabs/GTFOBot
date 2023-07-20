@@ -4,6 +4,7 @@
 
 const { SlashCommandBuilder } = require('discord.js');
 const { supportedLocales } = require('../localization/supportedLocales.json');
+const { logToServer } = require('../modules/smallModules.js')
 const cmdName = 'echo';
 
 var locFile = new Array();
@@ -44,8 +45,6 @@ module.exports = {
 		await interaction.reply({ content: locFile[locale][locale].system?.sending ?? locFile["en-US"]["en-US"].system.sending, ephemeral: true });
 		await interaction.channel.send({ content: message });
 		await interaction.deleteReply();
-		console.log(`@${interaction.user.tag} <@${interaction.user.id}> used “/${cmdName} ${message}”`);
-		if (logsChannel != undefined)
-			await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> used \`\` “/${cmdName} ${message}” \`\``);
+		logToServer(logsChannel, `${interaction.user.tag} <${interaction.user.id}> used \`\` “/${cmdName} ${message}” \`\``);
 	},
 };

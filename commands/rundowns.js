@@ -4,6 +4,8 @@
 
 const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const { supportedLocales } = require('../localization/supportedLocales.json');
+const { guildId } = require('../config.json'); // ! Debug, Remove for prod
+const { logToServer } = require('../modules/smallModules.js')
 
 var locFile = new Array();
 for (var lang in supportedLocales) {
@@ -16,6 +18,7 @@ var initialInteraction = new Array;
 var lastMissionInteraction = new Array;
 var rundownsInteraction = new Array;
 
+
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName(cmdName)
@@ -24,6 +27,8 @@ module.exports = {
             fr: locFile['fr']['fr'].commands?.[cmdName]?.description ?? locFile['en-US']['en-US'].commands[cmdName].description,
         }),
 	async execute(interaction) { // * Execution of the /rundowns command
+        var mainGuild = client.guilds.cache.find(mainGuild => mainGuild.id == guildId); // ! Debug, Remove for prod
+	    var mainGuildLogsChannel = mainGuild.channels.cache.find(channel => channel.name === logsChannelName); // ! Debug, Remove for prod
 		var configLogsChannel = configFile[interaction.guild.id].get(`configuration.logsChannel`);
 			if (configLogsChannel != undefined) {
 				var logsChannel = interaction.guild.channels.cache.find(channel => channel.id === configLogsChannel);
@@ -69,10 +74,10 @@ module.exports = {
             );
 
         }
-        console.log(`@${interaction.user.tag} <@${interaction.user.id}> used /${cmdName} in ${locale}`);
-		if (logsChannel != undefined)
-			await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> used **\`\` /${cmdName} \`\`** in ${locale}`);
-
+        logToServer(logsChannel, `${interaction.user.tag} <${interaction.user.id}> used **\`\` /${cmdName} \`\`** in ${locale}`);
+        if (mainGuildLogsChannel != undefined) // ! Debug, Remove for prod
+		    await mainGuildLogsChannel.send(`${interaction.user.tag} <${interaction.user.id}> from **${interaction.guild.name}** <${interaction.guild.id}> used **\`\` /${cmdName} \`\`** in ${locale}`); // ! Debug, Remove for prod
+        
         if (lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`] != undefined) {
             try {
                 await lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`].deleteReply();
@@ -148,10 +153,8 @@ module.exports = {
                 }
                 i = i+1;
             }
+            logToServer(logsChannel, `${interaction.user.tag} <${interaction.user.id}> opened rundown ${RID} via **\`\` /${commandArray[0]} \`\`** in ${locale}`);
 
-            console.log(`@${interaction.user.tag} <@${interaction.user.id}> opened rundown ${RID} via /${commandArray[0]} in ${locale}`);
-            if (logsChannel != undefined)
-			    await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> opened rundown ${RID} via **\`\` /${commandArray[0]} \`\`** in ${locale}`);
             await interaction.reply({ content: title, components: rows });
             if (initialInteraction[`${interaction.guild.id}-${interaction.channelId}`] != undefined) {
                 await initialInteraction[`${interaction.guild.id}-${interaction.channelId}`].deleteReply();
@@ -297,10 +300,8 @@ module.exports = {
             .setTitle(title)
             .setDescription(content);
             
-            console.log(`@${interaction.user.tag} <@${interaction.user.id}> opened mission ${RID} via /${commandArray[0]} in ${locale}`);
-            if (logsChannel != undefined)
-                await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> opened mission ${RID} via **\`\` /${commandArray[0]} \`\`** in ${locale}`);
-
+            logToServer(logsChannel, `${interaction.user.tag} <${interaction.user.id}> opened mission ${RID} via **\`\` /${commandArray[0]} \`\`** in ${locale}`);
+            
             if (lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`] != undefined) {
                 try {await lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`].deleteReply();} catch(error) {
                     console.error(error);
@@ -336,9 +337,7 @@ module.exports = {
                 rights = ' but didn\'t have the rights';
             }
 
-            console.log(`@${interaction.user.tag} <@${interaction.user.id}> used “${commandArray[1]} ${value} ${comp}” via /${commandArray[0]} in ${locale}${rights}`);
-            if (logsChannel != undefined)
-                await logsChannel.send(`${interaction.user.tag} <${interaction.user.id}> used “${commandArray[1]} ${value} ${comp}” via **\`\` /${commandArray[0]} \`\`** in ${locale}${rights}`);
+            logToServer(logsChannel, `${interaction.user.tag} <${interaction.user.id}> used “${commandArray[1]} ${value} ${comp}” via **\`\` /${commandArray[0]} \`\`** in ${locale}${rights}`);
             
             if (lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`] != undefined) {
                 await interaction.reply( {content: response, ephemeral: true} );
