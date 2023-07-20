@@ -19,6 +19,8 @@ for (var lang in supportedLocales) {
     locFile[lang] = require('./localization/' + lang + '.json');
 }
 
+var playingTeams = 0;
+
 const editJsonFile = require('edit-json-file');
 
 var outputFile = editJsonFile('./outputWeb/outputFile.json')
@@ -229,8 +231,12 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 
 		logToServer(logsChannel, `Event “${event.name}”${MIDp} started\nSent it to \`\` ${channel.name} \`\``);
 
-		if (event.guild.id == guildId)
-			client.user.setPresence({ activities: [{ name: `GTFO${MIDp}` }], status: 'dnd' });
+		playingTeams++;
+		
+		if (playingTeams == 1)
+			client.user.setPresence({ activities: [{ name: `GTFO${MIDp}` }], status: 'online' });
+		else
+			client.user.setPresence({ activities: [{ name: `GTFO (with ${playingTeams} teams)` }], status: 'online' });
 	}
 
 	// Event finished
@@ -258,8 +264,15 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 				}
 			}
 		}
-		if (event.guild.id == guildId)
+
+		if (playingTeams > 0) playingTeams--;
+		
+		if (playingTeams == 0)
 			client.user.setPresence({ activities: [{ name: 'Available', type: 4 }], status: 'online' });
+		else if (playingTeams == 1)
+			client.user.setPresence({ activities: [{ name: `GTFO (with 1 team)` }], status: 'online' });
+		else
+			client.user.setPresence({ activities: [{ name: `GTFO (with ${playingTeams} teams)` }], status: 'online' });
 	}
 
 	// Event modified
