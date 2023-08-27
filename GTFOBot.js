@@ -403,17 +403,23 @@ client.on(Events.MessageCreate, async message => {
 		if (message.guild.preferredLocale == loc) locale = message.guild.preferredLocale;
 	}
 	if (locale == '') locale = 'en-US';
+
+	msgContent = message.content;
+	msgContentLowerCase = msgContent.toLowerCase();
+
+	if (msgContent.indexOf("\n") == -1) {
+		msgContent = `\`\` ${msgContent} \`\``;
+	} else {
+		msgContent = `\`\`\`${msgContent}\`\`\``;
+	}
 	
 	if ((message.content).includes('Date :') && message.channel != logsChannel) {
 		await message.react('✅');
 		await message.react('❌');
-		logToServer(logsChannel, `Reacted “✅” and “❌” to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
+		logToServer(logsChannel, `Reacted “✅” and “❌” to ${msgContent} by \`\` ${message.author.tag} \`\``);
 	}
 
 	if (message.author == client.user) return;
-
-	msgContent = message.content;
-	msgContentLowerCase = msgContent.toLowerCase();
 
 	if (msgContent.includes('@everyone') && message.channel != logsChannel) {
 		const mainGuild = client.guilds.cache.find(mainGuild => mainGuild.id == guildId);
@@ -421,15 +427,15 @@ client.on(Events.MessageCreate, async message => {
 		const reactionEmoji = mainGuild.emojis.cache.find(emoji => emoji.name === emojiName);
 		if (reactionEmoji != undefined) {
 			await message.react(reactionEmoji);
-			logToServer(logsChannel, `Reacted \`\` ${emojiName} \`\` to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
+			logToServer(logsChannel, `Reacted \`\` ${emojiName} \`\` to ${msgContent} by \`\` ${message.author.tag} \`\``);
 		} else {
-			logToServer(logsChannel, `Tried to react to \`\` ${msgContent} \`\` by ${message.author.tag} but no \`\` ${emojiName} \`\` emoji was found`);
+			logToServer(logsChannel, `Tried to react to ${msgContent} by ${message.author.tag} but no \`\` ${emojiName} \`\` emoji was found`);
 		}
 	}
 
 	if (locFile[locale][locale].chat?.ask && (msgContentLowerCase.includes(locFile[locale][locale].chat.ask) && msgContentLowerCase.includes('dauda'))) {
 		await message.react('❓');
-		logToServer(logsChannel, `Reacted \`\` ❓ \`\` to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
+		logToServer(logsChannel, `Reacted \`\` ❓ \`\` to ${msgContent} by \`\` ${message.author.tag} \`\``);
 	}
 
 	function checker(x) {
@@ -469,7 +475,7 @@ client.on(Events.MessageCreate, async message => {
 				}
 				if (reaction != '' && message.channel != logsChannel) {
 					await message.react(reaction);
-					logToServer(logsChannel, `Reacted \`\` ${reaction} \`\` to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
+					logToServer(logsChannel, `Reacted \`\` ${reaction} \`\` to ${msgContent} by \`\` ${message.author.tag} \`\``);
 				}
 				if (reaction == '❔' && message.channel != logsChannel) {
 					await message.reply({ content: (locFile[locale][locale].system?.missionNotFound ?? locFile["en-US"]["en-US"].system.missionNotFound).replace('#', MID), ephemeral: true });
@@ -483,7 +489,7 @@ client.on(Events.MessageCreate, async message => {
 		var response = locFile[locale][locale].chat?.youreWelcome ?? locFile["en-US"]["en-US"].chat.youreWelcome;
 		var answer = response[Math.floor(Math.random() * response.length)];
 		await message.reply(answer);
-		logToServer(logsChannel, `Answered “${answer}” to \`\` ${msgContent} \`\` by \`\` ${message.author.tag} \`\``);
+		logToServer(logsChannel, `Answered “${answer}” to ${msgContent} by \`\` ${message.author.tag} \`\``);
 	}
 });
 
