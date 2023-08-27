@@ -125,20 +125,38 @@ module.exports = {
             for (var lt in rundowns[RID]) {
                 rows[i] = new ActionRowBuilder();
                 for (var nb in rundowns[RID][lt]) {
+
+                    if (nb == "A1") {
+                        
+                    }
+
+                    if (nb.charCodeAt(0) == "A".charCodeAt(0)) { // if lt == A
+
+                    }
+
+                    if (nb.charCodeAt(1) != "1".charCodeAt(0)) { // if mnb != 1
+
+                    }
+
+
+
+
                     if (!configFile[interaction.guild.id].get(`configuration.progressionDisabled`)) {
                         if (completion[interaction.guild.id].completion[RID][lt][nb].completed.main) {
                             rows[i].addComponents(
                                 new ButtonBuilder()
                                     .setCustomId(cmdName + '-mission-' + RID + nb)
                                     .setLabel(nb)
-                                    .setStyle(ButtonStyle.Success),
+                                    .setStyle(ButtonStyle.Success)
+                                    .setDisabled(false),
                             );
                         } else {
                             rows[i].addComponents(
                                 new ButtonBuilder()
                                     .setCustomId(cmdName + '-mission-' + RID + nb)
                                     .setLabel(nb)
-                                    .setStyle(ButtonStyle.Secondary),
+                                    .setStyle(ButtonStyle.Secondary)
+                                    .setDisabled(false),
                             );
                         }
                     } else {
@@ -146,7 +164,8 @@ module.exports = {
                             new ButtonBuilder()
                                 .setCustomId(cmdName + '-mission-' + RID + nb)
                                 .setLabel(nb)
-                                .setStyle(ButtonStyle.Secondary),
+                                .setStyle(ButtonStyle.Secondary)
+                                .setDisabled(false),
                         );
 
                     }
