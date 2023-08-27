@@ -125,16 +125,13 @@ module.exports = {
             for (var lt in rundowns[RID]) {
                 rows[i] = new ActionRowBuilder();
                 for (var nb in rundowns[RID][lt]) {
-
-                    if (nb == "A1") {
-                        
-                    }
-
-                    if (nb.charCodeAt(0) == "A".charCodeAt(0)) { // if lt == A
-
-                    }
+                    var disabled = false;
 
                     if (nb.charCodeAt(1) != "1".charCodeAt(0)) { // if mnb != 1
+                        if (completion[interaction.guild.id].completion[RID][lt][nb].completed.main) {
+
+                        }
+                    } else { // if mnb == 1
 
                     }
 
@@ -148,7 +145,7 @@ module.exports = {
                                     .setCustomId(cmdName + '-mission-' + RID + nb)
                                     .setLabel(nb)
                                     .setStyle(ButtonStyle.Success)
-                                    .setDisabled(false),
+                                    .setDisabled(disabled),
                             );
                         } else {
                             rows[i].addComponents(
@@ -156,7 +153,7 @@ module.exports = {
                                     .setCustomId(cmdName + '-mission-' + RID + nb)
                                     .setLabel(nb)
                                     .setStyle(ButtonStyle.Secondary)
-                                    .setDisabled(false),
+                                    .setDisabled(disabled),
                             );
                         }
                     } else {
@@ -165,7 +162,7 @@ module.exports = {
                                 .setCustomId(cmdName + '-mission-' + RID + nb)
                                 .setLabel(nb)
                                 .setStyle(ButtonStyle.Secondary)
-                                .setDisabled(false),
+                                .setDisabled(disabled),
                         );
 
                     }
