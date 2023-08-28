@@ -125,19 +125,27 @@ module.exports = {
             for (var lt in rundowns[RID]) {
                 rows[i] = new ActionRowBuilder();
                 for (var nb in rundowns[RID][lt]) {
-                    var disabled = false;
+                    var playable = true;
+                    var style = "Primary";
 
                     if (nb.charCodeAt(1) != "1".charCodeAt(0)) { // if mnb != 1
                         if (!completion[interaction.guild.id].completion[RID][lt][String.fromCharCode(nb.charCodeAt(0), "1".charCodeAt(0))].completed.main) {
-                            disabled = true;
+                            playable = false;
+                            style = "Secondary";
                         }
                     } else { // if mnb == 1
                         if (nb.charCodeAt(0) != "A".charCodeAt(0)) {
                             if (!completion[interaction.guild.id].completion[RID][String.fromCharCode(nb.charCodeAt(0)-1)][String.fromCharCode(nb.charCodeAt(0)-1, "1".charCodeAt(0))].completed.main) {
-                                disabled = true;
+                                playable = false;
+                                style = "Secondary";
                             }
                         }
                     }
+                    if (!configFile[interaction.guild.id].get(`configuration.unlocking`))
+                        playable = true; // * Unlocking mechanism
+
+                    if (!configFile[interaction.guild.id].get(`configuration.unlocking`))
+                    style = "Primary"; // * Visually playable
 
                     if (!configFile[interaction.guild.id].get(`configuration.progressionDisabled`)) {
                         if (completion[interaction.guild.id].completion[RID][lt][nb].completed.main) {
@@ -145,16 +153,15 @@ module.exports = {
                                 new ButtonBuilder()
                                     .setCustomId(cmdName + '-mission-' + RID + nb)
                                     .setLabel(nb)
-                                    .setStyle(ButtonStyle.Success)
-                                    .setDisabled(disabled),
+                                    .setStyle(ButtonStyle.Success),
                             );
                         } else {
                             rows[i].addComponents(
                                 new ButtonBuilder()
                                     .setCustomId(cmdName + '-mission-' + RID + nb)
                                     .setLabel(nb)
-                                    .setStyle(ButtonStyle.Secondary)
-                                    .setDisabled(disabled),
+                                    .setStyle(ButtonStyle[style])
+                                    .setDisabled(!playable),
                             );
                         }
                     } else {
@@ -163,7 +170,7 @@ module.exports = {
                                 .setCustomId(cmdName + '-mission-' + RID + nb)
                                 .setLabel(nb)
                                 .setStyle(ButtonStyle.Secondary)
-                                .setDisabled(disabled),
+                                .setDisabled(!playable),
                         );
 
                     }
@@ -227,35 +234,42 @@ module.exports = {
                 runRows[i] = new ActionRowBuilder();
                 for (var nb in rundowns[MID][lt]) {
                     
-                var disabled = false;
+                var playable = true;
+                var style = "Primary";
 
                 if (nb.charCodeAt(1) != "1".charCodeAt(0)) { // if mnb != 1
                     if (!completion[interaction.guild.id].completion[MID][lt][String.fromCharCode(nb.charCodeAt(0), "1".charCodeAt(0))].completed.main) {
-                        disabled = true;
+                        playable = false;
+                        style = "Secondary";
                     }
                 } else { // if mnb == 1
                     if (nb.charCodeAt(0) != "A".charCodeAt(0)) {
                         if (!completion[interaction.guild.id].completion[MID][String.fromCharCode(nb.charCodeAt(0)-1)][String.fromCharCode(nb.charCodeAt(0)-1, "1".charCodeAt(0))].completed.main) {
-                            disabled = true;
+                            playable = false;
+                            style = "Secondary";
                         }
                     }
                 }
+                if (!configFile[interaction.guild.id].get(`configuration.unlocking`))
+                    playable = true; // * Unlocking mechanism
+
+                if (!configFile[interaction.guild.id].get(`configuration.unlocking`))
+                    style = "Primary"; // * Visually playable
 
                     if (completion[interaction.guild.id].completion[MID][lt][nb].completed.main) {
                         runRows[i].addComponents(
                             new ButtonBuilder()
                                 .setCustomId(cmdName + '-mission-' + MID + nb)
                                 .setLabel(nb)
-                                .setStyle(ButtonStyle.Success)
-                                .setDisabled(disabled),
+                                .setStyle(ButtonStyle.Success),
                         );
                     } else {
                         runRows[i].addComponents(
                             new ButtonBuilder()
                                 .setCustomId(cmdName + '-mission-' + MID + nb)
                                 .setLabel(nb)
-                                .setStyle(ButtonStyle.Secondary)
-                                .setDisabled(disabled),
+                                .setStyle(ButtonStyle[style])
+                                .setDisabled(!playable),
                         );
                     }
                 }
@@ -282,6 +296,49 @@ module.exports = {
                                 + '\n`' + (locFile[locale][locale].missions?.sectors ?? locFile["en-US"]["en-US"].missions.sectors) + '`\n';
                             var i = 0;
                             for (var mt in rundowns[run][lt][id].missionTypes) {
+
+                                var completeDisabled = false;
+
+                                if (id.charCodeAt(1) != "1".charCodeAt(0)) { // if mnb != 1
+                                    if (!completion[interaction.guild.id].completion[run][lt][String.fromCharCode(id.charCodeAt(0), "1".charCodeAt(0))].completed.main) {
+                                        completeDisabled = true;
+                                    }
+                                } else { // if mnb == 1
+                                    if (id.charCodeAt(0) != "A".charCodeAt(0)) {
+                                        if (!completion[interaction.guild.id].completion[run][String.fromCharCode(id.charCodeAt(0)-1)][String.fromCharCode(id.charCodeAt(0)-1, "1".charCodeAt(0))].completed.main) {
+                                            completeDisabled = true;
+                                        }
+                                    }
+                                }
+
+                                if (mt != "main") {
+                                    if (!completion[interaction.guild.id].completion[run][lt][id].completed.main) {
+                                        completeDisabled = true;
+                                    }
+                                }
+
+                                var uncompleteDisabled = false;
+                                
+                                if (mt == "main") {
+                                    if (id.charCodeAt(1) == "1".charCodeAt(0)) { // if mnb == 1
+                                        for (var udnb in rundowns[run][lt]) {
+                                            if (completion[interaction.guild.id].completion[run][lt][udnb].completed.main) {
+                                                if (udnb.charCodeAt(1) != "1".charCodeAt(0)) uncompleteDisabled = true;
+                                            }
+                                        }
+                                        if (completion[interaction.guild.id].completion[run][String.fromCharCode(id.charCodeAt(0)+1)][String.fromCharCode(id.charCodeAt(0)+1, "1".charCodeAt(0))].completed.main) {
+                                            uncompleteDisabled = true;
+                                        }
+                                    }
+                                    for (var mt2 in rundowns[run][lt][id].missionTypes) {
+                                        if (mt2 != "main") {
+                                            if (completion[interaction.guild.id].completion[run][lt][id].completed[mt2]) {
+                                                uncompleteDisabled = true;
+                                            }
+                                        }
+                                    }
+                                }
+
                                 if (rundowns[run][lt][id].missionTypes[mt] == true) {
                                     if(!configFile[interaction.guild.id].get(`configuration.progressionDisabled`)) {
                                         cpltd[mt] = completion[interaction.guild.id].completion[run][lt][id].completed[mt]
@@ -291,7 +348,8 @@ module.exports = {
                                                 new ButtonBuilder()
                                                     .setCustomId(cmdName + '-complete-' + RID + '-' + mt + '-true-' + cpltd[mt].toString())
                                                     .setLabel((locFile[locale][locale].missions?.completeSector ?? locFile["en-US"]["en-US"].missions.completeSector).replace('#', locFile[locale][locale].sectors?.[mt] ?? locFile["en-US"]["en-US"].sectors[mt]))
-                                                    .setStyle(ButtonStyle.Success),
+                                                    .setStyle(ButtonStyle.Success)
+                                                    .setDisabled(completeDisabled),
                                                 );
                                             i++;
                                         } else {
@@ -299,7 +357,8 @@ module.exports = {
                                                 new ButtonBuilder()
                                                     .setCustomId(cmdName + '-complete-' + RID + '-' + mt + '-false-' + cpltd[mt].toString())
                                                     .setLabel((locFile[locale][locale].missions?.uncompleteSector ?? locFile["en-US"]["en-US"].missions.uncompleteSector).replace('#', locFile[locale][locale].sectors?.[mt] ?? locFile["en-US"]["en-US"].sectors[mt]))
-                                                    .setStyle(ButtonStyle.Danger),
+                                                    .setStyle(ButtonStyle.Danger)
+                                                    .setDisabled(uncompleteDisabled),
                                             );
                                             i++;
                                         }
