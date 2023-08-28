@@ -144,8 +144,8 @@ module.exports = {
                     if (!configFile[interaction.guild.id].get(`configuration.unlocking`))
                         playable = true; // * Unlocking mechanism
 
-                    if (!configFile[interaction.guild.id].get(`configuration.unlocking`))
-                    style = "Primary"; // * Visually playable
+                    if (!configFile[interaction.guild.id].get(`configuration.playable`))
+                        style = "Primary"; // * Visually playable
 
                     if (!configFile[interaction.guild.id].get(`configuration.progressionDisabled`)) {
                         if (completion[interaction.guild.id].completion[RID][lt][nb].completed.main) {
@@ -253,7 +253,7 @@ module.exports = {
                 if (!configFile[interaction.guild.id].get(`configuration.unlocking`))
                     playable = true; // * Unlocking mechanism
 
-                if (!configFile[interaction.guild.id].get(`configuration.unlocking`))
+                if (!configFile[interaction.guild.id].get(`configuration.playable`))
                     style = "Primary"; // * Visually playable
 
                     if (completion[interaction.guild.id].completion[MID][lt][nb].completed.main) {
