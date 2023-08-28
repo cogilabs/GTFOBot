@@ -21,43 +21,43 @@ module.exports = {
         })
 		.addChannelOption(option => 
             option
-            .setName(locFile['en-US']['en-US'].commands[cmdName].option1.name)
+            .setName(locFile['en-US']['en-US'].commands[cmdName].eventchannel.name)
 			.setNameLocalizations({
-				fr: locFile['fr']['fr'].commands?.[cmdName]?.option1?.name ?? locFile['en-US']['en-US'].commands[cmdName].option1.name,
+				fr: locFile['fr']['fr'].commands?.[cmdName]?.eventchannel?.name ?? locFile['en-US']['en-US'].commands[cmdName].eventchannel.name,
 			})
-			.setDescription(locFile['en-US']['en-US'].commands[cmdName].option1.description)
+			.setDescription(locFile['en-US']['en-US'].commands[cmdName].eventchannel.description)
 			.setDescriptionLocalizations({
-				fr: locFile['fr']['fr'].commands?.[cmdName]?.option1?.description ?? locFile['en-US']['en-US'].commands[cmdName].option1.description,
+				fr: locFile['fr']['fr'].commands?.[cmdName]?.eventchannel?.description ?? locFile['en-US']['en-US'].commands[cmdName].eventchannel.description,
 			}))
 		.addRoleOption(option => 
             option
-            .setName(locFile['en-US']['en-US'].commands[cmdName].option2.name)
+            .setName(locFile['en-US']['en-US'].commands[cmdName].prisonersrole.name)
 			.setNameLocalizations({
-				fr: locFile['fr']['fr'].commands?.[cmdName]?.option2?.name ?? locFile['en-US']['en-US'].commands[cmdName].option2.name,
+				fr: locFile['fr']['fr'].commands?.[cmdName]?.prisonersrole?.name ?? locFile['en-US']['en-US'].commands[cmdName].prisonersrole.name,
 			})
-			.setDescription(locFile['en-US']['en-US'].commands[cmdName].option2.description)
+			.setDescription(locFile['en-US']['en-US'].commands[cmdName].prisonersrole.description)
 			.setDescriptionLocalizations({
-				fr: locFile['fr']['fr'].commands?.[cmdName]?.option2?.description ?? locFile['en-US']['en-US'].commands[cmdName].option2.description,
+				fr: locFile['fr']['fr'].commands?.[cmdName]?.prisonersrole?.description ?? locFile['en-US']['en-US'].commands[cmdName].prisonersrole.description,
 			}))
 		.addChannelOption(option => 
 			option
-			.setName(locFile['en-US']['en-US'].commands[cmdName].option3.name)
+			.setName(locFile['en-US']['en-US'].commands[cmdName].logschannel.name)
 			.setNameLocalizations({
-				fr: locFile['fr']['fr'].commands?.[cmdName]?.option3?.name ?? locFile['en-US']['en-US'].commands[cmdName].option3.name,
+				fr: locFile['fr']['fr'].commands?.[cmdName]?.logschannel?.name ?? locFile['en-US']['en-US'].commands[cmdName].logschannel.name,
 			})
-			.setDescription(locFile['en-US']['en-US'].commands[cmdName].option3.description)
+			.setDescription(locFile['en-US']['en-US'].commands[cmdName].logschannel.description)
 			.setDescriptionLocalizations({
-				fr: locFile['fr']['fr'].commands?.[cmdName]?.option3?.description ?? locFile['en-US']['en-US'].commands[cmdName].option3.description,
+				fr: locFile['fr']['fr'].commands?.[cmdName]?.logschannel?.description ?? locFile['en-US']['en-US'].commands[cmdName].logschannel.description,
 			}))
 		.addStringOption(option =>
 			option
-			.setName(locFile['en-US']['en-US'].commands[cmdName].option4.name)
+			.setName(locFile['en-US']['en-US'].commands[cmdName].eventrequirement.name)
 			.setNameLocalizations({
-				fr: locFile['fr']['fr'].commands?.[cmdName]?.option4?.name ?? locFile['en-US']['en-US'].commands[cmdName].option4.name,
+				fr: locFile['fr']['fr'].commands?.[cmdName]?.eventrequirement?.name ?? locFile['en-US']['en-US'].commands[cmdName].eventrequirement.name,
 			})
-			.setDescription(locFile['en-US']['en-US'].commands[cmdName].option4.description)
+			.setDescription(locFile['en-US']['en-US'].commands[cmdName].eventrequirement.description)
 			.setDescriptionLocalizations({
-				fr: locFile['fr']['fr'].commands?.[cmdName]?.option4?.description ?? locFile['en-US']['en-US'].commands[cmdName].option4.description,
+				fr: locFile['fr']['fr'].commands?.[cmdName]?.eventrequirement?.description ?? locFile['en-US']['en-US'].commands[cmdName].eventrequirement.description,
 			})
 			.addChoices(
 				{ name: locFile['en-US']['en-US'].system.enable, 
@@ -73,13 +73,13 @@ module.exports = {
 			))
 		.addStringOption(option =>
 			option
-			.setName(locFile['en-US']['en-US'].commands[cmdName].option5.name)
+			.setName(locFile['en-US']['en-US'].commands[cmdName].progression.name)
 			.setNameLocalizations({
-				fr: locFile['fr']['fr'].commands?.[cmdName]?.option5?.name ?? locFile['en-US']['en-US'].commands[cmdName].option5.name,
+				fr: locFile['fr']['fr'].commands?.[cmdName]?.progression?.name ?? locFile['en-US']['en-US'].commands[cmdName].progression.name,
 			})
-			.setDescription(locFile['en-US']['en-US'].commands[cmdName].option5.description)
+			.setDescription(locFile['en-US']['en-US'].commands[cmdName].progression.description)
 			.setDescriptionLocalizations({
-				fr: locFile['fr']['fr'].commands?.[cmdName]?.option5?.description ?? locFile['en-US']['en-US'].commands[cmdName].option5.description,
+				fr: locFile['fr']['fr'].commands?.[cmdName]?.progression?.description ?? locFile['en-US']['en-US'].commands[cmdName].progression.description,
 			})
 			.addChoices(
 				{ name: locFile['en-US']['en-US'].system.enable, 
@@ -95,13 +95,13 @@ module.exports = {
 			))
 		.addStringOption(option =>
 			option
-			.setName(locFile['en-US']['en-US'].commands[cmdName].option6.name)
+			.setName(locFile['en-US']['en-US'].commands[cmdName].resetprogression.name)
 			.setNameLocalizations({
-				fr: locFile['fr']['fr'].commands?.[cmdName]?.option6?.name ?? locFile['en-US']['en-US'].commands[cmdName].option6.name,
+				fr: locFile['fr']['fr'].commands?.[cmdName]?.resetprogression?.name ?? locFile['en-US']['en-US'].commands[cmdName].resetprogression.name,
 			})
-			.setDescription(locFile['en-US']['en-US'].commands[cmdName].option6.description)
+			.setDescription(locFile['en-US']['en-US'].commands[cmdName].resetprogression.description)
 			.setDescriptionLocalizations({
-				fr: locFile['fr']['fr'].commands?.[cmdName]?.option6?.description ?? locFile['en-US']['en-US'].commands[cmdName].option6.description,
+				fr: locFile['fr']['fr'].commands?.[cmdName]?.resetprogression?.description ?? locFile['en-US']['en-US'].commands[cmdName].resetprogression.description,
 			})
 			)
 		.setDefaultMemberPermissions(0)
@@ -120,12 +120,12 @@ module.exports = {
 			} else {
 				var logsChannel = interaction.guild.channels.cache.find(channel => channel.name === logsChannelName);
 			}
-		const eventChannel = interaction.options.getChannel(locFile['en-US']['en-US'].commands[cmdName].option1.name);
-		const role = interaction.options.getRole(locFile['en-US']['en-US'].commands[cmdName].option2.name);
-		const newLogsChannel = interaction.options.getChannel(locFile['en-US']['en-US'].commands[cmdName].option3.name);
-		const eventRequirement = interaction.options.getString(locFile['en-US']['en-US'].commands[cmdName].option4.name);
-		const progressionEnabled = interaction.options.getString(locFile['en-US']['en-US'].commands[cmdName].option5.name);
-		const resetProgression = interaction.options.getString(locFile['en-US']['en-US'].commands[cmdName].option6.name);
+		const eventChannel = interaction.options.getChannel(locFile['en-US']['en-US'].commands[cmdName].eventchannel.name);
+		const role = interaction.options.getRole(locFile['en-US']['en-US'].commands[cmdName].prisonersrole.name);
+		const newLogsChannel = interaction.options.getChannel(locFile['en-US']['en-US'].commands[cmdName].logschannel.name);
+		const eventRequirement = interaction.options.getString(locFile['en-US']['en-US'].commands[cmdName].eventrequirement.name);
+		const progressionEnabled = interaction.options.getString(locFile['en-US']['en-US'].commands[cmdName].progression.name);
+		const resetProgression = interaction.options.getString(locFile['en-US']['en-US'].commands[cmdName].resetprogression.name);
 		if (eventChannel != null) {
 			if (eventChannel.type == 0) {
 				configFile[interaction.guild.id].set(`configuration.eventChannel`, eventChannel.id);
@@ -176,7 +176,7 @@ module.exports = {
 		}
 
 		if (resetProgression != null) {
-			if (resetProgression == (locFile[locale][locale].commands?.[cmdName]?.option6?.confirm ?? locFile["en-US"]["en-US"].commands[cmdName].option6.confirm)) {
+			if (resetProgression == (locFile[locale][locale].commands?.[cmdName]?.resetprogression?.confirm ?? locFile["en-US"]["en-US"].commands[cmdName].resetprogression.confirm)) {
 				for (var run in rundowns) {
 					for (var lt in rundowns[run]) {
 						for (var mission in rundowns[run][lt]) {
