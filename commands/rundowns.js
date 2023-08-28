@@ -141,10 +141,10 @@ module.exports = {
                             }
                         }
                     }
-                    if (!configFile[interaction.guild.id].get(`configuration.unlocking`))
+                    if (!configFile[interaction.guild.id].get(`configuration.unlockMechanism`))
                         playable = true; // * Unlocking mechanism
 
-                    if (!configFile[interaction.guild.id].get(`configuration.playable`))
+                    if (!configFile[interaction.guild.id].get(`configuration.visuallyPlayable`))
                         style = "Primary"; // * Visually playable
 
                     if (!configFile[interaction.guild.id].get(`configuration.progressionDisabled`)) {
@@ -250,10 +250,10 @@ module.exports = {
                         }
                     }
                 }
-                if (!configFile[interaction.guild.id].get(`configuration.unlocking`))
+                if (!configFile[interaction.guild.id].get(`configuration.unlockMechanism`))
                     playable = true; // * Unlocking mechanism
 
-                if (!configFile[interaction.guild.id].get(`configuration.playable`))
+                if (!configFile[interaction.guild.id].get(`configuration.visuallyPlayable`))
                     style = "Primary"; // * Visually playable
 
                     if (completion[interaction.guild.id].completion[MID][lt][nb].completed.main) {

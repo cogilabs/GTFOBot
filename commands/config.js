@@ -95,6 +95,50 @@ module.exports = {
 			))
 		.addStringOption(option =>
 			option
+			.setName(locFile['en-US']['en-US'].commands[cmdName].unlock.name)
+			.setNameLocalizations({
+				fr: locFile['fr']['fr'].commands?.[cmdName]?.unlock?.name ?? locFile['en-US']['en-US'].commands[cmdName].unlock.name,
+			})
+			.setDescription(locFile['en-US']['en-US'].commands[cmdName].unlock.description)
+			.setDescriptionLocalizations({
+				fr: locFile['fr']['fr'].commands?.[cmdName]?.unlock?.description ?? locFile['en-US']['en-US'].commands[cmdName].unlock.description,
+			})
+			.addChoices(
+				{ name: locFile['en-US']['en-US'].system.enable, 
+				name_localizations: {
+					fr: locFile['fr']['fr'].system?.enable ?? locFile['en-US']['en-US'].system.enable,
+				},
+				value: 'enabled' },
+				{ name: locFile['en-US']['en-US'].system.disable, 
+				name_localizations: {
+					fr: locFile['fr']['fr'].system?.disable ?? locFile['en-US']['en-US'].system.disable,
+				},
+				value: 'disabled' },
+			))
+		.addStringOption(option =>
+			option
+			.setName(locFile['en-US']['en-US'].commands[cmdName].playable.name)
+			.setNameLocalizations({
+				fr: locFile['fr']['fr'].commands?.[cmdName]?.playable?.name ?? locFile['en-US']['en-US'].commands[cmdName].playable.name,
+			})
+			.setDescription(locFile['en-US']['en-US'].commands[cmdName].playable.description)
+			.setDescriptionLocalizations({
+				fr: locFile['fr']['fr'].commands?.[cmdName]?.playable?.description ?? locFile['en-US']['en-US'].commands[cmdName].playable.description,
+			})
+			.addChoices(
+				{ name: locFile['en-US']['en-US'].system.enable, 
+				name_localizations: {
+					fr: locFile['fr']['fr'].system?.enable ?? locFile['en-US']['en-US'].system.enable,
+				},
+				value: 'enabled' },
+				{ name: locFile['en-US']['en-US'].system.disable, 
+				name_localizations: {
+					fr: locFile['fr']['fr'].system?.disable ?? locFile['en-US']['en-US'].system.disable,
+				},
+				value: 'disabled' },
+			))
+		.addStringOption(option =>
+			option
 			.setName(locFile['en-US']['en-US'].commands[cmdName].resetprogression.name)
 			.setNameLocalizations({
 				fr: locFile['fr']['fr'].commands?.[cmdName]?.resetprogression?.name ?? locFile['en-US']['en-US'].commands[cmdName].resetprogression.name,
@@ -125,6 +169,8 @@ module.exports = {
 		const newLogsChannel = interaction.options.getChannel(locFile['en-US']['en-US'].commands[cmdName].logschannel.name);
 		const eventRequirement = interaction.options.getString(locFile['en-US']['en-US'].commands[cmdName].eventrequirement.name);
 		const progressionEnabled = interaction.options.getString(locFile['en-US']['en-US'].commands[cmdName].progression.name);
+		const unlockMechanism = interaction.options.getString(locFile['en-US']['en-US'].commands[cmdName].unlock.name);
+		const visuallyPlayable = interaction.options.getString(locFile['en-US']['en-US'].commands[cmdName].playable.name);
 		const resetProgression = interaction.options.getString(locFile['en-US']['en-US'].commands[cmdName].resetprogression.name);
 		if (eventChannel != null) {
 			if (eventChannel.type == 0) {
@@ -175,6 +221,22 @@ module.exports = {
 			message = message + `${locFile[locale][locale].system?.progressionModeSet ?? locFile["en-US"]["en-US"].system.progressionModeSet} ${locFile[locale][locale].system?.[progressionEnabled] ?? locFile["en-US"]["en-US"].system[progressionEnabled]}\n`;
 		}
 
+		if (unlockMechanism != null) {
+			configFile[interaction.guild.id].set(`configuration.progressionDisabled`, (unlockMechanism === "disabled"));
+			configFile[interaction.guild.id].save();
+
+			logMessage = logMessage + 'unlockingMechanism:' + unlockMechanism + ' ';
+			message = message + `${locFile[locale][locale].system?.unlockMechanismSet ?? locFile["en-US"]["en-US"].system.unlockMechanismSet} ${locFile[locale][locale].system?.[unlockMechanism] ?? locFile["en-US"]["en-US"].system[unlockMechanism]}\n`;
+		}
+
+		if (visuallyPlayable != null) {
+			configFile[interaction.guild.id].set(`configuration.progressionDisabled`, (visuallyPlayable === "disabled"));
+			configFile[interaction.guild.id].save();
+
+			logMessage = logMessage + 'visuallyPlayable:' + visuallyPlayable + ' ';
+			message = message + `${locFile[locale][locale].system?.visuallyPlayableSet ?? locFile["en-US"]["en-US"].system.visuallyPlayableSet} ${locFile[locale][locale].system?.[visuallyPlayable] ?? locFile["en-US"]["en-US"].system[visuallyPlayable]}\n`;
+		}
+
 		if (resetProgression != null) {
 			if (resetProgression == (locFile[locale][locale].commands?.[cmdName]?.resetprogression?.confirm ?? locFile["en-US"]["en-US"].commands[cmdName].resetprogression.confirm)) {
 				for (var run in rundowns) {
@@ -199,7 +261,7 @@ module.exports = {
 			}
 		}
 		
-		if(role == null && eventChannel == null && newLogsChannel == null && eventRequirement == null && progressionEnabled == null && resetProgression == null) {
+		if(role == null && eventChannel == null && newLogsChannel == null && eventRequirement == null && progressionEnabled == null && unlockMechanism == null && visuallyPlayable == null && resetProgression == null) {
 			message = message + (locFile[locale][locale].system?.noOptionsProvided ?? locFile["en-US"]["en-US"].system.noOptionsProvided);
 		}
 
