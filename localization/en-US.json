@@ -412,7 +412,7 @@
       },
       "echo": {
           "description": "Send a message in the current channel",
-          "option1": "The content of the message to send"
+          "message": "The content of the message to send"
       },
       "broadcast": {
         "description": "Send a message to all logs channels",
@@ -420,11 +420,11 @@
           "custom": {
             "name": "custom",
             "description": "Send a message to all logs channels",
-            "option1": {
+            "message": {
               "name": "message",
               "description": "The content of the message to send"
             },
-            "option2": {
+            "color": {
               "name": "color",
               "description": "The color of the embed band",
               "red": "red",
@@ -446,27 +446,27 @@
       },
       "config": {
         "description": "Configuration of the bot",
-        "option1": {
+        "eventchannel": {
           "name": "eventchannel",
           "description": "The channel where the event messages are sent"
         },
-        "option2": {
+        "prisonersrole": {
           "name": "prisonersrole",
           "description": "The role GTFO players have on the server (defaults to any role named “Prisoners”)"
         },
-        "option3": {
+        "logschannel": {
           "name": "logschannel",
           "description": "The channel where the logs are sent (defaults to “dauda-logs”)"
         },
-        "option4": {
+        "eventrequirement": {
           "name": "eventrequirement",
           "description": "Whether the events need \"GTFO\" in their description to be taken in account by the bot or not"
         },
-        "option5": {
+        "progression": {
           "name": "progression",
           "description": "Wether to enable or disable the progression function (enabled by default)"
         },
-        "option6": {
+        "resetprogression": {
           "name": "resetprogression",
           "description": "Reset your progression (type confirm to confirm)",
           "confirm": "confirm"

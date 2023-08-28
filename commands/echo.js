@@ -22,9 +22,9 @@ module.exports = {
 		.addStringOption(option => 
             option
             .setName('message')
-			.setDescription(locFile['en-US']['en-US'].commands[cmdName].option1)
+			.setDescription(locFile['en-US']['en-US'].commands[cmdName].message)
 			.setDescriptionLocalizations({
-				fr: locFile['fr']['fr'].commands?.[cmdName]?.option1 ?? locFile['en-US']['en-US'].commands[cmdName].option1,
+				fr: locFile['fr']['fr'].commands?.[cmdName]?.message ?? locFile['en-US']['en-US'].commands[cmdName].message,
 			})
 			.setRequired(true))
 		.setDefaultMemberPermissions(0)

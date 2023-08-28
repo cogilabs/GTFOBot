@@ -31,24 +31,24 @@ module.exports = {
 				})
 				.addStringOption(option => 
 					option
-					.setName(locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.option1.name)
+					.setName(locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.message.name)
 					.setNameLocalizations({
-						fr: locFile['fr']['fr'].commands?.[cmdName]?.subcommands?.custom?.option1?.name ?? locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.option1.name,
+						fr: locFile['fr']['fr'].commands?.[cmdName]?.subcommands?.custom?.message?.name ?? locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.message.name,
 					})
-					.setDescription(locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.option1.description)
+					.setDescription(locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.message.description)
 					.setDescriptionLocalizations({
-						fr: locFile['fr']['fr'].commands?.[cmdName]?.subcommands?.custom?.option1?.description ?? locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.option1.description,
+						fr: locFile['fr']['fr'].commands?.[cmdName]?.subcommands?.custom?.message?.description ?? locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.message.description,
 					})
 					.setRequired(true))
 				.addStringOption(option => 
 					option
-					.setName(locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.option2.name)
+					.setName(locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.color.name)
 					.setNameLocalizations({
-						fr: locFile['fr']['fr'].commands?.[cmdName]?.subcommands?.custom?.option2?.name ?? locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.option2.name,
+						fr: locFile['fr']['fr'].commands?.[cmdName]?.subcommands?.custom?.color?.name ?? locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.color.name,
 					})
-					.setDescription(locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.option2.description)
+					.setDescription(locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.color.description)
 					.setDescriptionLocalizations({
-						fr: locFile['fr']['fr'].commands?.[cmdName]?.subcommands?.custom?.option2?.description ?? locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.option2.description,
+						fr: locFile['fr']['fr'].commands?.[cmdName]?.subcommands?.custom?.color?.description ?? locFile['en-US']['en-US'].commands[cmdName].subcommands.custom.color.description,
 					})
 					.addChoices(
 						{ name: locFile['en-US']['en-US'].colors.red, 

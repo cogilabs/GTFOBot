@@ -403,7 +403,7 @@
       },
       "echo": {
           "description": "Envoyer un message dans le salon en cours",
-          "option1": "Le contenu du message à envoyer"
+          "message": "Le contenu du message à envoyer"
       },
       "broadcast": {
         "description": "Envoyer un message dans tous les salon de logs",
@@ -411,11 +411,11 @@
           "custom": {
             "name": "custom",
             "description": "Envoyer un message dans tous les salon de logs",
-            "option1": {
+            "message": {
               "name": "message",
               "description": "Le contenu du message à envoyer"
             },
-            "option2": {
+            "color": {
               "name": "couleur",
               "description": "La couleur du message",
               "red": "rouge",
@@ -437,27 +437,27 @@
       },
       "config": {
         "description": "Configuration du bot",
-        "option1": {
+        "eventchannel": {
           "name": "salonevenement",
           "description": "Le salon dans lequel les messages d'évènements sont envoyés"
         },
-        "option2": {
+        "prisonersrole": {
           "name": "roleprisonniers",
           "description": "Le rôle que les joueurs de GTFO ont sur le serveur (“Prisonniers” par défaut)"
         },
-        "option3": {
+        "logschannel": {
           "name": "salonlogs",
           "description": "Le salon où sont envoyés les logs (“dauda-logs” par défaut)"
         },
-        "option4": {
+        "eventrequirement": {
           "name": "exigenceevenement",
           "description": "Règle si les évènements ont besoin de la mention \"GTFO\" dans leurs descriptions"
         },
-        "option5": {
+        "progression": {
           "name": "progression",
           "description": "Activer ou désactiver la fonction de progression (activé par défaut)"
         },
-        "option6": {
+        "resetprogression": {
           "name": "resetprogression",
           "description": "Réinitialise votre progression (taper confirmer pour confirmer)",
           "confirm": "confirmer"
