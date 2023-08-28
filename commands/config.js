@@ -222,7 +222,7 @@ module.exports = {
 		}
 
 		if (unlockMechanism != null) {
-			configFile[interaction.guild.id].set(`configuration.unlockingMechanism`, (unlockMechanism === "disabled"));
+			configFile[interaction.guild.id].set(`configuration.unlockingMechanism`, (unlockMechanism === "enabled"));
 			configFile[interaction.guild.id].save();
 
 			logMessage = logMessage + 'unlockingMechanism:' + unlockMechanism + ' ';
@@ -230,7 +230,7 @@ module.exports = {
 		}
 
 		if (visuallyPlayable != null) {
-			configFile[interaction.guild.id].set(`configuration.visuallyPlayable`, (visuallyPlayable === "disabled"));
+			configFile[interaction.guild.id].set(`configuration.visuallyPlayable`, (visuallyPlayable === "enabled"));
 			configFile[interaction.guild.id].save();
 
 			logMessage = logMessage + 'visuallyPlayable:' + visuallyPlayable + ' ';
