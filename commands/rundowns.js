@@ -128,15 +128,16 @@ module.exports = {
                     var disabled = false;
 
                     if (nb.charCodeAt(1) != "1".charCodeAt(0)) { // if mnb != 1
-                        if (completion[interaction.guild.id].completion[RID][lt][nb].completed.main) {
-
+                        if (!completion[interaction.guild.id].completion[RID][lt][String.fromCharCode(nb.charCodeAt(0), "1".charCodeAt(0))].completed.main) {
+                            disabled = true;
                         }
                     } else { // if mnb == 1
-
+                        if (nb.charCodeAt(0) != "A".charCodeAt(0)) {
+                            if (!completion[interaction.guild.id].completion[RID][String.fromCharCode(nb.charCodeAt(0)-1)][String.fromCharCode(nb.charCodeAt(0)-1, "1".charCodeAt(0))].completed.main) {
+                                disabled = true;
+                            }
+                        }
                     }
-
-
-
 
                     if (!configFile[interaction.guild.id].get(`configuration.progressionDisabled`)) {
                         if (completion[interaction.guild.id].completion[RID][lt][nb].completed.main) {
@@ -220,24 +221,41 @@ module.exports = {
             var runTitle = '';
             var runRows = new Array();
             runTitle = '## ***' + (locFile[locale][locale].missions?.rundownTitle ?? locFile["en-US"]["en-US"].missions.rundownTitle) + ' ' + MID + '***';
-            
+
             i = 0;
             for (var lt in rundowns[MID]) {
                 runRows[i] = new ActionRowBuilder();
                 for (var nb in rundowns[MID][lt]) {
+                    
+                var disabled = false;
+
+                if (nb.charCodeAt(1) != "1".charCodeAt(0)) { // if mnb != 1
+                    if (!completion[interaction.guild.id].completion[MID][lt][String.fromCharCode(nb.charCodeAt(0), "1".charCodeAt(0))].completed.main) {
+                        disabled = true;
+                    }
+                } else { // if mnb == 1
+                    if (nb.charCodeAt(0) != "A".charCodeAt(0)) {
+                        if (!completion[interaction.guild.id].completion[MID][String.fromCharCode(nb.charCodeAt(0)-1)][String.fromCharCode(nb.charCodeAt(0)-1, "1".charCodeAt(0))].completed.main) {
+                            disabled = true;
+                        }
+                    }
+                }
+
                     if (completion[interaction.guild.id].completion[MID][lt][nb].completed.main) {
                         runRows[i].addComponents(
                             new ButtonBuilder()
                                 .setCustomId(cmdName + '-mission-' + MID + nb)
                                 .setLabel(nb)
-                                .setStyle(ButtonStyle.Success),
+                                .setStyle(ButtonStyle.Success)
+                                .setDisabled(disabled),
                         );
                     } else {
                         runRows[i].addComponents(
                             new ButtonBuilder()
                                 .setCustomId(cmdName + '-mission-' + MID + nb)
                                 .setLabel(nb)
-                                .setStyle(ButtonStyle.Secondary),
+                                .setStyle(ButtonStyle.Secondary)
+                                .setDisabled(disabled),
                         );
                     }
                 }
