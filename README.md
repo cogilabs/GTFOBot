@@ -120,19 +120,19 @@ The `/config` command allows you customisation of some of the bot functions:
     </thead>
     <tbody>
         <tr>
-            <td>eventchannel</td>
+            <td>eventChannel</td>
             <td>The channel where the event related messages are sent</td>
         </tr>
         <tr>
-            <td>prisonersrole</td>
+            <td>prisonersRole</td>
             <td>The role GTFO players have on the server (defaults to any role named “Prisoners”)</td>
         </tr>
         <tr>
-            <td>logschannel</td>
+            <td>logsChannel</td>
             <td>The channel where the logs are sent (defaults to any channel named “dauda-logs”)</td>
         </tr>
         <tr>
-            <td>eventrequirement</td>
+            <td>eventRequirement</td>
             <td>Whether the events need “GTFO” in their description to be taken in account by the bot or not (enabled by default)</td>
         </tr>
         <tr>
@@ -140,7 +140,15 @@ The `/config` command allows you customisation of some of the bot functions:
             <td>Wether to enable or disable the progression function (enabled by default)</td>
         </tr>
         <tr>
-            <td>resetprogression</td>
+            <td>unlockMechanism</td>
+            <td>Wether to make levels that are not unlocked in game not viewable through the bot or always viewable (disabled by default)</td>
+        </tr>
+        <tr>
+            <td>visuallyPlayable</td>
+            <td>Wether to enable or disable the style change between playable and unplayable (not unlocked) levels (disabled by default)</td>
+        </tr>
+        <tr>
+            <td>resetProgression</td>
             <td>Resets the server&#39;s progression (irreversible, you&#39;ll have to type “confirm” for the command to execute)</td>
         </tr>
     </tbody>
