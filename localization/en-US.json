@@ -375,6 +375,8 @@
       "logsChannelSetTo": "Logs channel set to",
       "eventRequirementSet": "Event requirement",
       "progressionModeSet": "Progression",
+      "unlockMechanismSet": "Unlock mechanism",
+      "visuallyPlayableSet": "Visual unlock",
       "progressionReset": "Progression resetted",
       "progressionNoReset": "Progression **not** resetted (bad confirmation: #)",
       "commandError": "There was an error while executing this command!",
@@ -465,6 +467,14 @@
         "progression": {
           "name": "progression",
           "description": "Wether to enable or disable the progression function (enabled by default)"
+        },
+        "unlock": {
+          "name": "unlockmechanism",
+          "description": "Makes levels that are not unlocked in game not viewable through the bot (disabled by default)"
+        },
+        "playable": {
+          "name": "visuallyplayable",
+          "description": "Wether to enable or disable the style change for unlocked levels (disabled by default)"
         },
         "resetprogression": {
           "name": "resetprogression",
