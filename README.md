@@ -97,6 +97,12 @@ For instance it can react to messages like "Did we finish R1D1?", "What's the st
   
 It also answers to messages like "Thanks Dauda" with a random "You're welcome" message, and react with a question mark ❓ when someone says things like "Just ask Dauda".
 
+## Interactive mission unlocking
+
+If ask to do so with the `/config`[^1] command,, the bot can "lock" te missions that are locked in game, however if you want to know which missions are locked but still be able to check them, it is also possible.
+
+![unlock mechanism](/Images/unlockMechanism.png?raw=true) ![visually playable](/Images/visuallyPlayable.png?raw=true)
+
 ## More
 
 The application is *fully localized* in English and French, taking the server language for event handling and answering/reacting to messages, and the interacting user's language for command descriptions, and answering to commands (Intel, mission descriptions, etc...).  
