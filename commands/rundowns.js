@@ -169,8 +169,7 @@ module.exports = {
                             new ButtonBuilder()
                                 .setCustomId(cmdName + '-mission-' + RID + nb)
                                 .setLabel(nb)
-                                .setStyle(ButtonStyle.Secondary)
-                                .setDisabled(!playable),
+                                .setStyle(ButtonStyle.Secondary),
                         );
 
                     }

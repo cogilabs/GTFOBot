@@ -366,8 +366,7 @@
       "logsChannelSetTo": "Salon de logs réglé sur",
       "eventRequirementSet": "Exigence d'évènement",
       "progressionModeSet": "Progression",
-      "unlockMechanismSet": "Système de déverrouillage",
-      "visuallyPlayableSet": "Indication visuelle de déverrouillage",
+      "interactiveUnlockSetTo": "déverrouillage intéractif réglé sur",
       "progressionReset": "Progression réinitialisée",
       "progressionNoReset": "Progression **non** réinitialisée (mauvaise confirmation: #)",
       "commandError": "Il y a eu une erreur lors de l'exécution de cette commande !",
@@ -460,12 +459,13 @@
           "description": "Activer ou désactiver la fonction de progression (activé par défaut)"
         },
         "unlock": {
-          "name": "deverrouillage",
-          "description": "Bloque l'accès aux niveaux non déverrouillés (désactivé par défaut)"
-        },
-        "playable": {
-          "name": "deverrouillagevisuel",
-          "description": "Change le style visuel des niveaux non déverrouillés (désactivé par défaut)"
+          "name": "deverrouillageinteractif",
+          "description": "Bloque l'accès ou change le style des niveaux non déverrouillés (désactivé par défaut)",
+          "modes": {
+            "block": "bloqué",
+            "visual": "visuel",
+            "disabled": "désactivé"
+          }
         },
         "resetprogression": {
           "name": "resetprogression",

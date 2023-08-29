@@ -97,11 +97,11 @@ For instance it can react to messages like "Did we finish R1D1?", "What's the st
   
 It also answers to messages like "Thanks Dauda" with a random "You're welcome" message, and react with a question mark ❓ when someone says things like "Just ask Dauda".
 
-## Interactive mission unlocking
+## Interactive mission unlocking (new)
 
-If ask to do so with the `/config`[^1] command,, the bot can "lock" te missions that are locked in game, however if you want to know which missions are locked but still be able to check them, it is also possible.
+If ask to do so with the `/config`[^1] command, the bot can block te missions that are locked in game, however if you want to know which missions are locked but still be able to check them, it is also possible to just visually change them.
 
-![unlock mechanism](/Images/unlockMechanism.png?raw=true) ![visually playable](/Images/visuallyPlayable.png?raw=true)
+![Interactive unlocking on "block"](/Images/unlockMechanism.png?raw=true) ![Interactive unlocking on "visual"](/Images/visuallyPlayable.png?raw=true)
 
 ## More
 
@@ -146,12 +146,8 @@ The `/config` command allows you customisation of some of the bot functions:
             <td>Wether to enable or disable the progression function (enabled by default)</td>
         </tr>
         <tr>
-            <td>unlockMechanism</td>
-            <td>Wether to make levels that are not unlocked in game not viewable through the bot or always viewable (disabled by default)</td>
-        </tr>
-        <tr>
-            <td>visuallyPlayable</td>
-            <td>Wether to enable or disable the style change between playable and unplayable (not unlocked) levels (disabled by default)</td>
+            <td>interactiveUnlock</td>
+            <td>Block access or change the style of not unlocked levels (disabled by default)<br> It can be set up to <code>block</code>, <code>visual</code> or <code>disabled</code></td>
         </tr>
         <tr>
             <td>resetProgression</td>
