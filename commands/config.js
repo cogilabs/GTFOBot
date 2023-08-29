@@ -186,6 +186,7 @@ module.exports = {
 										configFile[interaction.guild.id].set(`completion.${run}.${lt}.${mission}.completed.${mt}`, false);
 									}
 									configFile[interaction.guild.id].save();
+									completion[interaction.guild.id].completion = configFile[interaction.guild.id].data.completion
 								})
 							}
 						}
