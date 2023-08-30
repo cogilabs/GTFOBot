@@ -237,7 +237,7 @@ module.exports = {
 			}
 		}
 		
-		if(role == null && eventChannel == null && newLogsChannel == null && eventRequirement == null && progressionEnabled == null && interactiveUnlock == null && visuallyPlayable == null && resetProgression == null) {
+		if(role == null && eventChannel == null && newLogsChannel == null && eventRequirement == null && progressionEnabled == null && interactiveUnlock == null && resetProgression == null) {
 			message = message + (locFile[locale][locale].system?.noOptionsProvided ?? locFile["en-US"]["en-US"].system.noOptionsProvided);
 		}
 
