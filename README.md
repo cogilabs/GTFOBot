@@ -99,9 +99,9 @@ It also answers to messages like "Thanks Dauda" with a random "You're welcome" m
 
 ## Interactive mission unlocking (new)
 
-If ask to do so with the `/config`[^1] command, the bot can block te missions that are locked in game, however if you want to know which missions are locked but still be able to check them, it is also possible to just visually change them.
+If asked to do so with the `/config`[^1] command, the bot can block access to the missions that are locked in game, however if you want to know which missions are locked but still be able to check them, it is also possible to just visually change them.
 
-![Interactive unlocking on "block"](/Images/unlockMechanism.png?raw=true) ![Interactive unlocking on "visual"](/Images/visuallyPlayable.png?raw=true)
+![Interactive unlocking set to "block" mode](/Images/unlockMechanism.png?raw=true "Interactive unlocking set to \"block\" mode") ![Interactive unlocking set to "visual" mode](/Images/visuallyPlayable.png?raw=true "Interactive unlocking set to \"visual\" mode")
 
 ## More
 
