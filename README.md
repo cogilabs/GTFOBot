@@ -97,6 +97,12 @@ For instance it can react to messages like "Did we finish R1D1?", "What's the st
   
 It also answers to messages like "Thanks Dauda" with a random "You're welcome" message, and react with a question mark ❓ when someone says things like "Just ask Dauda".
 
+## Interactive mission unlocking (new)
+
+If asked to do so with the `/config`[^1] command, the bot can block access to the missions that are locked in game, however if you want to know which missions are locked but still be able to check them, it is also possible to just visually change them.
+
+![Interactive unlocking set to "block" mode](/Images/unlockMechanism.png?raw=true "Interactive unlocking set to \"block\" mode") ![Interactive unlocking set to "visual" mode](/Images/visuallyPlayable.png?raw=true "Interactive unlocking set to \"visual\" mode")
+
 ## More
 
 The application is *fully localized* in English and French, taking the server language for event handling and answering/reacting to messages, and the interacting user's language for command descriptions, and answering to commands (Intel, mission descriptions, etc...).  
@@ -120,19 +126,19 @@ The `/config` command allows you customisation of some of the bot functions:
     </thead>
     <tbody>
         <tr>
-            <td>eventchannel</td>
+            <td>eventChannel</td>
             <td>The channel where the event related messages are sent</td>
         </tr>
         <tr>
-            <td>prisonersrole</td>
+            <td>prisonersRole</td>
             <td>The role GTFO players have on the server (defaults to any role named “Prisoners”)</td>
         </tr>
         <tr>
-            <td>logschannel</td>
+            <td>logsChannel</td>
             <td>The channel where the logs are sent (defaults to any channel named “dauda-logs”)</td>
         </tr>
         <tr>
-            <td>eventrequirement</td>
+            <td>eventRequirement</td>
             <td>Whether the events need “GTFO” in their description to be taken in account by the bot or not (enabled by default)</td>
         </tr>
         <tr>
@@ -140,7 +146,11 @@ The `/config` command allows you customisation of some of the bot functions:
             <td>Wether to enable or disable the progression function (enabled by default)</td>
         </tr>
         <tr>
-            <td>resetprogression</td>
+            <td>interactiveUnlock</td>
+            <td>Block access or change the style of not unlocked levels (disabled by default)<br> It can be set up to <code>block</code>, <code>visual</code> or <code>disabled</code></td>
+        </tr>
+        <tr>
+            <td>resetProgression</td>
             <td>Resets the server&#39;s progression (irreversible, you&#39;ll have to type “confirm” for the command to execute)</td>
         </tr>
     </tbody>

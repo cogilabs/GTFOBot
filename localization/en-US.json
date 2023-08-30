@@ -375,6 +375,7 @@
       "logsChannelSetTo": "Logs channel set to",
       "eventRequirementSet": "Event requirement",
       "progressionModeSet": "Progression",
+      "interactiveUnlockSetTo": "interactive unlock set to",
       "progressionReset": "Progression resetted",
       "progressionNoReset": "Progression **not** resetted (bad confirmation: #)",
       "commandError": "There was an error while executing this command!",
@@ -465,6 +466,15 @@
         "progression": {
           "name": "progression",
           "description": "Wether to enable or disable the progression function (enabled by default)"
+        },
+        "unlock": {
+          "name": "interactiveunlock",
+          "description": "Block access or change the style of not unlocked levels (disabled by default)",
+          "modes": {
+            "block": "block",
+            "visual": "visual",
+            "disabled": "disabled"
+          }
         },
         "resetprogression": {
           "name": "resetprogression",

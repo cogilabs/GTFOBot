@@ -95,6 +95,33 @@ module.exports = {
 			))
 		.addStringOption(option =>
 			option
+			.setName(locFile['en-US']['en-US'].commands[cmdName].unlock.name)
+			.setNameLocalizations({
+				fr: locFile['fr']['fr'].commands?.[cmdName]?.unlock?.name ?? locFile['en-US']['en-US'].commands[cmdName].unlock.name,
+			})
+			.setDescription(locFile['en-US']['en-US'].commands[cmdName].unlock.description)
+			.setDescriptionLocalizations({
+				fr: locFile['fr']['fr'].commands?.[cmdName]?.unlock?.description ?? locFile['en-US']['en-US'].commands[cmdName].unlock.description,
+			})
+			.addChoices(
+				{ name: locFile['en-US']['en-US'].commands[cmdName].unlock.modes.block, 
+				name_localizations: {
+					fr: locFile['fr']['fr'].commands[cmdName].unlock?.modes?.block ?? locFile['en-US']['en-US'].commands[cmdName].unlock.modes.block,
+				},
+				value: 'block' },
+				{ name: locFile['en-US']['en-US'].commands[cmdName].unlock.modes.visual, 
+				name_localizations: {
+					fr: locFile['fr']['fr'].commands?.[cmdName]?.unlock?.modes?.visual ?? locFile['en-US']['en-US'].commands[cmdName].unlock.modes.visual,
+				},
+				value: 'visual' },
+				{ name: locFile['en-US']['en-US'].commands[cmdName].unlock.modes.disabled, 
+				name_localizations: {
+					fr: locFile['fr']['fr'].commands?.[cmdName]?.unlock?.modes?.disabled ?? locFile['en-US']['en-US'].commands[cmdName].unlock.modes.disabled,
+				},
+				value: 'disabled' },
+			))
+		.addStringOption(option =>
+			option
 			.setName(locFile['en-US']['en-US'].commands[cmdName].resetprogression.name)
 			.setNameLocalizations({
 				fr: locFile['fr']['fr'].commands?.[cmdName]?.resetprogression?.name ?? locFile['en-US']['en-US'].commands[cmdName].resetprogression.name,
@@ -125,6 +152,7 @@ module.exports = {
 		const newLogsChannel = interaction.options.getChannel(locFile['en-US']['en-US'].commands[cmdName].logschannel.name);
 		const eventRequirement = interaction.options.getString(locFile['en-US']['en-US'].commands[cmdName].eventrequirement.name);
 		const progressionEnabled = interaction.options.getString(locFile['en-US']['en-US'].commands[cmdName].progression.name);
+		const interactiveUnlock = interaction.options.getString(locFile['en-US']['en-US'].commands[cmdName].unlock.name);
 		const resetProgression = interaction.options.getString(locFile['en-US']['en-US'].commands[cmdName].resetprogression.name);
 		if (eventChannel != null) {
 			if (eventChannel.type == 0) {
@@ -175,6 +203,15 @@ module.exports = {
 			message = message + `${locFile[locale][locale].system?.progressionModeSet ?? locFile["en-US"]["en-US"].system.progressionModeSet} ${locFile[locale][locale].system?.[progressionEnabled] ?? locFile["en-US"]["en-US"].system[progressionEnabled]}\n`;
 		}
 
+		if (interactiveUnlock != null) {
+			configFile[interaction.guild.id].set(`configuration.unlockingMechanism`, (interactiveUnlock === "block"));
+			configFile[interaction.guild.id].set(`configuration.visuallyPlayable`, (interactiveUnlock === "visual"));
+			configFile[interaction.guild.id].save();
+
+			logMessage = logMessage + 'interactiveUnlock:' + interactiveUnlock + ' ';
+			message = message + `${locFile[locale][locale].system?.interactiveUnlockSetTo ?? locFile["en-US"]["en-US"].system.interactiveUnlockSetTo} ${locFile[locale][locale].commands?.[cmdName]?.unlock?.modes?.[interactiveUnlock] ?? locFile["en-US"]["en-US"].commands[cmdName].unlock.modes[interactiveUnlock]}\n`;
+		}
+
 		if (resetProgression != null) {
 			if (resetProgression == (locFile[locale][locale].commands?.[cmdName]?.resetprogression?.confirm ?? locFile["en-US"]["en-US"].commands[cmdName].resetprogression.confirm)) {
 				for (var run in rundowns) {
@@ -200,7 +237,7 @@ module.exports = {
 			}
 		}
 		
-		if(role == null && eventChannel == null && newLogsChannel == null && eventRequirement == null && progressionEnabled == null && resetProgression == null) {
+		if(role == null && eventChannel == null && newLogsChannel == null && eventRequirement == null && progressionEnabled == null && interactiveUnlock == null && visuallyPlayable == null && resetProgression == null) {
 			message = message + (locFile[locale][locale].system?.noOptionsProvided ?? locFile["en-US"]["en-US"].system.noOptionsProvided);
 		}
 
