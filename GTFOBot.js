@@ -3,7 +3,6 @@
 // License: BSD2.
 
 const fs = require('node:fs');
-const unlinkSync = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits, Partials, EmbedBuilder } = require('discord.js');
 const { setInterval } = require('node:timers');
