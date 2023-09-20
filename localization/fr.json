@@ -222,10 +222,13 @@
     "R5": {
       "A": {
         "A1": {
+          "name": "Floodways"
         },
         "A2": {
+          "name": "Recollect"
         },
         "A3": {
+          "name": "Mining"
         }
       },
       "B": {

@@ -3,13 +3,14 @@
 // License: BSD2.
 
 const fs = require('node:fs');
+const unlinkSync = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits, Partials, EmbedBuilder } = require('discord.js');
 const { setInterval } = require('node:timers');
 const { token, guildId } = require('./config.json');
 const { supportedLocales } = require('./localization/supportedLocales.json');
 const { spawn } = require('child_process');
-const { compCheck, glitchText, logToServer, channelSelection } = require('./modules/smallModules.js')
+const { compCheck, glitchText, logToServer, channelSelection, langCompare } = require('./modules/smallModules.js')
 
 const logsChannelName = 'dauda-logs';
 global.logsChannelName = logsChannelName;
@@ -88,6 +89,22 @@ client.once(Events.ClientReady, async () => {
 	global.logsChList = logsChList;
 	// Removed while the bot restarts 4 times a day
 	//// logsChList.forEach(async channel => await channel.send({ embeds: [embed] }));
+
+	try {
+		if (fs.existsSync('./outputWeb/missingLoc.json'))
+			fs.unlinkSync('./outputWeb/missingLoc.json');
+	} catch (error) {
+		console.error(error);
+	}
+
+	var missingLoc = editJsonFile('./outputWeb/missingLoc.json')
+	
+	for (var lang in supportedLocales) {
+		if (lang != "en-US") {
+			langCompare(missingLoc, locFile['en-US']['en-US'], lang, locFile[lang][lang]);
+		}
+	}
+
 
 	function updateTime() {
 		outputFile.set('time', Math.floor(Date.now()/ 1000).toString());
