@@ -178,8 +178,8 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 	if (channel == undefined)
 		channel = oldCh;
 
-	for (i in (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)) {
-		var j = (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)[i];
+	for (i in (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9X]/g)) {
+		var j = (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9X]/g)[i];
 		missionName = ` ${locFile[locale][locale].events?.to ?? locFile["en-US"]["en-US"].events.to} ***${j}***`;
 	}
 
@@ -227,8 +227,8 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 	if (channel == undefined)
 		channel = oldCh;
 
-	for (i in (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)) {
-		var j = (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)[i];
+	for (i in (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9x]/g)) {
+		var j = (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9x]/g)[i];
 		missionName = ` ${locFile[locale][locale].events?.to ?? locFile["en-US"]["en-US"].events.to} ***${j}***`;
 		MID = j;
 		MIDp = ` (${j})`;
@@ -295,12 +295,12 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 	if ((oldEvent.name != event.name) || (oldEvent.description != event.description)) {
 		var oldMID = '';
 
-		for (i in (oldEvent.description + ' ' + oldEvent.name).match(/R[0-9][A-F][0-9]/g)) {
-			var j = (oldEvent.description + ' ' + oldEvent.name).match(/R[0-9][A-F][0-9]/g)[i];
+		for (i in (oldEvent.description + ' ' + oldEvent.name).match(/R[0-9][A-F][0-9x]/g)) {
+			var j = (oldEvent.description + ' ' + oldEvent.name).match(/R[0-9][A-F][0-9x]/g)[i];
 			oldMID = j;
 		}
-		for (i in (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)) {
-			var j = (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)[i];
+		for (i in (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9x]/g)) {
+			var j = (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9x]/g)[i];
 			MID = j;
 		}
 
@@ -360,8 +360,8 @@ client.on(Events.GuildScheduledEventUserAdd, async (event, user) => {
 	if (channel == undefined)
 		channel = oldCh;
 
-	for (i in (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)) {
-		var j = (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)[i];
+	for (i in (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9x]/g)) {
+		var j = (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9x]/g)[i];
 		MID = j;
 	}
 
@@ -396,8 +396,8 @@ client.on(Events.GuildScheduledEventUserRemove, async (event, user) => {
 	if (channel == undefined)
 		channel = oldCh;
 
-	for (i in (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)) {
-		var j = (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9]/g)[i];
+	for (i in (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9x]/g)) {
+		var j = (event.description + ' ' + event.name).match(/R[0-9][A-F][0-9x]/g)[i];
 		MID = j;
 	}
 	
@@ -470,8 +470,8 @@ client.on(Events.MessageCreate, async message => {
 	
 	if ((finishedMissionR).some(checker)) {
 		if (!configFile[message.guild.id].get(`configuration.progressionDisabled`)) {
-			for (i in msgContent.match(/R[0-9][A-F][0-9]/g)) {
-				var MID = msgContent.match(/R[0-9][A-F][0-9]/g)[i];
+			for (i in msgContent.match(/R[0-9][A-F][0-9x]/g)) {
+				var MID = msgContent.match(/R[0-9][A-F][0-9x]/g)[i];
 				var reaction = '';
 				if (MID.length == 4 && !MID.includes('!') && !MID.includes('?') && !MID.includes('.')) {
 					var run = MID.slice(0,2);

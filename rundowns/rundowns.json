@@ -286,7 +286,7 @@
         },
         "A3": {
           "depth": "622",
-          "ext": "true",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": true,
@@ -318,7 +318,7 @@
         },
         "B3": {
           "depth": "887",
-          "ext": "true",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": true,
@@ -350,7 +350,7 @@
         },
         "C3": {
           "depth": "931",
-          "ext": "true",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": true,
@@ -384,7 +384,7 @@
       "E": {
         "E1": {
           "depth": "1082",
-          "ext": "true",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": true,
@@ -418,7 +418,7 @@
         },
         "A3": {
           "depth": "761",
-          "ext": "true",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": true,
@@ -460,7 +460,7 @@
         },
         "B4": {
           "depth": "798",
-          "ext": "true",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -492,7 +492,7 @@
         },
         "C3": {
           "depth": "1109",
-          "ext": "true",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": true,
@@ -514,7 +514,7 @@
         },
         "D2": {
           "depth": "1051",
-          "ext": "true",
+          "ext": "false",
           "missionTypes": {
             "main": true,
             "secondary": false,
@@ -526,6 +526,146 @@
       "E": {
         "E1": {
           "depth": "984",
+          "ext": "false",
+          "missionTypes": {
+            "main": true,
+            "secondary": false,
+            "overload": false,
+            "efficiency": false
+          }
+        }
+      }
+    },
+    "R6": {
+      "A": {
+        "A1": {
+          "depth": "608",
+          "ext": "false",
+          "missionTypes": {
+            "main": true,
+            "secondary": false,
+            "overload": false,
+            "efficiency": false
+          }
+        },
+        "AX": {
+          "depth": "1115",
+          "ext": "true",
+          "missionTypes": {
+            "main": true,
+            "secondary": false,
+            "overload": false,
+            "efficiency": false
+          }
+        }
+      },
+      "B": {
+        "B1": {
+          "depth": "789",
+          "ext": "false",
+          "missionTypes": {
+            "main": true,
+            "secondary": false,
+            "overload": false,
+            "efficiency": false
+          }
+        },
+        "B2": {
+          "depth": "752",
+          "ext": "false",
+          "missionTypes": {
+            "main": true,
+            "secondary": false,
+            "overload": false,
+            "efficiency": false
+          }
+        },
+        "BX": {
+          "depth": "993",
+          "ext": "true",
+          "missionTypes": {
+            "main": true,
+            "secondary": false,
+            "overload": false,
+            "efficiency": false
+          }
+        }
+      },
+      "C": {
+        "C1": {
+          "depth": "986",
+          "ext": "false",
+          "missionTypes": {
+            "main": true,
+            "secondary": false,
+            "overload": false,
+            "efficiency": false
+          }
+        },
+        "C2": {
+          "depth": "1053",
+          "ext": "false",
+          "missionTypes": {
+            "main": true,
+            "secondary": false,
+            "overload": false,
+            "efficiency": false
+          }
+        },
+        "C3": {
+          "depth": "1194",
+          "ext": "false",
+          "missionTypes": {
+            "main": true,
+            "secondary": false,
+            "overload": false,
+            "efficiency": false
+          }
+        },
+        "CX": {
+          "depth": "1321",
+          "ext": "true",
+          "missionTypes": {
+            "main": true,
+            "secondary": false,
+            "overload": false,
+            "efficiency": false
+          }
+        }
+      },
+      "D": {
+        "D1": {
+          "depth": "1080",
+          "ext": "false",
+          "missionTypes": {
+            "main": true,
+            "secondary": false,
+            "overload": false,
+            "efficiency": false
+          }
+        },
+        "D2": {
+          "depth": "1249",
+          "ext": "false",
+          "missionTypes": {
+            "main": true,
+            "secondary": false,
+            "overload": false,
+            "efficiency": false
+          }
+        },
+        "D3": {
+          "depth": "1221",
+          "ext": "false",
+          "missionTypes": {
+            "main": true,
+            "secondary": false,
+            "overload": false,
+            "efficiency": false
+          }
+        },
+        "D4": {
+          "depth": "1314",
           "ext": "true",
           "missionTypes": {
             "main": true,
