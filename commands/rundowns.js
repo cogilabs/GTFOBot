@@ -128,13 +128,13 @@ module.exports = {
                     var playable = true;
                     var style = "Primary";
 
-                    if (nb.charCodeAt(1) != "1".charCodeAt(0)) { // if mnb != 1
+                    if (nb.charCodeAt(1) != "1".charCodeAt(0) && nb.charCodeAt(1) != "X".charCodeAt(0)) { // if mnb != 1
                         if (!completion[interaction.guild.id].completion[RID][lt][String.fromCharCode(nb.charCodeAt(0), "1".charCodeAt(0))].completed.main) {
                             playable = false;
                             style = "Secondary";
                         }
                     } else { // if mnb == 1
-                        if (nb.charCodeAt(0) != "A".charCodeAt(0)) {
+                        if (nb.charCodeAt(0) != "A".charCodeAt(0) && nb.charCodeAt(1) != "X".charCodeAt(0)) {
                             if (!completion[interaction.guild.id].completion[RID][String.fromCharCode(nb.charCodeAt(0)-1)][String.fromCharCode(nb.charCodeAt(0)-1, "1".charCodeAt(0))].completed.main) {
                                 playable = false;
                                 style = "Secondary";
@@ -236,13 +236,13 @@ module.exports = {
                 var playable = true;
                 var style = "Primary";
 
-                if (nb.charCodeAt(1) != "1".charCodeAt(0)) { // if mnb != 1
+                if (nb.charCodeAt(1) != "1".charCodeAt(0) && nb.charCodeAt(1) != "X".charCodeAt(0)) { // if mnb != 1
                     if (!completion[interaction.guild.id].completion[MID][lt][String.fromCharCode(nb.charCodeAt(0), "1".charCodeAt(0))].completed.main) {
                         playable = false;
                         style = "Secondary";
                     }
                 } else { // if mnb == 1
-                    if (nb.charCodeAt(0) != "A".charCodeAt(0)) {
+                    if (nb.charCodeAt(0) != "A".charCodeAt(0) && nb.charCodeAt(1) != "X".charCodeAt(0)) {
                         if (!completion[interaction.guild.id].completion[MID][String.fromCharCode(nb.charCodeAt(0)-1)][String.fromCharCode(nb.charCodeAt(0)-1, "1".charCodeAt(0))].completed.main) {
                             playable = false;
                             style = "Secondary";
@@ -298,12 +298,12 @@ module.exports = {
 
                                 var completeDisabled = false;
 
-                                if (id.charCodeAt(1) != "1".charCodeAt(0)) { // if mnb != 1
+                                if (id.charCodeAt(1) != "1".charCodeAt(0) && id.charCodeAt(1) != "X".charCodeAt(0)) { // if mnb != 1
                                     if (!completion[interaction.guild.id].completion[run][lt][String.fromCharCode(id.charCodeAt(0), "1".charCodeAt(0))].completed.main) {
                                         completeDisabled = true;
                                     }
                                 } else { // if mnb == 1
-                                    if (id.charCodeAt(0) != "A".charCodeAt(0)) {
+                                    if (id.charCodeAt(0) != "A".charCodeAt(0) && id.charCodeAt(1) != "X".charCodeAt(0)) {
                                         if (!completion[interaction.guild.id].completion[run][String.fromCharCode(id.charCodeAt(0)-1)][String.fromCharCode(id.charCodeAt(0)-1, "1".charCodeAt(0))].completed.main) {
                                             completeDisabled = true;
                                         }
@@ -322,7 +322,7 @@ module.exports = {
                                     if (id.charCodeAt(1) == "1".charCodeAt(0)) { // if mnb == 1
                                         for (var udnb in rundowns[run][lt]) {
                                             if (completion[interaction.guild.id].completion[run][lt][udnb].completed.main) {
-                                                if (udnb.charCodeAt(1) != "1".charCodeAt(0)) uncompleteDisabled = true;
+                                                if (udnb.charCodeAt(1) != "1".charCodeAt(0) && udnb.charCodeAt(1) != "X".charCodeAt(0)) uncompleteDisabled = true;
                                             }
                                         }
                                         if (completion[interaction.guild.id].completion[run][String.fromCharCode(id.charCodeAt(0)+1)][String.fromCharCode(id.charCodeAt(0)+1, "1".charCodeAt(0))].completed.main) {

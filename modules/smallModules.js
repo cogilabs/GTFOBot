@@ -75,7 +75,7 @@ function channelSelection(event, logsChannel) {
 }
 
 function langCompare(file, l1, lang, l2, k) {
-    if (typeof l1 == "object" && k != "chat") {
+    if (typeof l1 == "object" && k != "chat" && l2 != undefined) {
         for (var kp in l1) {
             if (Object.hasOwnProperty.call(l1, kp)) {
                 langCompare(file, l1[kp], lang, l2[kp], k != undefined ? k + "." + kp : kp);
