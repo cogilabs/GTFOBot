@@ -296,6 +296,81 @@
         }
       }
     },
+    "R6": {
+      "A": {
+        "A1": {
+          "name": "Artifact 7",
+          "intel": "Prisoners dispatched to retrieve Matter Wave Projector. Sensors detecting disconnected network.",
+          "comms": "... Quiet now. **They hear everything.**\n... Turn off your damn light...\n... There it is! You take that side and-\n... [unintelligible]"
+        },
+        "AX": {
+          "name": "Dust",
+          "intel": "Continued Restoration Initiative. Expand Genome Database. Target connection established with 62% accuracy. Multiple units dispatched to exceed success tolerance.",
+          "comms": "… Where are we?\n… Looks like we're stuck..\n… Shit. **Be on your guard.**"
+        }
+      },
+      "B": {
+        "B1": {
+          "name": "Hexahedrons",
+          "intel": "Prisoners sent to Alpha Two for Data Cube coordinated. Unknown environmental conditions detected.",
+          "comms": "... Woah, we've done it now.\n... We're out. We're OUT!\n... Are you blind? **Look up.**"
+        },
+        "B2": {
+          "name": "Contaminant",
+          "intel": "Conduit genetic code compromised. Prisoners to collect DNA sample from HSU facility.",
+          "comms": "... Shoot me then, 'cause I'm not going in there.\n... Look, there'no time-\n... **Start scanning.**"
+        },
+        "BX": {
+          "name": "Flux",
+          "intel": "Power instability detected at 993 meters. Multiple events suggest premeditation. Prisoners sent to activate emergency power supply units.",
+          "comms": "… Fuck, power is out again..\n… I have them on the bio tracker.\n… Nothing here! **Let's move on.**"
+        }
+      },
+      "C": {
+        "C1": {
+          "name": "Navigation",
+          "intel": "Coordinates traced to approximate position. Prisoners dispatched to collect (3) Data Cubes. Irregular energy levels detected in related sector.",
+          "comms": "... No. It's your turn.\n … Why can't HE do it?\n... Just **touch the fucking-**\n... Alright! Jeez..."
+        },
+        "C2": {
+          "name": "Blind",
+          "intel": "Additionnal power needed for translocation operability. Prisoners sent to activate auxiliary generators. Environmental conditions compromising party survivability.",
+          "comms": "... MOVE damn it!\n... **We can still make it! She-**\n... [commotion, screaming]"
+        },
+        "C3": {
+          "name": "Pressure point",
+          "intel": "Diversionary task supporting parallel objective. Extraction as specified by objective completion. Adjusting prisoners casualty tolerance.",
+          "comms": "... [panting] Hand me some ammo!\n... I can't **That was all of it.**\n... Shit."
+        },
+        "CX": {
+          "name": "Ascent",
+          "intel": "Diverse biomass discerned in sector DX. Potential to enhance unit masking. Prisoner exposure sanctioned to expand Genome database.",
+          "comms": "… This shit gets in your lungs.\n… Look in every box, every cupboard. We need ammo.\n… I'm out. **Fusck, I'm out!**"
+        }
+      },
+      "D": {
+        "D1": {
+          "name": "Nemesis",
+          "intel": "Location data confirmed. Primary Restoration Initiative commenced. Prisoners dispatched to secure Pathogen Genome Database.",
+          "comms": "... [silence] / It's... it... / [whimper]\n... Run.\n... **[primal roar]**"
+        },
+        "D2": {
+          "name": "Crossways",
+          "intel": "PGD data restricted by ciphertext security. Decryption keys required. Prisoners dispatched.",    
+          "comms": "... Downloading now! Beready to-\n... [alarm blaring]\n... Screw this, we're leaving.\n... But **the data?**\n... Fuck the data."
+        },
+        "D3": {
+          "name": "Power hungry",
+          "intel": "Insufficient power supply for PGD decryption. Prisoners sent to activate quadrant reactor.",
+          "comms": "… Ugh…\n… This gonna eget messy.\n… Let's **split up.**"
+        },
+        "D4": {
+          "name": "Cryptomnesia",
+          "intel": "Prisoners to retrieve Tampered Data Cube from Insight labs. Irregular energy levels detected. High asset fatality rate expected.",
+          "comms": "... We're... back...\n... This will go quick then!\n... No, **wait-**\n... [screeching, gunfire]"
+        }
+      }
+    },
     "R7": {
       "A": {
         "A1": {

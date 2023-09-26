@@ -290,6 +290,80 @@
         }
       }
     },
+    "R6": {
+      "A": {
+        "A1": {
+          "name": "Artifact 7",
+          "intel": "Les prisonniers ont été envoyés pour récupérer le projecteur d'ondes de matière. Les capteurs ont détecté un réseau déconnecté.",
+          "comms": "... Taisez-vous. **Ils entendent tout.**\n... Éteignez cette putain de torche...\n... La voilà ! Prenez ce flanc et...\n... [inintelligible]"
+        },
+        "AX": {
+          "name": "Dust",
+          "intel": "Initiative de restauration en cours. Élargissement de la base de données du génome. Connexion à la cible établie avec une précision de 62%. Plusieurs unité ont été envoyées pour garantir la réussite de la mission.",
+          "comms": "On est où ?\n... On dirait qu'on est coincés.\n... Bordel. **Restez sur vos gardes.**"
+        }
+      },
+      "B": {
+        "B1": {
+          "name": "Hexahedrons",
+          "intel": "Les prisonniers ont été dans Alpha Deux pour obtenir les coordonnées du cube de données [DATA_CUBE]. Conditions environnementales inconnues.",
+          "comms": "... Ouah, on a réussi.\n... On s'en est sortis... VIVANTS !\n... T'es aveugle ou quoi ? **Lève les yeux.**"
+        },
+        "B2": {
+          "name": "Contaminant",
+          "intel": "Code génétique du conduit compromis. Les prisonniers doivent récupérer un échantillon d'ADN dans l'installation HSU.",
+          "comms": "... Alors bute-moi, pas moyen que j'aille là-dedans.\n... Allez, on n'a pas les temps de...\n... **Commence le scan.**"
+        },
+        "BX": {
+          "name": "Flux",
+          "intel": "Instabiliré du courant détecté à 993 mètres. De multiples événements semblent indiquer une préméditation. Les prisonniers ont été envoyés pour démarrer les unités d'alimentation de secours.",
+          "comms": "... Bordel, le courant a été coupé...\n... Je les vois sur le bio-traceur.\nIl n'y a rien ici ! **Continuons.**"
+        }
+      },
+      "C": {
+        "C1": {
+          "name": "Navigation",
+          "intel": "Coordonnées vers la position approximative établies. Les prisonniers ont été envoyés pour récupérer (3) cubes de données [DATA_CUBE]. Niveaux d'énergie instables détectés dans le secteur concerné.",
+          "comms": "... Non. C'est à ton tour.\n Et pourquoi pas lui, hein ?!\n... Je te dis de **toucher ce foutu...**\n... Bon, d'accord ! Pfff..."
+        },
+        "C2": {
+          "name": "Blind",
+          "intel": "Alimentation supplémentaire requise pour assurer l'opérabilité de la translocation. Les prisonniers ont été envoyés pour activer les générateurs auxiliaires. Conditions environnementales susceptibles de compromettre la capacité de survie du groupe.",
+          "comms": "... Bougez, bordel !\n... **On peut encore y arriver ! Elle...**\n... [vacarme, cris]"
+        },
+        "C3": {
+          "name": "Pressure point",
+          "intel": "Tâche de diversion visant à soutenir un objectif parallèle. Évacuation prévue après l'achèvement de l'objectif. Niveau de tolérance à la perte de prisonniers ajusté.",
+          "comms": "... [Halète] J'ai besoin de munitions !\n... C'est pas possible. **On est à court.**\n... Bordel."
+        },
+        "CX": {
+          "name": "Ascent",
+          "comms": "... Cette saloperie s'infiltre dans les poumons.\n... Examinez chaque boîte et chaque placard. Il nous faut des munitions.\n... Je suis à court. **Bordel, je suis à court !**"
+        }
+      },
+      "D": {
+        "D1": {
+          "name": "Nemesis",
+          "intel": "Données d'emplacement confirmées. Le programme de restauration principal a commencé. Les prisonniers ont été envoyés pour sécuriser la base de données du génome pathogène.",
+          "comms": "... [silence] / C'est... c'est... / [gémissement]\n... Courez !\n... **[rugissement primitif]**"
+        },
+        "D2": {
+          "name": "Crossways",
+          "intel": "Données du PGD cryptées. Clés de décryptage requise. Les prisonniers ont été envoyés.",    
+          "comms": "... J'ai lancé le téléchargement ! Préparez-vous à\n... [alarme]\n... Et puis merde, on se casse.\n... Mais, et **les données alors ?**\n... On s'en fous des données."
+        },
+        "D3": {
+          "name": "Power hungry",
+          "intel": "Alimentation insuffisante pour le décryptage du PGD. Prisonniers envoyés pour activer le réacteur du quadrant",
+          "comms": "… Bordel…\n… Ça va être un beau bordel.\n… On va se **séparer.**"
+        },
+        "D4": {
+          "name": "Cryptomnesia",
+          "intel": "Les prisonniers doivent récupérer le cube de données altéré [TAMPERED_DATA_CUBE] dans le laboratoire d'Insight. Relevés d'énergie divergents détectés. Chances de survie des prisonniers : très faibles.",
+          "comms": "... On est... de retour...\n... Alors finissons-en vite !\n... Non, **attendez !**\n... [cris, coups de feu]"
+        }
+      }
+    },
     "R7": {
       "A": {
         "A1": {
