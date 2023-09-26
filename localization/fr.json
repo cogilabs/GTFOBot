@@ -362,13 +362,6 @@
           "intel": "Les prisonniers doivent récupérer le cube de données altéré [TAMPERED_DATA_CUBE] dans le laboratoire d'Insight. Relevés d'énergie divergents détectés. Chances de survie des prisonniers : très faibles.",
           "comms": "... On est... de retour...\n... Alors finissons-en vite !\n... Non, **attendez !**\n... [cris, coups de feu]"
         }
-      },
-      "E": {
-        "E1": {
-          "name": "KDS deep",
-          "intel": "Prisoners dispatched to KDS deep for Influx Protocol initiation.",
-          "comms": ">… [alarm blaring]\n>... Fuck, I can't turn it off!\n**>... Look for another terminal!**"
-        }
       }
     },
     "R7": {
