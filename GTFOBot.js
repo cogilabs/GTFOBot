@@ -4,11 +4,11 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits, Partials, EmbedBuilder } = require('discord.js');
 const { setInterval } = require('node:timers');
+const { Client, Collection, Events, GatewayIntentBits, Partials, EmbedBuilder } = require('discord.js');
+const { spawn } = require('child_process');
 const { token, guildId } = require('./config.json');
 const { supportedLocales } = require('./localization/supportedLocales.json');
-const { spawn } = require('child_process');
 const { compCheck, glitchText, logToServer, channelSelection, langCompare } = require('./modules/smallModules.js')
 
 const logsChannelName = 'dauda-logs';
@@ -141,10 +141,10 @@ client.on(Events.GuildDelete, async guild => {
 	fs.unlink('./rundowns/server-' + guild.id + '.json', (err) => {
 		if (err) throw err;
 		console.log('./rundowns/server-' + guild.id + '.json was deleted');
-	  });
+	});
 
-	  outputFile.set('numberOfServers', (client.guilds.cache.size).toString());
-	  outputFile.save();
+	outputFile.set('numberOfServers', (client.guilds.cache.size).toString());
+	outputFile.save();
 });
 
 client.on(Events.GuildScheduledEventCreate, async event => {
@@ -260,9 +260,9 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 
 		if (MID != '') {
 			for (var run in rundowns) {
-                for (var lt in rundowns[run]) {
-                    for (var id in rundowns[run][lt]) {
-                        if (MID == run + id) {
+				for (var lt in rundowns[run]) {
+					for (var id in rundowns[run][lt]) {
+						if (MID == run + id) {
 							if (!configFile[event.guild.id].get(`configuration.progressionDisabled`)) {
 								if (completion[event.guild.id].completion[run][lt][id].completed.main) {
 									await channel.send((locFile[locale][locale].events?.end?.success ?? locFile["en-US"]["en-US"].events.end.success).replace('#', missionName));
