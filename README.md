@@ -9,6 +9,8 @@
     <img alt="Servers joined" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fcogilabs.eu%2FGTFOBotStateCheck%2Fservers?style=for-the-badge"/><br>
 </p>
 
+[*French version of the readme*](/localizedReadme/README-fr.md)
+
 ## Introduction
 This is a Discord bot I made to assist my GTFO team in expedition management.
 
