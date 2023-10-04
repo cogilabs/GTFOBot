@@ -1,0 +1,20 @@
+name: deploy on push
+on: [push]
+jobs:
+  build:
+    name: Deploy
+    runs-on: self-hosted
+    steps:
+      - name: Deploy via ssh
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+                  source /home/${{ secrets.SSH_USER }}/nodevenv/GTFOBot/16/bin/activate && cd /home/${{ secrets.SSH_USER }}/GTFOBot
+                  git pull
+                  ./node_modules/pm2/bin/pm2 restart GTFOBot.js
+                  node ./deploy-commands-global.js
+                  node ./deploy-commands-guild.js
