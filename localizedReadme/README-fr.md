@@ -9,7 +9,7 @@
     <img alt="Serveurs rejoins" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fcogilabs.eu%2FGTFOBotStateCheck%2Fservers?style=for-the-badge"/><br>
 </p>
 
-[*Version anglaise du Readme*](/README.md)
+[→ In English](/README.md)  
 
 ## Introduction
 Voici un bot Discord que j'ai créé pour aider mon équipe de GTFO dans la gestion des expéditions.
