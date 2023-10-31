@@ -11,6 +11,19 @@
 
 [→ In English](/README.md)  
 
+## Table des matières
+
+- [Introduction](#introduction)
+- [Utiliser/lancer](#utiliserlancer)
+- [Dites-moi ce que vous pensez !](#dites-moi-ce-que-vous-pensez)
+- [L'application](#lapplication)
+- [Exemples](#exemples)
+- [Gestion des événements](#gestion-des-événements)
+- [Réactions et réponses aux messages](#réactions-et-réponses-aux-messages)
+- [Déverrouillage interactif des missions (nouveau)](#déverrouillage-interactif-des-missions-nouveau)
+- [Plus d'informations](#plus-dinformations)
+- [Configuration](#configuration)
+
 ## Introduction
 Voici un bot Discord que j'ai créé pour aider mon équipe de GTFO dans la gestion des expéditions.
 

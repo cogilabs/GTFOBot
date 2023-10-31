@@ -11,6 +11,19 @@
 
 [→ En Français](/localizedReadme/README-fr.md)  
 
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Using/launching](#usinglaunching)
+- [Tell me what you think!](#tell-me-what-you-think)
+- [The application](#the-application)
+- [Examples](#examples)
+- [Event handling](#event-handling)
+- [Message reacting and answering](#message-reacting-and-answering)
+- [Interactive mission unlocking (new)](#interactive-mission-unlocking-new)
+- [More](#more)
+- [Configuration](#configuration)
+
 ## Introduction
 This is a Discord bot I made to assist my GTFO team in expedition management.
 
