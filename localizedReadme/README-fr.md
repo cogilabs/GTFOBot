@@ -51,13 +51,13 @@ Elle propose plusieurs commandes, mais sa principale est `/rundowns` :
 
 ![Liste des campagnes](/Images/rundownsList.png?raw=true)
 
-À partir de là, vous pourrez vérifier l'état de n'importe quel campagne et obtenir des informations sur les missions, mais aussi marquer les missions et les sous-secteurs comme terminés ou non (optionnel).
+À partir de là, vous pourrez vérifier l'état de n'importe quelle campagne et obtenir des informations sur les missions, mais aussi marquer les missions et les sous-secteurs comme terminés ou non (optionnel).
 
 ## Exemples
 
 #### Voici le résultat lorsque qu'un utilisateur clique sur le bouton `R7` :
 
-![Affichage du campagne](/Images/rundown.png?raw=true)
+![Affichage de la campagne](/Images/rundown.png?raw=true)
 
 Vous pouvez voir que les missions terminées avec succès sont représentées en vert.
 
