@@ -45,11 +45,11 @@ L'application elle-même est juste un bot nommé Dauda (comme l'un des bots dans
 
 Elle propose plusieurs commandes, mais sa principale est `/rundowns` :
 
-![Liste des commandes](/Images/commands.png?raw=true)
+![Liste des commandes](/Images/commands-fr.png?raw=true)
 
 `/rundowns` affiche la liste des campagnes disponibles :
 
-![Liste des campagnes](/Images/rundownsList.png?raw=true)
+![Liste des campagnes](/Images/rundownsList-fr.png?raw=true)
 
 À partir de là, vous pourrez vérifier l'état de n'importe quelle campagne et obtenir des informations sur les missions, mais aussi marquer les missions et les sous-secteurs comme terminés ou non (optionnel).
 
@@ -57,13 +57,13 @@ Elle propose plusieurs commandes, mais sa principale est `/rundowns` :
 
 #### Voici le résultat lorsque qu'un utilisateur clique sur le bouton `R7` :
 
-![Affichage de la campagne](/Images/rundown.png?raw=true)
+![Affichage de la campagne](/Images/rundown-fr.png?raw=true)
 
 Vous pouvez voir que les missions terminées avec succès sont représentées en vert.
 
 #### Voici le résultat lorsque qu'un utilisateur clique sur le bouton `B3` :
 
-![Affichage de la mission](/Images/mission.png?raw=true)
+![Affichage de la mission](/Images/mission-fr.png?raw=true)
 
 Ici, les sous-secteurs auront une coche s'ils sont complétés.
 
@@ -116,7 +116,7 @@ Il répond également à des messages comme "Merci Dauda" avec un message "De ri
 
 Si vous en faites la demande avec la commande `/config`[^1], le bot peut bloquer l'accès aux missions qui sont verrouillées dans le jeu. Cependant, si vous souhaitez savoir quelles missions sont verrouillées tout en étant en mesure de les consulter, il est également possible de les modifier visuellement.
 
-![Déverrouillage interactif en mode "bloquer"](/Images/unlockMechanism.png?raw=true "Déverrouillage interactif en mode \"bloquer\"") ![Déverrouillage interactif en mode "visuel"](/Images/visuallyPlayable.png?raw=true "Déverrouillage interactif en mode \"visuel\"")
+![Déverrouillage interactif en mode "bloquer"](/Images/unlockMechanism-fr.png?raw=true "Déverrouillage interactif en mode \"bloquer\"") ![Déverrouillage interactif en mode "visuel"](/Images/visuallyPlayable-fr.png?raw=true "Déverrouillage interactif en mode \"visuel\"")
 
 ## Plus d'informations
 
