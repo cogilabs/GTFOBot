@@ -23,19 +23,19 @@
       "C": {
         "C1": {
           "name": "Reconnect",
-          "intel": "Court-circuitage nécessaire dans le Sec_D : 842 m. Des prisonniers ont été envoyés pour court-circuiter l'alimentation.",
+          "intel": "Court-circuitage nécessaire dans le Sec_D : 842 m. Des prisonniers ont été envoyés pour court-circuiter l'alimentation.",
           "comms": ">[Sirène d'alarme]\n >... Ils arrivent !\n >[coup de feu, inintelligible]\n **>Il faut qu'on dégage d'ici !**"
         },
         "C2": {
           "name": "Decode",
-          "intel": "Matrice de chiffrage éclatée trouvée dans le Sec_D : 842 m. Les prisonniers ont été envoyés récupérer les décodeurs partiels.",
+          "intel": "Matrice de chiffrage éclatée trouvée dans le Sec_D : 842 m. Les prisonniers ont été envoyés récupérer les décodeurs partiels.",
           "comms": ">... Ne pas regarder vers le haut... Ne pas regarder vers le haut...\n >[inintelligible]\n >[cri lointain]\n >..est-ce que ça va ?"
         }
       },
       "D": {
         "D1": {
           "name": "Deeper",
-          "intel": "Voie de sortie sécurisée dans le Sec_D : 842 m. L'accès a été verrouillé jusqu'à extinction du système d'alimentation. Un important taux de mortalité est attendu chez les prisonniers. Ressources supplémentaires en attente.",
+          "intel": "Voie de sortie sécurisée dans le Sec_D : 842 m. L'accès a été verrouillé jusqu'à extinction du système d'alimentation. Un important taux de mortalité est attendu chez les prisonniers. Ressources supplémentaires en attente.",
           "comms": ">[Parasites radio]\n >[inintelligible]\n >...\n **>... tout le monde est mort.**\n >... Je peux pas... Je vais pas y arriver.\n >[coups de feu]"
         }
       }
@@ -73,24 +73,24 @@
       "C": {
         "C1": {
           "name": "Triangulation",
-          "intel": "AVERTISSEMENT : base de données de navigation corrompue. Triangulation verticale requise pour confirmer l'emplacement de la cloison de l'entrepôt frigorifique.",
+          "intel": "AVERTISSEMENT : base de données de navigation corrompue. Triangulation verticale requise pour confirmer l'emplacement de la cloison de l'entrepôt frigorifique.",
           "comms": ">...\n >... C'est pas par là...\n >... On trouvera jamais cette foutue sortie !\n **>... On est perdus ? Bordel, on est vraiment perdus !**"
         },
         "C2": {
           "name": "???",
-          "intel": "Reconstruction de la base de données de navigation requise. Les prisonniers ont été envoyés pour récupérer toutes les pièces d'identité de la zone appropriée.\n \n##AVERTISSEMENT : Taux de mortalité élevé présumé##",
+          "intel": "Reconstruction de la base de données de navigation requise. Les prisonniers ont été envoyés pour récupérer toutes les pièces d'identité de la zone appropriée.\n \n##AVERTISSEMENT : Taux de mortalité élevé présumé##",
           "comms": ">...\n >... J'en peux plus... **Je vais marrêter là. PAS UN SEUL...**\n >...[bruit soudain, cris, inintelligible]\n >...[connection interrompue]"
         }
       },
       "D": {
         "D1": {
           "name": "Statistics",
-          "intel": "AVERTISSEMENT : systèmes de filtration de la cloison de l'entrepôt frigorifique hors ligne. Les prisonniers ont été envoyés pour réactiver le générateur central.",
+          "intel": "AVERTISSEMENT : systèmes de filtration de la cloison de l'entrepôt frigorifique hors ligne. Les prisonniers ont été envoyés pour réactiver le générateur central.",
           "comms": ">...\n >... Qu'est-ce que...\n >[inintelligible, bourdonnement bruyant]"
         },
         "D2": {
           "name": "Powerless",
-          "intel": "AVERTISSEMENT : systèmes de filtration de la cloison de l'entrepôt frigorifique hors ligne. Redémarrage du réseau requis.",
+          "intel": "AVERTISSEMENT : systèmes de filtration de la cloison de l'entrepôt frigorifique hors ligne. Redémarrage du réseau requis.",
           "comms": ">...\n >... c'est quoi le mot de passe ?\n **>... c'est quoi ce foutu mot de passe ?**\n >... [sirène stridente]\n >... Merde ! MERDE ! [coups de feu, vacarme]"
         }
       },
@@ -135,7 +135,7 @@
       "C": {
         "C1": {
           "name": "Alpha",
-          "intel": "ALERTE : échantillon d'ADN de protocole ALPHA corrompu. Échantillon requis pour faciliter l'empreinte neurale du conduit.\n--ERR : ROT47 --\n&?XMA64E65 86@8C2A9:42= 52E2 >:0>AP49[2C52 566>65 F?WQ87=4]",
+          "intel": "ALERTE : échantillon d'ADN de protocole ALPHA corrompu. Échantillon requis pour faciliter l'empreinte neurale du conduit.\n--ERR : ROT47 --\n&?XMA64E65 86@8C2A9:42= 52E2 >:0>AP49[2C52 566>65 F?WQ87=4]",
           "comms": ">... il a ... changé ...\n**>... Fermez-la et gardez les yeux ouverts !**\n>..[inintelligible]"
         }
       },
@@ -168,7 +168,7 @@
       "B": {
         "B1": {
           "name": "Malachite",
-          "intel": "Les coupures d'électricité ont compromis l'intégrité du réseau. Les prosonniers ont été envoyés pour relier les piles au réseau local à travers le générateur central du groupe électrogène [Z085]. Priorité : stabiliser le réseau électrique. Niveau de tolérance à la perte de ressource augmenté.",
+          "intel": "Les coupures d'électricité ont compromis l'intégrité du réseau. Les prosonniers ont été envoyés pour relier les piles au réseau local à travers le générateur central du groupe électrogène [Z085]. Priorité : stabiliser le réseau électrique. Niveau de tolérance à la perte de ressource augmenté.",
           "comms": ">... Ces trucs sont super lourds.\n**>... [Cuchotement] Chut ! Tu vas réveiller les gros.**\n>... [Chuchotement] Ouais, ferme-la et bouge-toi."
         },
         "B2": {
@@ -195,7 +195,7 @@
         },
         "C3": {
           "name": "Cuernos",
-          "intel": "Les prisonniers doivent localiser et rapporter [objet : turbine de répulsif à brouillard] avant la mise en quarantaine du quadrant.\nLa liste d'objectifs sera répétée jusqu'à ce que [objet : turbine de répulsif à brouillard] soit pleinement opérationnelle.",
+          "intel": "Les prisonniers doivent localiser et rapporter [objet : turbine de répulsif à brouillard] avant la mise en quarantaine du quadrant.\nLa liste d'objectifs sera répétée jusqu'à ce que [objet : turbine de répulsif à brouillard] soit pleinement opérationnelle.",
           "comms": ">... Comment on peut les contourner ?\n**>... Il nous faut du répulsif.\nBEAUCOUP de répulsif.**"
         }
       },
@@ -234,7 +234,7 @@
       "B": {
         "B1": {
           "name": "Smother",
-          "intel": "Programme d'évaluation d'ADN instauré. Collecte de tissus compatibles requise. Taux de pertes estimé : 78 %. Les prisonniers sont jugés remplaçables.",
+          "intel": "Programme d'évaluation d'ADN instauré. Collecte de tissus compatibles requise. Taux de pertes estimé : 78 %. Les prisonniers sont jugés remplaçables.",
           "comms": ">... Ils doivent dormir.\n**>... Derrière ! Reculez !**\n>... [inaudible] Bordel.\n>... [coups de feu, vacarme]"
         },
         "B2": {
@@ -249,14 +249,14 @@
         },
         "B4": {
           "name": "Diversion",
-          "intel": "Procédure de diversion standard lancée.\nRéseau électrique local : instable. Taux de survie estimé : 17 %.",
+          "intel": "Procédure de diversion standard lancée.\nRéseau électrique local : instable. Taux de survie estimé : 17 %.",
           "comms": ">... Je peux plus les retenir longtemps !\n**>... La porte est ouverte !**\n>... Prenez le nécessaire et allez-y !"
         }
       },
       "C": {
         "C1": {
           "name": "Binary",
-          "intel": "Quadrant du système de maintenance inactif. Prisonniers envoyés pour établir une liaison montante. Taux de mortalité : élevé.",
+          "intel": "Quadrant du système de maintenance inactif. Prisonniers envoyés pour établir une liaison montante. Taux de mortalité : élevé.",
           "comms": ">... Merde, merde... Donnez-moi une minute...\n>... Pas le temps ! Ils arrivent bientôt.\n**>... Hein ?! C'est quoi ce bordel...**"
         },
         "C2": {
@@ -273,7 +273,7 @@
       "D": {
         "D1": {
           "name": "Even deeper",
-          "intel": "Le protocole de sécurité empêche l'accès aux niveaux inférieurs. Prisnniers envoyés pour installer un exécutable de neutralisation dans le réacteur local. Taux de mortalité : élevé.",
+          "intel": "Le protocole de sécurité empêche l'accès aux niveaux inférieurs. Prisnniers envoyés pour installer un exécutable de neutralisation dans le réacteur local. Taux de mortalité : élevé.",
           "comms": ">... It's having us shut down security...\n>... I don't like where this is going.\n**>... Deeper, that's where.**"
         },
         "D2": {
@@ -359,7 +359,7 @@
         },
         "D4": {
           "name": "Cryptomnesia",
-          "intel": "Les prisonniers doivent récupérer le cube de données altéré [TAMPERED_DATA_CUBE] dans le laboratoire d'Insight. Relevés d'énergie divergents détectés. Chances de survie des prisonniers : très faibles.",
+          "intel": "Les prisonniers doivent récupérer le cube de données altéré [TAMPERED_DATA_CUBE] dans le laboratoire d'Insight. Relevés d'énergie divergents détectés. Chances de survie des prisonniers : très faibles.",
           "comms": "... On est... de retour...\n... Alors finissons-en vite !\n... Non, **attendez !**\n... [cris, coups de feu]"
         }
       }
@@ -552,15 +552,15 @@
       }
     },
     "missions": {
-      "chooseRundown": "Choisissez la campagne à afficher :",
+      "chooseRundown": "Choisissez la campagne à afficher :",
       "rundownTitle": "Campagne",
-      "missionTitle": "Mission # :",
+      "missionTitle": "Mission # :",
       "sector": "Secteur",
       "intel": ":://Intel_",
       "sectors": ":://Secteurs_&&_badges_de_progression_",
       "comms": ":://Transmissions_interrompues_",
       "metrics": ":://Données_d'expédition_",
-      "depth": "Profondeur cible de la cage de largage :",
+      "depth": "Profondeur cible de la cage de largage :",
       "completed": "Terminé",
       "notCompleted": "Non terminé",
       "completeSector": "Marquer le secteur # comme terminé",
