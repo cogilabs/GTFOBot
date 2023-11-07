@@ -15,7 +15,7 @@
 
 - [Introduction](#introduction)
 - [Utiliser/lancer](#utiliserlancer)
-- [Dites-moi ce que vous pensez !](#dites-moi-ce-que-vous-pensez)
+- [Dites-moi ce que vous pensez !](#dites-moi-ce-que-vous-pensez)
 - [L'application](#lapplication)
 - [Exemples](#exemples)
 - [Gestion des événements](#gestion-des-événements)
@@ -32,9 +32,9 @@ Il est capable d'afficher l'état des campagnes du jeu et d'afficher des détail
 ## Utiliser/lancer
 
 Si vous souhaitez utiliser ou essayer Dauda, vous pouvez l'ajouter à votre serveur en cliquant sur ce bouton :
-<p align="center"><a href="https://discord.com/api/oauth2/authorize?client_id=1050757215885209640&permissions=283736656976&scope=bot" target="_blank"><img alt="Bouton d'ajout sur Discord" title="Ajoutez-moi sur votre serveur Discord !" src="https://img.shields.io/badge/Add%20Dauda%20on-Discord-5865F2?style=for-the-badge"></a></p>  
+<p align="center"><a href="https://discord.com/api/oauth2/authorize?client_id=1050757215885209640&permissions=283736656976&scope=bot" target="_blank"><img alt="Bouton d'ajout sur Discord" title="Ajoutez-moi sur votre serveur Discord !" src="https://img.shields.io/badge/Add%20Dauda%20on-Discord-5865F2?style=for-the-badge"></a></p>  
   
-## Dites-moi ce que vous pensez !
+## Dites-moi ce que vous pensez !
 
 Si vous trouvez un bug, avez besoin d'aide, d'informations, souhaitez suivre les actualités concernant le bot, ou simplement discuter, n'hésitez pas à rejoindre le **[serveur Discord de Dauda](https://discord.gg/bwWBc8phma)** !
 
@@ -76,7 +76,7 @@ En bas, vous pouvez cliquer sur un bouton pour marquer un secteur comme terminé
 
 Le bot envoie un message lorsque qu'un événement planifié est créé sur le serveur. En vérifiant le nom et la description de l'événement à la recherche d'un ID de mission, il peut savoir où se déroule l'expédition et envoie un message incluant l'ID de la mission (si aucun ID de mission n'est trouvé, le message n'en parle tout simplement pas) :
 
-> Le Gardien a prévu une nouvelle expédition vers ***R7B1***, alors soyez prêts à travailler ensemble, ou à mourir ensemble !
+> Le Gardien a prévu une nouvelle expédition vers ***R7B1***, alors soyez prêts à travailler ensemble, ou à mourir ensemble !
 
 Il garde également une trace de qui est intéressé par l'expédition et envoie des messages en conséquence.
 
@@ -84,9 +84,9 @@ Lorsque l'événement commence, Dauda indiquera aux utilisateurs un lien pour le
   
 Si vous modifiez l'ID de mission contenu dans l'événement, le bot enverra un message indiquant que l'expédition change de destination. Le message dépendra de l'achèvement de la première destination :
 
-> C'est avec succès que l'expédition vers ***R1C2*** se dirige maintenant vers ***R1D1*** !
+> C'est avec succès que l'expédition vers ***R1C2*** se dirige maintenant vers ***R1D1*** !
 
-> L'expédition vers ***R7B2*** a échoué, mais peu importe, nous sommes maintenant envoyés vers ***R7C1*** !
+> L'expédition vers ***R7B2*** a échoué, mais peu importe, nous sommes maintenant envoyés vers ***R7C1*** !
 
 Lorsqu'un événement est terminé, un message du même genre que ci-dessus sera envoyé, en vérifiant à nouveau l'achèvement de la mission dans le fichier d'achèvement.
 
@@ -108,7 +108,7 @@ Par défaut, le bot ne réagit qu'aux événements ayant le texte `GTFO` dans le
 
 Le bot est également capable de réagir à certains messages, comme une mention `@everyone`.
 
-Par exemple, il peut réagir à des messages comme "Avons-nous terminé R1D1 ?", "Quel est l'état de R2B1 ?", "Savez-vous si nous en avons fini avec R7B3 ?" avec une coche verte ✅ ou une croix rouge ❌, en fonction de l'état de l'objectif principal de cette mission.
+Par exemple, il peut réagir à des messages comme "Avons-nous terminé R1D1 ?", "Quel est l'état de R2B1 ?", "Savez-vous si nous en avons fini avec R7B3 ?" avec une coche verte ✅ ou une croix rouge ❌, en fonction de l'état de l'objectif principal de cette mission.
 
 Il répond également à des messages comme "Merci Dauda" avec un message "De rien" aléatoire, et réagit avec un point d'interrogation ❓ lorsque quelqu'un dit des choses comme "Demande simplement à Dauda".
 
@@ -116,7 +116,7 @@ Il répond également à des messages comme "Merci Dauda" avec un message "De ri
 
 Si vous en faites la demande avec la commande `/config`[^1], le bot peut bloquer l'accès aux missions qui sont verrouillées dans le jeu. Cependant, si vous souhaitez savoir quelles missions sont verrouillées tout en étant en mesure de les consulter, il est également possible de les modifier visuellement.
 
-![Déverrouillage interactif en mode "bloquer"](/Images/unlockMechanism-fr.png?raw=true "Déverrouillage interactif en mode \"bloquer\"") ![Déverrouillage interactif en mode "visuel"](/Images/visuallyPlayable-fr.png?raw=true "Déverrouillage interactif en mode \"visuel\"")
+![Déverrouillage interactif en mode "bloquer"](/Images/unlockMechanism-fr.png?raw=true "Déverrouillage interactif en mode \"bloquer\"") ![Déverrouillage interactif en mode "visuel"](/Images/visuallyPlayable-fr.png?raw=true "Déverrouillage interactif en mode \"visuel\"")
 
 ## Plus d'informations
 
