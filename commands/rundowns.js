@@ -164,14 +164,16 @@ module.exports = {
                             rows[i].addComponents(
                                 new ButtonBuilder()
                                     .setCustomId(cmdName + '-mission-' + RID + nb)
-                                    .setLabel(emojiPrefix + nb)
+                                    //.setLabel(emojiPrefix + nb)
+                                    .setLabel(nb)
                                     .setStyle(ButtonStyle.Success),
                             );
                         } else {
                             rows[i].addComponents(
                                 new ButtonBuilder()
                                     .setCustomId(cmdName + '-mission-' + RID + nb)
-                                    .setLabel(emojiPrefix + nb)
+                                    //.setLabel(emojiPrefix + nb)
+                                    .setLabel(nb)
                                     .setStyle(ButtonStyle[style])
                                     .setDisabled(!playable),
                             );
