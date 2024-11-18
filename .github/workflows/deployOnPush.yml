@@ -15,6 +15,7 @@ jobs:
           script: |
                   source /home/${{ secrets.SSH_USER }}/nodevenv/GTFOBot/16/bin/activate && cd /home/${{ secrets.SSH_USER }}/GTFOBot
                   git pull
-                  ./node_modules/pm2/bin/pm2 restart GTFOBot.js
+                  ./node_modules/pm2/bin/pm2 stop GTFOBot.js
+                  ./node_modules/pm2/bin/pm2 start GTFOBot.js
                   node ./deploy-commands-global.js
                   node ./deploy-commands-guild.js
