@@ -5,38 +5,38 @@
         "A1": {
           "name": "The Admin",
           "intel": "Habilitation requise pour la section B. Échantillon d'ADN nécessaire. Les prisonniers ont été envoyés récupérer la HSU de l'administrateur.",
-          "comms": ">...\n **>... ils réagissent aux sons et à la lumière !**\n >... Ne bougez plus ! [cri inintelligible]"
+          "comms": ">...\n**>... ils réagissent aux sons et à la lumière !**\n>... Ne bougez plus ! [cri inintelligible]"
         }
       },
       "B": {
         "B1": {
           "name": "PID Search",
           "intel": "Pièce d'identité de niveau 4 nécessaire pour redémarrer le circuit d'alimentation. Les prisonniers ont été envoyés pour récupérer toutes les pièces d'identité de la zonne appropriée.",
-          "comms": ">... Par où est-ce qu'on va ?\n >... Chuuut. [intelligible]\n **>**\n >... Ne bougez pas si vous entendez leurs cœurs battre ! [cri, coup de feu, inintelligible]."
+          "comms": ">... Par où est-ce qu'on va ?\n>... Chuuut. [intelligible]\n**>**\n>... Ne bougez pas si vous entendez leurs cœurs battre ! [cri, coup de feu, inintelligible]."
         },
         "B2": {
           "name": "The Officer",
           "intel": "L'ADN de l'agent de sécurité est nécessaire pour court-circuiter l'alimentation du système de sécurité. Les prisonniers ont été envoyés pour extraire un échatillon d'ADN de la HSU.",
-          "comms": ">… une alarme ! [inintelligible, cri]\n **>… il faut qu'on s'en tienne au plan !**\n >[inintelligible, coup de feu]"
+          "comms": ">… une alarme ! [inintelligible, cri]\n**>… il faut qu'on s'en tienne au plan !**\n>[inintelligible, coup de feu]"
         }
       },
       "C": {
         "C1": {
           "name": "Reconnect",
           "intel": "Court-circuitage nécessaire dans le Sec_D : 842 m. Des prisonniers ont été envoyés pour court-circuiter l'alimentation.",
-          "comms": ">[Sirène d'alarme]\n >... Ils arrivent !\n >[coup de feu, inintelligible]\n **>Il faut qu'on dégage d'ici !**"
+          "comms": ">[Sirène d'alarme]\n>... Ils arrivent !\n>[coup de feu, inintelligible]\n**>Il faut qu'on dégage d'ici !**"
         },
         "C2": {
           "name": "Decode",
           "intel": "Matrice de chiffrage éclatée trouvée dans le Sec_D : 842 m. Les prisonniers ont été envoyés récupérer les décodeurs partiels.",
-          "comms": ">... Ne pas regarder vers le haut... Ne pas regarder vers le haut...\n >[inintelligible]\n >[cri lointain]\n >..est-ce que ça va ?"
+          "comms": ">... Ne pas regarder vers le haut... Ne pas regarder vers le haut...\n>[inintelligible]\n>[cri lointain]\n>..est-ce que ça va ?"
         }
       },
       "D": {
         "D1": {
           "name": "Deeper",
           "intel": "Voie de sortie sécurisée dans le Sec_D : 842 m. L'accès a été verrouillé jusqu'à extinction du système d'alimentation. Un important taux de mortalité est attendu chez les prisonniers. Ressources supplémentaires en attente.",
-          "comms": ">[Parasites radio]\n >[inintelligible]\n >...\n **>... tout le monde est mort.**\n >... Je peux pas... Je vais pas y arriver.\n >[coups de feu]"
+          "comms": ">[Parasites radio]\n>[inintelligible]\n>...\n**>... tout le monde est mort.**\n>... Je peux pas... Je vais pas y arriver.\n>[coups de feu]"
         }
       }
     },
@@ -45,60 +45,60 @@
         "A1": {
           "name": "The Dig",
           "intel": "Mise à jour de la base de données sur la résistance des génotypes requise. Envoi de prisonniers pour sécuriser les échantillons de l'essai ADN pMOTHER.",
-          "comms": ">...\n **>... [chuchotement] Chut ! Vous allez les réveiller**\n >... Éteignez la torche !\n >... [cri soudain, inintelligible]"
+          "comms": ">...\n**>... [chuchotement] Chut ! Vous allez les réveiller**\n>... Éteignez la torche !\n>... [cri soudain, inintelligible]"
         }
       },
       "B": {
         "B1": {
           "name": "Sacrifice",
           "intel": "Itinéraire recommandé à travers R2B2 compromis par une biomasse agressive. Les ressources non essentielles ont été affectées à lexécution de la tactique de diversion.",
-          "comms": ">...\n **>... N'ouvrez pas cette porte !**\n >... il y a quelque chose de l'autre... NON !\n...[vacarme, cris]"
+          "comms": ">...\n**>... N'ouvrez pas cette porte !**\n>... il y a quelque chose de l'autre... NON !\n...[vacarme, cris]"
         },
         "B2": {
           "name": "Power Corrupt",
           "intel": "Alimentation insuffisante dans [R2C] pour la triangulation de l'équipement RISE. Des ressources ont été envoyées pour détourner l'al@65erreur-",
-          "comms": ">...\n **>... c'est quoi ça... sur le mur ?**\n >... [craquement bruyant, inintelligible]\n >... Merde ! MERDE ! [toux, vacarme]"
+          "comms": ">...\n**>... c'est quoi ça... sur le mur ?**\n>... [craquement bruyant, inintelligible]\n>... Merde ! MERDE ! [toux, vacarme]"
         },
         "B3": {
           "name": "Pathfinder",
           "intel": "Le système de sécurité contrôlé par BIOCOM ne répond pas. Liaison montante externe requise.",
-          "comms": ">...\n **>... c'est quoi le mot de passe ?!**\n >...[inintelligible, coups de feu, vacarme]\n >... C'EST QUOI CE FOUTU MOT DE PASSE ?!\n >...[vacarme, cris]"
+          "comms": ">...\n**>... c'est quoi le mot de passe ?!**\n>...[inintelligible, coups de feu, vacarme]\n>... C'EST QUOI CE FOUTU MOT DE PASSE ?!\n>...[vacarme, cris]"
         },
         "B4": {
           "name": "Septic",
           "intel": "Barrière de contagion virulente détectée entre la section [R2B] et [R2C]. Décontamination requise",
-          "comms": ">...\n **>... je dois me débarrasser de ça immédiatement !**\n >... j'ai trouvé une station de désinfection !\n >...[toux, vacarme, inintelligible]"
+          "comms": ">...\n**>... je dois me débarrasser de ça immédiatement !**\n>... j'ai trouvé une station de désinfection !\n>...[toux, vacarme, inintelligible]"
         }
       },
       "C": {
         "C1": {
           "name": "Triangulation",
           "intel": "AVERTISSEMENT : base de données de navigation corrompue. Triangulation verticale requise pour confirmer l'emplacement de la cloison de l'entrepôt frigorifique.",
-          "comms": ">...\n >... C'est pas par là...\n >... On trouvera jamais cette foutue sortie !\n **>... On est perdus ? Bordel, on est vraiment perdus !**"
+          "comms": ">...\n>... C'est pas par là...\n>... On trouvera jamais cette foutue sortie !\n**>... On est perdus ? Bordel, on est vraiment perdus !**"
         },
         "C2": {
           "name": "???",
           "intel": "Reconstruction de la base de données de navigation requise. Les prisonniers ont été envoyés pour récupérer toutes les pièces d'identité de la zone appropriée.\n \n##AVERTISSEMENT : Taux de mortalité élevé présumé##",
-          "comms": ">...\n >... J'en peux plus... **Je vais marrêter là. PAS UN SEUL...**\n >...[bruit soudain, cris, inintelligible]\n >...[connection interrompue]"
+          "comms": ">...\n>... J'en peux plus... **Je vais marrêter là. PAS UN SEUL...**\n>...[bruit soudain, cris, inintelligible]\n>...[connection interrompue]"
         }
       },
       "D": {
         "D1": {
           "name": "Statistics",
           "intel": "AVERTISSEMENT : systèmes de filtration de la cloison de l'entrepôt frigorifique hors ligne. Les prisonniers ont été envoyés pour réactiver le générateur central.",
-          "comms": ">...\n >... Qu'est-ce que...\n >[inintelligible, bourdonnement bruyant]"
+          "comms": ">...\n>... Qu'est-ce que...\n>[inintelligible, bourdonnement bruyant]"
         },
         "D2": {
           "name": "Powerless",
           "intel": "AVERTISSEMENT : systèmes de filtration de la cloison de l'entrepôt frigorifique hors ligne. Redémarrage du réseau requis.",
-          "comms": ">...\n >... c'est quoi le mot de passe ?\n **>... c'est quoi ce foutu mot de passe ?**\n >... [sirène stridente]\n >... Merde ! MERDE ! [coups de feu, vacarme]"
+          "comms": ">...\n>... c'est quoi le mot de passe ?\n**>... c'est quoi ce foutu mot de passe ?**\n>... [sirène stridente]\n>... Merde ! MERDE ! [coups de feu, vacarme]"
         }
       },
       "E": {
         "E1": {
           "name": "Crib",
           "intel": "Triangulation de l'équipement RISE terminée. Les prisonniers ont été envoyés pour récupérer le nouveau-né.",
-          "comms": ">... c'est quoi ce truc ?\n >**... ne touche pas à... BORDEL !**\n>[cris au loin]"
+          "comms": ">... c'est quoi ce truc ?\n>**... ne touche pas à... BORDEL !**\n>[cris au loin]"
         }
       }
     },
@@ -129,7 +129,7 @@
         "B2": {
           "name": "Pressure",
           "intel": "Dépresseur hydrostatique [DPR] requis pour accéder au HSU infantile. Les prisonniers doivent trouver une unité DPR fonctionnelle et dépressuriser la HSU infantile.",
-          "comms": ">... On doit vraiment le mettre dans ce... truc... ?\n>... Fermez-la et faites-le !\n**\\> On a encore... ATTENTION !**\n [coups de feu]"
+          "comms": ">... On doit vraiment le mettre dans ce... truc... ?\n>... Fermez-la et faites-le !\n**\\> On a encore... ATTENTION !**\n[coups de feu]"
         }
       },
       "C": {
@@ -324,7 +324,7 @@
         "C1": {
           "name": "Navigation",
           "intel": "Coordonnées vers la position approximative établies. Les prisonniers ont été envoyés pour récupérer (3) cubes de données [DATA_CUBE]. Niveaux d'énergie instables détectés dans le secteur concerné.",
-          "comms": "... Non. C'est à ton tour.\n Et pourquoi pas lui, hein ?!\n... Je te dis de **toucher ce foutu...**\n... Bon, d'accord ! Pfff..."
+          "comms": "... Non. C'est à ton tour.\nEt pourquoi pas lui, hein ?!\n... Je te dis de **toucher ce foutu...**\n... Bon, d'accord ! Pfff..."
         },
         "C2": {
           "name": "Blind",
@@ -369,63 +369,135 @@
         "A1": {
           "name": "Unit 23",
           "intel": "Réanimation du contenu de la HSU infantile nécessaire. Perte de ressources collatérales acceptable.",
-          "comms": ">… J'ai l'impression qu'on nous observe.\n >… C'est le gardien. Il nous observe tout le temps.\n >… Non, c'est **quelque chose d'autre…**"
+          "comms": ">… J'ai l'impression qu'on nous observe.\n>… C'est le gardien. Il nous observe tout le temps.\n>… Non, c'est **quelque chose d'autre…**"
         }
       },
       "B": {
         "B1": {
           "name": "Cargo",
           "intel": "Début de la phase deux du nouveau-né.\nPrisonniers déployés pour transporter le nouveau-né jusqu'à la chambre de dépressurisation.",
-          "comms": ">… Ça devrait être mort, tout ça, non ? Comme tout le reste\n >… Le **truc** que tu portes, in est pas mort."
+          "comms": ">… Ça devrait être mort, tout ça, non ? Comme tout le reste\n>… Le **truc** que tu portes, in est pas mort."
         },
         "B2": {
           "name": "Dense",
           "intel": "Établissez une liaison montante sur les terminaux désignés pour localiser le site de préparation des HSU infantiles.",
-          "comms": ">… Que'est-ce qu'il y a derrière ces... **choses ?**\n >… Je ne veux même pas savoir.\n >… Préparons-nous au pire."
+          "comms": ">… Que'est-ce qu'il y a derrière ces... **choses ?**\n>… Je ne veux même pas savoir.\n>… Préparons-nous au pire."
         },
         "B3": {
           "name": "Vault",
           "intel": "Les prisonniers doivent récupérer des échantillons d'ADN dans l'annexe de dépot des HSU. Un équipement de protection environnemental permettra d'augmenter les chances de survie.",
-          "comms": ">… Ne respirez pas !\n >… Il faut qu'on **traverse** ce truc.\n >… Je sais pas ce qu'il y a dans ces HSU, mais c'est forcément mort, non ?"
+          "comms": ">… Ne respirez pas !\n>… Il faut qu'on **traverse** ce truc.\n>… Je sais pas ce qu'il y a dans ces HSU, mais c'est forcément mort, non ?"
         }
       },
       "C": {
         "C1": {
           "name": "Monster",
           "intel": "Prisonniers déployés pour localiser les fioles d'homone peptidique Glucagon. Visibilité limitée en raison de la présence d'un gaz inconnu. Voie de sortie bloquée.",
-          "comms": ">... “Tirons-nous d'ici. J'ai un mauvais pressentiment.”\n >... “Il a été mangé. Qu'est-ce qui a pu faire ça ?”\n >... “Tu veux être le prochain ? **Allez, on se bouge !**”"
+          "comms": ">... “Tirons-nous d'ici. J'ai un mauvais pressentiment.”\n>... “Il a été mangé. Qu'est-ce qui a pu faire ça ?”\n>... “Tu veux être le prochain ? **Allez, on se bouge !**”"
         },
         "C2": {
           "name": "Sublimation",
           "intel": "Accès au portail de téléportation du quadrant nécessaire. Prisonniers envoyés pour activer la grappe de générateurs locale. Prévision de pertes élevées en raison des conditions atmosphériques anormales.",
-          "comms": ">… Mes poumons... Sortez-moi de là !\n >… On ne peux pas disperser le brouillard sans électricité !\n >… **Tout le monde est prêt ?** Bon prenez la cellu..."
+          "comms": ">… Mes poumons... Sortez-moi de là !\n>… On ne peux pas disperser le brouillard sans électricité !\n>… **Tout le monde est prêt ?** Bon prenez la cellu..."
         },
         "C3": {
           "name": "Reckless",
           "intel": "Liaisons montantes supplémentaires nécessaires pour effectuer des retraits dans les dépôts biochimiques.\nObjectif rudimentaire, octroi de ressources réduit.",
-          "comms": ">... Y a rien, rien du tout. Qu'est-ce qu'on fait ?\n >... **Regarde dans toutes les boîtes.** Utilise tout ce que tu trouves.\n >... Ça peut pas être pire, j'imagine."
+          "comms": ">... Y a rien, rien du tout. Qu'est-ce qu'on fait ?\n>... **Regarde dans toutes les boîtes.** Utilise tout ce que tu trouves.\n>... Ça peut pas être pire, j'imagine."
         }
       },
       "D": {
         "D1": {
           "name": "Mother",
           "intel": "Nouveau-né qualifié pour initialisation de phase finale. Prisonniers sans importance envoyés pour transporter le réceptacle jusqu'au site de préparation.",
-          "comms": ">... Qu'est-ce que c'est que toutes ces machines ?\n >... Ferme-la et concentre-toi. Confirmez **à mon signal**\n >... Bordel ! Les voilà !"
+          "comms": ">... Qu'est-ce que c'est que toutes ces machines ?\n>... Ferme-la et concentre-toi. Confirmez **à mon signal**\n>... Bordel ! Les voilà !"
         },
         "D2": {
           "name": "AWOL",
           "intel": "Prisonniers envoyés pour récupérer de nouvelles graines pour les HSU infantiles. Exp::ERR###",
-          "comms": ">... Argh, qu'est-ce qu'ils sont **lourds ces machins !**\n >... C'est clair. On doit en prendre combien ?\n >... Prenons-en deux et voyons si le gardien vient nous chercher quand même..."
+          "comms": ">... Argh, qu'est-ce qu'ils sont **lourds ces machins !**\n>... C'est clair. On doit en prendre combien ?\n>... Prenons-en deux et voyons si le gardien vient nous chercher quand même..."
         }
       },
       "E": {
         "E1": {
           "name": "Chaos",
           "intel": "Arrêt d'un processus critique.\nDébut du verrouillage d'urgence.\nPrisonniers déployés pour relancer le réacteur.",
-          "comms": ">... On est suivis\n >... Pourquoi il veut pas mourir, celui-là ?\n >... C'est de la folie. **De la FOLIE !**"
+          "comms": ">... On est suivis\n>... Pourquoi il veut pas mourir, celui-là ?\n>... C'est de la folie. **De la FOLIE !**"
         }
       }
     },
+    "R8": {
+      "A": {
+        "A1": {
+          "name": "Order",
+          "intel": "Objectif adapté au déplacement de ressources. Les prisonniers sont assignés à la recherche du projecteur d'ondes de matière. Tolérance aux pertes : Faible.",
+          "comms": ">... Stop ! **Il bouge.**\n>... Je vais passer derrière.\n>... Merde, ils nous ont entendus !"
+        },
+        "A2": {
+          "name": "Perspective",
+          "intel": "Les prisonniers doivent vider les réservoirs de refroidissement du réacteur.",
+          "comms": ">... Attends, ne fais pas--\n>... Ça m'a l'air vide.\n>... Essaie avec la **lampe torche.**"
+        }
+      },
+      "B": {
+        "B1": {
+          "name": "Effect",
+          "intel": "Le stockage des données de navigation nécessite (3) cubes de données. Le contact avec ces objets peut entraîner une projection des sujets. Les prisonniers sont déployés.",
+          "comms": ">... À trois. Tu es avec moi ?\n>... Étrange. Peut-être que c'est cassé.\n>... Je jure que **quelque chose a changé...**"
+        },
+        "B2": {
+          "name": "Warp",
+          "intel": "Les coordonnées de navigation nécessitent un stockage suffisant. Les prisonniers doivent formater les cubes de données depuis les terminaux de dégaussage.",
+          "comms": ">... Pourquoi tu continues à les réveiller ?\n>... Je comprends, ferme-la maintenant.\n>... Les gars, concentrez-vous. Regardez.\n>... **Du sable ?**"
+        },
+        "B3": {
+          "name": "Cause",
+          "intel": "Lancez un exercice de préparation à la contamination : les prisonniers sont déployés.",
+          "comms": ">... Qu'est-ce que tu fais--\n>... [cris, bruits métalliques]\n>... [respiration lourde]"
+        },
+        "B4": {
+          "name": "Insurrection",
+          "intel": "Vous allez déposer les tiges de contrôle de l'élément réacteur.",
+          "comms": ">... **Retenez votre souffle.**\n>... Attendez... là-bas ! Ça se dissipe.\n>... [tousse] Bien. On avance !"
+        }
+      },
+      "C": {
+        "C1": {
+          "name": "Link",
+          "intel": "Clé d'accès du Projet Insight identifiée dans le secteur.\nLes prisonniers sont envoyés pour récupérer la sphère de données 741.",
+          "comms": ">... Encore une ?\n>... Il a failli m'avoir cette fois.\n>... Il revient. **Cachez-vous !**"
+        },
+        "C2": {
+          "name": "Unplugged",
+          "intel": "TRAÎTRES ! ARRÊTEZ MAINTENANT, SINON...\nJUSTE ARRÊTEZ !!!",
+          "comms": ">... Fermez la porte !\n>... Il est là, il va réussir--\n>... MAINTENANT, enfoiré !\n>... [porte qui claque]"
+        }
+      },
+      "D": {
+        "D1": {
+          "name": "Tandem",
+          "intel": "Interaction prévue dans le secteur des Jardins. Performance erratique observée dans des analyses isolées. Mise à jour des coordonnées de localisation.",
+          "comms": ">... Qu'est-ce que tu as fait ?\n>... Je n'ai rien fait... Ça s'est **éteint tout seul !**\n>... [rugissement lointain]\n>... C'était quoi ça ?"
+        },
+        "D2": {
+          "name": "Slaughter",
+          "intel": "[Statut inconnu]",
+          "comms": ">... Un nid ?\n>... On n'a pas le choix. **Elle attend.**\n>... Pourquoi, pourquoi ?"
+        }
+      },
+      "E": {
+        "E1": {
+          "name": "Valiant",
+          "intel": "ALERTE : Containment rompu. Départ immédiat des profondeurs de KD5 nécessaire à la survie. Prédiction de pertes désactivée.",
+          "comms": ">... **Bougez ! Plus vite !**\n>... [vacarme, coups de feu]\n>... [halètement]"
+        },
+        "E2": {
+          "name": "Release",
+          "intel": "[Statut inconnu]",
+          "comms": ">... [alarme résonnant]\n>... **Évacuez immédiatement.** Ceci n'est pas un exercice.\n>... [statique]"
+        }
+      }
+    },   
     "colors": {
       "red": "rouge",
       "orange": "orange",
