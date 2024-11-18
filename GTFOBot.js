@@ -104,7 +104,6 @@ client.once(Events.ClientReady, async () => {
 		}
 	}
 
-
 	function updateTime() {
 		outputFile.set('time', Math.floor(Date.now()/ 1000).toString());
 		outputFile.save();
