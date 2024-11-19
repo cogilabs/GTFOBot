@@ -15,6 +15,6 @@ jobs:
           script: |
                   cd /root/GTFOBot
                   git pull
-                  pm2 restart GTFOBot
+                  /root/GTFOBot/node_modules/pm2/bin/pm2 restart GTFOBot
                   node ./deploy-commands-global.js
                   node ./deploy-commands-guild.js
