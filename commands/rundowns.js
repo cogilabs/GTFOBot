@@ -339,8 +339,10 @@ module.exports = {
                                                 if (udnb.charCodeAt(1) != "1".charCodeAt(0) && udnb.charCodeAt(1) != "X".charCodeAt(0)) uncompleteDisabled = true;
                                             }
                                         }
-                                        if (completion[interaction.guild.id].completion[run][String.fromCharCode(id.charCodeAt(0)+1)][String.fromCharCode(id.charCodeAt(0)+1, "1".charCodeAt(0))].completed.main) {
-                                            uncompleteDisabled = true;
+                                        if (completion[interaction.guild.id].completion[run][String.fromCharCode(id.charCodeAt(0)+1)]) {
+                                            if (completion[interaction.guild.id].completion[run][String.fromCharCode(id.charCodeAt(0)+1)][String.fromCharCode(id.charCodeAt(0)+1, "1".charCodeAt(0))].completed.main) {
+                                                uncompleteDisabled = true;
+                                            }
                                         }
                                     }
                                     for (var mt2 in rundowns[run][lt][id].missionTypes) {

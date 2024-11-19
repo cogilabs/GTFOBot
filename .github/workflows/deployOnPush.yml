@@ -10,12 +10,11 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          password: ${{ secrets.SSH_PASSWORD }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-                  source /home/${{ secrets.SSH_USER }}/nodevenv/GTFOBot/16/bin/activate && cd /home/${{ secrets.SSH_USER }}/GTFOBot
+                  cd /root/GTFOBot
                   git pull
-                  ./node_modules/pm2/bin/pm2 stop GTFOBot.js
-                  ./node_modules/pm2/bin/pm2 start GTFOBot.js
+                  pm2 restart GTFOBot
                   node ./deploy-commands-global.js
                   node ./deploy-commands-guild.js
