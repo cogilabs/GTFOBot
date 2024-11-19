@@ -222,13 +222,19 @@
     "R5": {
       "A": {
         "A1": {
-          "name": "Floodways"
+          "name": "Floodways",
+          "intel": "Le processeur de la section nécessite un contournement. Les capteurs détectent une biomasse non identifiée. Les prisonniers sont jugés non essentiels.",
+          "comms": ">... [chuchotement] Doucement... Ne les réveillez pas.\n>... [chuchotement] Éteignez vos lampes.\n**>... Stop ! Ça palpite.**"
         },
         "A2": {
-          "name": "Recollect"
+          "name": "Recollect",
+          "intel": "Les prisonniers doivent récupérer une caisse de fret haute sécurité. Les capteurs détectent une biomasse non identifiée. Les prisonniers sont jugés non essentiels.",
+          "comms": ">... [bruit métallique]\n**>... Mon dieu. Comment ils sont arrivés là ?**\n>... Ils ont éclos..."
         },
         "A3": {
-          "name": "Mining"
+          "name": "Mining",
+          "intel": "Les prisonniers sont envoyés pour extraire des noyaux de données depuis les terminaux du site de forage. Les prisonniers sont jugés non essentiels. Capacité de filtration em eee%reur#:",
+          "comms": ">... Et... c'est bon ! On les a tous.\n>... Ouvrons cette porte maintenant.\n**>... Prêts ?**"
         }
       },
       "B": {
@@ -338,6 +344,7 @@
         },
         "CX": {
           "name": "Ascent",
+          "intel": "Biomasses diverses détectées dans le secteur DX. Potentiel pour améliorer le camouflage des unités. Exposition des prisonniers autorisée pour étendre la base de données génomique.",
           "comms": "... Cette saloperie s'infiltre dans les poumons.\n... Examinez chaque boîte et chaque placard. Il nous faut des munitions.\n... Je suis à court. **Bordel, je suis à court !**"
         }
       },
