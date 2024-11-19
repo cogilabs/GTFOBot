@@ -455,7 +455,7 @@
         "B2": {
           "name": "Warp",
           "intel": "Navigation coordinates require sufficient storage. Prisoners to format Data Cubes from degausser terminals.",
-          "comms": ">... If you keep waking them up?\n>... I get it, shut up already.\n>... Guys, focus. Look.\n>... **Sand?**"
+          "comms": ">... if you keep waking them up?\n>... I get it, shut up already.\n>... Guys, focus. Look.\n>... **Sand?**"
         },
         "B3": {
           "name": "Cause",
@@ -489,14 +489,14 @@
         "D2": {
           "name": "Slaughter",
           "intel": "[Status unknown]",
-          "comms": ">... A nest?\n>... We have no choice. **She's waiting.**\n>... Why why?"
+          "comms": ">... A nest?\n>... We have no choice. **She's waiting.**\n>... Why... why?"
         }
       },
       "E": {
         "E1": {
           "name": "Valiant",
-          "intel": "ALERT: Containement vessel breached. Departure from KD5 Deep essential to asset survival. Fatality predisction disabled.",
-          "comms": ">.. **Move! Faster!\n>... [commotion, gunfire]\n>... [panting]"
+          "intel": "ALERT: Containement vessel breached. Departure from KDS Deep essential to asset survival. Fatality prediction disabled.",
+          "comms": ">.. **Move! Faster!**\n>... [commotion, gunfire]\n>... [panting]"
         },
         "E2": {
           "name": "Release",

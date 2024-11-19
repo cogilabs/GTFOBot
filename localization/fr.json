@@ -431,33 +431,33 @@
         "A1": {
           "name": "Order",
           "intel": "Objectif adapté au déplacement de ressources. Les prisonniers sont assignés à la recherche du projecteur d'ondes de matière. Tolérance aux pertes : Faible.",
-          "comms": ">... Stop ! **Il bouge.**\n>... Je vais passer derrière.\n>... Merde, ils nous ont entendus !"
+          "comms": ">... Stop ! **Ça bouge.**\n>... Je vais passer derrière.\n>... Merde, ils nous ont entendus !"
         },
         "A2": {
           "name": "Perspective",
-          "intel": "Les prisonniers doivent vider les réservoirs de refroidissement du réacteur.",
-          "comms": ">... Attends, ne fais pas--\n>... Ça m'a l'air vide.\n>... Essaie avec la **lampe torche.**"
+          "intel": "Les prisonniers doivent v!der le-s réservoirs de refr0idissement du réacteur.",
+          "comms": ">... Attends, ne--\n>... Ça m'a l'air vide.\n>... Essaie avec la **lampe torche.**"
         }
       },
       "B": {
         "B1": {
           "name": "Effect",
           "intel": "Le stockage des données de navigation nécessite (3) cubes de données. Le contact avec ces objets peut entraîner une projection des sujets. Les prisonniers sont déployés.",
-          "comms": ">... À trois. Tu es avec moi ?\n>... Étrange. Peut-être que c'est cassé.\n>... Je jure que **quelque chose a changé...**"
+          "comms": ">... À trois. Avec moi ?\n>... Bizarre. Peut-être que c'est cassé.\n>... Je te jure, **quelque chose a changé...**"
         },
         "B2": {
           "name": "Warp",
           "intel": "Les coordonnées de navigation nécessitent un stockage suffisant. Les prisonniers doivent formater les cubes de données depuis les terminaux de dégaussage.",
-          "comms": ">... Pourquoi tu continues à les réveiller ?\n>... Je comprends, ferme-la maintenant.\n>... Les gars, concentrez-vous. Regardez.\n>... **Du sable ?**"
+          "comms": ">... si tu continues à les réveiller ?\n>... Je comprends, ferme-la maintenant.\n>... Les gars, concentrez-vous. Regardez.\n>... **Du sable ?**"
         },
         "B3": {
           "name": "Cause",
-          "intel": "Lancez un exercice de préparation à la contamination : les prisonniers sont déployés.",
-          "comms": ">... Qu'est-ce que tu fais--\n>... [cris, bruits métalliques]\n>... [respiration lourde]"
+          "intel": "Lanc3z un eXErc1¢e de pr3PAra;t1On à la c0ntaMInaTI0N, pr!s0nn1ers::",
+          "comms": ">... Qu'est-ce que tu--\n>... [cris, bruits métalliques]\n>... [respiration lourde]"
         },
         "B4": {
           "name": "Insurrection",
-          "intel": "Vous allez déposer les tiges de contrôle de l'élément réacteur.",
+          "intel": "V¤us a1l3z d3p0$er le$ t!gES d3 cOИtrô%e de l'él3meNt Ré4CteUr.",
           "comms": ">... **Retenez votre souffle.**\n>... Attendez... là-bas ! Ça se dissipe.\n>... [tousse] Bien. On avance !"
         }
       },
@@ -465,11 +465,11 @@
         "C1": {
           "name": "Link",
           "intel": "Clé d'accès du Projet Insight identifiée dans le secteur.\nLes prisonniers sont envoyés pour récupérer la sphère de données 741.",
-          "comms": ">... Encore une ?\n>... Il a failli m'avoir cette fois.\n>... Il revient. **Cachez-vous !**"
+          "comms": ">... Encore un ?\n>... Il a failli m'avoir cette fois.\n>... Il revient. **Cachez-vous !**"
         },
         "C2": {
           "name": "Unplugged",
-          "intel": "TRAÎTRES ! ARRÊTEZ MAINTENANT, SINON...\nJUSTE ARRÊTEZ !!!",
+          "intel": "TRAÎTRES ! ARRÊTEZ MAINTENANT, SINON.\nJUSTE ARRÊTEZ !!!!",
           "comms": ">... Fermez la porte !\n>... Il est là, il va réussir--\n>... MAINTENANT, enfoiré !\n>... [porte qui claque]"
         }
       },
@@ -477,18 +477,18 @@
         "D1": {
           "name": "Tandem",
           "intel": "Interaction prévue dans le secteur des Jardins. Performance erratique observée dans des analyses isolées. Mise à jour des coordonnées de localisation.",
-          "comms": ">... Qu'est-ce que tu as fait ?\n>... Je n'ai rien fait... Ça s'est **éteint tout seul !**\n>... [rugissement lointain]\n>... C'était quoi ça ?"
+          "comms": ">... Qu'est-ce que tu as fait ?\n>... Je n'ai... Ça s'est **éteint tout seul !**\n>... [rugissement lointain]\n>... C'était quoi ça ?"
         },
         "D2": {
           "name": "Slaughter",
           "intel": "[Statut inconnu]",
-          "comms": ">... Un nid ?\n>... On n'a pas le choix. **Elle attend.**\n>... Pourquoi, pourquoi ?"
+          "comms": ">... Un nid ?\n>... On n'a pas le choix. **Elle attend.**\n>... Pourquoi... pourquoi ?"
         }
       },
       "E": {
         "E1": {
           "name": "Valiant",
-          "intel": "ALERTE : Containment rompu. Départ immédiat des profondeurs de KD5 nécessaire à la survie. Prédiction de pertes désactivée.",
+          "intel": "ALERTE : Containment rompu. Départ immédiat des profondeurs de KDS nécessaire à la survie. Prédiction de pertes désactivée.",
           "comms": ">... **Bougez ! Plus vite !**\n>... [vacarme, coups de feu]\n>... [halètement]"
         },
         "E2": {
