@@ -1,6 +1,7 @@
 # GTFO Companion app
 
 <p align="center"><img alt="Bannière" title="Bannière" src="https://raw.githubusercontent.com/cogilabs/GTFOBot/master/Images/GTFOBot-Banner-tr.png?raw=true"></p>
+
 <!-- REMOVED WHILE I WORK ON MAKING THESE TAGS WORK AGAIN
 <p align="center">
     <a href="https://nodejs.org/" target="_blank"><img alt="Badge Node.js" title="Using Node.js!" src="https://img.shields.io/badge/node.js-233056?style=for-the-badge&logo=node.js&logoColor=white"/></a>
@@ -9,6 +10,7 @@
     <img alt="Serveurs rejoins" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fcogilabs.eu%2FGTFOBotStateCheck%2Fservers?style=for-the-badge"/><br>
 </p>
 -->
+
 [→ In English](/README.md)  
 
 ## Table des matières
