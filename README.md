@@ -123,7 +123,7 @@ If asked to do so with the `/config`[^1] command, the bot can block access to th
 The application is *fully localized* in English and French, taking the server language for event handling and answering/reacting to messages, and the interacting user's language for command descriptions, and answering to commands (Intel, mission descriptions, etc...).  
 It's also quite easy to localize in other languages (cf. [the english localization file](/localization/en-US.json)).  
   
-You can check if any language file has missing translations [here](https://cogilabs.eu/GTFOBotStateCheck/missingLoc.json). (Note: R5A missions were not translated in game.)
+You can check if any language file has missing translations [here](https://gtfobot.cogilabs.eu/GTFOBotStateCheck/missingLoc). (Note: R5A missions were not translated in game.)
   
 If a text channel named `dauda-logs` exists, the bot will log every actions it does in this server in it, along with actions like rebooting or updating.  
 You can of course change it to any other channel (like your “bot-logs” channel for instance) by using the `/config` command[^1].  

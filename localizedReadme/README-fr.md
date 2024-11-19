@@ -122,7 +122,7 @@ Si vous en faites la demande avec la commande `/config`[^1], le bot peut bloquer
 
 L'application est *entièrement localisée* en anglais et en français, en fonction de la langue du serveur pour la gestion des événements et des réponses/réactions aux messages, et de la langue de l'utilisateur interagissant pour les descriptions de commandes et les réponses aux commandes (intel, descriptions de missions, etc.). Il est également assez facile à localiser dans d'autres langues (voir [le fichier de localisation anglais](/localization/en-US.json)).
 
-Vous pouvez vérifier si des fichiers de langue ont des traductions manquantes [ici](https://cogilabs.eu/GTFOBotStateCheck/missingLoc.json). (Note : Les missions de R5A n'ont pas été traduites dans le jeu.)
+Vous pouvez vérifier si des fichiers de langue ont des traductions manquantes [ici](https://gtfobot.cogilabs.eu/GTFOBotStateCheck/missingLoc). (Note : Les missions de R5A n'ont pas été traduites dans le jeu.)
 
 Si un salon de texte nommé `dauda-logs` existe, le bot enregistrera toutes les actions qu'il effectue sur ce serveur, ainsi que des actions telles que le redémarrage ou la mise à jour. Vous pouvez bien sûr le changer pour n'importe quel autre salon (comme votre salon "bot-logs", par exemple) en utilisant la commande `/config`[^1].
 
