@@ -33,6 +33,8 @@ Il est capable d'afficher l'état des campagnes du jeu et d'afficher des détail
 
 Si vous souhaitez utiliser ou essayer Dauda, vous pouvez l'ajouter à votre serveur en cliquant sur ce bouton :
 <p align="center"><a href="https://discord.com/api/oauth2/authorize?client_id=1050757215885209640&permissions=283736656976&scope=bot" target="_blank"><img alt="Bouton d'ajout sur Discord" title="Ajoutez-moi sur votre serveur Discord !" src="https://img.shields.io/badge/Add%20Dauda%20on-Discord-5865F2?style=for-the-badge"></a></p>  
+
+**NOUVEAU !** Dauda est maintenant présent sur le répertoire d'applications officiel de Discord ! **[Allez le voir ici](https://discord.com/application-directory/1050757215885209640)** !
   
 ## Dites-moi ce que vous pensez !
 
