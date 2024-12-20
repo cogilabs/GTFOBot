@@ -78,22 +78,32 @@ module.exports = {
         if (mainGuildLogsChannel != undefined) // ! Debug, Remove for prod
 		    await mainGuildLogsChannel.send(`${interaction.user.tag} <${interaction.user.id}> from **${interaction.guild.name}** <${interaction.guild.id}> used **\`\` /${cmdName} \`\`** in ${locale}`); // ! Debug, Remove for prod
         
-        if (lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`] != undefined) {
+        if (lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`]) {
             try {
-                await lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`].deleteReply();
-            } catch(error) {
-                console.error(error);
+                const fetchedMessage = await lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`].fetchReply().catch(() => null);
+                if (fetchedMessage) {
+                    await lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`].deleteReply();
+                }
+            } catch (error) {
+                console.error(`Erreur lors de la suppression de lastMissionInteraction :`, error);
+            } finally {
+                lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`] = undefined;
             }
-            lastMissionInteraction[`${interaction.guild.id}-${interaction.channelId}`] = undefined;
         }
-        if (rundownsInteraction[`${interaction.guild.id}-${interaction.channelId}`] != undefined) {
+        
+        if (rundownsInteraction[`${interaction.guild.id}-${interaction.channelId}`]) {
             try {
-                await rundownsInteraction[`${interaction.guild.id}-${interaction.channelId}`].deleteReply();
-            } catch(error) {
-                console.error(error);
+                const fetchedMessage = await rundownsInteraction[`${interaction.guild.id}-${interaction.channelId}`].fetchReply().catch(() => null);
+                if (fetchedMessage) {
+                    await rundownsInteraction[`${interaction.guild.id}-${interaction.channelId}`].deleteReply();
+                }
+            } catch (error) {
+                console.error(`Erreur lors de la suppression de rundownsInteraction :`, error);
+            } finally {
+                rundownsInteraction[`${interaction.guild.id}-${interaction.channelId}`] = undefined;
             }
-            rundownsInteraction[`${interaction.guild.id}-${interaction.channelId}`] = undefined;
         }
+            
 
         await interaction.reply({ 
             content: (locFile[locale][locale].missions?.chooseRundown ?? locFile["en-US"]["en-US"].missions.chooseRundown), 
