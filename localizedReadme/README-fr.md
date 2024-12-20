@@ -30,10 +30,12 @@ Voici un bot Discord que j'ai créé pour aider mon équipe de GTFO dans la gest
 Il est capable d'afficher l'état des campagnes du jeu et d'afficher des détails sur les missions. Nous l'utilisons pour suivre notre progression à travers le complexe et pour nous familiariser avec les informations et les objectifs de la prochaine mission avant de nous y lancer.
 
 ## Utiliser/lancer
-
-Si vous souhaitez utiliser ou essayer Dauda, vous pouvez l'ajouter à votre serveur en cliquant sur ce bouton :
-<p align="center"><a href="https://discord.com/api/oauth2/authorize?client_id=1050757215885209640&permissions=283736656976&scope=bot" target="_blank"><img alt="Bouton d'ajout sur Discord" title="Ajoutez-moi sur votre serveur Discord !" src="https://img.shields.io/badge/Add%20Dauda%20on-Discord-5865F2?style=for-the-badge"></a></p>  
   
+**NOUVEAU !** Dauda est maintenant présent sur le répertoire d'applications officiel de Discord !  
+  
+Si vous souhaitez utiliser ou essayer Dauda, vous pouvez l'ajouter à votre serveur via le répertoire d'applications officiel de Discord en cliquant sur ce bouton :
+<p align="center"><a href="https://discord.com/application-directory/1050757215885209640" target="_blank"><img alt="Bouton d'ajout sur Discord" title="Ajoutez-moi sur votre serveur Discord !" src="https://img.shields.io/badge/Add%20Dauda%20on-Discord-5865F2?style=for-the-badge"></a></p>  
+
 ## Dites-moi ce que vous pensez !
 
 Si vous trouvez un bug, avez besoin d'aide, d'informations, souhaitez suivre les actualités concernant le bot, ou simplement discuter, n'hésitez pas à rejoindre le **[serveur Discord de Dauda](https://discord.gg/bwWBc8phma)** !

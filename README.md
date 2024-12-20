@@ -30,11 +30,14 @@ This is a Discord bot I made to assist my GTFO team in expedition management.
 It's able to show the state of the game's rundowns and to display details about the missions.
 We use it to follow our progress through the complex and to familiarise with the next mission intels and objectives before dropping in.
 
-## Using/launching
-
-If you want to use or try Dauda, you can add it to your server by clicking this button:
-<p align="center"><a href="https://discord.com/api/oauth2/authorize?client_id=1050757215885209640&permissions=283736656976&scope=bot" target="_blank"><img alt="Add me on discord button" title="Add me on your discord server!" src="https://img.shields.io/badge/Add%20Dauda%20on-Discord-5865F2?style=for-the-badge"></a></p>  
+## Using/launching  
   
+**NEW!** Dauda is now on the official Discord app directory!
+  
+If you want to use or try Dauda, you can add it to your server through the official Discord app directory by clicking this button:
+<p align="center"><a href="https://discord.com/application-directory/1050757215885209640" target="_blank"><img alt="Add me on discord button" title="Add me on your discord server!" src="https://img.shields.io/badge/Add%20Dauda%20on-Discord-5865F2?style=for-the-badge"></a></p>  
+
+
 ## Tell me what you think!
 
 If you find a bug, need help, informations, want to follow the news about the bot, or just want to talk, don't hesitate to join **[Dauda's Discord server](https://discord.gg/bwWBc8phma)**!
