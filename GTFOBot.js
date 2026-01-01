@@ -9,7 +9,7 @@ const { Client, Collection, Events, GatewayIntentBits, Partials, EmbedBuilder } 
 const { spawn } = require('child_process');
 const { token, guildId } = require('./config.json');
 const { supportedLocales } = require('./localization/supportedLocales.json');
-const { compCheck, glitchText, logToServer, channelSelection, langCompare } = require('./modules/smallModules.js')
+const { compCheck, logToServer, channelSelection, langCompare } = require('./modules/smallModules.js')
 
 const logsChannelName = 'dauda-logs';
 global.logsChannelName = logsChannelName;
@@ -188,7 +188,7 @@ client.on(Events.GuildScheduledEventCreate, async event => {
 	else if (event.guild.roles.cache.find(role => role.name === roleName) != undefined) 
 		ping = (locFile[locale][locale].events?.ping ?? locFile["en-US"]["en-US"].events.ping).replace('#', `<@&${event.guild.roles.cache.find(role => role.name === roleName).id}>`);
 
-	await channel.send(ping + (locFile[locale][locale].events?.newExpedition ?? locFile["en-US"]["en-US"].events.newExpedition).replace('#', missionName) + glitchText + event.url);
+	await channel.send(ping + (locFile[locale][locale].events?.newExpedition ?? locFile["en-US"]["en-US"].events.newExpedition).replace('#', missionName).replace('ø',event.url));
 	await channel.send(`<@${event.creatorId}> ${locFile[locale][locale].events?.participate ?? locFile["en-US"]["en-US"].events.participate}`);
 	logToServer(logsChannel, `Sent it to \`\` ${channel.name} \`\``);
 	logToServer(logsChannel, `\`\` <${event.creatorId}> \`\` automatically joined the event “${event.name}”`);
@@ -242,7 +242,7 @@ client.on(Events.GuildScheduledEventUpdate, async (oldEvent, event) => {
 		else if (event.guild.roles.cache.find(role => role.name === roleName) != undefined) 
 			ping = (locFile[locale][locale].events?.ping ?? locFile["en-US"]["en-US"].events.ping).replace('#', `<@&${event.guild.roles.cache.find(role => role.name === roleName).id}>`);
 
-		await channel.send(ping + (locFile[locale][locale].events?.start ?? locFile["en-US"]["en-US"].events.start).replace('#', missionName) + glitchText + event.url);
+		await channel.send(ping + (locFile[locale][locale].events?.start ?? locFile["en-US"]["en-US"].events.start).replace('#', missionName).replace('ø',event.url));
 
 		logToServer(logsChannel, `Event “${event.name}”${MIDp} started\nSent it to \`\` ${channel.name} \`\``);
 

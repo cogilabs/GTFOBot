@@ -538,8 +538,8 @@
     "events": {
       "role": "Prisoners",
       "to": "to",
-      "newExpedition": "The Warden is sending us in a new expedition#, so get ready to work together, or die together!\n ",
-      "start": "The expedition# is starting, so get ready and join us!\n ",
+      "newExpedition": "The Warden is sending us in a new [expedition](ø)#, so get ready to work together, or die together!\n ",
+      "start": "The [expedition](ø)# is starting, so get ready and join us!\n ",
       "end": {
         "success": "The expedition# was a success!\n*That* is what I call a great team!",
         "fail": "Unfortunately, the expedition# did not end up as expected... But next time will be the one!",
