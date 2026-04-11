@@ -7,7 +7,7 @@
   "author": "0Davgi0",
   "license": "BSD2",
   "dependencies": {
-    "discord.js": "^14.7.1",
+    "discord.js": "^14.26.2",
     "edit-json-file": "^1.7.0",
     "pm2": "^5.4.0"
   }
